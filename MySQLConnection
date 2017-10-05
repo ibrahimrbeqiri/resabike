@@ -37,7 +37,6 @@ class MySqlConn {
 	public function execute($query, $attributes){		
 		$stmt = $this->_conn->prepare($query);
 		$stmt->execute($attributes);
-		// Check if execution failed
 		$code = $stmt->errorCode();		
 		if($code!='00000'){
 			if($code == '23000'){
@@ -45,7 +44,6 @@ class MySqlConn {
 			}					
 			return array('status'=>'error', 'result'=>'sql_query_failed');
 		}
-		// Get result if so
 		$result = $stmt->fetchAll();		
 		return array('status'=>'success', 'result'=>$result);
 	}
