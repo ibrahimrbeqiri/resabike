@@ -2,6 +2,10 @@
 	height: calc(100vh - 64px);
 	margin: 0;
 }
+
+.full-screen{
+	min-height: calc(100vh - 64px);
+}
 .fp-login{
 	height: 100%;
 }
@@ -22,7 +26,14 @@
 	align-items: center;
 	background-color: rgba(255, 255, 255, 0.58);
 }
-.card button{
+.front-page .card button{
 	margin: 3%;
 	width: 100% !important;
+}
+.main-color{
+	background-color: #ffcc00 !important;
+}
+nav .brand-logo img{
+	height: 64px;
+	width: 64px;
 }

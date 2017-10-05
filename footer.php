@@ -1,6 +1,6 @@
 
 
-<footer class="page-footer yellow darken-1">
+<footer class="page-footer main-color">
 <div class="container">
 <div class="row">
   <div class="col l12">
@@ -16,11 +16,7 @@
 </div>
 </footer>
 
-<?php //scripts for jquery ?>
-<script src="assets/js/jquery-3.2.1.min.js"></script>
 
-	<?php //javascripts for materialize framework ?>
-<script src="assets/materialize/js/materialize.js"></script>
 
 	<?php //custom javascripts ?>
 <script src="assets/js/scripts.js"></script>
