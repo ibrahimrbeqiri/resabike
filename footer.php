@@ -16,11 +16,11 @@
 </div>
 </footer>
 
+<?php //scripts for jquery ?>
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+
 	<?php //javascripts for materialize framework ?>
 <script src="assets/materialize/js/materialize.js"></script>
-
-	<?php //scripts for jquery ?>
-<script src="assets/js/jquery-3.2.1.min.js"></script>
 
 	<?php //custom javascripts ?>
 <script src="assets/js/scripts.js"></script>
