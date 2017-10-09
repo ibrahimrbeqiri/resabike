@@ -1,5 +1,8 @@
-<?php require 'header.php'; ?>
+<?php include_once ROOT_DIR.'views/header.inc';
 
+//Collect data from controller
+$msg = $this->vars['msg'];
+?>
 
 <div class="container full-screen">
 
@@ -40,7 +43,6 @@
 					<option value="7">7</option>
 					<option value="8">8</option>
 					<option value="9">9</option>
-					<option value="10">10</option>
 					<option value="10+">10+</option>
 				  </select>
 				</div>
@@ -66,4 +68,6 @@
   </div>
 </div>
 
-<?php require 'footer.php'; ?>
+<?php
+unset($_SESSION['msg']);
+include_once ROOT_DIR.'views/footer.inc'; ?>
