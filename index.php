@@ -17,13 +17,13 @@ exit;
 //Load required classes automatically
 spl_autoload_register(function ($class) {
 	$folders = array('controllers', 'models', 'dal');
-	
+
 	foreach($folders as $folder){
 		if(file_exists(ROOT_DIR."$folder/Class.$class.php")){
 			require(ROOT_DIR."$folder/Class.$class.php");
 			return;
 		}
-	}	
+	}
 });
 
 
@@ -38,8 +38,11 @@ $path = parse_url(
 $parts = explode("/", substr($path['path'], 1));
 
 //Get the controller and the view or method
-$controller = strtolower((@$parts[1]) ? $parts[1] : "login");
-$method = strtolower((@$parts[2]) ? $parts[2] : "login");
+//$controller = strtolower((@$parts[1]) ? $parts[1] : "login");
+//$method = strtolower((@$parts[2]) ? $parts[2] : "login");
+
+$controller = strtolower((@$parts[1]) ? $parts[1] : "index");
+$method = strtolower((@$parts[2]) ? $parts[2] : "welcome");
 
 /*
  var_dump($parts); print('<br>');
@@ -49,7 +52,7 @@ $method = strtolower((@$parts[2]) ? $parts[2] : "login");
 */
 
 //Check if controller and method exist
-if(!file_exists(ROOT_DIR."controllers/Class.{$controller}Controller.php")) {			
+if(!file_exists(ROOT_DIR."controllers/Class.{$controller}Controller.php")) {
 	$controller = "error";
 	$method = "http404";
 }
