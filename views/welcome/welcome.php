@@ -10,7 +10,7 @@ $msg = $this->vars['msg'];
 			<div class="col s12 m3 card right">
 				<div class="row">
 					<div class="col l12">
-						<a href="reserve.php">
+						<a href="<?php echo URL_DIR.'reserve/reserve';?>">
 						<button class="waves-effect waves-light btn-large">
 							<i class="material-icons prefix">directions_bike</i>
 							<span>Reserve bike</span>

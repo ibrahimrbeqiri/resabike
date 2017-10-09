@@ -19,7 +19,7 @@
 
 
 	<?php //custom javascripts ?>
-<script src="assets/js/scripts.js"></script>
+<script src="/<?php echo SITE_NAME; ?>/assets/js/scripts.js"></script>
 
 </body>
 </html>

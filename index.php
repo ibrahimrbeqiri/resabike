@@ -1,11 +1,12 @@
 <?php
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 //Init global Constants
 define('SITE_NAME', substr(dirname($_SERVER['SCRIPT_NAME']),1)); //--> php_mvc
 define('ROOT_DIR', dirname(getcwd()) . '/' . SITE_NAME.'/'); //physical path on disk
-define('URL_DIR', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']
+//define('URL_DIR', $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']
+define('URL_DIR', 'http'.'://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']
 		. '/' . SITE_NAME.'/');
 /*
 print(SITE_NAME); print('<br>');
@@ -41,7 +42,7 @@ $parts = explode("/", substr($path['path'], 1));
 //$controller = strtolower((@$parts[1]) ? $parts[1] : "login");
 //$method = strtolower((@$parts[2]) ? $parts[2] : "login");
 
-$controller = strtolower((@$parts[1]) ? $parts[1] : "index");
+$controller = strtolower((@$parts[1]) ? $parts[1] : "welcome");
 $method = strtolower((@$parts[2]) ? $parts[2] : "welcome");
 
 /*

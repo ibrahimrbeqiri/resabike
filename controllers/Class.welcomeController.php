@@ -1,13 +1,10 @@
 <?php
-class indexController extends Controller{
+class welcomeController extends Controller{
 /**
  * Method that controls the page 'login.php'
  */
 	function welcome(){
-		//if a user is active he cannot re-login
-			$this->redirect('welcome', 'index');
-
-
+		//$this->redirect('welcome', 'welcome');
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 }
