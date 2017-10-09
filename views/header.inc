@@ -29,7 +29,7 @@
   <div class="nav-wrapper main-color">
 	<a href="/<?php echo SITE_NAME; ?>/" class="brand-logo"><img src="/<?php echo SITE_NAME; ?>/assets/img/logo.png" alt="logo"></a>
 	<ul id="nav-mobile" class="right hide-on-med-and-down">
-	  <li><a href="reserve.php">Reserve</a></li>
+	  <li><a href="<?php echo URL_DIR.'reserve/reserve';?>">Reserve</a></li>
 	  <li><a href="#">Contact</a></li>
 	</ul>
   </div>
