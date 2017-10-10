@@ -7,5 +7,8 @@ class reserveController extends Controller{
 		//$this->redirect('welcome', 'welcome');
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
+	function results(){
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+	}
 }
  ?>

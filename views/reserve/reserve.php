@@ -3,14 +3,14 @@ include_once ROOT_DIR.'views/header.inc';
 
 //Collect data from controller
 $msg = $this->vars['msg'];
+
 ?>
 
 <div class="container full-screen">
-
 	<div class="col m12">
 		<h1>Reserve</h1>
 		<div class="row">
-			<form class="" action="index.html" method="post">
+			<form class="" action="<?php echo URL_DIR.'reserve/results';?>" method="post">
 				<div class="input-field col m6">
 				  <i class="material-icons prefix">arrow_forward</i>
 				  <input id="icon_prefix" type="text" class="form-autocomplete validate">
