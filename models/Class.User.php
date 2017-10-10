@@ -59,14 +59,14 @@ class User{
 		$query = "INSERT INTO user(firstname, lastname, username, password)	VALUES(?, ?, ?, ?);";
 		$attributes = array($this->firstname, $this->lastname, $this->username, $pwd);	
 		
-		return  MySqlConn::getInstance()->execute($query, $attributes);
+		return  MySQLConnection::getInstance()->execute($query, $attributes);
 	}
 	
 	public static function connect($uname, $pwd){
 		$pwd = sha1($pwd); //simple encryption. Use sha512 with Salt for better password encryption
 		$query = "SELECT * FROM user WHERE username=? AND password=?";
 		$attributes = array($uname, $pwd);				
-		$result = MySqlConn::getInstance()->execute($query, $attributes);
+		$result = MySQLConnection::getInstance()->execute($query, $attributes);
 		if($result['status']=='error' || empty($result['result']))
 			return false;
 		
