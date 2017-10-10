@@ -78,27 +78,11 @@ if ($search) {
                     <div class="col-xs-6">
                         <div class="form-group">
                             <input type="text" class="form-control" name="from" value="<?php echo htmlentities($from, ENT_QUOTES, 'UTF-8'); ?>" placeholder="From"  />
-                            <?php $i = count($stationsFrom); if ($i > 0): ?>
-                                <p>
-                                    Did you mean:
-                                    <?php foreach ($stationsFrom as $station): ?>
-                                        <a href="connections.php?<?php echo htmlentities(http_build_query(['from' => $station, 'to' => $to, 'datetime' => $datetime]), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlentities($station, ENT_QUOTES, 'UTF-8'); ?></a><?php if ($i-- > 1): ?>, <?php endif; ?>
-                                    <?php endforeach ?>
-                                </p>
-                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
                             <input type="text" name="to" class="form-control" value="<?php echo htmlentities($to, ENT_QUOTES, 'UTF-8'); ?>" placeholder="To" autofocus />
-                            <?php $i = count($stationsFrom); if ($i > 0): ?>
-                                <p>
-                                    Did you mean:
-                                    <?php foreach ($stationsTo as $station): ?>
-                                        <a href="connections.php?<?php echo htmlentities(http_build_query(['from' => $from, 'to' => $station, 'datetime' => $datetime]), ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlentities($station, ENT_QUOTES, 'UTF-8'); ?></a><?php if ($i-- > 1): ?>, <?php endif; ?>
-                                    <?php endforeach ?>
-                                </p>
-                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
