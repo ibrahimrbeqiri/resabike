@@ -10,25 +10,25 @@ $msg = $this->vars['msg'];
 	<div class="col m12">
 		<h1>Reserve</h1>
 		<div class="row">
-			<form class="" action="<?php echo URL_DIR.'reserve/results';?>" method="post">
+			<form action="<?php echo URL_DIR.'reserve/results';?>" method="get">
 				<div class="input-field col m6">
 				  <i class="material-icons prefix">arrow_forward</i>
-				  <input id="icon_prefix" type="text" class="form-autocomplete validate">
+				  <input id="icon_prefix" type="text" class="form-autocomplete validate" name="from" value="">
 				  <label for="icon_prefix">Start</label>
 				</div>
 				<div class="input-field col m6">
 				  <i class="material-icons prefix">location_on</i>
-				  <input id="icon_telephone" type="tel" class="form-autocomplete validate">
+				  <input id="icon_telephone" type="tel" class="form-autocomplete validate" name="to">
 				  <label for="icon_telephone">Destination</label>
 				</div>
 				<div class="input-field col s2">
 				  <i class="material-icons prefix">date_range</i>
-				  <input id="icon_prefix" type="text" class="datepicker">
+				  <input id="icon_prefix" type="text" class="datepicker" name="day" value="<?php echo date("d.m.Y") ?>">
 				  <label for="icon_prefix">Date</label>
 				</div>
 				<div class="input-field col s2">
 				  <i class="material-icons prefix">access_time</i>
-				  <input id="icon_prefix" type="text" class="timepicker">
+				  <input id="icon_prefix" type="text" class="timepicker" name="time" value="<?php echo date("H:i") ?>">
 				  <label for="icon_prefix">Time</label>
 				</div>
 				<div class="input-field col s2">

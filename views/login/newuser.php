@@ -1,4 +1,4 @@
-<?php include_once ROOT_DIR.'views/header.inc'; 
+<?php include_once ROOT_DIR.'views/header.inc';
 
 //Collect data from controller
 $msg = $this->vars['msg'];
@@ -8,7 +8,7 @@ $persistence = $this->vars['persistence'];
 <?php echo $msg;?>
 <br><br>
 <form method="post" action="<?php echo URL_DIR.'login/register';?>">
-	<table align="center">		
+	<table align="center">
 		<tr>
 			<td>
 			<h1>Register</h1>
@@ -23,6 +23,6 @@ $persistence = $this->vars['persistence'];
 	</table>
 </form>
 
-<?php 
+<?php
 unset($_SESSION['msg']);
 include_once ROOT_DIR.'views/footer.inc';?>

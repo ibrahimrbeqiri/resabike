@@ -4,7 +4,9 @@ include_once ROOT_DIR.'views/header.inc';
 //Collect data from controller
 $msg = $this->vars['msg'];
 
- $from = isset($_GET['from']) ? $_GET['from'] : false;
+var_dump($_SESSION["search_query"]);
+
+$from = isset($_GET['from']) ? $_GET['from'] : false;
 $to = isset($_GET['to']) ? $_GET['to'] : false;
 $via = isset($_GET['via']) ? $_GET['via'] : false;
 $datetime = isset($_GET['datetime']) ? $_GET['datetime'] : '';
@@ -12,6 +14,12 @@ $page = isset($_GET['page']) ? ((int) $_GET['page']) - 1 : 0;
 $c = isset($_GET['c']) ? (int) $_GET['c'] : false;
 $stationsFrom = [];
 $stationsTo = [];
+
+$from = $_SESSION["search_query"]["from"];
+$to =	$_SESSION["search_query"]["to"];
+$day = 	$_SESSION["search_query"]["day"];
+$time = $_SESSION["search_query"]["time"];
+
 $search = $from && $to;
 if ($search) {
     $query = [
@@ -20,9 +28,9 @@ if ($search) {
         'page'  => $page,
         'limit' => 6,
     ];
-    if ($datetime) {
-        $query['date'] = date('Y-m-d', strtotime($datetime));
-        $query['time'] = date('H:i', strtotime($datetime));
+    if ($day && $time) {
+        $query['date'] = date('d.m.Y', strtotime($day));
+        $query['time'] = date('H:i', strtotime($time));
     }
     if ($via) {
         $query['via'] = $via;
@@ -63,7 +71,7 @@ if ($search) {
 
 
     <div class="row">
-        <div class="col-sm-5">
+        <!-- <div class="col-sm-5">
 
             <form method="get" action="">
                 <div class="row">
@@ -109,7 +117,7 @@ if ($search) {
                 </div>
             </form>
 
-        </div>
+        </div> -->
         <div class="col-sm-7">
 
             <?php if ($search && $response->connections): ?>
@@ -306,7 +314,7 @@ if ($search) {
         		</thead>
 
         		<tbody>
-        
+
         		</tbody>
       		</table>
       </div>
