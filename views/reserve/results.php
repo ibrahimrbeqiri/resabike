@@ -17,7 +17,7 @@ $stationsTo = [];
 
 $from = $_SESSION["search_query"]["from"];
 $to =	$_SESSION["search_query"]["to"];
-$day = 	$_SESSION["search_query"]["day"];
+$date = 	$_SESSION["search_query"]["date"];
 $time = $_SESSION["search_query"]["time"];
 
 $search = $from && $to;
@@ -29,7 +29,7 @@ if ($search) {
         'limit' => 6,
     ];
     if ($day && $time) {
-        $query['date'] = date('d.m.Y', strtotime($day));
+        $query['date'] = date('d.m.Y', strtotime($date));
         $query['time'] = date('H:i', strtotime($time));
     }
     if ($via) {

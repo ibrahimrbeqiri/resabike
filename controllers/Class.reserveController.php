@@ -11,10 +11,10 @@ class reserveController extends Controller{
 		//Get data posted by the form
 		$from = $_GET['from'];
 		$to = $_GET['to'];
-		$day = $_GET['day'];
+		$date = $_GET['date'];
 		$time = $_GET['time'];
 		//saveing the search query into an object
-		$search_query = array('from' => $from, 'to'=> $to, 'day' => $day, 'time' => $time);
+		$search_query = array('from' => $from, 'to'=> $to, 'date' => $date, 'time' => $time);
 		//saveing that object into session
 		$_SESSION["search_query"] = $search_query;
 

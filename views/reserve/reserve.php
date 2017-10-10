@@ -23,7 +23,7 @@ $msg = $this->vars['msg'];
 				</div>
 				<div class="input-field col s2">
 				  <i class="material-icons prefix">date_range</i>
-				  <input id="icon_prefix" type="text" class="datepicker" name="day" value="<?php echo date("d.m.Y") ?>">
+				  <input id="icon_prefix" type="text" class="datepicker" name="date" value="<?php echo date("d.m.Y") ?>">
 				  <label for="icon_prefix">Date</label>
 				</div>
 				<div class="input-field col s2">
