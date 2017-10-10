@@ -17,7 +17,7 @@ $stationsTo = [];
 
 $from = $_SESSION["search_query"]["from"];
 $to =	$_SESSION["search_query"]["to"];
-$date = 	$_SESSION["search_query"]["date"];
+$date = $_SESSION["search_query"]["date"];
 $time = $_SESSION["search_query"]["time"];
 
 $search = $from && $to;
