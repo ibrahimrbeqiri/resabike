@@ -28,7 +28,7 @@ if ($search) {
         'page'  => $page,
         'limit' => 6,
     ];
-    if ($day && $time) {
+    if ($date && $time) {
         $query['date'] = date('d.m.Y', strtotime($date));
         $query['time'] = date('H:i', strtotime($time));
     }
