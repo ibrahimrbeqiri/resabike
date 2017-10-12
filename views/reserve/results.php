@@ -105,26 +105,16 @@ if ($search) {
         <div class="col-sm-7">
 
             <?php if ($search && $response->connections): ?>
-                <table class="table connections">
-                    <colgroup>
-                        <col width="20%">
-                        <col width="57%">
-                        <col width="23%">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>Time</th>
-                            <th>Journey</th>
-                            <th>
-                                <span class="visible-xs-inline">Pl.</span>
-                                <span class="hidden-xs">Platform</span>
-                            </th>
-                        </tr>
-                    </thead>
+
+					<ul class="collapsible" data-collapsible="accordion">
+
+
                     <?php $j = 0; ?>
                     <?php foreach ($response->connections as $connection): ?>
                         <?php $j++; ?>
-                        <tbody>
+
+                        <li>
+							<div class="collapsible-header">
                             <tr class="connection"<?php if ($j == $c): ?> style="display: none;"<?php endif; ?> data-c="<?php echo $j; ?>">
                                 <td>
                                     <?php echo date('H:i', strtotime($connection->from->departure)); ?>
@@ -226,12 +216,50 @@ if ($search) {
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
-                        </tbody>
+							</div>
+							<div class="collapsible-body">
+
+									<form class="">
+									  <div class="row">
+										<div class="input-field col s12 m2">
+										  <i class="material-icons prefix">person</i>
+										  <input id="icon_prefix" type="text" class="validate">
+										  <label for="icon_prefix">Nickname</label>
+										</div>
+										<div class="input-field col s2">
+										  <i class="material-icons prefix">directions_bike</i>
+										  <select class="form-bikes">
+											<option value="" disabled selected>Bikes</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10+">10+</option>
+										  </select>
+										</div>
+										<div class="col s2">
+											<button class="btn waves-effect waves-light" type="submit" name="action">
+												Reserve
+											  <i class="material-icons right">check</i>
+											</button>
+										</div>
+									  </div>
+									</form>
+
+							</div>
+                        </li>
                     <?php endforeach; ?>
-                </table>
+					</ul>
+
+
+			<?php endif; ?>
+	</div>
 </div>
-</div>
-<?php endif; ?>
 <!--  <script>
 
     $(function () {
@@ -305,6 +333,18 @@ if ($search) {
 	</div>
 </div>-->
 
+
+
+
+<div id="bike-modal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+	<h4>Attention!</h4>
+	<p>If you are planning on reserving more than 10 bikes, please contact us at <a href="tel:1-562-867-5309">1-562-867-5309</a> to make sure we have room for all your bikes.</p>
+  </div>
+  <div class="modal-footer">
+	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+  </div>
+</div>
 
 <?php
 unset($_SESSION['msg']);
