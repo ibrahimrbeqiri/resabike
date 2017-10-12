@@ -37,3 +37,12 @@ nav .brand-logo img{
 	height: 64px;
 	width: 64px;
 }
+.connection-info{
+	display: table;
+}
+.connection-info .connection-stop{
+	display: table-row;
+}
+.connection-info .connection-stop div {
+	display: table-cell;
+}

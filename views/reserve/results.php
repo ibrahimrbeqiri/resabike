@@ -35,46 +35,47 @@ if ($search) {
 ?>
 
         <div class="container">
+		<h5><?php echo "Bus rides from $from to $to at $time on $date:" ?></h5>
 		<ul class="collapsible" data-collapsible="accordion">
 		<?php  foreach($response->connections as $connection):?>
            <li>
 
 
            					<div class="collapsible-header">
-								<div style="display:table;">
-									<div class="col l 12" style="display:table-row;">
-										<div style="display:table-cell">
+								<div class="connection-info">
+									<div class="col l12 connection-stop">
+										<div>
 											<i class="material-icons">trending_flat</i> <?php echo $connection->from; ?>
 										</div>
-										<div style="display:table-cell">
-											<i class="material-icons">access_time</i><?php echo date('H:i', strtotime($connection->departure)); ?>
+										<div>
+										 <?php echo '&emsp;'.date('H:i', strtotime($connection->departure)); ?>
 										</div>
-
 									</div>
-									<div class="col l 12" style="display:table-row;">
-										<div style="display:table-cell">
+									<div class="connection-stop">
+										<i class="material-icons">hourglass_empty</i><?php echo '&nbsp;'.gmdate("H:i", $connection->duration); ?>
+									</div>
+									<div class="col l12 connection-stop">
+										<div>
 											<i class="material-icons">location_on</i> <?php echo $connection->to; ?>
 										</div>
-										<div style="display:table-cell">
-											<i class="material-icons">access_time</i><?php echo date('H:i', strtotime($connection->arrival)); ?>
+										<div>
+										<?php echo '&emsp;'.date('H:i', strtotime($connection->arrival)); ?>
 										</div>
 
 
 									</div>
 								</div>
-
-
 							</div>
 							<div class="collapsible-body">
 
 									<form class="">
 									  <div class="row">
-										<div class="input-field col s12 m2">
+										<div class="input-field col l2">
 										  <i class="material-icons prefix">person</i>
 										  <input id="icon_prefix" type="text" class="validate">
 										  <label for="icon_prefix">Nickname</label>
 										</div>
-										<div class="input-field col s2">
+										<div class="input-field col l2">
 										  <i class="material-icons prefix">directions_bike</i>
 										  <select class="form-bikes">
 											<option value="" disabled selected>Bikes</option>

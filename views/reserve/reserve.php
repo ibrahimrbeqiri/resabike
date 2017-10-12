@@ -13,25 +13,27 @@ $msg = $this->vars['msg'];
 			<form action="<?php echo URL_DIR.'reserve/results';?>" method="get">
 				<div class="input-field col m6">
 				  <i class="material-icons prefix">arrow_forward</i>
-				  <input id="icon_prefix" type="text" class="form-autocomplete validate" name="from" value="">
+				  <?php //disable the html autocomplete because of custom autocomplete ?>
+				  <input autocomplete="off" id="icon_prefix" type="text" class="form-autocomplete validate" name="from" value="">
 				  <label for="icon_prefix">Start</label>
 				</div>
 				<div class="input-field col m6">
 				  <i class="material-icons prefix">location_on</i>
-				  <input id="icon_telephone" type="tel" class="form-autocomplete validate" name="to">
+				  <?php //disable the html autocomplete because of custom autocomplete ?>
+				  <input autocomplete="off" id="icon_telephone" type="tel" class="form-autocomplete validate" name="to">
 				  <label for="icon_telephone">Destination</label>
 				</div>
-				<div class="input-field col s2">
+				<div class="input-field col m2">
 				  <i class="material-icons prefix">date_range</i>
 				  <input id="icon_prefix" type="text" class="datepicker" name="date" value="<?php echo date("d.m.Y") ?>">
 				  <label for="icon_prefix">Date</label>
 				</div>
-				<div class="input-field col s2">
+				<div class="input-field col m2">
 				  <i class="material-icons prefix">access_time</i>
 				  <input id="icon_prefix" type="text" class="timepicker" name="time" value="<?php echo date("H:i") ?>">
 				  <label for="icon_prefix">Time</label>
 				</div>
-				<div class="col s12">
+				<div class="col m12">
 					<button class="btn waves-effect waves-light" type="submit" name="action">Search
 					  <i class="material-icons right">search</i>
 					</button>

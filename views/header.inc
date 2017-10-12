@@ -27,10 +27,15 @@
 
 <nav>
   <div class="nav-wrapper main-color">
+	  <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 	<a href="/<?php echo SITE_NAME; ?>/" class="brand-logo"><img src="/<?php echo SITE_NAME; ?>/assets/img/logo.png" alt="logo"></a>
 	<ul id="nav-mobile" class="right hide-on-med-and-down">
 	  <li><a href="<?php echo URL_DIR.'reserve/reserve';?>">Reserve</a></li>
 	  <li><a href="#">Contact</a></li>
+	</ul>
+	<ul class="side-nav" id="mobile-demo">
+		<li><a href="<?php echo URL_DIR.'reserve/reserve';?>">Reserve</a></li>
+  	  	<li><a href="#">Contact</a></li>
 	</ul>
   </div>
 </nav>
