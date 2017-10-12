@@ -27,24 +27,46 @@ if ($search) {
     $url = 'https://timetable.search.ch/api/route.json?'.http_build_query($query);
     $url = filter_var($url, FILTER_VALIDATE_URL);
     $response = json_decode(file_get_contents($url));
-    var_dump($response);
-    
-    
+    //var_dump($response);
+
+
 
 }
 ?>
 
-        <div class="col-sm-7">
+        <div class="container">
 		<ul class="collapsible" data-collapsible="accordion">
 		<?php  foreach($response->connections as $connection):?>
            <li>
-           
-           					
+
+
            					<div class="collapsible-header">
-           					<?php echo $connection->from; ?>
+								<div style="display:table;">
+									<div class="col l 12" style="display:table-row;">
+										<div style="display:table-cell">
+											<i class="material-icons">trending_flat</i> <?php echo $connection->from; ?>
+										</div>
+										<div style="display:table-cell">
+											<i class="material-icons">access_time</i><?php echo date('H:i', strtotime($connection->departure)); ?>
+										</div>
+
+									</div>
+									<div class="col l 12" style="display:table-row;">
+										<div style="display:table-cell">
+											<i class="material-icons">location_on</i> <?php echo $connection->to; ?>
+										</div>
+										<div style="display:table-cell">
+											<i class="material-icons">access_time</i><?php echo date('H:i', strtotime($connection->arrival)); ?>
+										</div>
+
+
+									</div>
+								</div>
+
+
 							</div>
 							<div class="collapsible-body">
-							
+
 									<form class="">
 									  <div class="row">
 										<div class="input-field col s12 m2">
@@ -78,14 +100,14 @@ if ($search) {
 									</form>
 
 								</div>
-					
+
 						</li>
 						<?php endforeach;?>
 					</ul>
 				</div>
 
 
-	
+
 
 
 <div id="bike-modal" class="modal modal-fixed-footer">
