@@ -18,10 +18,12 @@ $msg = $this->vars['msg'];
 						</a>
 					</div>
 					<div class="col l12">
+						<a href="<?php echo URL_DIR.'info/about';?>">
 						<button class="waves-effect waves-light btn-large">
 							<i class="material-icons prefix">info</i>
 							<span>More info</span>
 						</button>
+						</a>
 					</div>
 				</div>
 		</div>
