@@ -1,6 +1,9 @@
 <?php
 // error_reporting(E_ALL);
-// ini_set('display_errors', 1);
+
+// Report all errors except E_NOTICE
+error_reporting(E_ALL ^ E_NOTICE);
+ini_set('display_errors', 1);
 
 //Init global Constants
 define('SITE_NAME', substr(dirname($_SERVER['SCRIPT_NAME']),1)); //--> php_mvc

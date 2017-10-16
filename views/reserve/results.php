@@ -79,9 +79,14 @@ if ($search) {
 											<li>
 												<div class="collapsible-header">
 													<div class="col l12">
-														<?php if ($leg->arrival): ?>
-															<?php echo date('H:i', strtotime($leg->arrival)).'&emsp;'; ?>
-														<?php endif; ?>
+														<?php
+														if ($leg->arrival){
+															echo date('H:i', strtotime($leg->arrival)).'&emsp;';
+														}
+														elseif ($leg->arrival[0]) {
+															echo '&emsp;'.date('H:i', strtotime($connection->departure));
+														}
+														?>
 
 														<?php echo $leg->name; ?>
 
