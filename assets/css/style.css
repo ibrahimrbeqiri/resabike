@@ -46,3 +46,11 @@ nav .brand-logo img{
 .connection-info .connection-stop div {
 	display: table-cell;
 }
+.error-messages{
+	text-align: center;
+	background-color: rgba(255, 0, 0, 0.2);
+	border: 2px solid red;
+	padding: 2% 0 !important;
+	color: red;
+
+}

@@ -83,8 +83,9 @@ if ($search) {
 														if ($leg->arrival){
 															echo date('H:i', strtotime($leg->arrival)).'&emsp;';
 														}
-														elseif ($leg->arrival[0]) {
-															echo '&emsp;'.date('H:i', strtotime($connection->departure));
+														//special case for first station.
+														elseif ($leg->name == $connection->from) {
+															echo date('H:i', strtotime($connection->departure)).'&emsp;';
 														}
 														?>
 
@@ -119,7 +120,7 @@ if ($search) {
 									<div class="col l6">
 										<form class="">
 										  <div class="row">
-											<div class="input-field col l4">
+											<div class="input-field col l5">
 											  <i class="material-icons prefix">person</i>
 											  <input id="icon_prefix" type="text" class="validate">
 											  <label for="icon_prefix">Nickname</label>
