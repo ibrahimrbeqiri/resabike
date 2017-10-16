@@ -28,9 +28,6 @@ $msg = $this->vars['msg'];
 				</div>
 		</div>
 
-
-
-
 		</div>
 	</div>
 
