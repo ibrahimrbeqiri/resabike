@@ -6,6 +6,14 @@ $msg = $this->vars['msg'];
 
 ?>
 
+   <form action="<?php echo URL_DIR.'reserve/connection';?>" method="post">
+	<input type="text" name="from" value="">
+	<input type="text" name="to" value="">
+	<input type="text" name="nickname" value="">
+	<input type="number" name="nrBikes" value="">
+	<button class="btn waves-effect waves-light" type="submit" name="action">Submit </button>
+	</form>
+
 <div class="container full-screen">
 	<div class="col m12">
 		<h1>Reserve</h1>
