@@ -82,7 +82,7 @@ if ($search) {
 														<?php if ($leg->arrival): ?>
 															<?php echo date('H:i', strtotime($leg->arrival)).'&emsp;'; ?>
 														<?php endif; ?>
-														
+
 														<?php echo $leg->name; ?>
 
 														<?php if ($leg->stops != null): ?>
@@ -97,7 +97,8 @@ if ($search) {
 													<div class="collapsible-body">
 															<?php
 															foreach($leg->stops as $stop):
-																echo "<p style='color: red;'> $stop->name </p>";
+
+																echo  date('H:i', strtotime($stop->arrival)).'&emsp;'.$stop->name."<br />";
 															endforeach;?>
 
 
