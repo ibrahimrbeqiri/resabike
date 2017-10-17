@@ -4,15 +4,12 @@ class MySQLConnection {
     const HOST = "localhost";
     const PORT = "3306";
     const DATABASE = "resabike";
-    // const USER = "grp7";
-    // const PWD = "Espagne2016";
-	const USER = "root";
-	const PWD = "root";
-
-
+    const USER = "root";
+    const PWD = "";
+    
     private static $instance;
     private $_conn;
-
+    
     private function __construct()
     {
         try{
@@ -26,7 +23,7 @@ class MySQLConnection {
             die ('Connection failed: ' . $e->getMessage());
         }
     }
-
+    
     public static function getInstance()
     {
         if (!isset(self::$instance)|| self::$instance == null)
@@ -36,7 +33,6 @@ class MySQLConnection {
         }
         return self::$instance;
     }
-
     public function execute($query, $attributes){
         $stmt = $this->_conn->prepare($query);
         $stmt->execute($attributes);
@@ -50,4 +46,9 @@ class MySQLConnection {
         $result = $stmt->fetchAll();
         return array('status'=>'success', 'result'=>$result);
     }
+    public static function getConnection()
+    {
+        return self::getInstance()->_conn;
+    }
+    
 }

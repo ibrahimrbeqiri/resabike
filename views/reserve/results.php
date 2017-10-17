@@ -38,12 +38,11 @@ if ($search) {
 		<h5><?php echo "Bus rides from $from to $to at $time on $date:" ?></h5>
 		<ul class="collapsible" data-collapsible="accordion">
 		<?php  foreach($response->connections as $connection):?>
-<?php
+<!--<?php
    // ransport = "BUS";
    // foreach($connection->legs as $leg):
    // if($leg->{"*G"} == $transport):
-
-	   ?>
+?>-->
            <li>
 
            					<div class="collapsible-header">

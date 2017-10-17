@@ -4,6 +4,8 @@
 $msg = $this->vars['msg'];
 $persistence = $this->vars['persistence'];
 
+//var_dump($persistence);
+
 ?>
 <?php echo $msg;?>
 <br><br>
