@@ -9,14 +9,21 @@ $user = $_SESSION['user'];
 
 
 <div class="container">
-	<div class="col l12 center">
+	<div class="col l12 center card admin-menu">
 		<h4>Welcome <?php echo ' '.$user->getFirstname().' '.$user->getLastname();?></h4>
-	</div>
-	<div class="col l12 center">
-		<a href="<?php echo URL_DIR.'admin/logout';?>">Log out</a>
-		<button class="btn waves-effect waves-light">See reservations</button>
-		<button class="btn waves-effect waves-light">Modify stations</button>
-		<button class="btn waves-effect waves-light">some stuff</button>
+
+		<button class="btn waves-effect waves-light">
+			<i class="material-icons prefix">book</i>
+			<span>See reservations</span>
+		</button>
+		<button class="btn waves-effect waves-light">
+			<i class="material-icons prefix">map</i>
+			<span>Modify stations</span>
+		</button>
+		<button class="btn waves-effect waves-light">
+			<i class="material-icons prefix">person_add</i>
+			<span>Create a new user</span>
+		</button>
 	</div>
 
 

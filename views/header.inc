@@ -32,10 +32,25 @@
 	<ul id="nav-mobile" class="right hide-on-med-and-down">
 	  <li><a href="<?php echo URL_DIR.'reserve/reserve';?>">Reserve</a></li>
 	  <li><a href="<?php echo URL_DIR.'info/about';?>">Contact</a></li>
+	  <?php if ($_SESSION['user']): ?>
+		<?php $user = $_SESSION['user']; ?>
+		<li><a class="dropdown-button" href="<?php echo URL_DIR.'admin/menu';?>" data-activates="admin-dropdown"><i class="material-icons left">person</i><?php echo $user->getUsername();?><i class="material-icons right">arrow_drop_down</i></a></li>
+		<ul id="admin-dropdown" class="dropdown-content">
+			<li><a href="<?php echo URL_DIR.'admin/menu';?>"><i class="material-icons left">settings</i>Menu</a></li>
+		  	<li><a href="<?php echo URL_DIR.'admin/logout';?>"><i class="material-icons left">power</i>Log out</a></li>
+		</ul>
+	  <?php endif; ?>
 	</ul>
 	<ul class="side-nav" id="mobile-demo">
 		<li><a href="<?php echo URL_DIR.'reserve/reserve';?>">Reserve</a></li>
   	  	<li><a href="<?php echo URL_DIR.'info/about';?>">Contact</a></li>
+		<?php if ($_SESSION['user']): ?>
+  		<li><a class="dropdown-button" href="<?php echo URL_DIR.'admin/menu';?>" data-activates="admin-dropdown-mobile"><i class="material-icons left">person</i><?php echo $user->getUsername();?><i class="material-icons right">arrow_drop_down</i></a></li>
+  		<ul id="admin-dropdown-mobile" class="dropdown-content">
+  			<li><a href="<?php echo URL_DIR.'admin/menu';?>"><i class="material-icons left">settings</i>Menu</a></li>
+  		  	<li><a href="<?php echo URL_DIR.'admin/logout';?>"><i class="material-icons left">power</i>Log out</a></li>
+  		</ul>
+  	  <?php endif; ?>
 	</ul>
   </div>
 </nav>
