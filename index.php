@@ -1,8 +1,8 @@
 <?php
-// error_reporting(E_ALL);
+ error_reporting(E_ALL);
 
 // Report all errors except E_NOTICE
-error_reporting(E_ALL ^ E_NOTICE);
+//error_reporting(E_ALL ^ E_NOTICE);
 ini_set('display_errors', 1);
 
 //Init global Constants

@@ -3,45 +3,21 @@
 class Reservation
 {
     private $id;
-    private $from;
-    private $to;
+    private $fromStation;
+    private $toStation;
     private $nickname;
     private $nrBikes;
     
     
 
-    public function __construct($id=null, $from, $to, $nickname, $nrBikes){
+    public function __construct($id=null, $fromStation, $toStation, $nickname, $nrBikes){
         $this->setId($id);
-        $this->setFrom($from);
-        $this->setTo($to);
+        $this->setFromStation($fromStation);
+        $this->setToStation($toStation);
         $this->setNickname($nickname);
         $this->setNrBikes($nrBikes);
     }
 
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-    
-    public function setFrom($from)
-    {
-        $this->from = $from;
-    }
-    
-    public function setTo($to)
-    {
-        $this->to = $to;
-    }
-    
-    public function setNickname($nickname)
-    {
-        $this->nickname = $nickname;
-    }
-    
-    public function setNrBikes($nrBikes)
-    {
-        $this->nrBikes = $nrBikes;
-    }
     public function getId()
     {
         return $this->id;
@@ -52,9 +28,9 @@ class Reservation
         return $this->from;
     }
 
-    public function getTo()
+    public function getToStation()
     {
-        return $this->to;
+        return $this->toStation;
     }
 
     public function getNickname()
@@ -66,11 +42,34 @@ class Reservation
     {
         return $this->nrBikes;
     }
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
     
+    public function setFromStation($fromStation)
+    {
+        $this->fromStation = $fromStation;
+    }
+    
+    public function setToStation($toStation)
+    {
+        $this->toStation = $toStation;
+    }
+    
+    public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
+    }
+    
+    public function setNrBikes($nrBikes)
+    {
+        $this->nrBikes = $nrBikes;
+    }
     public function insert(){
         
-        $query = "INSERT INTO reservation(from, to, nickname, nrBikes) VALUES (?, ?, ?, ?);";
-        $attributes = array($this->from, $this->to, $this->nickname, $this->nrBikes);
+        $query = "INSERT INTO reservation(fromStation, toStation, nickname, nrBikes) VALUES (?, ?, ?, ?);";
+        $attributes = array($this->fromStation, $this->toStation, $this->nickname, $this->nrBikes);
         
         return MySQLConnection::getInstance()->execute($query, $attributes);
     }

@@ -41,7 +41,8 @@ class MySQLConnection {
             if($code == '23000'){
                 return array('status'=>'error', 'result'=>'sql_query_doublon');
             }
-            return array('status'=>'error', 'result'=>'sql_query_failed');
+            return array('status'=>'error', 'result'=>'sql_query_failed '.$code);
+           
         }
         $result = $stmt->fetchAll();
         return array('status'=>'success', 'result'=>$result);

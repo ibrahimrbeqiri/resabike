@@ -21,19 +21,29 @@ class reserveController extends Controller{
 		
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-	function connection()
+	function test()
 	{
-	    $from = $_POST['from'];
-	    $to = $_POST['to'];
+
+	    $fromStation = $_POST['fromStation'];
+	    $toStation = $_POST['toStation'];
 	    $nickname = $_POST['nickname'];
 	    $nrBikes = $_POST['nrBikes'];
 	    
-
-	    $reservation = new Reservation(null, $from, $to, $nickname, $nrBikes);
-	    $result = $reservation->insert();
-      
+        
+	    $reservation = new Reservation(null, $fromStation, $toStation, $nickname, $nrBikes);
 	    
-	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+	    $result = $reservation->insert();
+	    var_dump($nrBikes);
+        
+	    if($result['status']=='error'){
+	       $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+	       echo $_SESSION['msg'];
+	    }
+	    else 
+	    {
+	        echo "Success!";
+	    }
+	    
 	    //$this->redirect('reserve', 'results');
 	}
 }
