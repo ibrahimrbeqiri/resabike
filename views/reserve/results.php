@@ -117,14 +117,30 @@ if ($search) {
 
 									</div>
 									<div class="col l6">
-										<form class="">
+										<form class="reservation-form">
 										  <div class="row">
-											<div class="input-field col l5">
-											  <i class="material-icons prefix">person</i>
+											  <div class="input-field col l6">
+												<i class="material-icons prefix">person</i>
+									            <input id="first_name" type="text" class="validate">
+									            <label for="first_name">First Name</label>
+									          </div>
+									          <div class="input-field col l6">
+									            <input id="last_name" type="text" class="validate">
+									            <label for="last_name">Last Name</label>
+									          </div>
+
+											<div class="input-field col l6">
+											  <i class="material-icons prefix">email</i>
 											  <input id="icon_prefix" type="text" class="validate">
-											  <label for="icon_prefix">Nickname</label>
+											  <label for="icon_prefix">E-mail</label>
 											</div>
-											<div class="input-field col l4">
+											<div class="input-field col l6">
+											  <i class="material-icons prefix">phone</i>
+											  <input id="icon_prefix" type="text" class="validate">
+											  <label for="icon_prefix">Phone number</label>
+											</div>
+
+											<div class="input-field col l12">
 											  <i class="material-icons prefix">directions_bike</i>
 											  <select class="form-bikes">
 												<option value="" disabled selected>Bikes</option>
@@ -140,13 +156,23 @@ if ($search) {
 												<option value="10+">10+</option>
 											  </select>
 											</div>
-											<div class="col l12">
+
+
+
+											<div class="input-field col l12 additional-info">
+									          <textarea id="textarea1" class="materialize-textarea"></textarea>
+									          <label for="textarea1">Remarks</label>
+									        </div>
+
+											<div class="col l6">
 												<button class="btn waves-effect waves-light" type="submit" name="action">
 													Reserve
 												  <i class="material-icons right">check</i>
 												</button>
 											</div>
+
 										 </div>
+
 										</form>
 									</div>
 								</div>
