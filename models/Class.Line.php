@@ -1,6 +1,5 @@
 <?php
 
-use User;
 
 class Line
 {
@@ -44,7 +43,8 @@ class Line
 
     public function getDriver(User $driver)
     {
-        return $this->driver;
+        $this->$driver->getId();
+        return $this->$driver;
     }
 
     public function setId($id)
@@ -72,9 +72,9 @@ class Line
         $this->tostation = $tostation;
     }
 
-    public function setDriverId($driverId)
+    public function setDriver(User $driver)
     {
-        $this->driverId = $driverId;
+        $this->$driver->setId($id);
     }
 
 }
