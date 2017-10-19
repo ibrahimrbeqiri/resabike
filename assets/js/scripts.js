@@ -85,6 +85,8 @@ $( document ).ready(function() {
 
 
 
+
+
 });
 
 $(document).on('click', '#regional-stations-list .delete-row', function() {

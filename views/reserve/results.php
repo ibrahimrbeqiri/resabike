@@ -90,8 +90,13 @@ if ($search) {
 
 														<?php echo $leg->name; ?>
 
+														<?php if ($leg->line): ?>
+															<?php echo '&nbsp;'."($leg->line)"; ?>
+														<?php endif; ?>
+
+
 														<?php if ($leg->stops != null): ?>
-															   <i class="material-icons right">add</i>
+															   <i class="material-icons right expand-bus-line">add</i>
 														<?php endif ?>
 													</div>
 
@@ -124,7 +129,7 @@ if ($search) {
 										<input name="departure" type="hidden" hidden value="<?php echo '&emsp;'.date('H:i', strtotime($connection->departure));?>">
 										<input name="arrival" type="hidden" hidden value="<?php echo '&emsp;'.date('H:i', strtotime($connection->arrival));?>">
 										<input name="lineId" type="hidden" hidden value="">
-										
+
 										  <div class="row">
 											  <div class="input-field col l6">
 												<i class="material-icons prefix">person</i>
@@ -176,7 +181,7 @@ if ($search) {
 												<button class="btn waves-effect waves-light" type="submit" name="action">
 													Reserve
 												  <i class="material-icons right">check</i>
-												 
+
 												</button>
 											</div>
 
