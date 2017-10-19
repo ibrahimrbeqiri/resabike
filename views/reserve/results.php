@@ -177,9 +177,6 @@ if ($search) {
 									</div>
 								</div>
 
-
-
-
 								</div>
 
 						</li>

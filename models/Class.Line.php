@@ -8,7 +8,6 @@ class Line
     private $number;
     private $fromstation;
     private $tostation;
-    private $driver;
     
 
     public function __construct()
@@ -41,12 +40,6 @@ class Line
         return $this->tostation;
     }
 
-    public function getDriver(User $driver)
-    {
-        $this->$driver->getId();
-        return $this->$driver;
-    }
-
     public function setId($id)
     {
         $this->id = $id;
@@ -72,10 +65,6 @@ class Line
         $this->tostation = $tostation;
     }
 
-    public function setDriver(User $driver)
-    {
-        $this->$driver->setId($id);
-    }
 
 }
 
