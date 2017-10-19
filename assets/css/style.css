@@ -62,7 +62,8 @@ table.center td,td,th,tr{
 	text-align: center;
 }
 
+
 #regional-stations-list tbody tr:hover{
 	background-color: rgba(255, 204, 0, 0.3);
-	border: 2px solid #ffcc00;
+	/*border: 2px solid #ffcc00;*/
 }
