@@ -41,6 +41,7 @@ class adminController extends Controller{
 		$this->redirect('admin', 'login');
 	}
 
+
 	function menu(){
 		//The page cannot be displayed if no user connected
 		if(!$this->getActiveUser()){
@@ -51,6 +52,20 @@ class adminController extends Controller{
 		//Get message from connection process
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 
+	}
+
+	function stations(){
+		//The page cannot be displayed if no user connected
+		if(!$this->getActiveUser()){
+			$this->redirect('welcome', 'welcome');
+			exit;
+		}
+		$stations = User::connect($uname, $pwd);
+
+		//saveing that object into session
+		$_SESSION["regional_stations"] = $stations;
+		//Get message from connection process
+		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 
 }
