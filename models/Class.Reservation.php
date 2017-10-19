@@ -8,7 +8,6 @@ class Reservation
     private $phone;
     private $email;
     private $bikenumber;
-    private $groupname;
     private $reservationdate;
     private $departure;
     private $arrival;
@@ -17,7 +16,7 @@ class Reservation
     private $tostation;
     
     
-    public function __construct($id=null, $firstname, $lastname, $phone, $email, $bikenumber, $groupname, $reservationdate, 
+    public function __construct($id=null, $firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, 
         $departure, $arrival, $remarque, $fromstation, $tostation)
     {
         $this->setId($id);
@@ -26,7 +25,6 @@ class Reservation
         $this->setPhone($phone);
         $this->setEmail($email);
         $this->setBikeNumber($bikenumber);
-        $this->setGroupName($groupname);
         $this->setReservationDate($reservationdate);
         $this->setDeparture($departure);
         $this->setArrival($arrival);
@@ -36,7 +34,6 @@ class Reservation
         
     }
     
-        
     public function getId()
     {
         return $this->id;
@@ -65,11 +62,6 @@ class Reservation
     public function getBikeNumber()
     {
         return $this->bikenumber;
-    }
-
-    public function getGroupName()
-    {
-        return $this->groupname;
     }
 
     public function getReservationDate()
@@ -130,11 +122,6 @@ class Reservation
     public function setBikeNumber($bikenumber)
     {
         $this->bikenumber = $bikenumber;
-    }
-
-    public function setGroupName($groupname)
-    {
-        $this->groupname = $groupname;
     }
 
     public function setReservationDate($reservationdate)
