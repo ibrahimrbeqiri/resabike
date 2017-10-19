@@ -117,32 +117,39 @@ if ($search) {
 
 									</div>
 									<div class="col l6">
-										<form class="reservation-form">
+										<form class="reservation-form" action="<?php echo URL_DIR.'reserve/confirmation';?>" method="POST">
+										<input name="reservationdate" type="hidden" hidden value="<?php echo '&nbsp;'.gmdate("d.m.Y", $connection->departure); ?>">
+										<input name="fromstation" type="hidden" hidden value="<?php echo $connection->from; ?>">
+										<input name="tostation" type="hidden" hidden value="<?php echo $connection->to; ?>">
+										<input name="departure" type="hidden" hidden value="<?php echo '&emsp;'.date('H:i', strtotime($connection->departure));?>">
+										<input name="arrival" type="hidden" hidden value="<?php echo '&emsp;'.date('H:i', strtotime($connection->arrival));?>">
+										<input name="lineId" type="hidden" hidden value="">
+										
 										  <div class="row">
 											  <div class="input-field col l6">
 												<i class="material-icons prefix">person</i>
-									            <input id="first_name" type="text" class="validate">
+									            <input id="first_name" name="firstname" type="text" class="validate">
 									            <label for="first_name">First Name</label>
 									          </div>
 									          <div class="input-field col l6">
-									            <input id="last_name" type="text" class="validate">
+									            <input id="last_name" name="lastname" type="text" class="validate">
 									            <label for="last_name">Last Name</label>
 									          </div>
 
 											<div class="input-field col l6">
 											  <i class="material-icons prefix">email</i>
-											  <input id="icon_prefix" type="text" class="validate">
+											  <input id="icon_prefix" name="email" type="text" class="validate">
 											  <label for="icon_prefix">E-mail</label>
 											</div>
 											<div class="input-field col l6">
 											  <i class="material-icons prefix">phone</i>
-											  <input id="icon_prefix" type="text" class="validate">
+											  <input id="icon_prefix" name="phone" type="text" class="validate">
 											  <label for="icon_prefix">Phone number</label>
 											</div>
 
 											<div class="input-field col l12">
 											  <i class="material-icons prefix">directions_bike</i>
-											  <select class="form-bikes">
+											  <select class="form-bikes" name="bikenumber">
 												<option value="" disabled selected>Bikes</option>
 												<option value="1">1</option>
 												<option value="2">2</option>
@@ -160,7 +167,8 @@ if ($search) {
 
 
 											<div class="input-field col l12 additional-info">
-									          <textarea id="textarea1" class="materialize-textarea"></textarea>
+											  <i class="material-icons prefix">edit</i>
+									          <textarea id="textarea1" name="remarks" class="materialize-textarea"></textarea>
 									          <label for="textarea1">Remarks</label>
 									        </div>
 
@@ -168,6 +176,7 @@ if ($search) {
 												<button class="btn waves-effect waves-light" type="submit" name="action">
 													Reserve
 												  <i class="material-icons right">check</i>
+												 
 												</button>
 											</div>
 

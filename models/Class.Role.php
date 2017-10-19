@@ -6,6 +6,7 @@ class Role
     private $id;
     private $role;
     
+    
     public function __construct($id=null, $role) 
     {
         $this->setId($id);

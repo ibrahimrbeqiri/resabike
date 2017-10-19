@@ -11,13 +11,13 @@ class Reservation
     private $reservationdate;
     private $departure;
     private $arrival;
-    private $remarque;
+    private $remarks;
     private $fromstation;
     private $tostation;
     
     
     public function __construct($id=null, $firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, 
-        $departure, $arrival, $remarque, $fromstation, $tostation)
+        $departure, $arrival, $remarks, $fromstation, $tostation)
     {
         $this->setId($id);
         $this->setFirstName($firstname);
@@ -28,10 +28,10 @@ class Reservation
         $this->setReservationDate($reservationdate);
         $this->setDeparture($departure);
         $this->setArrival($arrival);
-        $this->setRemarque($remarque);
+        $this->setRemarks($remarks);
         $this->setFromStation($fromstation);
         $this->setToStation($tostation);
-        
+
     }
     
     public function getId()
@@ -79,9 +79,9 @@ class Reservation
         return $this->arrival;
     }
 
-    public function getRemarque()
+    public function getRemarks()
     {
-        return $this->remarque;
+        return $this->remarks;
     }
 
     public function getFromStation()
@@ -93,7 +93,7 @@ class Reservation
     {
         return $this->tostation;
     }
-
+    
     public function setId($id)
     {
         $this->id = $id;
@@ -139,9 +139,9 @@ class Reservation
         $this->arrival = $arrival;
     }
 
-    public function setRemarque($remarque)
+    public function setRemarks($remarks)
     {
-        $this->remarque = $remarque;
+        $this->remarks = $remarks;
     }
 
     public function setFromStation($fromstation)
@@ -153,8 +153,16 @@ class Reservation
     {
         $this->tostation = $tostation;
     }
-
-
+    
+    public function addReservation()
+    {
+        $query = "INSERT INTO reservation(firstname, lastname, phone, email, bikenumber, reservationdate, 
+        fromstation, tostation, departure, arrival, remarks)	VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        $attributes = array($this->firstname, $this->lastname, $this->phone, $this->email, $this->bikenumber, 
+            $this->reservationdate, $this->fromstation, $this->tostation, $this->departure, $this->arrival, $this->remarks);
+        
+        return  MySQLConnection::getInstance()->execute($query, $attributes);
+    }
 
 }
 
