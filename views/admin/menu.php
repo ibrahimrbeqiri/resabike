@@ -16,10 +16,12 @@ $user = $_SESSION['user'];
 			<i class="material-icons prefix">book</i>
 			<span>See reservations</span>
 		</button>
-		<button class="btn waves-effect waves-light">
-			<i class="material-icons prefix">map</i>
-			<span>Modify stations</span>
-		</button>
+		<a href="<?php echo URL_DIR.'admin/stations';?>">
+			<button class="btn waves-effect waves-light">
+				<i class="material-icons prefix">map</i>
+				<span>Modify stations</span>
+			</button>
+		</a>
 		<button class="btn waves-effect waves-light">
 			<i class="material-icons prefix">person_add</i>
 			<span>Create a new user</span>
@@ -33,4 +35,4 @@ $user = $_SESSION['user'];
 <?php
 unset($_SESSION['msg']);
 include_once ROOT_DIR.'views/footer.inc';
-	?>
+?>

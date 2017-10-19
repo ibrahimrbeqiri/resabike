@@ -5,11 +5,11 @@ class MySQLConnection {
     const PORT = "3306";
     const DATABASE = "resabike";
     const USER = "root";
-    const PWD = "";
-    
+    const PWD = "root";
+
     private static $instance;
     private $_conn;
-    
+
     private function __construct()
     {
         try{
@@ -23,7 +23,7 @@ class MySQLConnection {
             die ('Connection failed: ' . $e->getMessage());
         }
     }
-    
+
     public static function getInstance()
     {
         if (!isset(self::$instance)|| self::$instance == null)
@@ -42,7 +42,7 @@ class MySQLConnection {
                 return array('status'=>'error', 'result'=>'sql_query_doublon');
             }
             return array('status'=>'error', 'result'=>'sql_query_failed '.$code);
-           
+
         }
         $result = $stmt->fetchAll();
         return array('status'=>'success', 'result'=>$result);
@@ -51,5 +51,5 @@ class MySQLConnection {
     {
         return self::getInstance()->_conn;
     }
-    
+
 }
