@@ -5,6 +5,9 @@ include_once ROOT_DIR.'views/header.inc';
 $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
+$stations = $_SESSION['regional_stations'];
+var_dump($stations);
+
 ?>
 
 <div class="container">
@@ -17,8 +20,8 @@ $user = $_SESSION['user'];
 			</thead>
 			<tbody>
 				<tr>
-					<td><input type="text" name="id" value="8594624"></td>
-					<td><input type="text" name="name" value="Sierre, Muraz Ecole"></td>
+					<td><input type="text" name="id" value=""></td>
+					<td><input type="text" name="name" value=""></td>
 				</tr>
 			</tbody>
 		</table>

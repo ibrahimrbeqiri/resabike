@@ -60,7 +60,12 @@ class adminController extends Controller{
 			$this->redirect('welcome', 'welcome');
 			exit;
 		}
-		$stations = User::connect($uname, $pwd);
+
+
+		//Use something like this once you have the region for user
+		//$stations = Station::getStations($userRegionhere);
+
+		$stations = Station::getStations();
 
 		//saveing that object into session
 		$_SESSION["regional_stations"] = $stations;
