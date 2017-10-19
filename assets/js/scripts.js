@@ -3,7 +3,7 @@ $( document ).ready(function() {
 
 	//Init form elements
 	$(".button-collapse").sideNav();
-	
+
 	$('.datepicker').pickadate({
 		selectMonths: true, // Creates a dropdown to control month
 		selectYears: 15, // Creates a dropdown of 15 years to control year,
@@ -70,6 +70,10 @@ $( document ).ready(function() {
     		},
     		minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
     	});
+		$('.reservation-form .open-textfield').click(function() {
+			alert( "Handler for .click() called." );
+		  $( this ).closest('.additional-info').slideToggle('slow');
+		});
 
 
 

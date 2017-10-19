@@ -12,6 +12,7 @@ $stations = $_SESSION['regional_stations'];
 <div class="container">
 	<div class="col l12 center card admin-menu">
 		<h4>Stations for region [region here]:</h4>
+		<p>Disclamer: Make sere the station IDs are correct!</p>
 		<table id="regional-stations-list">
 			<thead>
 				<th>ID</th>
