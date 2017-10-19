@@ -70,12 +70,28 @@ $( document ).ready(function() {
     		},
     		minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
     	});
-		$('.reservation-form .open-textfield').click(function() {
-			alert( "Handler for .click() called." );
-		  $( this ).closest('.additional-info').slideToggle('slow');
+
+
+
+		$('#add-table-row').click(function() {
+			$('#regional-stations-list tbody').append('<tr>\
+				<td><input type="text" name="id" value=""></td>\
+				<td><input type="text" name="name" value=""></td>\
+				<td><a class="btn-floating delete-row"><i class="material-icons">delete</i></a></td>\
+			    </tr>\
+				');
 		});
 
 
 
 
+});
+
+$(document).on('click', '#regional-stations-list .delete-row', function() {
+	if(confirm("Are you sure you want to delete this station?")){
+	$(this).closest("tr").remove();
+}
+else{
+	return false;
+}
 });
