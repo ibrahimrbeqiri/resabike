@@ -6,7 +6,7 @@ class Station{
 
 	public function __construct($id, $firstname){
 		$this->setId($id);
-		$this->setFirstname($firstname);
+		$this->setName($firstname);
 	}
 
 	public function getId(){
@@ -27,11 +27,11 @@ class Station{
 
 public static function getStations(/* Add region name here later */){
 		$station = "station";
-		$query = "SELECT * FROM ?";
+		$query = "SELECT * FROM station";
 		$attributes = array($station);
-		$result = MySQLConnection::getInstance()->execute($query, $attributes);
+		$result = MySQLConnection::getInstance()->fetch($query);
 		if($result['status']=='error' || empty($result['result'])){
-			return false;
+			return $result;
 		}
 
 		$stations = $result['result'];

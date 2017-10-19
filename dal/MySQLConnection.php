@@ -47,6 +47,22 @@ class MySQLConnection {
         $result = $stmt->fetchAll();
         return array('status'=>'success', 'result'=>$result);
     }
+
+	public function fetch($query){
+		$stmt = $this->_conn->prepare($query);
+		$stmt->execute();
+		$code = $stmt->errorCode();
+		if($code!='00000'){
+			if($code == '23000'){
+				return array('status'=>'error', 'result'=>'sql_query_doublon');
+			}
+			return array('status'=>'error', 'result'=>'sql_query_failed '.$code);
+
+		}
+		$result = $stmt->fetchAll();
+		return array('status'=>'success', 'result'=>$result);
+	}
+
     public static function getConnection()
     {
         return self::getInstance()->_conn;

@@ -6,7 +6,6 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 $stations = $_SESSION['regional_stations'];
-var_dump($stations);
 
 ?>
 
@@ -19,10 +18,15 @@ var_dump($stations);
 				<th>Station Name</th>
 			</thead>
 			<tbody>
+				<?php foreach ($stations as $station): ?>
 				<tr>
-					<td><input type="text" name="id" value=""></td>
-					<td><input type="text" name="name" value=""></td>
+
+						<td><input type="text" name="id" value="<?php echo $station['id'] ?>"></td>
+						<td><input type="text" name="name" value="<?php echo $station['name'] ?>"></td>
+
+
 				</tr>
+				<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>
