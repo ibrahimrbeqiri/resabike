@@ -7,7 +7,7 @@ $msg = $this->vars['msg'];
 
 	<div class="row front-page">
 		<div class="col m12 fp-img">
-			<div class="col s12 m3 card right">
+			<div class="col s12 l3 card right">
 				<div class="row">
 					<div class="col l12">
 						<a href="<?php echo URL_DIR.'reserve/reserve';?>">

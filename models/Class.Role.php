@@ -2,12 +2,12 @@
 
 class Role
 {
-    
+
     private $id;
     private $role;
-    
-    
-    public function __construct($id=null, $role) 
+
+
+    public function __construct($id=null, $role)
     {
         $this->setId($id);
         $this->setRole($role);
@@ -32,5 +32,17 @@ class Role
     {
         $this->role = $role;
     }
-}
 
+		public static function getRoles(){
+				$query = "SELECT * FROM role";
+
+				$result = MySQLConnection::getInstance()->fetch($query);
+				if($result['status']=='error' || empty($result['result'])){
+					return $result;
+				}
+
+				$roles = $result['result'];
+
+				return $roles;
+			}
+}

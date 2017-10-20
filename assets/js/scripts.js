@@ -31,7 +31,7 @@ $( document ).ready(function() {
 	$('.modal').modal();
 
 	$( ".form-bikes" ).change(function() {
-		if ($(this).val() == "10+") {
+		if ($(this).val() == "6+") {
 			$('#bike-modal').modal('open');
 		}
 	});

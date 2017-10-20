@@ -22,10 +22,13 @@ $user = $_SESSION['user'];
 				<span>Modify stations</span>
 			</button>
 		</a>
-		<button class="btn waves-effect waves-light">
-			<i class="material-icons prefix">person_add</i>
-			<span>Create a new user</span>
-		</button>
+		<a href="<?php echo URL_DIR.'admin/register';?>">
+			<button class="btn waves-effect waves-light">
+				<i class="material-icons prefix">person_add</i>
+				<span>Create a new user</span>
+			</button>
+		</a>
+
 	</div>
 
 
