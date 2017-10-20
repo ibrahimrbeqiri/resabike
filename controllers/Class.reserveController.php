@@ -67,7 +67,7 @@ class reserveController extends Controller{
 	    
 	   
 	    $reservation = new Reservation(null, $firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, 
-	        $fromstation, $tostation, "departure", "arrival", $remarks);
+	        $fromstation, $tostation, $departure, $arrival, $remarks, $lineId);
 	    
 	    $result = $reservation->addReservation();
 	    
