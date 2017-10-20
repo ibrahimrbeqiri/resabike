@@ -1,8 +1,10 @@
 <?php
 require_once 'dal/MySQLConnection.php';
 class Station{
+    
 	private $id;
 	private $name;
+	private $zone;
 
 	public function __construct($id, $firstname){
 		$this->setId($id);
@@ -12,7 +14,11 @@ class Station{
 	public function getId(){
 		return $this->id;
 	}
-
+	
+	public function getZone()
+	{
+	    $this->zone = $zone;
+	}
 	public function setId($id){
 		$this->id = $id;
 	}
@@ -24,6 +30,13 @@ class Station{
 	public function setName($name){
 		$this->name = $name;
 	}
+	
+	public function setZone(Zone $zone)
+	{
+	    $this->zone = $zone->id;
+	}
+	
+	
 
 public static function getStations(/* Add region name here later */){
 		$station = "station";
