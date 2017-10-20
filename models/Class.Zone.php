@@ -1,4 +1,4 @@
-<?php
+<?php require_once 'dal/MySQLConnection.php';
 
 class Zone
 {
@@ -31,6 +31,19 @@ class Zone
     {
         $this->name = $name;
     }
-
+    
+    public static function getZoneByName($name)
+    {
+       
+        $query = "SELECT * FROM zone WHERE name=?";
+        $attributes = array($name);
+        $result = MySQLConnection::getInstance()->execute($query, $attributes);
+        if($result['status']=='error' || empty($result['result'])){
+            return $result;
+        }
+        
+        $zone = $result['result'];
+        return $zone;
+    }
 }
 

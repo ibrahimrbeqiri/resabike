@@ -1,12 +1,10 @@
 <?php
 class reserveController extends Controller{
-/**
- * Method that controls the page 'login.php'
- */
+
 	function reserve(){
-		//$this->redirect('welcome', 'welcome');
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
+	
 	function results(){
 	    
 		//Get data posted by the form
@@ -22,35 +20,10 @@ class reserveController extends Controller{
 		
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-	function test()
-	{
 
-	    $fromStation = $_POST['fromStation'];
-	    $toStation = $_POST['toStation'];
-	    $nickname = $_POST['nickname'];
-	    $nrBikes = $_POST['nrBikes'];
-	    
-        
-	    $reservation = new Reservation(null, $fromStation, $toStation, $nickname, $nrBikes);
-	    
-	    $result = $reservation->insert();
-	    var_dump($nrBikes);
-        
-	    if($result['status']=='error'){
-	       $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
-	       echo $_SESSION['msg'];
-	    }
-	    else 
-	    {
-	        echo "Success!";
-	    }
-	    
-	    //$this->redirect('reserve', 'results');
-	}
-	function confirmation()
+	function confirm()
 	{
 	 
-	    
 	    $firstname = $_POST['firstname'];
 	    $lastname = $_POST['lastname'];
 	    $phone = $_POST['phone'];
@@ -62,25 +35,60 @@ class reserveController extends Controller{
 	    $reservationdate = $_POST['reservationdate'];
 	    $departure = $_POST['departure'];
 	    $arrival = $_POST['arrival'];
-	    $lineId = $_POST['lineId'];
 	    
+
+	    $reservationArray = array('firstname' => $firstname, 'lastname'=> $lastname, 'phone' => $phone, 'email' => $email,
+	        'bikenumber' => $bikenumber, 'remarks' => $remarks, 'fromstation' => $fromstation, 'tostation' => $tostation,
+	        'reservationdate' => $reservationdate, 'departure' => $departure, 'arrival' => $arrival);
+	    
+	    $_SESSION['reservationArray'] = $reservationArray;
 	    
 	   
-	    $reservation = new Reservation(null, $firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, 
-	        $fromstation, $tostation, $departure, $arrival, $remarks, $lineId);
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+	    
+	}
+	
+	function confirmed()
+	{
+	    $firstname = $_SESSION['reservationArray']['firstname'];
+	    $lastname = $_SESSION['reservationArray']['lastname'];
+	    $phone = $_SESSION['reservationArray']['phone'];
+	    $email = $_SESSION['reservationArray']['email'];
+	    $bikenumber = $_SESSION['reservationArray']['bikenumber'];
+	    $remarks = $_SESSION['reservationArray']['remarks'];
+	    $fromstation = $_SESSION['reservationArray']['fromstation'];
+	    $tostation = $_SESSION['reservationArray']['tostation'];
+	    $reservationdate = $_SESSION['reservationArray']['reservationdate'];
+	    $departure = $_SESSION['reservationArray']['departure'];
+	    $arrival = $_SESSION['reservationArray']['arrival'];
+	    
+	    $reservation = new Reservation(null, $firstname, $lastname, $phone, $email, $bikenumber, $reservationdate,
+	        $fromstation, $tostation, $departure, $arrival, $remarks);
 	    
 	    $result = $reservation->addReservation();
 	    
-	    if($result['status']=='error'){
+	    
+	    if($result['status']=='error')
+	    {
 	        $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
 	        echo $_SESSION['msg'];
 	    }
 	    else
 	    {
 	        echo "Success!";
+	        $this->redirect('reserve', 'success');
+	        
 	    }
-	    
-	    
+	}
+	
+	function cancel()
+	{
+	    unset($_SESSION['reservationArray']);
+	    $this->redirect('reserve', 'reserve');
+	}
+	
+	function success()
+	{
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 }

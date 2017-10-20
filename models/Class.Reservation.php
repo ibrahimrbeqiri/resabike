@@ -16,8 +16,8 @@ class Reservation
     private $tostation;
     
     
-    public function __construct($id=null, $firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, 
-        $departure, $arrival, $remarks, $fromstation, $tostation)
+    public function __construct($id=null, $firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, $fromstation, $tostation,
+        $departure, $arrival, $remarks)
     {
         $this->setId($id);
         $this->setFirstName($firstname);
@@ -157,7 +157,7 @@ class Reservation
     public function addReservation()
     {
         $query = "INSERT INTO reservation(firstname, lastname, phone, email, bikenumber, reservationdate, 
-        fromstation, tostation, departure, arrival, remarks)	VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        fromstation, tostation, departure, arrival, remarks) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $attributes = array($this->firstname, $this->lastname, $this->phone, $this->email, $this->bikenumber, 
             $this->reservationdate, $this->fromstation, $this->tostation, $this->departure, $this->arrival, $this->remarks);
         
