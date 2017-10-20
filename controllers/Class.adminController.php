@@ -73,5 +73,44 @@ class adminController extends Controller{
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 
+	function register(){
+		//The page cannot be displayed if no user connected
+		if(!$this->getActiveUser()){
+			$this->redirect('welcome', 'welcome');
+			exit;
+		}
+
+		$user_roles = Role::getRoles();
+
+		//saveing that object into session
+		$_SESSION["user_roles"] = $user_roles;
+
+		//Get data posted by the form
+		$fname = $_POST['firstname'];
+		$lname = $_POST['lastname'];
+		$uname = $_POST['username'];
+		$pwd = $_POST['password'];
+
+		//Check if data valid
+		if(empty($fname) or empty($lname) or empty($uname) or empty($pwd)){
+			$_SESSION['msg'] = '<span class="error">A required field is empty!</span>';
+			$_SESSION['persistence'] = array($fname, $lname, $uname, $pwd);
+		}
+		else{
+			//Save new user into the db
+			$user = new User(null, $fname, $lname, $uname, $pwd);
+			$result = $user->save();
+			if($result['status']=='error'){
+				$_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+				$_SESSION['persistence'] = array($fname, $lname, $uname, $pwd);
+			}
+			else{
+				$_SESSION['msg'] = '<span class="success">Registration successful!</span>';
+				unset($_SESSION['persistence']);
+			}
+		}
+
+	}
+
 }
  ?>

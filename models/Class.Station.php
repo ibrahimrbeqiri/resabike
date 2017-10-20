@@ -62,11 +62,15 @@ class Station{
 	    return $stations;
 	}
 
+<<<<<<< HEAD
     public static function getStations(/* Add region name here later */)
     {
 		$station = "station";
+=======
+public static function getStations(/* Add region name here later */){
+>>>>>>> f5d4ea0bbe00b7ed4792dc7700bca0516cbee2b3
 		$query = "SELECT * FROM station";
-		$attributes = array($station);
+		
 		$result = MySQLConnection::getInstance()->fetch($query);
 		if($result['status']=='error' || empty($result['result'])){
 			return $result;
