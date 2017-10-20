@@ -123,12 +123,11 @@ if ($search) {
 									</div>
 									<div class="col l6">
 										<form class="reservation-form" action="<?php echo URL_DIR.'reserve/confirmation';?>" method="POST">
-										<input name="reservationdate" type="hidden" hidden value="<?php echo '&nbsp;'.gmdate("d.m.Y", $connection->departure);?>">
+										<input name="reservationdate" type="hidden" hidden value="<?php echo '&nbsp;'.gmdate("d.m.Y", $connection->departure); ?>">
 										<input name="fromstation" type="hidden" hidden value="<?php echo $connection->from; ?>">
 										<input name="tostation" type="hidden" hidden value="<?php echo $connection->to; ?>">
 										<input name="departure" type="hidden" hidden value="<?php echo '&emsp;'.date('H:i', strtotime($connection->departure));?>">
 										<input name="arrival" type="hidden" hidden value="<?php echo '&emsp;'.date('H:i', strtotime($connection->arrival));?>">
-										
 										<input name="lineId" type="hidden" hidden value="">
 
 										  <div class="row">
@@ -163,6 +162,10 @@ if ($search) {
 												<option value="4">4</option>
 												<option value="5">5</option>
 												<option value="6+">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10+">10+</option>
 											  </select>
 											</div>
 
@@ -202,7 +205,7 @@ if ($search) {
 <div id="bike-modal" class="modal modal-fixed-footer">
   <div class="modal-content">
 	<h4>Attention!</h4>
-	<p>If you are planning on reserving more than 6 bikes, please contact us at <a href="tel:1-562-867-5309">1-562-867-5309</a> to make sure we have room for all your bikes.</p>
+	<p>If you are planning on reserving more than 10 bikes, please contact us at <a href="tel:1-562-867-5309">1-562-867-5309</a> to make sure we have room for all your bikes.</p>
   </div>
   <div class="modal-footer">
 	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
