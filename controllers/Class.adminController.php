@@ -29,8 +29,6 @@ class adminController extends Controller{
 
 	}
 
-
-
 	function login(){
 
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
@@ -111,6 +109,37 @@ class adminController extends Controller{
 		}
 
 	}
+	
+	function reservations()
+	{
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    
+	    $reservations = Reservation::getAllReservations();
+	    
+	    $_SESSION['reservations'] = $reservations;
+	    
+	   
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+	}
+	
+	function busdriverReservations()
+	{
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    
+	    $reservations = Reservation::getAllReservations();
+	    
+	    $_SESSION['reservations'] = $reservations;
+	    
+	    
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+	}
+	
 
 }
  ?>

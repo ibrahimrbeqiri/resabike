@@ -163,6 +163,26 @@ class Reservation
         
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
+    
+    public static function deleteReservation($id)
+    {
+        $query = "DELETE FROM reservation WHERE id=" + $id;
+        
+        return  MySQLConnection::getInstance()->fetch($query);
+    }
+    
+    public static function getAllReservations()
+    {
+        $query = "SELECT * FROM reservation";
+        
+        $result = MySQLConnection::getInstance()->fetch($query);
+        if($result['status']=='error' || empty($result['result'])){
+            return $result;
+        }
+        
+        $reservations = $result['result'];
+        return $reservations;
+    }
 
 }
 
