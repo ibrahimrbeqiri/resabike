@@ -122,14 +122,12 @@ if ($search) {
 
 									</div>
 									<div class="col l6">
-<<<<<<< HEAD
 										<form class="reservation-form" action="<?php echo URL_DIR.'reserve/confirm';?>" method="POST">
 										<input name="reservationdate" type="hidden" hidden value="<?php echo date("d.m.Y", strtotime($connection->departure));?>">
 										<input name="fromstation" type="hidden" hidden value="<?php echo $connection->from; ?>">
 										<input name="tostation" type="hidden" hidden value="<?php echo $connection->to; ?>">
 										<input name="departure" type="hidden" hidden value="<?php echo date('H:i', strtotime($connection->departure));?>">
 										<input name="arrival" type="hidden" hidden value="<?php echo date('H:i', strtotime($connection->arrival));?>">								
-=======
 										<form class="reservation-form" action="<?php echo URL_DIR.'reserve/confirmation';?>" method="POST">
 										<input name="reservationdate" type="hidden" hidden value="<?php echo '&nbsp;'.gmdate("d.m.Y", $connection->departure); ?>">
 										<input name="fromstation" type="hidden" hidden value="<?php echo $connection->from; ?>">
@@ -137,7 +135,6 @@ if ($search) {
 										<input name="departure" type="hidden" hidden value="<?php echo '&emsp;'.date('H:i', strtotime($connection->departure));?>">
 										<input name="arrival" type="hidden" hidden value="<?php echo '&emsp;'.date('H:i', strtotime($connection->arrival));?>">
 										<input name="lineId" type="hidden" hidden value="">
->>>>>>> f5d4ea0bbe00b7ed4792dc7700bca0516cbee2b3
 
 										  <div class="row">
 											  <div class="input-field col l6">
