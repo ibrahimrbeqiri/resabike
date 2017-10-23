@@ -84,16 +84,28 @@ $( document ).ready(function() {
 
 
 
+		$(document).on('click', '#regional-stations-list .delete-row', function() {
+			if(confirm("Are you sure you want to delete this station?")){
+			$(this).closest("tr").remove();
+		}
+		else{
+			return false;
+		}
+		});
 
+		$(document).on('click', '#reservations-list .delete-row', function() {
+			if(confirm("Are you sure you want to delete this reservation?")){
+			$(this).closest("tr").remove();
+		}
+		else{
+			return false;
+		}
+		});
 
 
 });
 
-$(document).on('click', '#regional-stations-list .delete-row', function() {
-	if(confirm("Are you sure you want to delete this station?")){
-	$(this).closest("tr").remove();
-}
-else{
-	return false;
-}
-});
+
+
+
+

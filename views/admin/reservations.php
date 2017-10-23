@@ -42,7 +42,7 @@ $reservations = $_SESSION['reservations'];
 				<tbody>
 					<?php foreach ($reservations as $reservation): ?>
 					<tr>
-							<td><input type="text" name="id" value="<?php echo $reservation['id'] ?>"></td>
+							<td><?php echo $reservation['id'] ?></td>
 							<td><input type="text" name="firstname" value="<?php echo $reservation['firstname'] ?>"></td>
 							<td><input type="text" name="lastname" value="<?php echo $reservation['lastname'] ?>"></td>
 							<td><input type="text" name="phone" value="<?php echo $reservation['phone'] ?>"></td>
