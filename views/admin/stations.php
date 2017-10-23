@@ -12,7 +12,7 @@ $stations = $_SESSION['regional_stations'];
 <div class="container">
 	<div class="col l12 center card admin-menu">
 		<h4>Stations for region [region here]:</h4>
-		<p class="<?php echo URL_DIR.'admin/stations/save';?>">Disclamer: Make sere the station IDs are correct!</p>
+		<p class="<?php echo URL_DIR.'admin/reservations/save';?>">Disclamer: Make sure the station IDs are correct!</p>
 		<form action="index.html" method="post">
 			<button class="btn waves-effect waves-light left" type="submit">Save stations
 				<i class="material-icons right">save</i>

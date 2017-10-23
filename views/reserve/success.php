@@ -19,6 +19,7 @@ $msg = $this->vars['msg'];
 
 
 <?php
+
 unset($_SESSION['msg']);
 include_once ROOT_DIR.'views/footer.inc';
 ?>
