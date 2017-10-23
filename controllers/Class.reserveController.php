@@ -35,7 +35,12 @@ class reserveController extends Controller{
 	    $reservationdate = $_POST['reservationdate'];
 	    $departure = $_POST['departure'];
 	    $arrival = $_POST['arrival'];
-	    	    
+	    
+
+	    $reservationArray = array('firstname' => $firstname, 'lastname'=> $lastname, 'phone' => $phone, 'email' => $email,
+	        'bikenumber' => $bikenumber, 'remarks' => $remarks, 'fromstation' => $fromstation, 'tostation' => $tostation,
+	        'reservationdate' => $reservationdate, 'departure' => $departure, 'arrival' => $arrival);
+	    
 	    $_SESSION['reservationArray'] = $reservationArray;
 	    
 	   
