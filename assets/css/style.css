@@ -30,7 +30,7 @@
 	margin: 3%;
 	width: 100% !important;
 }
-.main-color{
+.main-color, .picker__date-display , .picker__date-display{
 	background-color: #ffcc00 !important;
 }
 nav .brand-logo img{
@@ -76,3 +76,24 @@ table.center td,td,th,tr{
 .front-page .card.loginform{
 	background-color: rgba(255, 255, 255, 0.9);
 }
+
+/* label focus color */
+  .input-field input:focus + label , .material-icons.prefix.active{
+	color: #584125 !important;
+}
+/* label underline focus color */
+  .input-field input:focus {
+	border-bottom: 2px solid #584125 !important;
+	box-shadow: 0 2px 0 0 #000;
+  }
+
+  .btn, .btn:visited{
+    background-color: #584125;
+  }
+
+  .btn:hover {
+    background-color: #ffcc00;
+  }
+  .btn:active{
+    background-color: #ffcc00;
+  }
