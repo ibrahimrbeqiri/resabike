@@ -12,7 +12,15 @@ $reservations = $_SESSION['reservations'];
 <div class="container">
 	<div class="col l12 center card admin-menu">
 		<h4>Reservations:</h4>
-
+	
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+  TEST
+	</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+  </ul>
+        
 			<table id="reservations-list">
 				<thead>
 					<th>First Name</th>
