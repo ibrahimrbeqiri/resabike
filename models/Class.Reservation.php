@@ -173,7 +173,7 @@ class Reservation
     
     public static function getAllReservations()
     {
-        $query = "SELECT * FROM reservation";
+        $query = "SELECT * FROM reservation ORDER BY reservationdate DESC";
         
         $result = MySQLConnection::getInstance()->fetch($query);
         if($result['status']=='error' || empty($result['result'])){
