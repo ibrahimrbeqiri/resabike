@@ -97,7 +97,6 @@ table.center td,td,th,tr{
   .btn:active{
     background-color: #ffcc00;
   }
-
   #bus-driver-reservations{
 	  display: table !important;
   }

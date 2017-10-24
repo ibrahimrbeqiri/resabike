@@ -25,28 +25,28 @@ $reservations = $_SESSION['reservations'];
 			<?php foreach ($reservations as $reservation): ?>
 			<div class="table-row">
 				<div class="table-cell">
-					<?php echo $reservation['firstname'] ?>
+					<p><?php echo $reservation['firstname'] ?></p>
 				</div>
 				<div class="table-cell">
-					<?php echo $reservation['lastname'] ?>
+					<p><?php echo $reservation['lastname'] ?></p>
 				</div>
 				<div class="table-cell">
-					<?php echo $reservation['bikenumber'] ?>
+					<p><?php echo $reservation['bikenumber'] ?></p>
 				</div>
 				<div class="table-cell">
-					<?php echo $reservation['reservationdate'] ?>
+					<p><?php echo $reservation['reservationdate'] ?></p>
 				</div>
 				<div class="table-cell">
-					<?php echo $reservation['fromstation'] ?>
+					<p><?php echo $reservation['fromstation'] ?></p>
 				</div>
 				<div class="table-cell">
-					<?php echo $reservation['tostation'] ?>
+					<p><?php echo $reservation['tostation'] ?></p>
 				</div>
 				<div class="table-cell">
-					<?php echo $reservation['departure'] ?>
+					<p><?php echo $reservation['departure'] ?></p>
 				</div>
 				<div class="table-cell">
-					<?php echo $reservation['arrival'] ?>
+					<p><?php echo $reservation['arrival'] ?></p>
 				</div>
 			</div>
 			<?php endforeach; ?>
