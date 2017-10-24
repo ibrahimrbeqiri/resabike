@@ -15,7 +15,7 @@ $lang['PAGE_DESCRIPTION'] = 'Resabike is a bike reserving system in Switzerland'
 
 $lang['MENU_RESERVE'] = 'Reserve';
 $lang['MENU_CONTACT'] = 'Contact';
-$lang['MENU_MENU'] = 'Our products';
-$lang['MENU_LOG_OUT'] = 'Contact Us';
+$lang['MENU_MENU'] = 'Menu';
+$lang['MENU_LOG_OUT'] = 'Log out';
 
 ?>
