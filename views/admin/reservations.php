@@ -13,55 +13,35 @@ $reservations = $_SESSION['reservations'];
 	<div class="col l12 center card admin-menu">
 		<h4>Reservations:</h4>
 		<p class="<?php echo URL_DIR.'admin/reservations/save';?>">Disclamer: Make sure the reservation IDs are correct!</p>
-			
+
 			<a href="<?php echo URL_DIR.'admin/menu';?>">
 				<button class="btn waves-effect waves-light right" type="button">Cancel
 					<i class="material-icons left">cancel</i>
 				</button>
 			</a>
-			<form action="index.html" method="post">
-			<table id="reservations-list">
-				<thead>
-					<th></th>
-					<th>ID</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Phone</th>
-					<th>Email</th>
-					<th>Bike Number</th>
-					<th>Date</th>
-					<th>From</th>
-					<th>To</th>
-					<th>Departure</th>
-					<th>Arrival</th>
-					<th>Remarks</th>
-				</thead>
-				<tbody>
-					<?php foreach ($reservations as $reservation): ?>
-					<tr>
-					
-							<td><a class="btn-floating" type="submit"><i class="material-icons">save</i></a></td>
-							<td><?php echo $reservation['id'] ?></td>
-							<td><input type="text" name="firstname" value="<?php echo $reservation['firstname'] ?>"></td>
-							<td><input type="text" name="lastname" value="<?php echo $reservation['lastname'] ?>"></td>
-							<td><input type="text" name="phone" value="<?php echo $reservation['phone'] ?>"></td>
-							<td><input type="text" name="email" value="<?php echo $reservation['email'] ?>"></td>
-							<td><input type="text" name="bikenumber" value="<?php echo $reservation['bikenumber'] ?>"></td>
-							<td><input type="text" name="reservationdate" value="<?php echo $reservation['reservationdate'] ?>"></td>
-							<td><input type="text" name="fromstation" value="<?php echo $reservation['fromstation'] ?>"></td>
-							<td><input type="text" name="tostation" value="<?php echo $reservation['tostation'] ?>"></td>
-							<td><input type="text" name="departure" value="<?php echo $reservation['departure'] ?>"></td>
-							<td><input type="text" name="arrival" value="<?php echo $reservation['arrival'] ?>"></td>
-							<td><input type="text" name="remarks" value="<?php echo $reservation['remarks'] ?>"></td>
-							<td><a class="btn-floating" type="submit" value="<?php echo $reservation['id']?>"><i class="material-icons">delete</i></a></td>
-					
-					</tr>
-					
-					<?php endforeach; ?>
-				</tbody>
+			<div class="div-table">
 
-			</table>
-		</form>
+					<?php foreach ($reservations as $reservation): ?>
+						<form action="index.html" method="post">
+							<div class="table-row">
+								<div class="table-cell"><a class="btn-floating" type="submit"><i class="material-icons">save</i></a></div>
+								<div class="table-cell"><?php echo $reservation['id'] ?></div>
+								<div class="table-cell"><input type="text" name="firstname" value="<?php echo $reservation['firstname'] ?>"></div>
+								<div class="table-cell"><input type="text" name="lastname" value="<?php echo $reservation['lastname'] ?>"></div>
+								<div class="table-cell"><input type="text" name="phone" value="<?php echo $reservation['phone'] ?>"></div>
+								<div class="table-cell"><input type="text" name="email" value="<?php echo $reservation['email'] ?>"></div>
+								<div class="table-cell"><input type="text" name="bikenumber" value="<?php echo $reservation['bikenumber'] ?>"></div>
+								<div class="table-cell"><input type="text" name="reservationdate" value="<?php echo $reservation['reservationdate'] ?>"></div>
+								<div class="table-cell"><input type="text" name="fromstation" value="<?php echo $reservation['fromstation'] ?>"></div>
+								<div class="table-cell"><input type="text" name="tostation" value="<?php echo $reservation['tostation'] ?>"></div>
+								<div class="table-cell"><input type="text" name="departure" value="<?php echo $reservation['departure'] ?>"></div>
+								<div class="table-cell"><input type="text" name="arrival" value="<?php echo $reservation['arrival'] ?>"></div>
+								<div class="table-cell"><input type="text" name="remarks" value="<?php echo $reservation['remarks'] ?>"></div>
+								<div class="table-cell"><a class="btn-floating" type="submit" value="<?php echo $reservation['id']?>"><i class="material-icons">delete</i></a></div>
+							</div>
+						</form>
+					<?php endforeach; ?>
+			</div>
 	</div>
 
 
