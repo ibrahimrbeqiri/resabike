@@ -31,8 +31,8 @@ $zones = $_SESSION['zones'];
 					<?php foreach ($zones as $zone): ?>
 					<tr>
 							<td><a class="btn-floating" type="submit"><i class="material-icons">save</i></a></td>
-							<td><input type="text" name="" value="<?php echo $zone['id'] ?>"></td>
-							<td><input type="text" name="" value="<?php echo $zone['name'] ?>"></td>
+							<td><input type="text" name="id" value="<?php echo $zone['id'] ?>"></td>
+							<td><input type="text" name="name" value="<?php echo $zone['name'] ?>"></td>
 							<td><a class="btn-floating delete-row"><i class="material-icons">delete</i></a></td>
 							
 					</tr>
