@@ -13,7 +13,7 @@ $msg = $this->vars['msg'];
 						<a href="<?php echo URL_DIR.'reserve/reserve';?>">
 						<button class="btn waves-effect waves-light btn-large">
 							<i class="material-icons prefix">directions_bike</i>
-							<span>Reserve bike</span>
+							<span><?php echo $lang['WELCOME_RESERVE_BIKE']; ?></span>
 						</button>
 						</a>
 					</div>
@@ -21,7 +21,7 @@ $msg = $this->vars['msg'];
 						<a href="<?php echo URL_DIR.'info/about';?>">
 						<button class="btn waves-effect waves-light btn-large">
 							<i class="material-icons prefix">info</i>
-							<span>More info</span>
+							<span><?php echo $lang['WELCOME_MORE_INFO']; ?></span>
 						</button>
 						</a>
 					</div>
