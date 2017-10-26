@@ -8,33 +8,44 @@ $msg = $this->vars['msg'];
 
 <div class="container full-screen">
 	<div class="col m12">
-		<h1>Reserve</h1>
+		<h1><?php echo $lang['MENU_RESERVE']; ?></h1>
 		<div class="row">
 			<form action="<?php echo URL_DIR.'reserve/results';?>" method="get">
-				<div class="input-field col m6">
-				  <i class="material-icons prefix">arrow_forward</i>
-				  <?php //disable the html autocomplete because of custom autocomplete ?>
-				  <input autocomplete="off" id="icon_prefix" type="text" class="form-autocomplete validate" name="from" value="">
-				  <label for="icon_prefix">Start</label>
+			<div class="col l12">
+				<?php if ($msg): ?>
+					<?php echo "<p class='red'>$msg</p>" ?>
+				<?php endif; ?>
+				<div class="row">
+					<div class="input-field col m6">
+					  <i class="material-icons prefix">arrow_forward</i>
+					  <?php //disable the html autocomplete because of custom autocomplete ?>
+					  <input autocomplete="off" id="icon_prefix" type="text" class="form-autocomplete validate" name="from" value="">
+					  <label for="icon_prefix"><?php echo $lang['RESERVE_START']; ?></label>
+					</div>
+					<div class="input-field col m6">
+					  <i class="material-icons prefix">location_on</i>
+					  <?php //disable the html autocomplete because of custom autocomplete ?>
+					  <input autocomplete="off" id="icon_telephone" type="tel" class="form-autocomplete validate" name="to">
+					  <label for="icon_telephone"><?php echo $lang['RESERVE_DESTINATION']; ?></label>
+					</div>
 				</div>
-				<div class="input-field col m6">
-				  <i class="material-icons prefix">location_on</i>
-				  <?php //disable the html autocomplete because of custom autocomplete ?>
-				  <input autocomplete="off" id="icon_telephone" type="tel" class="form-autocomplete validate" name="to">
-				  <label for="icon_telephone">Destination</label>
+			</div>
+			<div class="col l12">
+				<div class="row">
+					<div class="input-field col m2">
+					  <i class="material-icons prefix">date_range</i>
+					  <input id="icon_prefix" type="text" class="datepicker" name="date" value="<?php echo date("d.m.Y") ?>">
+					  <label for="icon_prefix"><?php echo $lang['RESERVE_DATE']; ?></label>
+					</div>
+					<div class="input-field col m2">
+					  <i class="material-icons prefix">access_time</i>
+					  <input id="icon_prefix" type="text" class="timepicker" name="time" value="<?php echo date("H:i") ?>">
+					  <label for="icon_prefix"><?php echo $lang['RESERVE_TIME']; ?></label>
+					</div>
 				</div>
-				<div class="input-field col m2">
-				  <i class="material-icons prefix">date_range</i>
-				  <input id="icon_prefix" type="text" class="datepicker" name="date" value="<?php echo date("d.m.Y") ?>">
-				  <label for="icon_prefix">Date</label>
-				</div>
-				<div class="input-field col m2">
-				  <i class="material-icons prefix">access_time</i>
-				  <input id="icon_prefix" type="text" class="timepicker" name="time" value="<?php echo date("H:i") ?>">
-				  <label for="icon_prefix">Time</label>
-				</div>
+			</div>
 				<div class="col m12">
-					<button class="btn waves-effect waves-light" type="submit" name="action">Search
+					<button class="btn waves-effect waves-light" type="submit" name="action"><?php echo $lang['RESERVE_SEARCH']; ?>
 					  <i class="material-icons right">search</i>
 					</button>
 				</div>

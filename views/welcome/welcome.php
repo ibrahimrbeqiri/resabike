@@ -11,17 +11,17 @@ $msg = $this->vars['msg'];
 				<div class="row">
 					<div class="col l12">
 						<a href="<?php echo URL_DIR.'reserve/reserve';?>">
-						<button class="waves-effect waves-light btn-large">
+						<button class="btn waves-effect waves-light btn-large">
 							<i class="material-icons prefix">directions_bike</i>
-							<span>Reserve bike</span>
+							<span><?php echo $lang['WELCOME_RESERVE_BIKE']; ?></span>
 						</button>
 						</a>
 					</div>
 					<div class="col l12">
 						<a href="<?php echo URL_DIR.'info/about';?>">
-						<button class="waves-effect waves-light btn-large">
+						<button class="btn waves-effect waves-light btn-large">
 							<i class="material-icons prefix">info</i>
-							<span>More info</span>
+							<span><?php echo $lang['WELCOME_MORE_INFO']; ?></span>
 						</button>
 						</a>
 					</div>
