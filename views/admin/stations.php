@@ -34,8 +34,8 @@ $zonestations = $_SESSION['zonestations'];
 				<tbody>
 					<?php foreach ($zonestations as $zonestation): ?>
 					<tr>
-							<td><input type="text" name="" value="<?php echo $zonestation['stationId'] ?>"></td>
-							<td><input type="text" name="" value="<?php echo $zonestation['name'] ?>"></td>
+							<td><input type="text" name="stationId" value="<?php echo $zonestation['stationId'] ?>"></td>
+							<td><input type="text" name="name" value="<?php echo $zonestation['name'] ?>"></td>
 							<td><a class="btn-floating delete-row"><i class="material-icons">delete</i></a></td>
 							
 					</tr>
@@ -44,7 +44,6 @@ $zonestations = $_SESSION['zonestations'];
 
 			</table>
 		</form>
-		<?php var_dump($zonestations);?>
 
 
 		<button id="add-table-row" class="btn waves-effect waves-light left" type="button" name="action">Add station
