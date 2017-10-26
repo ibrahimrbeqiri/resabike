@@ -54,8 +54,6 @@ class reserveController extends Controller{
 
 	    $_SESSION['reservationArray'] = $reservationArray;
 
-	    Reservation::deleteReservation(1);
-
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 
 	}
