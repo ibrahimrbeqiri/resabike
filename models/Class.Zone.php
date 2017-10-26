@@ -32,18 +32,18 @@ class Zone
         $this->name = $name;
     }
     
-    public static function getZoneByName($name)
+    public static function getAllZones()
     {
        
-        $query = "SELECT * FROM zone WHERE name=?";
-        $attributes = array($name);
-        $result = MySQLConnection::getInstance()->execute($query, $attributes);
+        $query = "SELECT * FROM zone";
+        $result = MySQLConnection::getInstance()->fetch($query);
+        
         if($result['status']=='error' || empty($result['result'])){
             return $result;
         }
         
-        $zone = $result['result'];
-        return $zone;
+        $zones = $result['result'];
+        return $zones;
     }
 }
 

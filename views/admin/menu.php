@@ -17,6 +17,12 @@ $user = $_SESSION['user'];
 			<span>See reservations</span>
 		</button>
 		</a>
+		<a href="<?php echo URL_DIR.'admin/regions';?>">
+			<button class="btn waves-effect waves-light">
+				<i class="material-icons prefix">place</i>
+				<span>Modify regions</span>
+			</button>
+		</a>
 		<a href="<?php echo URL_DIR.'admin/stations';?>">
 			<button class="btn waves-effect waves-light">
 				<i class="material-icons prefix">map</i>

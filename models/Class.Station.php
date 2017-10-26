@@ -47,20 +47,6 @@ class Station{
 	    $stations = $result['result'];
 	    return $stations;
 	}
-	public static function getAllStationsByZone($zoneId)
-	{
-	    
-	    $query = "SELECT * FROM station WHERE zone=?";
-	    $attributes = array($zoneId);
-	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
-	    
-	    if($result['status']=='error' || empty($result['result'])){
-	        return $result;
-	    }
-	    
-	    $stations = $result['result'];
-	    return $stations;
-	}
 
     public static function getStations(/* Add region name here later */)
     {

@@ -62,7 +62,11 @@ class adminController extends Controller{
 
 		//Use something like this once you have the region for user
 		//$stations = Station::getStations($userRegionhere);
-
+        
+		$zonestations = ZoneStations::getAllZoneStations(1);
+		
+		$_SESSION['zonestations'] = $zonestations;
+		
 		$stations = Station::getStations();
 
 		//saveing that object into session
@@ -110,6 +114,20 @@ class adminController extends Controller{
 
 	}
 	
+	function regions()
+	{
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    
+	    $zones = Zone::getAllZones();
+	    $_SESSION['zones'] = $zones;
+	    
+	    
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+	}
+	
 	function reservations()
 	{
 	    if(!$this->getActiveUser()){
@@ -118,7 +136,6 @@ class adminController extends Controller{
 	    }
 	    
 	    $reservations = Reservation::getAllReservations();
-	    
 	    $_SESSION['reservations'] = $reservations;
 	    
 	   

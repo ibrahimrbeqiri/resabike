@@ -5,20 +5,15 @@ include_once ROOT_DIR.'views/header.inc';
 $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
-$stations = $_SESSION['regional_stations'];
-
-$zonestations = $_SESSION['zonestations'];
+$zones = $_SESSION['zones'];
 
 ?>
 
 <div class="container">
 	<div class="col l12 center card admin-menu">
-		<h4>Stations for region [region here]:</h4>
-		<p class="<?php echo URL_DIR.'admin/reservations/save';?>">Disclamer: Make sure the station IDs are correct!</p>
+		<h4>Regions:</h4>
+		<p class="<?php echo URL_DIR.'admin/regions/save';?>">Disclamer: Make sure the zone IDs are correct!</p>
 		<form action="index.html" method="post">
-			<button class="btn waves-effect waves-light left" type="submit">Save stations
-				<i class="material-icons right">save</i>
-			</button>
 
 			<a href="<?php echo URL_DIR.'admin/menu';?>">
 				<button class="btn waves-effect waves-light right" type="button">Cancel
@@ -28,14 +23,16 @@ $zonestations = $_SESSION['zonestations'];
 
 			<table id="regional-stations-list">
 				<thead>
-					<th>Station ID</th>
-					<th>Station Name</th>
+					<th></th>
+					<th>ID</th>
+					<th>Name</th>
 				</thead>
 				<tbody>
-					<?php foreach ($zonestations as $zonestation): ?>
+					<?php foreach ($zones as $zone): ?>
 					<tr>
-							<td><input type="text" name="" value="<?php echo $zonestation['stationId'] ?>"></td>
-							<td><input type="text" name="" value="<?php echo $zonestation['name'] ?>"></td>
+							<td><a class="btn-floating" type="submit"><i class="material-icons">save</i></a></td>
+							<td><input type="text" name="" value="<?php echo $zone['id'] ?>"></td>
+							<td><input type="text" name="" value="<?php echo $zone['name'] ?>"></td>
 							<td><a class="btn-floating delete-row"><i class="material-icons">delete</i></a></td>
 							
 					</tr>
@@ -44,10 +41,8 @@ $zonestations = $_SESSION['zonestations'];
 
 			</table>
 		</form>
-		<?php var_dump($zonestations);?>
 
-
-		<button id="add-table-row" class="btn waves-effect waves-light left" type="button" name="action">Add station
+		<button id="add-table-row" class="btn waves-effect waves-light left" type="button" name="action">Add region
 	  		<i class="material-icons right">add</i>
 		</button>
 	</div>
