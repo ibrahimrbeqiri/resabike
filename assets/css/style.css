@@ -110,3 +110,6 @@ table.center td,td,th,tr{
   .autocomplete-content {
 	  position: absolute !important;
 	}
+	.reservation-success{
+		color: green;
+	}

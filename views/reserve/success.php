@@ -9,9 +9,9 @@ $msg = $this->vars['msg'];
 
 <div class="container">
 	<div class="row">
-	<div class="col l12">
-		<h3>Reservation added successfully! <i class="material-icons">check_circle</i></h3>
-		<p>This page will redirect in <span id="countdown">10</span> seconds</p>
+	<div class="col l12 center">
+		<h3>Reservation added successfully! <i class="material-icons reservation-success">check_circle</i></h3>
+		<h5>This page will redirect in <span id="countdown">5</span> seconds</h5>
 	</div>
 	</div>
 </div>
@@ -20,7 +20,7 @@ $msg = $this->vars['msg'];
 <script type="text/javascript">
 
     // Total seconds to wait
-    var seconds = 10;
+    var seconds = 5;
 
     function countdown() {
         seconds = seconds - 1;
