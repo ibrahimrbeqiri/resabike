@@ -21,7 +21,7 @@ $reservations = $_SESSION['reservations'];
       <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
   </ul>
 
-		<div id="bus-driver-reservations">
+		<div id="div-table" class="col l12">
 			<?php foreach ($reservations as $reservation): ?>
 			<div class="table-row">
 				<div class="table-cell">

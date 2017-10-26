@@ -19,7 +19,7 @@ $reservations = $_SESSION['reservations'];
 					<i class="material-icons left">cancel</i>
 				</button>
 			</a>
-			<div id="bus-driver-reservations">
+			<div id="div-table" class="col l12">
 					<?php foreach ($reservations as $reservation): ?>
 						<form action="index.html" method="post">
 							<div class="table-row">

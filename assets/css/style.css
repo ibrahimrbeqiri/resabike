@@ -97,13 +97,13 @@ table.center td,td,th,tr{
   .btn:active{
     background-color: #ffcc00;
   }
-  #bus-driver-reservations{
+  #div-table{
 	  display: table !important;
   }
-  #bus-driver-reservations .table-row{
+  #div-table .table-row{
 	  display: table-row !important;
   }
-  #bus-driver-reservations .table-cell{
+  #div-table .table-cell{
 	  display: table-cell !important;
   }
 
