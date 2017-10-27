@@ -170,11 +170,11 @@ class adminController extends Controller{
 	
 	function editReservation()
 	{
-	    if($_POST['modify'])
+	    if(isset($_POST['modify']))
 	    {
 	    
 	    }
-	    else if($_POST['delete'])
+	    else if(isset($_POST['delete']))
 	    {
 	        $id = $_POST['id'];
 	        $result = Reservation::deleteReservation($id);
