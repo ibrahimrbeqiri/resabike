@@ -163,3 +163,7 @@ nav{
 	position: relative;
 	z-index: 999999;
 }
+.error{
+	color: red;
+	font-weight: bold;
+}
