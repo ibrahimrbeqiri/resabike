@@ -179,9 +179,7 @@ class Reservation
         
         $attributes = array($id);
         
-        $result = MySQLConnection::getInstance()->execute($query, $attributes);
-        
-        return $result;
+        return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
     
     public static function getAllReservations()
