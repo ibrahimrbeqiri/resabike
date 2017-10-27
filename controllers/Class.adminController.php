@@ -170,12 +170,22 @@ class adminController extends Controller{
 	function deleteReservation()
 	{
 	    $id = $_POST['id'];
-	    
+	   
 	    $result = Reservation::deleteReservation($id);
 	    
-	    echo "TRUE";
+	    
+	    if($result['status']=='error')
+	    {
+	        $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+	        echo $_SESSION['msg'];
+	    }
+	    else
+	    {
+	        echo "Success!";
+	        $this->redirect('admin', 'menu');
+	        
+	    }
 	}
-	
 	
 	function busdriverReservations()
 	{

@@ -175,9 +175,11 @@ class Reservation
     
     public static function deleteReservation($id)
     {
-        $query = "DELETE FROM reservation WHERE id=" + $id;
+        $query = "DELETE FROM reservation WHERE id=?";
         
-        return  MySQLConnection::getInstance()->fetch($query);
+        $attributes = array($id);
+        
+        return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
     
     public static function getAllReservations()

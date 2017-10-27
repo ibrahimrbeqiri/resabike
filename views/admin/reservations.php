@@ -56,7 +56,7 @@ $reservations = $_SESSION['reservations'];
 								<div class="table-cell"><input type="text" name="departure" value="<?php echo $reservation['departure'] ?>"></div>
 								<div class="table-cell"><input type="text" name="arrival" value="<?php echo $reservation['arrival'] ?>"></div>
 								<div class="table-cell"><input type="text" name="remarks" value="<?php echo $reservation['remarks'] ?>"></div>
-								<div class="table-cell"><a class="btn-floating" type="submit"><i class="material-icons">delete</i></a></div>
+								<div class="table-cell"><button class="btn-floating" type="submit"><i class="material-icons">delete</i></button></div>
 							</div>
 						</form>
 					<?php endforeach; ?>
