@@ -41,9 +41,9 @@ $reservations = $_SESSION['reservations'];
 			</div>
 			<div id="div-table" class="col l12">
 					<?php foreach ($reservations as $reservation): ?>
-						<form action="<?php echo URL_DIR.'admin/deleteReservation';?>" method="post">
+						<form action="<?php echo URL_DIR.'admin/editReservation';?>" method="post">
 							<div class="table-row">
-								<div class="table-cell"><a class="btn-floating" type="submit"><i class="material-icons">save</i></a></div>
+								<div class="table-cell"><a class="btn-floating" type="submit" name="modify"><i class="material-icons">save</i></a></div>
 								<div class="table-cell"><input type="text" name="id" disabled value="<?php echo $reservation['id'] ?>"></div>
 								<div class="table-cell"><input type="text" name="firstname" value="<?php echo $reservation['firstname'] ?>"></div>
 								<div class="table-cell"><input type="text" name="lastname" value="<?php echo $reservation['lastname'] ?>"></div>
@@ -56,7 +56,7 @@ $reservations = $_SESSION['reservations'];
 								<div class="table-cell"><input type="text" name="departure" value="<?php echo $reservation['departure'] ?>"></div>
 								<div class="table-cell"><input type="text" name="arrival" value="<?php echo $reservation['arrival'] ?>"></div>
 								<div class="table-cell"><input type="text" name="remarks" value="<?php echo $reservation['remarks'] ?>"></div>
-								<div class="table-cell"><button class="btn-floating" type="submit"><i class="material-icons">delete</i></button></div>
+								<div class="table-cell"><a class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></a></div>
 							</div>
 						</form>
 					<?php endforeach; ?>
