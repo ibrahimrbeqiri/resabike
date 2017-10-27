@@ -176,20 +176,28 @@ class adminController extends Controller{
 	    }
 	    else if(isset($_POST['delete']))
 	    {
-	        $id = $_POST['id'];
-	        $result = Reservation::deleteReservation($id);
-	        
-	        if($result['status']=='error')
-	        {
-	            $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
-	            echo $_SESSION['msg'];
-	        }
-	        else
-	        {
-	            echo "Success!";
-                $this->redirect('admin', 'menu');
-	            
-	        }
+	       $id = $_POST['id'];
+	   
+	       if(is_numeric($id) == false || empty($id))
+	       {
+	           $_SESSION['msg'] = '<span class="error">'."Invalid ID!".'</span>';
+	           $this->redirect('admin', 'reservations');
+	       }
+	       else {
+	           
+	           $result = Reservation::deleteReservation($id);
+	           if($result['status']=='error')
+	           {
+    	            $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+    	            echo $_SESSION['msg'];
+    	        }
+    	        else
+    	        {
+    	            echo "Success!";
+                    $this->redirect('admin', 'menu');
+    	            
+    	      }
+	       }
 	    }
 	}
 	

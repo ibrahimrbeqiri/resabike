@@ -5,7 +5,7 @@ include_once ROOT_DIR.'views/header.inc';
 $msg = $this->vars['msg'];
 
 $roles = $_SESSION['user_roles'];
-$zones = $_SESSION['user_zones'];
+$regions = $_SESSION['user_regions'];
 
 ?>
 
@@ -74,8 +74,8 @@ $zones = $_SESSION['user_zones'];
 				<div class="input-field col s6 l6">
 				  <select name="region">
 					  <option disabled selected>User Region</option>
-					  <?php foreach ($zones as $zone): ?>
-						  <option value="<?php echo $zone['id']; ?>"><?php echo $zone['name']; ?></option>
+					  <?php foreach ($regions as $region): ?>
+						  <option value="<?php echo $region['regionId']; ?>"><?php echo $region['regionName']; ?></option>
 					  <?php endforeach; ?>
 				  </select>
 				</div>

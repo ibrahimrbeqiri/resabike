@@ -13,7 +13,7 @@ $reservations = $_SESSION['reservations'];
 	<div class="col l12 center card admin-menu">
 		<h4>Reservations:</h4>
 		<p class="<?php echo URL_DIR.'admin/reservations/save';?>">Disclamer: Make sure the reservation IDs are correct!</p>
-
+		<?php echo $msg;?>
 			<a href="<?php echo URL_DIR.'admin/menu';?>">
 				<button class="btn waves-effect waves-light right" type="button">Cancel
 					<i class="material-icons left">cancel</i>
