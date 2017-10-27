@@ -49,7 +49,7 @@ $reservations = $_SESSION['reservations'];
 									</button>
 								</div>
 
-								<div class="table-cell"><input type="text" name="id" disabled value="<?php echo $reservation['id'] ?>"></div>
+								<div class="table-cell"><input type="text" name="id" value="<?php echo $reservation['id'] ?>"></div>
 								<div class="table-cell"><input type="text" name="firstname" value="<?php echo $reservation['firstname'] ?>"></div>
 								<div class="table-cell"><input type="text" name="lastname" value="<?php echo $reservation['lastname'] ?>"></div>
 								<div class="table-cell"><input type="text" name="phone" value="<?php echo $reservation['phone'] ?>"></div>
