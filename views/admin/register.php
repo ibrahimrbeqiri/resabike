@@ -14,6 +14,9 @@ $zones = $_SESSION['user_zones'];
 	<div class="row">
 		<div class="col l12">
 			<h3 class="left">Register new user</h3>
+			<?php if ($msg): ?>
+				<?php echo $msg ?>
+			<?php endif; ?>
 		</div>
 		<form class="col s12" method="post" action="<?php echo URL_DIR.'admin/register';?>">
 			<div class="col l12">
@@ -97,7 +100,7 @@ $zones = $_SESSION['user_zones'];
 					</div>
 				</div>
 			</div>
-			
+
 
 		</form>
 	</div>
