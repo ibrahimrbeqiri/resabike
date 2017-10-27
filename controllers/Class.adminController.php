@@ -30,13 +30,7 @@ class adminController extends Controller{
 	}
 
 	function login(){
-	    
-	    if(!$this->getActiveUser())
-	    {
-	        $this->redirect('welcome', 'welcome');
-	        exit;
-	    }
-	    
+
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 
@@ -68,11 +62,11 @@ class adminController extends Controller{
 
 		//Use something like this once you have the region for user
 		//$stations = Station::getStations($userRegionhere);
-        
+
 		$regionstations = RegionStations::getAllRegionStations(1);
-		
+
 		$_SESSION['regionstations'] = $regionstations;
-		
+
 		$stations = Station::getAllStations();
 
 		//saveing that object into session
@@ -104,7 +98,7 @@ class adminController extends Controller{
 		$phone = $_POST['phone'];
 		$role = $_POST['role'];
 		$region = $_POST['region'];
-		
+
 		trim($name);
 		trim($lastname);
 		trim($username);
@@ -112,8 +106,8 @@ class adminController extends Controller{
 		trim($pwd);
 		trim($confirmpassword);
 		trim($phone);
-		
-		
+
+
 		//Check if data valid
 		if (!$name|| !$lastname || !$username || !$email || !$pwd|| !$confirmpwd || !$phone || !$role || !$region) {
 		    $_SESSION['msg'] = '<span class="error">A required field is empty!</span>';
@@ -133,7 +127,7 @@ class adminController extends Controller{
 			//Save new user into the db
 		    $user = new User(null, $name, $lastname, $username, $email, $pwd, $phone, $role, $region);
 			$result = $user->save();
-			
+
 			if($result['status']=='error'){
 				$_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
 				$_SESSION['persistence'] = array($name, $lastname, $username, $email, $pwd, $phone, $role, $region);
@@ -145,89 +139,82 @@ class adminController extends Controller{
 		}
 
 	}
-	
+
 	function regions()
 	{
 	    if(!$this->getActiveUser()){
 	        $this->redirect('welcome', 'welcome');
 	        exit;
 	    }
-	    
+
 	    $regions = Region::getAllRegions();
 	    $_SESSION['regions'] = $regions;
-	    
-	    
+
+
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-	
+
 	function reservations()
 	{
 	    if(!$this->getActiveUser()){
 	        $this->redirect('welcome', 'welcome');
 	        exit;
 	    }
-	    
+		$user = $this->getActiveUser();
+		if ($user->getRoleId() != '1' || $user->getRoleId() != '2' ) {
+			$_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+			$this->redirect('admin', 'menu');
+			exit;
+		}
+
+
 	    $reservations = Reservation::getAllReservations();
 	    $_SESSION['reservations'] = $reservations;
-	    
-	    
+
+
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-	
+
 	function editReservation()
 	{
-	    if(!$this->getActiveUser())
-	    {
-	       $this->redirect('welcome', 'welcome');
-	       exit;
-	    }
 	    if(isset($_POST['modify']))
 	    {
-	    
+
 	    }
 	    else if(isset($_POST['delete']))
 	    {
-	       $id = $_POST['id'];
-	   
-	       if(is_numeric($id) == false || empty($id))
-	       {
-	           $_SESSION['msg'] = '<span class="error">'."Invalid ID!".'</span>';
-	           $this->redirect('admin', 'reservations');
-	       }
-	       else 
-	       {
-	           
-	           $result = Reservation::deleteReservation($id);
-	           if($result['status']=='error')
-	           {
-    	            $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
-    	            echo $_SESSION['msg'];
-    	        }
-    	        else
-    	        {
-    	            echo "Success!";
-                    $this->redirect('admin', 'menu');
-    	            
-    	        }
-	       }
+	        $id = $_POST['id'];
+
+	        $result = Reservation::deleteReservation($id);
+	        if($result['status']=='error')
+	        {
+	            $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+	            echo $_SESSION['msg'];
+	        }
+	        else
+	        {
+	            echo "Success!";
+	            $this->redirect('admin', 'menu');
+
+	        }
 	    }
 	}
-	
+
 	function busdriverReservations()
 	{
 	    if(!$this->getActiveUser()){
 	        $this->redirect('welcome', 'welcome');
 	        exit;
 	    }
-	    
+
 	    $reservations = Reservation::getAllReservations();
-	    
+
 	    $_SESSION['reservations'] = $reservations;
-	    
-	    
+
+
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-	
+
 
 }
  ?>
