@@ -30,7 +30,13 @@ class adminController extends Controller{
 	}
 
 	function login(){
-
+	    
+	    if(!$this->getActiveUser())
+	    {
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 
@@ -170,6 +176,11 @@ class adminController extends Controller{
 	
 	function editReservation()
 	{
+	    if(!$this->getActiveUser())
+	    {
+	       $this->redirect('welcome', 'welcome');
+	       exit;
+	    }
 	    if(isset($_POST['modify']))
 	    {
 	    
@@ -183,7 +194,8 @@ class adminController extends Controller{
 	           $_SESSION['msg'] = '<span class="error">'."Invalid ID!".'</span>';
 	           $this->redirect('admin', 'reservations');
 	       }
-	       else {
+	       else 
+	       {
 	           
 	           $result = Reservation::deleteReservation($id);
 	           if($result['status']=='error')
@@ -196,7 +208,7 @@ class adminController extends Controller{
     	            echo "Success!";
                     $this->redirect('admin', 'menu');
     	            
-    	      }
+    	        }
 	       }
 	    }
 	}
