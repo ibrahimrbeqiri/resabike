@@ -167,23 +167,28 @@ class adminController extends Controller{
 	    
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-	function deleteReservation()
+	
+	function editReservation()
 	{
-	    $id = $_POST['id'];
-	   
-	    $result = Reservation::deleteReservation($id);
-	    
-	    
-	    if($result['status']=='error')
+	    if($_POST['modify'])
 	    {
-	        $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
-	        echo $_SESSION['msg'];
+	    
 	    }
-	    else
+	    else if($_POST['delete'])
 	    {
-	        echo "Success!";
-	        $this->redirect('admin', 'menu');
-	        
+	        $id = $_POST['id'];
+	        $result = Reservation::deleteReservation($id);
+	        if($result['status']=='error')
+	        {
+	            $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+	            echo $_SESSION['msg'];
+	        }
+	        else
+	        {
+	            echo "Success!";
+	            $this->redirect('admin', 'menu');
+	            
+	        }
 	    }
 	}
 	
