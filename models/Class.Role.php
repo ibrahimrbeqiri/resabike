@@ -33,16 +33,16 @@ class Role
         $this->role = $role;
     }
 
-		public static function getRoles(){
-				$query = "SELECT * FROM role";
+	public static function getRoles(){
+		$query = "SELECT * FROM role";
 
-				$result = MySQLConnection::getInstance()->fetch($query);
-				if($result['status']=='error' || empty($result['result'])){
-					return $result;
-				}
+		$result = MySQLConnection::getInstance()->fetch($query);
+		if($result['status']=='error' || empty($result['result'])){
+		  return $result;
+		}
 
-				$roles = $result['result'];
+	   $roles = $result['result'];
 
-				return $roles;
-			}
+		return $roles;
+	}
 }

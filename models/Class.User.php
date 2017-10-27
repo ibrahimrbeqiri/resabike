@@ -125,4 +125,40 @@ class User{
 		return new User($user['id'], $user['name'], $user['lastname'], $user['username'], $user['email'], $user['password'], $user['phone'], $user['roleId'], $user['zoneId']);
 	}
 	
+	public static function getUserRoles($roleId)
+	{
+	    $query = "SELECT * FROM user
+                  LEFT JOIN role ON user.roleId = role.id
+                  WHERE user.roleId=?";
+	    
+	    $attributes = array($roleId);
+	    
+	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
+	    
+	    if($result['status']=='error' || empty($result['result'])){
+	        return $result;
+	    }
+	    
+	    $roles = $result['result'];
+	    return $roles;
+	}
+	
+	public static function getUserZones($zoneId)
+	{
+	    $query = "SELECT * FROM user
+                  LEFT JOIN zone ON user.zoneId = zone.id
+                  WHERE user.zoneId=?";
+	    
+	    $attributes = array($zoneId);
+	    
+	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
+	    
+	    if($result['status']=='error' || empty($result['result'])){
+	        return $result;
+	    }
+	    
+	    $zones = $result['result'];
+	    return $zones;
+	}
+	
 }

@@ -47,21 +47,6 @@ class Station{
 	    $stations = $result['result'];
 	    return $stations;
 	}
-
-    public static function getStations(/* Add region name here later */)
-    {
-		$station = "station";
-
-		$query = "SELECT * FROM station";
-		
-		$result = MySQLConnection::getInstance()->fetch($query);
-		if($result['status']=='error' || empty($result['result'])){
-			return $result;
-		}
-
-		$stations = $result['result'];
-		return $stations;
-	}
 }
 
 ?>
