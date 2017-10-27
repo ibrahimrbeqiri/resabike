@@ -178,6 +178,7 @@ class adminController extends Controller{
 	    {
 	        $id = $_POST['id'];
 	        $result = Reservation::deleteReservation($id);
+	        
 	        if($result['status']=='error')
 	        {
 	            $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
@@ -186,7 +187,7 @@ class adminController extends Controller{
 	        else
 	        {
 	            echo "Success!";
-	            $this->redirect('admin', 'menu');
+                $this->redirect('admin', 'menu');
 	            
 	        }
 	    }
