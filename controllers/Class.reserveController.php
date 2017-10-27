@@ -73,7 +73,7 @@ class reserveController extends Controller{
 	    $arrival = $_SESSION['reservationArray']['arrival'];
 
 	    $reservation = new Reservation(null, $firstname, $lastname, $phone, $email, $bikenumber, $reservationdate,
-	        $fromstation, $tostation, $departure, $arrival, $remarks);
+	        $fromstation, $tostation, $departure, $arrival, $remarks, $creationDate);
 
 	    $result = $reservation->addReservation();
 

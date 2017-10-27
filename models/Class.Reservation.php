@@ -14,10 +14,11 @@ class Reservation
     private $remarks;
     private $fromstation;
     private $tostation;
+    private $creationDate;
     
     
     public function __construct($id=null, $firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, $fromstation, $tostation,
-        $departure, $arrival, $remarks)
+        $departure, $arrival, $remarks, $creationDate=null)
     {
         $this->setId($id);
         $this->setFirstName($firstname);
@@ -31,6 +32,7 @@ class Reservation
         $this->setRemarks($remarks);
         $this->setFromStation($fromstation);
         $this->setToStation($tostation);
+        $this->setCreationDate($creationDate);
 
     }
     
@@ -94,6 +96,10 @@ class Reservation
         return $this->tostation;
     }
     
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
     public function setId($id)
     {
         $this->id = $id;
@@ -153,7 +159,10 @@ class Reservation
     {
         $this->tostation = $tostation;
     }
-    
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+    }
     public function addReservation()
     {
         $query = "INSERT INTO reservation(firstname, lastname, phone, email, bikenumber, reservationdate, 

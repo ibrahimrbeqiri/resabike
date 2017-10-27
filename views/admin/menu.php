@@ -13,6 +13,12 @@ var_dump($user);
 <div class="container">
 	<div class="col l12 center card admin-menu">
 		<h4>Welcome <?php echo ' '.$user->getName().' '.$user->getLastname();?></h4>
+		<a href="<?php echo URL_DIR.'admin/busdriverReservations';?>">
+		<button class="btn waves-effect waves-light">
+			<i class="material-icons prefix">book</i>
+			<span>See reservations</span>
+		</button>
+		</a>
 		<a href="<?php echo URL_DIR.'admin/reservations';?>">
 		<button class="btn waves-effect waves-light">
 			<i class="material-icons prefix">book</i>
