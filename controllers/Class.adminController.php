@@ -21,7 +21,7 @@ class adminController extends Controller{
 				$this->redirect('admin', 'login');
 			}
 			else{
-				$_SESSION['msg'] = '<span class="success">Welcome '. $result->getFirstname(). ' '.$result->getLastname().'!</span>';
+				$_SESSION['msg'] = '<span class="success">Welcome '. $result->getName(). ' '.$result->getLastname().'!</span>';
 				$_SESSION['user'] = $result;
 				$this->redirect('admin', 'menu');
 			}
@@ -83,28 +83,54 @@ class adminController extends Controller{
 		}
 
 		$user_roles = Role::getRoles();
+		$user_zones = Zone::getAllZones();
 
 		//saveing that object into session
 		$_SESSION["user_roles"] = $user_roles;
-
+		$_SESSION["user_zones"] = $user_zones;
 		//Get data posted by the form
-		$fname = $_POST['firstname'];
-		$lname = $_POST['lastname'];
-		$uname = $_POST['username'];
+		$name = $_POST['name'];
+		$lastname = $_POST['lastname'];
+		$username = $_POST['username'];
+		$email = $_POST['email'];
 		$pwd = $_POST['password'];
-
+		$confirmpwd = $_POST['confirmpassword'];
+		$phone = $_POST['phone'];
+		$role = $_POST['role'];
+		$region = $_POST['region'];
+		
+		trim($name);
+		trim($lastname);
+		trim($username);
+		trim($email);
+		trim($pwd);
+		trim($confirmpassword);
+		trim($phone);
+		
+		
 		//Check if data valid
-		if(empty($fname) or empty($lname) or empty($uname) or empty($pwd)){
-			$_SESSION['msg'] = '<span class="error">A required field is empty!</span>';
-			$_SESSION['persistence'] = array($fname, $lname, $uname, $pwd);
+		if (!$name|| !$lastname || !$username || !$email || !$pwd|| !$confirmpwd || !$phone || !$role || !$region) {
+		    $_SESSION['msg'] = '<span class="error">A required field is empty!</span>';
+		    $_SESSION['form_user'] = array($name, $lastname, $username, $email, $pwd, $confirmpwd, $phone, $role, $region);
+		}
+		if(preg_match('/\s/', $username))
+		{
+		    $_SESSION['msg'] = '<span class="error">Username can not have spaces!</span>';
+		    $_SESSION['form_user'] = array($name, $lastname, $username, $email, $pwd, $confirmpwd, $phone, $role, $region);
+		}
+		if($pwd !== $confirmpwd)
+		{
+		    $_SESSION['msg'] = '<span class="error">Passwords do not match!</span>';
+		    $_SESSION['form_user'] = array($name, $lastname, $username, $email, $pwd, $confirmpwd, $phone, $role, $region);
 		}
 		else{
 			//Save new user into the db
-			$user = new User(null, $fname, $lname, $uname, $pwd);
+		    $user = new User(null, $name, $lastname, $username, $email, $pwd, $phone, $role, $region);
 			$result = $user->save();
+			
 			if($result['status']=='error'){
 				$_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
-				$_SESSION['persistence'] = array($fname, $lname, $uname, $pwd);
+				$_SESSION['persistence'] = array($name, $lastname, $username, $email, $pwd, $phone, $role, $region);
 			}
 			else{
 				$_SESSION['msg'] = '<span class="success">Registration successful!</span>';

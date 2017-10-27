@@ -2,20 +2,68 @@
 require_once 'dal/MySQLConnection.php';
 class User{
 	private $id;
-	private $firstname;
+	private $name;
 	private $lastname;
 	private $username;
+	private $email;
 	private $password;
-
-	public function __construct($id=null, $firstname, $lastname, $username, $password){
+    private $phone;
+    private $roleId;
+    private $zoneId;
+    
+	public function __construct($id=null, $name, $lastname, $username, $email, $password, $phone, $roleId, $zoneId){
 		$this->setId($id);
-		$this->setFirstname($firstname);
+		$this->setName($name);
 		$this->setLastname($lastname);
 		$this->setUsername($username);
+		$this->setEmail($email);
 		$this->setPassword($password);
+		$this->setPhone($phone);
+		$this->setRoleId($roleId);
+		$this->setZoneId($zoneId);
 	}
 
-	public function getId(){
+	public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    public function getRoleId()
+    {
+        return $this->roleId;
+    }
+
+    public function getZoneId()
+    {
+        return $this->zoneId;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    public function setRoleId($roleId)
+    {
+        $this->roleId = $roleId;
+    }
+
+    public function setZoneId($zoneId)
+    {
+        $this->zoneId = $zoneId;
+    }
+
+    public function getId(){
 		return $this->id;
 	}
 
@@ -23,12 +71,12 @@ class User{
 		$this->id = $id;
 	}
 
-	public function getFirstname(){
-		return $this->firstname;
+	public function getName(){
+		return $this->name;
 	}
 
-	public function setFirstname($firstname){
-		$this->firstname = $firstname;
+	public function setName($name){
+		$this->name = $name;
 	}
 
 	public function getLastname(){
@@ -57,14 +105,14 @@ class User{
 
 	public function save(){
 		$pwd = sha1($this->password);
-		$query = "INSERT INTO user(firstname, lastname, username, password)	VALUES(?, ?, ?, ?);";
-		$attributes = array($this->firstname, $this->lastname, $this->username, $pwd);
+		$query = "INSERT INTO user(name, lastname, username, email, password, phone, roleId, zoneId)	VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
+		$attributes = array($this->name, $this->lastname, $this->username, $this->email, $pwd, $this->phone, $this->roleId, $this->zoneId);
 
 		return  MySQLConnection::getInstance()->execute($query, $attributes);
 	}
 
 	public static function connect($uname, $pwd){
-		//$pwd = sha1($pwd); //simple encryption. Use sha512 with Salt for better password encryption
+		$pwd = sha1($pwd); //simple encryption. Use sha512 with Salt for better password encryption
 		$query = "SELECT * FROM user WHERE username=? AND password=?";
 		$attributes = array($uname, $pwd);
 		$result = MySQLConnection::getInstance()->execute($query, $attributes);
@@ -73,7 +121,7 @@ class User{
 		}
 
 		$user = $result['result'][0];
-		return new User($user['id'], $user['firstname'], $user['lastname'], $user['username'], $user['password']);
+		return new User($user['id'], $user['name'], $user['lastname'], $user['username'], $user=['email'], $user['password'], $user['phone'], $user['roleId'], $user['zoneId']);
 	}
 
 }

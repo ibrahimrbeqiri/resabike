@@ -20,6 +20,23 @@ $reservations = $_SESSION['reservations'];
 				</button>
 			</a>
 			<div id="div-table" class="col l12">
+    			<div class="table-row">
+    				<div class="table-cell"></div>
+    			    <div class="table-cell">ID</div>
+        			<div class="table-cell">Firstname</div>
+        			<div class="table-cell">Lastname</div>
+        			<div class="table-cell">Phone</div>
+        			<div class="table-cell">Email</div>
+        			<div class="table-cell">Bike NR</div>
+        			<div class="table-cell">Date</div>
+        			<div class="table-cell">From</div>
+        			<div class="table-cell">To</div>
+        			<div class="table-cell">Departure</div>
+        			<div class="table-cell">Arrival</div>
+        			<div class="table-cell">Remarks</div>
+				</div>
+			</div>
+			<div id="div-table" class="col l12">
 					<?php foreach ($reservations as $reservation): ?>
 						<form action="index.html" method="post">
 							<div class="table-row">

@@ -24,8 +24,8 @@ $zones = $_SESSION['zones'];
 			<table id="regional-stations-list">
 				<thead>
 					<th></th>
-					<th>ID</th>
-					<th>Name</th>
+					<th>Region ID</th>
+					<th>Region Name</th>
 				</thead>
 				<tbody>
 					<?php foreach ($zones as $zone): ?>
