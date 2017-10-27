@@ -73,6 +73,8 @@ table.center td,td,th,tr{
 	/*border: 2px solid #ffcc00;*/
 }
 
+
+
 .front-page .card.loginform{
 	background-color: rgba(255, 255, 255, 0.9);
 }
@@ -102,6 +104,9 @@ table.center td,td,th,tr{
   }
   #div-table .table-row{
 	  display: table-row !important;
+  }
+  #div-table .table-row:hover{
+	  background-color: rgba(255, 204, 0, 0.3);
   }
   #div-table .table-cell{
 	  display: table-cell !important;
