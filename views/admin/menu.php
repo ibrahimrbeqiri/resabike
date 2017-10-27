@@ -5,6 +5,8 @@ include_once ROOT_DIR.'views/header.inc';
 $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
+
+var_dump($user);
 ?>
 
 
@@ -37,7 +39,6 @@ $user = $_SESSION['user'];
 		</a>
 		
 	</div>
-
 
 </div>
 

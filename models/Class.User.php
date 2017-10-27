@@ -111,17 +111,18 @@ class User{
 		return  MySQLConnection::getInstance()->execute($query, $attributes);
 	}
 
-	public static function connect($uname, $pwd){
+	public static function connect($username, $pwd){
 		$pwd = sha1($pwd); //simple encryption. Use sha512 with Salt for better password encryption
 		$query = "SELECT * FROM user WHERE username=? AND password=?";
-		$attributes = array($uname, $pwd);
+		$attributes = array($username, $pwd);
 		$result = MySQLConnection::getInstance()->execute($query, $attributes);
+		
 		if($result['status']=='error' || empty($result['result'])){
 			return false;
 		}
 
 		$user = $result['result'][0];
-		return new User($user['id'], $user['name'], $user['lastname'], $user['username'], $user=['email'], $user['password'], $user['phone'], $user['roleId'], $user['zoneId']);
+		return new User($user['id'], $user['name'], $user['lastname'], $user['username'], $user['email'], $user['password'], $user['phone'], $user['roleId'], $user['zoneId']);
 	}
-
+	
 }

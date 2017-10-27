@@ -3,17 +3,17 @@ class adminController extends Controller{
 
 	function connection(){
 		//Get data posted by the form
-		$uname = $_POST['username'];
+		$username = $_POST['username'];
 		$pwd = $_POST['password'];
 
 		//Check if data valid
-		if(empty($uname) or empty($pwd)){
+		if(empty($username) or empty($pwd)){
 			$_SESSION['msg'] = '<span>A required field is empty!</span>';
 			$this->redirect('admin', 'login');
 		}
 		else{
 			//Load user from DB if exists
-			$result = User::connect($uname, $pwd);
+			$result = User::connect($username, $pwd);
 
 			//Put user in session if exists or return error msg
 			if(!$result){
