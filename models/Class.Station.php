@@ -2,38 +2,32 @@
 require_once 'dal/MySQLConnection.php';
 class Station{
     
-	private $id;
-	private $name;
-	private $zone;
+	private $stationId;
+	private $stationName;
 
-	public function __construct($id, $firstname){
-		$this->setId($id);
-		$this->setName($firstname);
+	public function __construct($stationId, $stationName){
+		$this->setstationId($stationId);
+		$this->setstationName($stationName);
 	}
 
-	public function getId(){
-		return $this->id;
+	public function getstationId(){
+		return $this->stationId;
 	}
 	
 	public function getZone()
 	{
 	    $this->zone = $zone;
 	}
-	public function setId($id){
-		$this->id = $id;
+	public function setstationId($stationId){
+		$this->stationId = $stationId;
 	}
 
-	public function getName(){
-		return $this->name;
+	public function getstationName(){
+		return $this->stationName;
 	}
 
-	public function setName($name){
-		$this->name = $name;
-	}
-	
-	public function setZone(Zone $zone)
-	{
-	    $this->zone = $zone->id;
+	public function setstationName($stationName){
+		$this->stationName = $stationName;
 	}
 	
 	public static function getAllStations()

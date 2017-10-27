@@ -5,7 +5,7 @@ include_once ROOT_DIR.'views/header.inc';
 $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
-$zones = $_SESSION['zones'];
+$regions = $_SESSION['regions'];
 
 ?>
 
@@ -28,11 +28,11 @@ $zones = $_SESSION['zones'];
 					<th>Region Name</th>
 				</thead>
 				<tbody>
-					<?php foreach ($zones as $zone): ?>
+					<?php foreach ($regions as $region): ?>
 					<tr>
 							<td><a class="btn-floating" type="submit"><i class="material-icons">save</i></a></td>
-							<td><input type="text" name="id" value="<?php echo $zone['id'] ?>"></td>
-							<td><input type="text" name="name" value="<?php echo $zone['name'] ?>"></td>
+							<td><input type="text" name="id" value="<?php echo $region['regionId'] ?>"></td>
+							<td><input type="text" name="name" value="<?php echo $region['regionName'] ?>"></td>
 							<td><a class="btn-floating delete-row"><i class="material-icons">delete</i></a></td>
 							
 					</tr>

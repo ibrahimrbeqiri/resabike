@@ -9,9 +9,9 @@ class User{
 	private $password;
     private $phone;
     private $roleId;
-    private $zoneId;
+    private $userRegionId;
     
-	public function __construct($id=null, $name, $lastname, $username, $email, $password, $phone, $roleId, $zoneId){
+	public function __construct($id=null, $name, $lastname, $username, $email, $password, $phone, $roleId, $userRegionId){
 		$this->setId($id);
 		$this->setName($name);
 		$this->setLastname($lastname);
@@ -20,7 +20,7 @@ class User{
 		$this->setPassword($password);
 		$this->setPhone($phone);
 		$this->setRoleId($roleId);
-		$this->setZoneId($zoneId);
+		$this->setuserRegionId($userRegionId);
 	}
 
 	public function getEmail()
@@ -38,9 +38,9 @@ class User{
         return $this->roleId;
     }
 
-    public function getZoneId()
+    public function getuserRegionId()
     {
-        return $this->zoneId;
+        return $this->userRegionId;
     }
 
     public function setEmail($email)
@@ -58,9 +58,9 @@ class User{
         $this->roleId = $roleId;
     }
 
-    public function setZoneId($zoneId)
+    public function setuserRegionId($userRegionId)
     {
-        $this->zoneId = $zoneId;
+        $this->userRegionId = $userRegionId;
     }
 
     public function getId(){
@@ -105,8 +105,8 @@ class User{
 
 	public function save(){
 		$pwd = sha1($this->password);
-		$query = "INSERT INTO user(name, lastname, username, email, password, phone, roleId, zoneId)	VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
-		$attributes = array($this->name, $this->lastname, $this->username, $this->email, $pwd, $this->phone, $this->roleId, $this->zoneId);
+		$query = "INSERT INTO user(name, lastname, username, email, password, phone, roleId, userRegionId)	VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
+		$attributes = array($this->name, $this->lastname, $this->username, $this->email, $pwd, $this->phone, $this->roleId, $this->userRegionId);
 
 		return  MySQLConnection::getInstance()->execute($query, $attributes);
 	}
@@ -122,7 +122,7 @@ class User{
 		}
 
 		$user = $result['result'][0];
-		return new User($user['id'], $user['name'], $user['lastname'], $user['username'], $user['email'], $user['password'], $user['phone'], $user['roleId'], $user['zoneId']);
+		return new User($user['id'], $user['name'], $user['lastname'], $user['username'], $user['email'], $user['password'], $user['phone'], $user['roleId'], $user['userRegionId']);
 	}
 	
 	public static function getUserRoles($roleId)
@@ -143,13 +143,13 @@ class User{
 	    return $roles;
 	}
 	
-	public static function getUserZones($zoneId)
+	public static function getUserregions($userRegionId)
 	{
 	    $query = "SELECT * FROM user
-                  LEFT JOIN zone ON user.zoneId = zone.id
-                  WHERE user.zoneId=?";
+                  LEFT JOIN region ON user.userRegionId = region.id
+                  WHERE user.userRegionId=?";
 	    
-	    $attributes = array($zoneId);
+	    $attributes = array($userRegionId);
 	    
 	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
 	    
@@ -157,8 +157,8 @@ class User{
 	        return $result;
 	    }
 	    
-	    $zones = $result['result'];
-	    return $zones;
+	    $regions = $result['result'];
+	    return $regions;
 	}
 	
 }

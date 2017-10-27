@@ -19,29 +19,32 @@ $reservations = $_SESSION['reservations'];
 					<i class="material-icons left">cancel</i>
 				</button>
 			</a>
+			<table>
+				<thead>
+    				<th> </th>
+    				<th>ID</th>
+    				<th>Firstname</th>
+    				<th>Lastname</th>
+    				<th>Phone</th>
+    				<th>Email</th>
+    				<th>Bike NR</th>
+    				<th>Date</th>
+    				<th>From</th>
+    				<th>To</th>
+    				<th>Departure</th>
+    				<th>Arrival</th>
+    				<th>Remarks</th>
+    				<th> </th>
+				</thead>
+			</table>
 			<div id="div-table" class="col l12">
-    			<div class="table-row">
-    				<div class="table-cell"></div>
-    			    <div class="table-cell">ID</div>
-        			<div class="table-cell">Firstname</div>
-        			<div class="table-cell">Lastname</div>
-        			<div class="table-cell">Phone</div>
-        			<div class="table-cell">Email</div>
-        			<div class="table-cell">Bike NR</div>
-        			<div class="table-cell">Date</div>
-        			<div class="table-cell">From</div>
-        			<div class="table-cell">To</div>
-        			<div class="table-cell">Departure</div>
-        			<div class="table-cell">Arrival</div>
-        			<div class="table-cell">Remarks</div>
-				</div>
 			</div>
 			<div id="div-table" class="col l12">
 					<?php foreach ($reservations as $reservation): ?>
-						<form action="index.html" method="post">
+						<form action="<?php echo URL_DIR.'admin/deleteReservation';?>" method="post">
 							<div class="table-row">
 								<div class="table-cell"><a class="btn-floating" type="submit"><i class="material-icons">save</i></a></div>
-								<div class="table-cell"><?php echo $reservation['id'] ?></div>
+								<div class="table-cell"><input type="text" name="id" disabled value="<?php echo $reservation['id'] ?>"></div>
 								<div class="table-cell"><input type="text" name="firstname" value="<?php echo $reservation['firstname'] ?>"></div>
 								<div class="table-cell"><input type="text" name="lastname" value="<?php echo $reservation['lastname'] ?>"></div>
 								<div class="table-cell"><input type="text" name="phone" value="<?php echo $reservation['phone'] ?>"></div>
@@ -53,7 +56,7 @@ $reservations = $_SESSION['reservations'];
 								<div class="table-cell"><input type="text" name="departure" value="<?php echo $reservation['departure'] ?>"></div>
 								<div class="table-cell"><input type="text" name="arrival" value="<?php echo $reservation['arrival'] ?>"></div>
 								<div class="table-cell"><input type="text" name="remarks" value="<?php echo $reservation['remarks'] ?>"></div>
-								<div class="table-cell"><a class="btn-floating" type="submit" value="<?php echo $reservation['id']?>"><i class="material-icons">delete</i></a></div>
+								<div class="table-cell"><a class="btn-floating" type="submit"><i class="material-icons">delete</i></a></div>
 							</div>
 						</form>
 					<?php endforeach; ?>

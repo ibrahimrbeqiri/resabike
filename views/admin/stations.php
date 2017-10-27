@@ -5,15 +5,13 @@ include_once ROOT_DIR.'views/header.inc';
 $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
-$stations = $_SESSION['regional_stations'];
-
-$zonestations = $_SESSION['zonestations'];
+$regionstations = $_SESSION['regionstations'];
 
 ?>
 
 <div class="container">
 	<div class="col l12 center card admin-menu">
-		<h4>Stations for region [region here]:</h4>
+		<h4>Stations:</h4>
 		<p class="<?php echo URL_DIR.'admin/reservations/save';?>">Disclamer: Make sure the station IDs are correct!</p>
 		<form action="index.html" method="post">
 			<button class="btn waves-effect waves-light left" type="submit">Save stations
@@ -28,14 +26,17 @@ $zonestations = $_SESSION['zonestations'];
 
 			<table id="regional-stations-list">
 				<thead>
+					<th>Region Name</th>
 					<th>Station ID</th>
 					<th>Station Name</th>
 				</thead>
 				<tbody>
-					<?php foreach ($zonestations as $zonestation): ?>
+					<?php foreach ($regionstations as $regionstation): ?>
+					
 					<tr>
-							<td><input type="text" name="stationId" value="<?php echo $zonestation['stationId'] ?>"></td>
-							<td><input type="text" name="name" value="<?php echo $zonestation['name'] ?>"></td>
+							<td><input type="text" name="regionName" value="<?php echo $regionstation['regionName'] ?>"></td>
+							<td><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></td>
+							<td><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></td>
 							<td><a class="btn-floating delete-row"><i class="material-icons">delete</i></a></td>
 							
 					</tr>

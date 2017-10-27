@@ -63,11 +63,11 @@ class adminController extends Controller{
 		//Use something like this once you have the region for user
 		//$stations = Station::getStations($userRegionhere);
         
-		$zonestations = ZoneStations::getAllZoneStations(1);
+		$regionstations = RegionStations::getAllRegionStations(1);
 		
-		$_SESSION['zonestations'] = $zonestations;
+		$_SESSION['regionstations'] = $regionstations;
 		
-		$stations = Station::getStations();
+		$stations = Station::getAllStations();
 
 		//saveing that object into session
 		$_SESSION["regional_stations"] = $stations;
@@ -83,11 +83,11 @@ class adminController extends Controller{
 		}
 
 		$user_roles = Role::getRoles();
-		$user_zones = Zone::getAllZones();
+		$user_regions = Region::getAllRegions();
 
 		//saveing that object into session
 		$_SESSION["user_roles"] = $user_roles;
-		$_SESSION["user_zones"] = $user_zones;
+		$_SESSION["user_regions"] = $user_regions;
 		//Get data posted by the form
 		$name = $_POST['name'];
 		$lastname = $_POST['lastname'];
@@ -147,8 +147,8 @@ class adminController extends Controller{
 	        exit;
 	    }
 	    
-	    $zones = Zone::getAllZones();
-	    $_SESSION['zones'] = $zones;
+	    $regions = Region::getAllRegions();
+	    $_SESSION['regions'] = $regions;
 	    
 	    
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
@@ -164,9 +164,18 @@ class adminController extends Controller{
 	    $reservations = Reservation::getAllReservations();
 	    $_SESSION['reservations'] = $reservations;
 	    
-	   
+	    
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
+	function deleteReservation()
+	{
+	    $id = $_POST['id'];
+	    
+	    $result = Reservation::deleteReservation($id);
+	    
+	    echo "TRUE";
+	}
+	
 	
 	function busdriverReservations()
 	{
