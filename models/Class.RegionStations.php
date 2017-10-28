@@ -65,5 +65,14 @@ class RegionStations
         return $regionstations;
     }
     
+    public static function deleteRegionStation($regionId, $stationId)
+    {
+        $query = "DELETE FROM regionstations WHERE regionIdRS=? AND stationIdRS=?";
+        
+        $attributes = array($regionId, $stationId);
+        
+        return  MySQLConnection::getInstance()->execute($query, $attributes);
+    }
+    
 }
 

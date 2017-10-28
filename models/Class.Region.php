@@ -3,7 +3,7 @@
 class Region
 {
 
-    private $regionregionId;
+    private $regionId;
     private $regionName;
     
     public function __construct($regionId=null, $regionName)
@@ -44,6 +44,13 @@ class Region
         
         $regions = $result['result'];
         return $regions;
+    }
+    public static function addRegion()
+    {
+        $query = "INSERT INTO region(regionName) VALUES(?);";
+        $attributes = array($this->regionName);
+        
+        return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
 }
 
