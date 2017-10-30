@@ -65,7 +65,7 @@ $regionstations = $_SESSION['regionstations'];
 		<?php if ($user->getRoleId() == 1 || $user->getRoleId() == 2): ?>
 			<script type="text/javascript">
 			$('#add-table-row').click(function() {
-				$('#regional-stations-list tbody').append('<div class="table-row">\
+				$('#div-table').append('<div class="table-row">\
 				<div class="table-cell">\
 				<select name="regionName">\
 					<option disabled selected><?php echo $regionstation['regionName'] ?></option>\
@@ -85,7 +85,7 @@ $regionstations = $_SESSION['regionstations'];
 		<?php else: ?>
 			<script type="text/javascript">
 			$('#add-table-row').click(function() {
-				$('#regional-stations-list tbody').append('<div class="table-row">\
+				$('#div-table').append('<div class="table-row">\
 				<div class="table-cell"><div class="table-cell"><p><?php echo $regionstation['regionName'] ?><input type="text" hidden name="regionName" value="<?php echo $regionstation['stationId'] ?>"></p></div></div>\
 				<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></div>\
 				<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></div>\
