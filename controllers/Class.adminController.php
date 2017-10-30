@@ -68,23 +68,23 @@ class adminController extends Controller{
 		//Use something like this once you have the region for user
 
 		$user = $_SESSION['user'];
-		
+
 		$regionstations = RegionStations::getAllRegionStations($user->getuserRegionId());
 		$_SESSION['regionstations'] = $regionstations;
 
 		//Get message from connection process
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-    
+
 	function editStations()
 	{
 	    if(isset($_POST['modify']))
 	    {
-	        
+
 	    }
 	    else if(isset($_POST['delete']))
 	    {
-	        
+
 	    }
 	}
 	function register(){
@@ -151,9 +151,11 @@ class adminController extends Controller{
 				$_SESSION['persistence'] = array($name, $lastname, $username, $email, $pwd, $phone, $role, $region);
 			}
 			else{
-				$_SESSION['msg'] = '<span class="success">Registration successful!</span>';
 				unset($_SESSION['persistence']);
-				$this->redirect('admin', 'menu');
+
+				$_SESSION['msg'] = '<span class="success">Registration successful!</span>';
+				$this->redirect('admin', 'register');
+
 			}
 		}
 
