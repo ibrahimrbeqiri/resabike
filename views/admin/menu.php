@@ -24,37 +24,40 @@ var_dump($msg);
 			<span>See reservations</span>
 		</button>
 		</a>
-		<a href="<?php echo URL_DIR.'admin/reservations';?>">
-		<button class="btn waves-effect waves-light">
-			<i class="material-icons prefix">book</i>
-			<span>See reservations</span>
-		</button>
-		</a>
-		<a href="<?php echo URL_DIR.'admin/regions';?>">
-			<button class="btn waves-effect waves-light">
-				<i class="material-icons prefix">place</i>
-				<span>Modify regions</span>
-			</button>
-		</a>
-		<a href="<?php echo URL_DIR.'admin/stations';?>">
-			<button class="btn waves-effect waves-light">
-				<i class="material-icons prefix">map</i>
-				<span>Modify stations</span>
-			</button>
-		</a>
-		<a href="<?php echo URL_DIR.'admin/users';?>">
-			<button class="btn waves-effect waves-light">
-				<i class="material-icons prefix">person</i>
-				<span>See all users</span>
-			</button>
-		</a>
-		<a href="<?php echo URL_DIR.'admin/register';?>">
-			<button class="btn waves-effect waves-light">
-				<i class="material-icons prefix">person_add</i>
-				<span>Create a new user</span>
-			</button>
-		</a>
-
+		<?php if($user->getuserRoleId() != 3) :?>
+    		<a href="<?php echo URL_DIR.'admin/reservations';?>">
+    		<button class="btn waves-effect waves-light">
+    			<i class="material-icons prefix">book</i>
+    			<span>See reservations</span>
+    		</button>
+    		</a>
+    		<a href="<?php echo URL_DIR.'admin/stations';?>">
+    			<button class="btn waves-effect waves-light">
+    				<i class="material-icons prefix">map</i>
+    				<span>Modify stations</span>
+    			</button>
+    		</a>
+    		<?php if($user->getuserRoleId() != 2) :?>
+    		<a href="<?php echo URL_DIR.'admin/regions';?>">
+    			<button class="btn waves-effect waves-light">
+    				<i class="material-icons prefix">place</i>
+    				<span>Modify regions</span>
+    			</button>
+    		</a>
+    		<a href="<?php echo URL_DIR.'admin/users';?>">
+    			<button class="btn waves-effect waves-light">
+    				<i class="material-icons prefix">person</i>
+    				<span>See all users</span>
+    			</button>
+    		</a>
+    		<a href="<?php echo URL_DIR.'admin/register';?>">
+    			<button class="btn waves-effect waves-light">
+    				<i class="material-icons prefix">person_add</i>
+    				<span>Create a new user</span>
+    			</button>
+    		</a>
+    		<?php endif;?>
+		<?php endif;?>
 	</div>
 
 </div>

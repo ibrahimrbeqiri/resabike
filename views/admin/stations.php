@@ -64,21 +64,21 @@ $regionstations = $_SESSION['regionstations'];
 
 		<?php if ($user->getuserRoleId() == 1 || $user->getuserRoleId() == 2): ?>
 			<script type="text/javascript">
-			$('#add-table-row').click(function() {
-				$('#div-table').append('<div class="table-row">\
-				<div class="table-cell">\
-				<select name="regionName">\
-					<option disabled selected><?php echo $regionstation['regionName'] ?></option>\
-					<?php foreach ($regions as $region): ?>\
-						<option value="<?php echo $region[regionId]; ?>"><?php echo $region[regionName]; ?></option>\
-					<?php endforeach; ?>\
-				</select>\
-				</div>\
-				<div class="table-cell"><input type="text" name="stationId" value=""></div>\
-				<div class="table-cell"><input type="text" name="stationName" value=""></div>\
-				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
-				</div>');
-			});
+    			$('#add-table-row').click(function() {
+    				$('#div-table').append('<div class="table-row">\
+    				<div class="table-cell">\
+    				<select name="regionName">\
+    					<option disabled selected><?php echo $regionstation['regionName'] ?></option>\
+    					<?php foreach ($regions as $region): ?>\
+    						<option value="<?php echo $region[regionId]; ?>"><?php echo $region[regionName]; ?></option>\
+    					<?php endforeach; ?>\
+    				</select>\
+    				</div>\
+    				<div class="table-cell"><input type="text" name="stationId" value=""></div>\
+    				<div class="table-cell"><input type="text" name="stationName" value=""></div>\
+    				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
+    				</div>');
+    			});
 			</script>
 
 
