@@ -161,4 +161,22 @@ class User{
 	    return $regions;
 	}
 	
+	public static function checkUsername($username)
+	{
+	    $query = "SELECT * FROM user WHERE username=?";
+	    
+	    $attributes = array($username);
+	    
+	    $result = MySQLConnection::getInstance()->getRows($query, $attributes);
+	    
+	    if($result >= 1)
+	    {
+	        return true;
+	    }
+	    else
+	    {
+	       return false;
+	    }
+	}
+	
 }

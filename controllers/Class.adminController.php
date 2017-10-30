@@ -150,6 +150,12 @@ class adminController extends Controller{
     		    $this->redirect('admin', 'register');
     		    exit;
     		}
+    		if(User::checkUsername($username) == true)
+    		{
+    		    $_SESSION['msg'] = '<span class="error">Username already exists!</span>';
+    		    $this->redirect('admin', 'register');
+    		    exit;
+    		}
     		else
     		{
     			//Save new user into the db
