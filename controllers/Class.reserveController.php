@@ -2,6 +2,7 @@
 class reserveController extends Controller{
 
 	function reserve(){
+	    
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 
 	}
@@ -22,7 +23,6 @@ class reserveController extends Controller{
 
 		}
 
-		
 		//saveing the search query into an object
 		$search_query = array('from' => $from, 'to'=> $to, 'date' => $date, 'time' => $time);
 
@@ -46,7 +46,7 @@ class reserveController extends Controller{
 	    $reservationdate = $_POST['reservationdate'];
 	    $departure = $_POST['departure'];
 	    $arrival = $_POST['arrival'];
-
+        
 
 	    $reservationArray = array('firstname' => $firstname, 'lastname'=> $lastname, 'phone' => $phone, 'email' => $email,
 	        'bikenumber' => $bikenumber, 'remarks' => $remarks, 'fromstation' => $fromstation, 'tostation' => $tostation,

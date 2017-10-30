@@ -34,6 +34,7 @@ class Station{
 	{
 	    $query = "SELECT * FROM station";
 	    $result = MySQLConnection::getInstance()->fetch($query);
+	    
 	    if($result['status']=='error' || empty($result['result'])){
 	        return $result;
 	    }

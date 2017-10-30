@@ -208,6 +208,15 @@ class Reservation
         $reservations = $result['result'];
         return $reservations;
     }
+    
+    public static function getAllBikes($reservationdate)
+    {
+        $query = "SELECT SUM(bikenumber) AS totalbikes FROM reservation WHERE reservationdate=?";
+        
+        $attributes = array($reservationdate);
+        
+        return  MySQLConnection::getInstance()->execute($query, $attributes);
+    }
 
 }
 

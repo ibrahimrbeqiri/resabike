@@ -118,8 +118,6 @@ if ($search) {
 											</li>
 											<?php endforeach; ?>
 										</ul>
-
-
 									</div>
 									<div class="col l6">
 										<form class="reservation-form" action="<?php echo URL_DIR.'reserve/confirm';?>" method="POST">

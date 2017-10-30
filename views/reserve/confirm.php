@@ -16,7 +16,7 @@ $reservationdate = $_SESSION['reservationArray']['reservationdate'];
 $departure = $_SESSION['reservationArray']['departure'];
 $arrival = $_SESSION['reservationArray']['arrival'];
 
-//var_dump($_SESSION['reservationArray']);
+
 ?>
 
 <div class="container">
