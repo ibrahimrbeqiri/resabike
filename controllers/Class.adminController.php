@@ -65,6 +65,8 @@ class adminController extends Controller{
 	        exit;
 	    }
 
+		$regions = Region::getAllRegions();
+		$_SESSION["regions"] = $regions;
 		//Use something like this once you have the region for user
 
 		$user = $_SESSION['user'];
@@ -190,17 +192,17 @@ class adminController extends Controller{
     			//Save new user into the db
     		    $user = new User(null, $name, $lastname, $username, $email, $pwd, $phone, $role, $region);
     			$result = $user->save();
-    
+
     			if($result['status']=='error'){
     				$_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
     				$_SESSION['persistence'] = array($name, $lastname, $username, $email, $pwd, $phone, $role, $region);
     			}
     			else{
     				unset($_SESSION['persistence']);
-    
+
     				$_SESSION['msg'] = '<span class="success">Registration successful!</span>';
     				$this->redirect('admin', 'menu');
-    
+
     			}
     		}
 		}
@@ -230,19 +232,19 @@ class adminController extends Controller{
 	{
 	    $regionId = $_POST['regionId'];
 	    $regionName = $_POST['regionName'];
-	    
+
 	    if(isset($_POST['modify']))
 	    {
 	        if(empty($regionId))
 	        {
 	            $region = new Region(null, $regionName);
-	            
+
 	            $result = $region->addRegion();
 	            $_SESSION['msg'] = '<span class="success">Region added sucessfully!</span> </br>';
 	            $this->redirect('admin', 'regions');
 	            exit;
 	        }
-	        
+
 	        if($regionId == '1')
 	        {
 	            $_SESSION['msg'] = '<span class="error">You cannot modify this region!</span> </br>';
@@ -260,15 +262,15 @@ class adminController extends Controller{
 	        {
 	            $_SESSION['msg'] = '<span class="success">You have successfully modified this region!</span> </br>';
 	            $this->redirect('admin', 'regions');
-	            
+
 	        }
-	        
+
 	      }
-	    
+
 	    else if(isset($_POST['delete']))
 	    {
-	       
-	        
+
+
 	        if($regionId == '1')
 	        {
 	            $_SESSION['msg'] = '<span class="error">You cannot delete this region!</span> </br>';
@@ -276,7 +278,7 @@ class adminController extends Controller{
 	            exit;
 	        }
 	        $result = Region::deleteRegion($regionId);
-	        
+
 	        if($result['status']=='error')
 	        {
 	            if($result['result'] == 'sql_query_doublon')
@@ -285,7 +287,7 @@ class adminController extends Controller{
 	                $this->redirect('admin', 'regions');
 	                exit;
 	            }
-	            else 
+	            else
 	            {
 	                $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
 	                echo $_SESSION['msg'];
@@ -295,12 +297,12 @@ class adminController extends Controller{
 	        {
 	            $_SESSION['msg'] = '<span class="success">You have successfully deleted this region!</span> </br>';
 	            $this->redirect('admin', 'regions');
-	            
+
 	        }
-	        
+
 	    }
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-	
+
 	}
 	function reservations()
 	{
@@ -337,23 +339,23 @@ class adminController extends Controller{
 	    $departure = $_POST['departure'];
 	    $arrival = $_POST['arrival'];
 	    $remarks = $_POST['remarks'];
-	    
+
 
 	    if(isset($_POST['modify']))
 	    {
-	        
-	        if(empty($firstname) || empty($lastname) || empty($phone) || empty($email) || empty($bikenumber) || empty($reservationdate) || 
+
+	        if(empty($firstname) || empty($lastname) || empty($phone) || empty($email) || empty($bikenumber) || empty($reservationdate) ||
 	            empty($fromstation) || empty($tostation) || empty($departure) || empty($arrival) || empty($id))
 	        {
 	            $_SESSION['msg'] = '<span class="error">'.'Required field(s) were empty!'.'</span>';
 	            $this->redirect('admin', 'reservations');
 	            exit;
 	        }
-	        
-            $result = Reservation::modifyReservation($firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, $fromstation, $tostation, 
+
+            $result = Reservation::modifyReservation($firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, $fromstation, $tostation,
                 $departure, $arrival, $remarks, $id);
-           
-            
+
+
             if($result['status']=='error')
             {
                 $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
@@ -363,13 +365,13 @@ class adminController extends Controller{
             {
                 $_SESSION['msg'] = '<span class="success">'.'You have successfully modified the reservation!'.'</span>';
                 $this->redirect('admin', 'reservations');
-                
+
             }
-            
+
 	    }
 	    else if(isset($_POST['delete']))
 	    {
-	        
+
 	        $result = Reservation::deleteReservation($id);
 	        if($result['status']=='error')
 	        {
