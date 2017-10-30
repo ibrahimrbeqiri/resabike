@@ -212,7 +212,7 @@ class Reservation
     public static function getAllBikes($reservationdate)
     {
         $query = "SELECT fromstation, tostation, departure, arrival, SUM(bikenumber) AS totalbikes FROM reservation WHERE reservationdate=?
-                  GROUP BY fromstation";
+                  GROUP BY fromstation, tostation, departure";
         
         $attributes = array($reservationdate);
         
