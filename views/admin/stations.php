@@ -4,6 +4,7 @@ include_once ROOT_DIR.'views/header.inc';
 //Collect data from controller
 $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
+$regions = $_SESSION['regions'];
 
 $regionstations = $_SESSION['regionstations'];
 ?>
@@ -27,7 +28,7 @@ $regionstations = $_SESSION['regionstations'];
 				<th>Station ID</th>
 				<th>Station Name</th>
 			</thead>
-			<table id="div-table">
+			<div id="div-table">
 
 					<?php foreach ($regionstations as $regionstation): ?>
 
@@ -51,7 +52,7 @@ $regionstations = $_SESSION['regionstations'];
 					</div>
 					<?php endforeach; ?>
 
-			</table>
+			</div>
 		</form>
 
 
@@ -59,18 +60,37 @@ $regionstations = $_SESSION['regionstations'];
 	  		<i class="material-icons right">add</i>
 		</button>
 
-		<script type="text/javascript">
-		$('#add-table-row').click(function() {
-			$('#regional-stations-list tbody').append('<tr>\
-				<td><input type="text" name="regionName" value=""></td>\
-				<td><input type="text" name="stationId" value=""></td>\
-				<td><input type="text" name="stationName" value=""></td>\
-				<td><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></td>\
-				</tr>\
-				');
-		});
+		<?php if ($user->getRoleId() == 1 || $user->getRoleId() == 2): ?>
+			<script type="text/javascript">
+			$('#add-table-row').click(function() {
+				$('#regional-stations-list tbody').append('<div class="table-row">\
+				<select name="regionName">\
+					<option disabled selected><?php echo $regionstation['regionName'] ?></option>\
+					<?php foreach ($regions as $region): ?>\
+						<option value="<?php echo $region[regionId]; ?>"><?php echo $region[regionName]; ?></option>\
+					<?php endforeach; ?>\
+				</select>\
+				<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></div>\
+				<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></div>\
+				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
+				</div>');
+			});
+			</script>
 
-		</script>
+
+		<?php else: ?>
+			<script type="text/javascript">
+			$('#add-table-row').click(function() {
+				$('#regional-stations-list tbody').append('<div class="table-row">\
+				<div class="table-cell"><div class="table-cell"><p><?php echo $regionstation['regionName'] ?></p></div></div>\
+				<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></div>\
+				<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></div>\
+				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
+				</div>');
+			});
+			</script>
+		<?php endif; ?>
+
 	</div>
 
 
