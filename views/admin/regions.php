@@ -31,10 +31,10 @@ $regions = $_SESSION['regions'];
 					<?php foreach ($regions as $region): ?>
 					<tr>
 							<td><button class="btn-floating" type="submit" name="modify"><i class="material-icons">save</i></button></td>
-							<td><input type="text" name="id" value="<?php echo $region['regionId'] ?>"></td>
+							<td><p><?php echo $region['regionId'] ?></p> <input type="text" name="id" hidden value="<?php echo $region['regionId'] ?>"></td>
 							<td><input type="text" name="name" value="<?php echo $region['regionName'] ?>"></td>
 							<td><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></td>
-							
+
 					</tr>
 					<?php endforeach; ?>
 				</tbody>
