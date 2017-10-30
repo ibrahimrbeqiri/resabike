@@ -54,23 +54,24 @@ class adminController extends Controller{
 
 	function stations(){
 		//The page cannot be displayed if no user connected
-		if(!$this->getActiveUser()){
-			$this->redirect('welcome', 'welcome');
-			exit;
-		}
-
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    $user = $this->getActiveUser();
+	    if ($user->getRoleId() != 1 && $user->getRoleId() != 2) {
+	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+	        $this->redirect('admin', 'menu');
+	        exit;
+	    }
 
 		//Use something like this once you have the region for user
-		//$stations = Station::getStations($userRegionhere);
 
-		$regionstations = RegionStations::getAllRegionStations(1);
-
+		$user = $_SESSION['user'];
+		
+		$regionstations = RegionStations::getAllRegionStations($user->getuserRegionId());
 		$_SESSION['regionstations'] = $regionstations;
 
-		$stations = Station::getAllStations();
-
-		//saveing that object into session
-		$_SESSION["regional_stations"] = $stations;
 		//Get message from connection process
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
@@ -88,10 +89,16 @@ class adminController extends Controller{
 	}
 	function register(){
 		//The page cannot be displayed if no user connected
-		if(!$this->getActiveUser()){
-			$this->redirect('welcome', 'welcome');
-			exit;
-		}
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    $user = $this->getActiveUser();
+	    if ($user->getRoleId() != 1) {
+	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+	        $this->redirect('admin', 'menu');
+	        exit;
+	    }
 
 		$user_roles = Role::getRoles();
 		$user_regions = Region::getAllRegions();
@@ -146,6 +153,7 @@ class adminController extends Controller{
 			else{
 				$_SESSION['msg'] = '<span class="success">Registration successful!</span>';
 				unset($_SESSION['persistence']);
+				$this->redirect('admin', 'menu');
 			}
 		}
 
@@ -155,6 +163,12 @@ class adminController extends Controller{
 	{
 	    if(!$this->getActiveUser()){
 	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    $user = $this->getActiveUser();
+	    if ($user->getRoleId() != 1) {
+	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
 
@@ -171,7 +185,7 @@ class adminController extends Controller{
 	        exit;
 	    }
 		$user = $this->getActiveUser();
-		if ($user->getRoleId() !== 1 || $user->getRoleId() !== 2 ) {
+		if ($user->getRoleId() != 1 && $user->getRoleId() != 2) {
 			$_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
 			$this->redirect('admin', 'menu');
 			exit;
