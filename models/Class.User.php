@@ -139,14 +139,14 @@ class User{
 	        return $result;
 	    }
 	    
-	    $roles = $result['result'];
-	    return $roles;
+	    $userRoles = $result['result'];
+	    return $userRoles;
 	}
 	
 	public static function getUserRegions($userRegionId)
 	{
 	    $query = "SELECT * FROM user
-                  LEFT JOIN region ON user.userRegionId = region.id
+                  LEFT JOIN region ON user.userRegionId = region.regionId
                   WHERE user.userRegionId=?";
 	    
 	    $attributes = array($userRegionId);
@@ -192,5 +192,39 @@ class User{
 	    $allusers = $result['result'];
 	    return $allusers;
 	}
+	
+	public static function getAllUserData()
+	{
+	    $query = "SELECT * FROM user
+                  LEFT JOIN role ON user.roleId = role.id
+                  LEFT JOIN region ON user.userRegionId = region.regionId";
+	    
+	    
+	    $result = MySQLConnection::getInstance()->fetch($query);
+	    
+	    if($result['status']=='error' || empty($result['result'])){
+	        return $result;
+	    }
+	    
+	    $userdata = $result['result'];
+	    return $userdata;
+	}
+	
+	public static function deleteUser($id)
+	{
+	    $query = "DELETE FROM user WHERE id=?";
+	    
+	    $attributes = array($id);
+	       
+	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
+	    
+	    if($result['status']=='error' || empty($result['result'])){
+	        return $result;
+	    }
+	    
+	    $userdeletion = $result['result'];
+	    return $userdeletion;
+	}
+	
 	
 }

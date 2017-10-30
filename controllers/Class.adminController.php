@@ -101,10 +101,15 @@ class adminController extends Controller{
 	        exit;
 	    }
 	    
-	    $allusers = User::getAllUsers();
+	    $allusers = User::getAllUserData();
 	    $_SESSION['allusers'] = $allusers;
 	    
+	    $user_roles = Role::getRoles();
+	    $user_regions = Region::getAllRegions();
+	    $_SESSION["user_roles"] = $user_roles;
+	    $_SESSION["user_regions"] = $user_regions;
 	    
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 	
 	function editUsers()

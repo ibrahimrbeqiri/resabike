@@ -4,7 +4,11 @@ include_once ROOT_DIR.'views/header.inc';
 //Collect data from controller
 $msg = $this->vars['msg'];
 
+$roles = $_SESSION['user_roles'];
+$regions = $_SESSION['user_regions'];
+
 $allusers = $_SESSION['allusers'];
+
 
 ?>
 
@@ -52,10 +56,25 @@ $allusers = $_SESSION['allusers'];
 								<div class="table-cell"><input type="text" name="lastname" value="<?php echo $user['lastname'] ?>"></div>
 								<div class="table-cell"><input type="text" name="username" value="<?php echo $user['username'] ?>"></div>
 								<div class="table-cell"><input type="text" name="email" value="<?php echo $user['email'] ?>"></div>
-								<div class="table-cell"><input type="text" name="password" value="<?php echo $user['password'] ?>"></div>
+								<div class="table-cell"><input type="text" name="password" hidden value="<?php echo $user['password'] ?>"></div>
 								<div class="table-cell"><input type="text" name="phone" value="<?php echo $user['phone'] ?>"></div>
-								<div class="table-cell"><input type="text" name="roleId" value="<?php echo $user['roleId'] ?>"></div>
-								<div class="table-cell"><input type="text" name="userRegionId" value="<?php echo $user['userRegionId'] ?>"></div>
+								<div class="table-cell">
+    								<select name="roleId">
+                					  <option disabled selected><?php echo $user['role'] ?></option>
+                        					  <?php foreach ($roles as $role): ?>
+                        						  <option value="<?php echo $role[id]; ?>"><?php echo $role[role]; ?></option>
+                        					  <?php endforeach; ?>
+                				  	</select>
+								</div>
+							
+								<div class="table-cell">
+    								<select name="userRegionId">
+                    					  <option disabled selected><?php echo $user['regionName'] ?></option>
+                            					  <?php foreach ($regions as $region): ?>
+                            						  <option value="<?php echo $reigon[regionId]; ?>"><?php echo $region[regionName]; ?></option>
+                            					  <?php endforeach; ?>
+                    				</select>
+								</div>
 
 								<div class="table-cell">
 									<button class="btn-floating" type="submit" name="delete">

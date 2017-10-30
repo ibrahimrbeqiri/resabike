@@ -34,6 +34,7 @@ class Role
     }
 
 	public static function getRoles(){
+	    
 		$query = "SELECT * FROM role";
 
 		$result = MySQLConnection::getInstance()->fetch($query);
