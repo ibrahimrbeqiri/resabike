@@ -1,44 +1,6 @@
 <?php
 class adminController extends Controller{
 
-	function connection(){
-		//Get data posted by the form
-		$username = $_POST['username'];
-		$pwd = $_POST['password'];
-
-		//Check if data valid
-		if(empty($username) or empty($pwd)){
-			$_SESSION['msg'] = '<span>A required field is empty!</span>';
-			$this->redirect('admin', 'login');
-		}
-		else{
-			//Load user from DB if exists
-			$result = User::connect($username, $pwd);
-
-			//Put user in session if exists or return error msg
-			if(!$result){
-				$_SESSION['msg'] = '<span class="error">Username or password incorrect!</span>';
-				$this->redirect('admin', 'login');
-			}
-			else{
-				$_SESSION['msg'] = '<span class="success">Welcome '. $result->getName(). ' '.$result->getLastname().'!</span>';
-				$_SESSION['user'] = $result;
-				$this->redirect('admin', 'menu');
-			}
-		}
-
-	}
-
-	function login(){
-
-		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-	}
-
-	function logout(){
-		session_destroy();
-		$this->redirect('admin', 'login');
-	}
-
 
 	function menu(){
 		//The page cannot be displayed if no user connected
@@ -51,45 +13,7 @@ class adminController extends Controller{
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 
 	}
-
-	function stations(){
-		//The page cannot be displayed if no user connected
-	    if(!$this->getActiveUser()){
-	        $this->redirect('welcome', 'welcome');
-	        exit;
-	    }
-	    $user = $this->getActiveUser();
-	    if ($user->getRoleId() != 1 && $user->getRoleId() != 2) {
-	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
-	        $this->redirect('admin', 'menu');
-	        exit;
-	    }
-
-		$regions = Region::getAllRegions();
-		$_SESSION["regions"] = $regions;
-		//Use something like this once you have the region for user
-
-		$user = $_SESSION['user'];
-
-		$regionstations = RegionStations::getAllRegionStations($user->getuserRegionId());
-		$_SESSION['regionstations'] = $regionstations;
-
-		//Get message from connection process
-		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-	}
-
-	function editStations()
-	{
-	    if(isset($_POST['modify']))
-	    {
-
-	    }
-	    else if(isset($_POST['delete']))
-	    {
-
-	    }
-	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-	}
+	
 	function users()
 	{
 	    if(!$this->getActiveUser()){
@@ -97,7 +21,7 @@ class adminController extends Controller{
 	        exit;
 	    }
 	    $user = $this->getActiveUser();
-	    if ($user->getRoleId() != 1) {
+	    if ($user->getuserRoleId() != 1) {
 	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
 	        $this->redirect('admin', 'menu');
 	        exit;
@@ -116,7 +40,83 @@ class adminController extends Controller{
 	
 	function editUsers()
 	{
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    $user = $this->getActiveUser();
+	    if ($user->getuserRoleId() != 1) {
+	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+	        $this->redirect('admin', 'menu');
+	        exit;
+	    }
 	    
+	    
+	    $id = $_POST['id'];
+	    $name = $_POST['name'];
+	    $lastname = $_POST['lastname'];
+	    $username = $_POST['username'];
+	    $email = $_POST['email'];
+	    $password = $_POST['password'];
+	    $phone = $_POST['phone'];
+	    $userRoleId = $_POST['userRoleId'];
+	    $userRegionId = $_POST['userRegionId'];
+	    $originalusername = $_POST['originalusername'];
+	    
+	    $array = array($name, $lastname, $username, $email, $password, $phone, $userRoleId, $userRegionId, $id);
+	    
+	    if(isset($_POST['modify']))
+	    {
+	        if(empty($name) || empty($lastname) || empty($username) || empty($email) || empty($password) || empty($phone) ||
+	            empty($userRoleId) || empty($userRegionId) || empty($originalusername) || empty($id))
+	        {
+	            $_SESSION['msg'] = $array;
+	            $this->redirect('admin', 'users');
+	            exit;
+	        }
+            
+	        if($originalusername != $username)
+	        {
+	            if(User::checkUsername($username) == true)
+	            {
+	                $_SESSION['msg'] = '<span class="error">Username already exists!</span>';
+	                $this->redirect('admin', 'users');
+	                exit;
+	            }
+	        }
+	        
+	        $result = User::modifyUser($name, $lastname, $username, $email, $password, $phone, $userRoleId, $userRegionId, $id);
+	        
+	        if(!$result)
+	        {
+	            $_SESSION['msg'] = '<span class="error">User could not be modified!</span>';
+	            echo $_SESSION['msg'];
+	        }
+	        else
+	        {
+	            $_SESSION['msg'] = '<span class="success">'.'You have successfully modified the user!'.'</span>';
+	            $this->redirect('admin', 'users');
+	            
+	        }
+	        
+	    }
+	    else if(isset($_POST['delete']))
+	    {
+	        $result = User::deleteUser($id);
+	        
+	        if(!$result){
+	            $_SESSION['msg'] = '<span class="error">Failed to delete user!</span>';
+	            $this->redirect('admin', 'users');
+	            exit;
+	        }
+	        else{
+	            $_SESSION['msg'] = '<span class="success">User deleted successfully!</span>';
+	            $this->redirect('admin', 'users');
+	            exit;
+	        }
+	        
+	    }
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 	
 	function register(){
@@ -126,11 +126,12 @@ class adminController extends Controller{
 	        exit;
 	    }
 	    $user = $this->getActiveUser();
-	    if ($user->getRoleId() != 1) {
+	    if ($user->getuserRoleId() != 1) {
 	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
+	    
 
 		$user_roles = Role::getRoles();
 		$user_regions = Region::getAllRegions();
@@ -216,11 +217,12 @@ class adminController extends Controller{
 	        exit;
 	    }
 	    $user = $this->getActiveUser();
-	    if ($user->getRoleId() != 1) {
+	    if ($user->getuserRoleId() != 1) {
 	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
+	    
 
 	    $regions = Region::getAllRegions();
 	    $_SESSION['regions'] = $regions;
@@ -230,6 +232,18 @@ class adminController extends Controller{
 	}
 	function editRegions()
 	{
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    $user = $this->getActiveUser();
+	    if ($user->getuserRoleId() != 1) {
+	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+	        $this->redirect('admin', 'menu');
+	        exit;
+	    }
+	    
+	    
 	    $regionId = $_POST['regionId'];
 	    $regionName = $_POST['regionName'];
 
@@ -304,6 +318,44 @@ class adminController extends Controller{
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 
 	}
+	function stations(){
+	    //The page cannot be displayed if no user connected
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    $user = $this->getActiveUser();
+	    if ($user->getuserRoleId() != 1 && $user->getuserRoleId() != 2) {
+	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+	        $this->redirect('admin', 'menu');
+	        exit;
+	    }
+	    
+	    $regions = Region::getAllRegions();
+	    $_SESSION["regions"] = $regions;
+	    //Use something like this once you have the region for user
+	    
+	    $user = $_SESSION['user'];
+	    
+	    $regionstations = RegionStations::getAllRegionStations($user->getuserRegionId());
+	    $_SESSION['regionstations'] = $regionstations;
+	    
+	    //Get message from connection process
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+	}
+	
+	function editStations()
+	{
+	    if(isset($_POST['modify']))
+	    {
+	        
+	    }
+	    else if(isset($_POST['delete']))
+	    {
+	        
+	    }
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+	}
 	function reservations()
 	{
 	    if(!$this->getActiveUser()){
@@ -311,7 +363,7 @@ class adminController extends Controller{
 	        exit;
 	    }
 		$user = $this->getActiveUser();
-		if ($user->getRoleId() != 1 && $user->getRoleId() != 2) {
+		if ($user->getuserRoleId() != 1 && $user->getuserRoleId() != 2) {
 			$_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
 			$this->redirect('admin', 'menu');
 			exit;
@@ -327,6 +379,17 @@ class adminController extends Controller{
 
 	function editReservation()
 	{
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    $user = $this->getActiveUser();
+	    if ($user->getuserRoleId() != 1 && $user->getuserRoleId() != 2) {
+	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+	        $this->redirect('admin', 'menu');
+	        exit;
+	    }
+	    
 	    $id = $_POST['id'];
 	    $firstname = $_POST['firstname'];
 	    $lastname = $_POST['lastname'];

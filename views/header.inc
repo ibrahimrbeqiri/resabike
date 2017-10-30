@@ -83,7 +83,7 @@ include_once ROOT_DIR.'languages/'.$lang_file;
 		<li><a class="dropdown-button" href="<?php echo URL_DIR.'admin/menu';?>" data-activates="admin-dropdown"><i class="material-icons left">person</i><?php echo $user->getUsername();?><i class="material-icons right">arrow_drop_down</i></a></li>
 		<ul id="admin-dropdown" class="dropdown-content">
 			<li><a href="<?php echo URL_DIR.'admin/menu';?>"><i class="material-icons left">settings</i><?php echo $lang['MENU_MENU']; ?></a></li>
-		  	<li><a href="<?php echo URL_DIR.'admin/logout';?>"><i class="material-icons left">power</i><?php echo $lang['MENU_LOG_OUT']; ?></a></li>
+		  	<li><a href="<?php echo URL_DIR.'login/logout';?>"><i class="material-icons left">power</i><?php echo $lang['MENU_LOG_OUT']; ?></a></li>
 		</ul>
 	  <?php endif; ?>
 
@@ -104,7 +104,7 @@ include_once ROOT_DIR.'languages/'.$lang_file;
   		<li><a class="dropdown-button" href="<?php echo URL_DIR.'admin/menu';?>" data-activates="admin-dropdown-mobile"><i class="material-icons left">person</i><?php echo $user->getUsername();?><i class="material-icons right">arrow_drop_down</i></a></li>
   		<ul id="admin-dropdown-mobile" class="dropdown-content">
   			<li><a href="<?php echo URL_DIR.'admin/menu';?>"><i class="material-icons left">settings</i><?php echo $lang['MENU_MENU']; ?></a></li>
-  		  	<li><a href="<?php echo URL_DIR.'admin/logout';?>"><i class="material-icons left">power</i><?php echo $lang['MENU_LOG_OUT']; ?></a></li>
+  		  	<li><a href="<?php echo URL_DIR.'login/logout';?>"><i class="material-icons left">power</i><?php echo $lang['MENU_LOG_OUT']; ?></a></li>
   		</ul>
   	  <?php endif; ?>
 	</ul>

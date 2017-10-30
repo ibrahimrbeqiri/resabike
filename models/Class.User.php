@@ -8,10 +8,10 @@ class User{
 	private $email;
 	private $password;
     private $phone;
-    private $roleId;
+    private $userRoleId;
     private $userRegionId;
     
-	public function __construct($id=null, $name, $lastname, $username, $email, $password, $phone, $roleId, $userRegionId){
+	public function __construct($id=null, $name, $lastname, $username, $email, $password, $phone, $userRoleId, $userRegionId){
 		$this->setId($id);
 		$this->setName($name);
 		$this->setLastname($lastname);
@@ -19,7 +19,7 @@ class User{
 		$this->setEmail($email);
 		$this->setPassword($password);
 		$this->setPhone($phone);
-		$this->setRoleId($roleId);
+		$this->setuserRoleId($userRoleId);
 		$this->setuserRegionId($userRegionId);
 	}
 
@@ -33,9 +33,9 @@ class User{
         return $this->phone;
     }
 
-    public function getRoleId()
+    public function getuserRoleId()
     {
-        return $this->roleId;
+        return $this->userRoleId;
     }
 
     public function getuserRegionId()
@@ -53,9 +53,9 @@ class User{
         $this->phone = $phone;
     }
 
-    public function setRoleId($roleId)
+    public function setuserRoleId($userRoleId)
     {
-        $this->roleId = $roleId;
+        $this->userRoleId = $userRoleId;
     }
 
     public function setuserRegionId($userRegionId)
@@ -105,8 +105,8 @@ class User{
 
 	public function save(){
 		$pwd = sha1($this->password);
-		$query = "INSERT INTO user(name, lastname, username, email, password, phone, roleId, userRegionId)	VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
-		$attributes = array($this->name, $this->lastname, $this->username, $this->email, $pwd, $this->phone, $this->roleId, $this->userRegionId);
+		$query = "INSERT INTO user(name, lastname, username, email, password, phone, userRoleId, userRegionId)	VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
+		$attributes = array($this->name, $this->lastname, $this->username, $this->email, $pwd, $this->phone, $this->userRoleId, $this->userRegionId);
 
 		return  MySQLConnection::getInstance()->execute($query, $attributes);
 	}
@@ -122,16 +122,16 @@ class User{
 		}
 
 		$user = $result['result'][0];
-		return new User($user['id'], $user['name'], $user['lastname'], $user['username'], $user['email'], $user['password'], $user['phone'], $user['roleId'], $user['userRegionId']);
+		return new User($user['id'], $user['name'], $user['lastname'], $user['username'], $user['email'], $user['password'], $user['phone'], $user['userRoleId'], $user['userRegionId']);
 	}
 	
-	public static function getUserRoles($roleId)
+	public static function getUserRoles($userRoleId)
 	{
 	    $query = "SELECT * FROM user
-                  LEFT JOIN role ON user.roleId = role.id
-                  WHERE user.roleId=?";
+                  LEFT JOIN role ON user.userRoleId = role.roleId
+                  WHERE user.userRoleId=?";
 	    
-	    $attributes = array($roleId);
+	    $attributes = array($userRoleId);
 	    
 	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
 	    
@@ -196,7 +196,7 @@ class User{
 	public static function getAllUserData()
 	{
 	    $query = "SELECT * FROM user
-                  LEFT JOIN role ON user.roleId = role.id
+                  LEFT JOIN role ON user.userRoleId = role.roleId
                   LEFT JOIN region ON user.userRegionId = region.regionId";
 	    
 	    
@@ -224,6 +224,23 @@ class User{
 	    
 	    $userdeletion = $result['result'];
 	    return $userdeletion;
+	}
+	
+	public static function modifyUser($name, $lastname, $username, $email, $password, $phone, $userRoleId, $userRegionId, $id)
+	{
+	    $query = "UPDATE user SET name=?, lastname=?, username=?, email=?, password=?, phone=?, userRoleId=?, userRegionId=?
+                                     WHERE id=?";
+	    
+	    $attributes = array($name, $lastname, $username, $email, $password, $phone, $userRoleId, $userRegionId, $id);
+	    
+	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
+	    if($result['status']=='error' || empty($result['result'])){
+	        return $result;
+	    }
+	    
+	    $modifyuser = $result['result'];
+	    return $modifyuser;
+	
 	}
 	
 	

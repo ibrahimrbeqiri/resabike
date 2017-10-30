@@ -62,7 +62,7 @@ $regions = $_SESSION['user_regions'];
 				  <select name="role">
 					  <option disabled selected>User role</option>
 					  <?php foreach ($roles as $role): ?>
-						  <option value="<?php echo $role[id]; ?>"><?php echo $role[role]; ?></option>
+						  <option value="<?php echo $role['roleId']; ?>"><?php echo $role['role']; ?></option>
 					  <?php endforeach; ?>
 				  </select>
 				</div>

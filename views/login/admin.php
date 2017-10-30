@@ -9,7 +9,7 @@ $msg = $this->vars['msg'];
 <div class="row front-page">
 	<div class="col m12 fp-img">
 		<div class="col s12 m3 card right loginform">
-			<form action="<?php echo URL_DIR.'admin/connection';?>" method="post">
+			<form action="<?php echo URL_DIR.'login/connection';?>" method="post">
 				<div class="row">
 
 					<?php if ($msg): ?>

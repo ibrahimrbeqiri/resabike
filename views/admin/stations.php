@@ -34,7 +34,7 @@ $regionstations = $_SESSION['regionstations'];
 					<?php foreach ($regionstations as $regionstation): ?>
 
 					<div class="table-row">
-						<?php if ($user->getRoleId() == 1 || $user->getRoleId() == 2): ?>
+						<?php if ($user->getuserRoleId() == 1 || $user->getuserRoleId() == 2): ?>
 						<div class="table-cell">
 							<select name="regionName">
 								<option disabled selected><?php echo $regionstation['regionName'] ?></option>
@@ -62,7 +62,7 @@ $regionstations = $_SESSION['regionstations'];
 	  		<i class="material-icons right">add</i>
 		</button>
 
-		<?php if ($user->getRoleId() == 1 || $user->getRoleId() == 2): ?>
+		<?php if ($user->getuserRoleId() == 1 || $user->getuserRoleId() == 2): ?>
 			<script type="text/javascript">
 			$('#add-table-row').click(function() {
 				$('#div-table').append('<div class="table-row">\

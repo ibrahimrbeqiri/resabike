@@ -9,13 +9,14 @@ $regions = $_SESSION['user_regions'];
 
 $allusers = $_SESSION['allusers'];
 
+var_dump($msg);
 
 ?>
 
 
 <div class="container">
 	<div class="col l12 center card admin-menu">
-		<h4>users:</h4>
+		<h4>Users:</h4>
 		<p>Disclamer: Make sure the user IDs are correct!</p>
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
@@ -55,21 +56,22 @@ $allusers = $_SESSION['allusers'];
 								<div class="table-cell"><input type="text" name="name" value="<?php echo $user['name'] ?>"></div>
 								<div class="table-cell"><input type="text" name="lastname" value="<?php echo $user['lastname'] ?>"></div>
 								<div class="table-cell"><input type="text" name="username" value="<?php echo $user['username'] ?>"></div>
+								<div class="table-cell"><input type="text" name="originalusername" hidden value="<?php echo $user['username'] ?>"></div>
 								<div class="table-cell"><input type="text" name="email" value="<?php echo $user['email'] ?>"></div>
 								<div class="table-cell"><input type="text" name="password" hidden value="<?php echo $user['password'] ?>"></div>
 								<div class="table-cell"><input type="text" name="phone" value="<?php echo $user['phone'] ?>"></div>
 								<div class="table-cell">
-    								<select name="roleId">
-                					  <option disabled selected><?php echo $user['role'] ?></option>
+    								<select name="userRoleId">
+                					  <option selected value="<?php echo $user['roleId']?>"><?php echo $user['role'] ?></option>
                         					  <?php foreach ($roles as $role): ?>
-                        						  <option value="<?php echo $role[id]; ?>"><?php echo $role[role]; ?></option>
+                        						  <option value="<?php echo $role[roleId]; ?>"><?php echo $role[role]; ?></option>
                         					  <?php endforeach; ?>
                 				  	</select>
 								</div>
 							
 								<div class="table-cell">
     								<select name="userRegionId">
-                    					  <option disabled selected><?php echo $user['regionName'] ?></option>
+                    					  <option selected value="<?php echo $user['regionId']?>"><?php echo $user['regionName'] ?></option>
                             					  <?php foreach ($regions as $region): ?>
                             						  <option value="<?php echo $reigon[regionId]; ?>"><?php echo $region[regionName]; ?></option>
                             					  <?php endforeach; ?>
