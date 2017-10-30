@@ -110,4 +110,4 @@ $regions = $_SESSION['user_regions'];
 <?php
 unset($_SESSION['msg']);
 include_once ROOT_DIR.'views/footer.inc';
-	?>
+?>

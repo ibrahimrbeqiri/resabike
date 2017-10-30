@@ -42,6 +42,12 @@ var_dump($msg);
 				<span>Modify stations</span>
 			</button>
 		</a>
+		<a href="<?php echo URL_DIR.'admin/users';?>">
+			<button class="btn waves-effect waves-light">
+				<i class="material-icons prefix">person</i>
+				<span>See all users</span>
+			</button>
+		</a>
 		<a href="<?php echo URL_DIR.'admin/register';?>">
 			<button class="btn waves-effect waves-light">
 				<i class="material-icons prefix">person_add</i>
