@@ -158,7 +158,7 @@ class adminController extends Controller{
 
 			}
 		}
-
+		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 
 	function regions()
