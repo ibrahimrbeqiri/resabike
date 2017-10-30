@@ -52,5 +52,13 @@ class Region
         
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
+    public static function deleteRegion($regionId)
+    {
+        $query = "DELETE FROM reservation WHERE regionId=?";
+        
+        $attributes = array($id);
+        
+        return  MySQLConnection::getInstance()->execute($query, $attributes);
+    }
 }
 
