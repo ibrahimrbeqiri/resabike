@@ -3,19 +3,19 @@
 class Role
 {
 
-    private $id;
+    private $roleId;
     private $role;
 
 
-    public function __construct($id=null, $role)
+    public function __construct($roleId=null, $role)
     {
-        $this->setId($id);
+        $this->setroleId($roleId);
         $this->setRole($role);
     }
 
-    public function getId()
+    public function getroleId()
     {
-        return $this->id;
+        return $this->roleId;
     }
 
     public function getRole()
@@ -23,9 +23,9 @@ class Role
         return $this->role;
     }
 
-    public function setId($id)
+    public function setroleId($roleId)
     {
-        $this->id = $id;
+        $this->roleId = $roleId;
     }
 
     public function setRole($role)
