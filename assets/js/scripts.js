@@ -72,7 +72,7 @@ $( document ).ready(function() {
     	});
 
 
-		
+
 		$('#add-table-row').click(function() {
 			$('#regional-stations-list tbody').append('<tr>\
 				<td><input type="text" name="regionName" value=""></td>\
@@ -83,13 +83,13 @@ $( document ).ready(function() {
 				');
 		});
 
-		$('#add-table-row').click(function() {
-			$('#regions-list tbody').append('<tr>\
-				<td><button class="btn-floating" type="submit" name="modify"><i class="material-icons">save</i></button></td>\
-				<td><input type="text" name="regionId" value=""></td>\
-				<td><input type="text" name="regionName" value=""></td>\
-				<td><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></td>\
-			    </tr>\
+		$('#add-table-row-region').click(function() {
+			$('#div-table').append('<div class="table-row">\
+				<div class="table-cell"><button class="btn-floating" type="submit" name="modify"><i class="material-icons">save</i></button></div>\
+				<div class="table-cell"><input type="text" name="regionId" value=""></div>\
+				<div class="table-cell"><input type="text" name="regionName" value=""></div>\
+				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
+			    </div>\
 				');
 		});
 
@@ -113,8 +113,3 @@ $( document ).ready(function() {
 
 
 });
-
-
-
-
-

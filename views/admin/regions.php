@@ -45,7 +45,7 @@ $regions = $_SESSION['regions'];
 			</div>
 
 
-		<button id="add-table-row" class="btn waves-effect waves-light left" type="button" name="action">Add region
+		<button id="add-table-row-region" class="btn waves-effect waves-light left" type="button" name="action">Add region
 	  		<i class="material-icons right">add</i>
 		</button>
 	</div>
