@@ -22,25 +22,34 @@ $regionstations = $_SESSION['regionstations'];
 					<i class="material-icons left">cancel</i>
 				</button>
 			</a>
+			<thead>
+				<th>Region Name</th>
+				<th>Station ID</th>
+				<th>Station Name</th>
+			</thead>
+			<table id="div-table">
 
-			<table id="regional-stations-list">
-				<thead>
-					<th>Region Name</th>
-					<th>Station ID</th>
-					<th>Station Name</th>
-				</thead>
-				<tbody>
 					<?php foreach ($regionstations as $regionstation): ?>
-					
-					<tr>
-							<td><input type="text" name="regionName" value="<?php echo $regionstation['regionName'] ?>"></td>
-							<td><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></td>
-							<td><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></td>
-							<td><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></td>
-							
-					</tr>
+
+					<div class="table-row">
+						<?php if ($user->getRoleId() == 1 || $user->getRoleId() == 2): ?>
+							<select name="regionName">
+								<option disabled selected><?php echo $regionstation['regionName'] ?></option>
+								<?php foreach ($regions as $region): ?>
+									<option value="<?php echo $region[regionId]; ?>"><?php echo $region[regionName]; ?></option>
+								<?php endforeach; ?>
+							</select>
+							<div class="table-cell"><input type="text" name="regionName" value="<?php echo $regionstation['regionName'] ?>"></div>
+						<?php else: ?>
+							<div class="table-cell"><p><?php echo $regionstation['regionName'] ?></p></div>
+						<?php endif; ?>
+							<div class="table-cell"><input type="text" name="regionName" value="<?php echo $regionstation['regionName'] ?>"></div>
+							<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></div>
+							<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></div>
+							<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>
+
+					</div>
 					<?php endforeach; ?>
-				</tbody>
 
 			</table>
 		</form>
@@ -49,6 +58,19 @@ $regionstations = $_SESSION['regionstations'];
 		<button id="add-table-row" class="btn waves-effect waves-light left" type="button" name="action">Add station
 	  		<i class="material-icons right">add</i>
 		</button>
+
+		<script type="text/javascript">
+		$('#add-table-row').click(function() {
+			$('#regional-stations-list tbody').append('<tr>\
+				<td><input type="text" name="regionName" value=""></td>\
+				<td><input type="text" name="stationId" value=""></td>\
+				<td><input type="text" name="stationName" value=""></td>\
+				<td><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></td>\
+				</tr>\
+				');
+		});
+
+		</script>
 	</div>
 
 

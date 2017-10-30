@@ -73,15 +73,7 @@ $( document ).ready(function() {
 
 
 
-		$('#add-table-row').click(function() {
-			$('#regional-stations-list tbody').append('<tr>\
-				<td><input type="text" name="regionName" value=""></td>\
-				<td><input type="text" name="stationId" value=""></td>\
-				<td><input type="text" name="stationName" value=""></td>\
-				<td><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></td>\
-			    </tr>\
-				');
-		});
+
 
 
 
