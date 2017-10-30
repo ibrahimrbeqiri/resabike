@@ -74,8 +74,8 @@ $regionstations = $_SESSION['regionstations'];
 					<?php endforeach; ?>\
 				</select>\
 				</div>\
-				<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></div>\
-				<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></div>\
+				<div class="table-cell"><input type="text" name="stationId" value=""></div>\
+				<div class="table-cell"><input type="text" name="stationName" value=""></div>\
 				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
 				</div>');
 			});
@@ -87,8 +87,8 @@ $regionstations = $_SESSION['regionstations'];
 			$('#add-table-row').click(function() {
 				$('#div-table').append('<div class="table-row">\
 				<div class="table-cell"><div class="table-cell"><p><?php echo $regionstation['regionName'] ?><input type="text" hidden name="regionName" value="<?php echo $regionstation['stationId'] ?>"></p></div></div>\
-				<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></div>\
-				<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></div>\
+				<div class="table-cell"><input type="text" name="stationId" value=""></div>\
+				<div class="table-cell"><input type="text" name="stationName" value=""></div>\
 				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
 				</div>');
 			});
