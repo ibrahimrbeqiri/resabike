@@ -67,6 +67,7 @@ class RegionStations
     
     public static function deleteRegionStation($regionId, $stationId)
     {
+  
         $query = "DELETE FROM regionstations WHERE regionIdRS=? AND stationIdRS=?";
         
         $attributes = array($regionId, $stationId);

@@ -6,7 +6,6 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 $regionstations = $_SESSION['regionstations'];
-
 ?>
 
 <div class="container">

@@ -182,6 +182,19 @@ class Reservation
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
     
+    public static function modifyReservation($firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, $fromstation, $tostation,
+        $departure, $arrival, $remarks, $id)
+    {
+        $query = "UPDATE reservation SET firstname=?, lastname=?, phone=?, email=?, bikenumber=?, reservationdate=?, fromstation=?, tostation=?,
+                                        departure=?, arrival=?, remarks=?
+                                     WHERE id=?";
+        
+        $attributes = array($firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, $fromstation, $tostation,
+            $departure, $arrival, $remarks, $id);
+        
+        return  MySQLConnection::getInstance()->execute($query, $attributes);
+    }
+    
     public static function getAllReservations()
     {
         $query = "SELECT * FROM reservation ORDER BY reservationdate DESC, departure DESC, fromstation ASC";

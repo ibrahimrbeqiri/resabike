@@ -143,7 +143,7 @@ class User{
 	    return $roles;
 	}
 	
-	public static function getUserregions($userRegionId)
+	public static function getUserRegions($userRegionId)
 	{
 	    $query = "SELECT * FROM user
                   LEFT JOIN region ON user.userRegionId = region.id

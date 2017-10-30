@@ -45,18 +45,28 @@ class Region
         $regions = $result['result'];
         return $regions;
     }
-    public static function addRegion()
+    public function addRegion()
     {
-        $query = "INSERT INTO region(regionName) VALUES(?);";
+        $query = "INSERT INTO region (regionName) VALUES(?);";
         $attributes = array($this->regionName);
         
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
     public static function deleteRegion($regionId)
     {
-        $query = "DELETE FROM reservation WHERE regionId=?";
+    
+        $query = "DELETE FROM region WHERE regionId=?";
         
-        $attributes = array($id);
+        $attributes = array($regionId);
+        
+        return  MySQLConnection::getInstance()->execute($query, $attributes);
+    }
+    public static function modifyRegion($regionName, $regionId)
+    {
+        
+        $query = "UPDATE region SET regionName=? WHERE regionId=?";
+    
+        $attributes = array($regionName, $regionId);
         
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
