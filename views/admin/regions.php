@@ -48,6 +48,19 @@ $regions = $_SESSION['regions'];
 		<button id="add-table-row-region" class="btn waves-effect waves-light left" type="button" name="action">Add region
 	  		<i class="material-icons right">add</i>
 		</button>
+		<script type="text/javascript">
+		$('#add-table-row-region').click(function() {
+			$('#div-table').append('<form action="<?php echo URL_DIR.'admin/editRegions';?>" method="post">\
+				<div class="table-row">\
+				<div class="table-cell"><button class="btn-floating" type="submit" name="modify"><i class="material-icons">save</i></button></div>\
+				<div class="table-cell"><input type="text" name="regionId" value=""></div>\
+				<div class="table-cell"><input type="text" name="regionName" value=""></div>\
+				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
+				</div>\
+				</form>\
+				');
+		});
+		</script>
 	</div>
 
 

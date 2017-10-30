@@ -83,15 +83,7 @@ $( document ).ready(function() {
 				');
 		});
 
-		$('#add-table-row-region').click(function() {
-			$('#div-table').append('<div class="table-row">\
-				<div class="table-cell"><button class="btn-floating" type="submit" name="modify"><i class="material-icons">save</i></button></div>\
-				<div class="table-cell"><input type="text" name="regionId" value=""></div>\
-				<div class="table-cell"><input type="text" name="regionName" value=""></div>\
-				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
-			    </div>\
-				');
-		});
+
 
 		$(document).on('click', '#regional-stations-list .delete-row', function() {
 			if(confirm("Are you sure you want to delete this station?")){
