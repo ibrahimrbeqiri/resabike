@@ -25,7 +25,7 @@ $regions = $_SESSION['regions'];
 				<th>Region ID</th>
 				<th>Region Name</th>
 			</thead>
-			<div class="table" id="regions-list">
+			<div class="table" id="div-table">
 
 
 					<?php foreach ($regions as $region): ?>
