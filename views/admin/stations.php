@@ -42,11 +42,11 @@ $regionstations = $_SESSION['regionstations'];
 									<option value="<?php echo $region[regionId]; ?>"><?php echo $region[regionName]; ?></option>
 								<?php endforeach; ?>
 							</select>
-						</div>	
+						</div>
 						<?php else: ?>
 							<div class="table-cell"><p><?php echo $regionstation['regionName'] ?></p></div>
 						<?php endif; ?>
-	
+
 							<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></div>
 							<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></div>
 							<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>
@@ -66,12 +66,14 @@ $regionstations = $_SESSION['regionstations'];
 			<script type="text/javascript">
 			$('#add-table-row').click(function() {
 				$('#regional-stations-list tbody').append('<div class="table-row">\
+				<div class="table-cell">\
 				<select name="regionName">\
 					<option disabled selected><?php echo $regionstation['regionName'] ?></option>\
 					<?php foreach ($regions as $region): ?>\
 						<option value="<?php echo $region[regionId]; ?>"><?php echo $region[regionName]; ?></option>\
 					<?php endforeach; ?>\
 				</select>\
+				</div>\
 				<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></div>\
 				<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></div>\
 				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
@@ -84,7 +86,7 @@ $regionstations = $_SESSION['regionstations'];
 			<script type="text/javascript">
 			$('#add-table-row').click(function() {
 				$('#regional-stations-list tbody').append('<div class="table-row">\
-				<div class="table-cell"><div class="table-cell"><p><?php echo $regionstation['regionName'] ?></p></div></div>\
+				<div class="table-cell"><div class="table-cell"><p><?php echo $regionstation['regionName'] ?><input type="text" hidden name="regionName" value="<?php echo $regionstation['stationId'] ?>"></p></div></div>\
 				<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></div>\
 				<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></div>\
 				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
