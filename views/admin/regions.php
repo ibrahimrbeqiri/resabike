@@ -13,7 +13,7 @@ $regions = $_SESSION['regions'];
 	<div class="col l12 center card admin-menu">
 		<h4>Regions:</h4>
 		<p class="<?php echo URL_DIR.'admin/regions/save';?>">Disclamer: Make sure the zone IDs are correct!</p>
-		<form action="index.html" method="post">
+		<form action="<?php echo URL_DIR.'admin/editRegions';?>" method="post">
 
 			<a href="<?php echo URL_DIR.'admin/menu';?>">
 				<button class="btn waves-effect waves-light right" type="button">Cancel
@@ -21,7 +21,7 @@ $regions = $_SESSION['regions'];
 				</button>
 			</a>
 
-			<table id="regional-stations-list">
+			<table id="regions-list">
 				<thead>
 					<th></th>
 					<th>Region ID</th>
@@ -30,10 +30,10 @@ $regions = $_SESSION['regions'];
 				<tbody>
 					<?php foreach ($regions as $region): ?>
 					<tr>
-							<td><a class="btn-floating" type="submit"><i class="material-icons">save</i></a></td>
+							<td><button class="btn-floating" type="submit" name="modify"><i class="material-icons">save</i></button></td>
 							<td><input type="text" name="id" value="<?php echo $region['regionId'] ?>"></td>
 							<td><input type="text" name="name" value="<?php echo $region['regionName'] ?>"></td>
-							<td><a class="btn-floating delete-row"><i class="material-icons">delete</i></a></td>
+							<td><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></td>
 							
 					</tr>
 					<?php endforeach; ?>

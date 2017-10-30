@@ -6,7 +6,7 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 
-var_dump($user);
+var_dump($msg);
 ?>
 
 
