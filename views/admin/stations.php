@@ -4,6 +4,7 @@ include_once ROOT_DIR.'views/header.inc';
 //Collect data from controller
 $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
+
 $regions = $_SESSION['regions'];
 
 $regionstations = $_SESSION['regionstations'];
@@ -34,17 +35,18 @@ $regionstations = $_SESSION['regionstations'];
 
 					<div class="table-row">
 						<?php if ($user->getRoleId() == 1 || $user->getRoleId() == 2): ?>
+						<div class="table-cell">
 							<select name="regionName">
 								<option disabled selected><?php echo $regionstation['regionName'] ?></option>
 								<?php foreach ($regions as $region): ?>
 									<option value="<?php echo $region[regionId]; ?>"><?php echo $region[regionName]; ?></option>
 								<?php endforeach; ?>
 							</select>
-							<div class="table-cell"><input type="text" name="regionName" value="<?php echo $regionstation['regionName'] ?>"></div>
+						</div>	
 						<?php else: ?>
 							<div class="table-cell"><p><?php echo $regionstation['regionName'] ?></p></div>
 						<?php endif; ?>
-							<div class="table-cell"><input type="text" name="regionName" value="<?php echo $regionstation['regionName'] ?>"></div>
+	
 							<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></div>
 							<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></div>
 							<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>
