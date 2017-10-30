@@ -13,7 +13,7 @@ $regionstations = $_SESSION['regionstations'];
 	<div class="col l12 center card admin-menu">
 		<h4>Stations:</h4>
 		<p class="<?php echo URL_DIR.'admin/reservations/save';?>">Disclamer: Make sure the station IDs are correct!</p>
-		<form action="index.html" method="post">
+		<form action="<?php echo URL_DIR.'admin/editStations';?>" method="post">
 			<button class="btn waves-effect waves-light left" type="submit">Save stations
 				<i class="material-icons right">save</i>
 			</button>
@@ -37,7 +37,7 @@ $regionstations = $_SESSION['regionstations'];
 							<td><input type="text" name="regionName" value="<?php echo $regionstation['regionName'] ?>"></td>
 							<td><input type="text" name="stationId" value="<?php echo $regionstation['stationId'] ?>"></td>
 							<td><input type="text" name="stationName" value="<?php echo $regionstation['stationName'] ?>"></td>
-							<td><a class="btn-floating delete-row"><i class="material-icons">delete</i></a></td>
+							<td><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></td>
 							
 					</tr>
 					<?php endforeach; ?>

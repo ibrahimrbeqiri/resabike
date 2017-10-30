@@ -74,7 +74,18 @@ class adminController extends Controller{
 		//Get message from connection process
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-
+    
+	function editStations()
+	{
+	    if(isset($_POST['modify']))
+	    {
+	        
+	    }
+	    else if(isset($_POST['delete']))
+	    {
+	        
+	    }
+	}
 	function register(){
 		//The page cannot be displayed if no user connected
 		if(!$this->getActiveUser()){
@@ -153,7 +164,6 @@ class adminController extends Controller{
 
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-
 	function reservations()
 	{
 	    if(!$this->getActiveUser()){
@@ -161,7 +171,7 @@ class adminController extends Controller{
 	        exit;
 	    }
 		$user = $this->getActiveUser();
-		if ($user->getRoleId() != '1' || $user->getRoleId() != '2' ) {
+		if ($user->getRoleId() !== 1 || $user->getRoleId() !== 2 ) {
 			$_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
 			$this->redirect('admin', 'menu');
 			exit;
