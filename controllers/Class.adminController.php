@@ -88,6 +88,30 @@ class adminController extends Controller{
 	    }
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
+	function users()
+	{
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    $user = $this->getActiveUser();
+	    if ($user->getRoleId() != 1) {
+	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+	        $this->redirect('admin', 'menu');
+	        exit;
+	    }
+	    
+	    $allusers = User::getAllUsers();
+	    $_SESSION['allusers'] = $allusers;
+	    
+	    
+	}
+	
+	function editUsers()
+	{
+	    
+	}
+	
 	function register(){
 		//The page cannot be displayed if no user connected
 	    if(!$this->getActiveUser()){

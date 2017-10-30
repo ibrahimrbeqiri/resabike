@@ -12,7 +12,7 @@ $reservations = $_SESSION['reservations'];
 <div class="container">
 	<div class="col l12 center card admin-menu">
 		<h4>Reservations:</h4>
-		<p class="<?php echo URL_DIR.'admin/reservations/save';?>">Disclamer: Make sure the reservation IDs are correct!</p>
+		<p>Disclamer: Make sure the reservation IDs are correct!</p>
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
 		<?php endif; ?>

@@ -179,4 +179,18 @@ class User{
 	    }
 	}
 	
+	public static function getAllUsers()
+	{
+	    $query = "SELECT * FROM user";
+	    
+	    $result = MySQLConnection::getInstance()->fetch($query);
+	    
+	    if($result['status']=='error' || empty($result['result'])){
+	        return $result;
+	    }
+	    
+	    $allusers = $result['result'];
+	    return $allusers;
+	}
+	
 }
