@@ -86,6 +86,7 @@ class adminController extends Controller{
 	    {
 
 	    }
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 	function register(){
 		//The page cannot be displayed if no user connected
@@ -154,7 +155,7 @@ class adminController extends Controller{
 				unset($_SESSION['persistence']);
 
 				$_SESSION['msg'] = '<span class="success">Registration successful!</span>';
-				$this->redirect('admin', 'register');
+				$this->redirect('admin', 'menu');
 
 			}
 		}
@@ -179,6 +180,18 @@ class adminController extends Controller{
 
 
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+	}
+	function editRegions()
+	{
+	    if(isset($_POST['modify']))
+	    {
+	        
+	    }
+	    else if(isset($_POST['delete']))
+	    {
+	    
+	    }
+	
 	}
 	function reservations()
 	{
@@ -224,6 +237,7 @@ class adminController extends Controller{
 
 	        }
 	    }
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 
 	function busdriverReservations()
