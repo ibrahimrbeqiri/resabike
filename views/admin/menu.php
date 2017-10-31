@@ -6,13 +6,12 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 
-var_dump($msg);
 ?>
 
 
 <div class="container">
 	<div class="col l12 center card admin-menu">
-		<h4>Welcome <?php echo ' '.$user->getName().' '.$user->getLastname();?></h4>
+		<h4>Welcome <?php echo ' '.$user->getName().' '.$user->getLastname();?> <a href="<?php echo URL_DIR.'admin/account';?>"><i class="material-icons">info</i></a></h4>
 		<?php if ($msg): ?>
 			<div class="col l12">
 				<?php echo $msg ?>
@@ -33,20 +32,20 @@ var_dump($msg);
     		</a>
     		<a href="<?php echo URL_DIR.'admin/stations';?>">
     			<button class="btn waves-effect waves-light">
-    				<i class="material-icons prefix">map</i>
+    				<i class="material-icons prefix">place</i>
     				<span>Modify stations</span>
     			</button>
     		</a>
     		<?php if($user->getuserRoleId() != 2) :?>
     		<a href="<?php echo URL_DIR.'admin/regions';?>">
     			<button class="btn waves-effect waves-light">
-    				<i class="material-icons prefix">place</i>
+    				<i class="material-icons prefix">map</i>
     				<span>Modify regions</span>
     			</button>
     		</a>
     		<a href="<?php echo URL_DIR.'admin/users';?>">
     			<button class="btn waves-effect waves-light">
-    				<i class="material-icons prefix">person</i>
+    				<i class="material-icons prefix">group</i>
     				<span>See all users</span>
     			</button>
     		</a>

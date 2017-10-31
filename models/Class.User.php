@@ -10,7 +10,7 @@ class User{
     private $phone;
     private $userRoleId;
     private $userRegionId;
-    
+
 	public function __construct($id=null, $name, $lastname, $username, $email, $password, $phone, $userRoleId, $userRegionId){
 		$this->setId($id);
 		$this->setName($name);
@@ -116,7 +116,7 @@ class User{
 		$query = "SELECT * FROM user WHERE username=? AND password=?";
 		$attributes = array($username, $pwd);
 		$result = MySQLConnection::getInstance()->execute($query, $attributes);
-		
+
 		if($result['status']=='error' || empty($result['result'])){
 			return false;
 		}
@@ -124,51 +124,51 @@ class User{
 		$user = $result['result'][0];
 		return new User($user['id'], $user['name'], $user['lastname'], $user['username'], $user['email'], $user['password'], $user['phone'], $user['userRoleId'], $user['userRegionId']);
 	}
-	
+
 	public static function getUserRoles($userRoleId)
 	{
 	    $query = "SELECT * FROM user
                   LEFT JOIN role ON user.userRoleId = role.roleId
                   WHERE user.userRoleId=?";
-	    
+
 	    $attributes = array($userRoleId);
-	    
+
 	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
-	    
+
 	    if($result['status']=='error' || empty($result['result'])){
 	        return $result;
 	    }
-	    
+
 	    $userRoles = $result['result'];
 	    return $userRoles;
 	}
-	
+
 	public static function getUserRegions($userRegionId)
 	{
 	    $query = "SELECT * FROM user
                   LEFT JOIN region ON user.userRegionId = region.regionId
                   WHERE user.userRegionId=?";
-	    
+
 	    $attributes = array($userRegionId);
-	    
+
 	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
-	    
+
 	    if($result['status']=='error' || empty($result['result'])){
 	        return $result;
 	    }
-	    
+
 	    $regions = $result['result'];
 	    return $regions;
 	}
-	
+
 	public static function checkUsername($username)
 	{
 	    $query = "SELECT * FROM user WHERE username=?";
-	    
+
 	    $attributes = array($username);
-	    
+
 	    $result = MySQLConnection::getInstance()->getRows($query, $attributes);
-	    
+
 	    if($result >= 1)
 	    {
 	        return true;
@@ -178,70 +178,89 @@ class User{
 	       return false;
 	    }
 	}
-	
+
 	public static function getAllUsers()
 	{
 	    $query = "SELECT * FROM user";
-	    
+
 	    $result = MySQLConnection::getInstance()->fetch($query);
-	    
+
 	    if($result['status']=='error' || empty($result['result'])){
 	        return $result;
 	    }
-	    
+
 	    $allusers = $result['result'];
 	    return $allusers;
 	}
-	
+
 	public static function getAllUserData()
 	{
 	    $query = "SELECT * FROM user
                   LEFT JOIN role ON user.userRoleId = role.roleId
                   LEFT JOIN region ON user.userRegionId = region.regionId";
-	    
-	    
+
+
 	    $result = MySQLConnection::getInstance()->fetch($query);
-	    
+
 	    if($result['status']=='error' || empty($result['result'])){
 	        return $result;
 	    }
-	    
+
 	    $userdata = $result['result'];
 	    return $userdata;
 	}
-	
+
+	public static function getAccountInfo($userId)
+	{
+		$query = "SELECT * FROM user
+				  LEFT JOIN role ON user.userRoleId = role.roleId
+				  LEFT JOIN region ON user.userRegionId = region.regionId
+				  WHERE user.id=?
+				  ";
+
+		$attributes = array($userId);
+		$result = MySQLConnection::getInstance()->execute($query, $attributes);
+
+		if($result['status']=='error' || empty($result['result'])){
+			return $result;
+		}
+
+		$userdata = $result['result'];
+		return $userdata;
+	}
+
 	public static function deleteUser($id)
 	{
 	    $query = "DELETE FROM user WHERE id=?";
-	    
+
 	    $attributes = array($id);
-	       
+
 	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
-	    
+
 	    if($result['status']=='error' || empty($result['result'])){
 	        return $result;
 	    }
-	    
+
 	    $userdeletion = $result['result'];
 	    return $userdeletion;
 	}
-	
+
 	public static function modifyUser($name, $lastname, $username, $email, $password, $phone, $userRoleId, $userRegionId, $id)
 	{
 	    $query = "UPDATE user SET name=?, lastname=?, username=?, email=?, password=?, phone=?, userRoleId=?, userRegionId=?
                                      WHERE id=?";
-	    
+
 	    $attributes = array($name, $lastname, $username, $email, $password, $phone, $userRoleId, $userRegionId, $id);
-	    
+
 	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
 	    if($result['status']=='error' || empty($result['result'])){
 	        return $result;
 	    }
-	    
+
 	    $modifyuser = $result['result'];
 	    return $modifyuser;
-	
+
 	}
-	
-	
+
+
 }
