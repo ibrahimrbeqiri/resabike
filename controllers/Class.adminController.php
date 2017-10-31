@@ -13,7 +13,20 @@ class adminController extends Controller{
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 
 	}
-	
+
+	function account(){
+		//The page cannot be displayed if no user connected
+		if(!$this->getActiveUser()){
+			$this->redirect('welcome', 'welcome');
+			exit;
+		}
+		$userId = $this->getActiveUser()->getId();
+		$accountinfo = User::getAccountInfo($userId);
+		$_SESSION['accountInfo'] = $accountinfo;
+
+		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+	}
+
 	function users()
 	{
 	    if(!$this->getActiveUser()){
@@ -26,18 +39,18 @@ class adminController extends Controller{
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
-	    
+
 	    $allusers = User::getAllUserData();
 	    $_SESSION['allusers'] = $allusers;
-	    
+
 	    $user_roles = Role::getRoles();
 	    $user_regions = Region::getAllRegions();
 	    $_SESSION["user_roles"] = $user_roles;
 	    $_SESSION["user_regions"] = $user_regions;
-	    
+
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-	
+
 	function editUsers()
 	{
 	    if(!$this->getActiveUser()){
@@ -50,8 +63,8 @@ class adminController extends Controller{
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
-	    
-	    
+
+
 	    $id = $_POST['id'];
 	    $name = $_POST['name'];
 	    $lastname = $_POST['lastname'];
@@ -62,9 +75,9 @@ class adminController extends Controller{
 	    $userRoleId = $_POST['userRoleId'];
 	    $userRegionId = $_POST['userRegionId'];
 	    $originalusername = $_POST['originalusername'];
-	    
+
 	    $array = array($name, $lastname, $username, $email, $password, $phone, $userRoleId, $userRegionId, $id);
-	    
+
 	    if(isset($_POST['modify']))
 	    {
 	        if(empty($name) || empty($lastname) || empty($username) || empty($email) || empty($password) || empty($phone) ||
@@ -74,7 +87,7 @@ class adminController extends Controller{
 	            $this->redirect('admin', 'users');
 	            exit;
 	        }
-            
+
 	        if($originalusername != $username)
 	        {
 	            if(User::checkUsername($username) == true)
@@ -84,9 +97,9 @@ class adminController extends Controller{
 	                exit;
 	            }
 	        }
-	        
+
 	        $result = User::modifyUser($name, $lastname, $username, $email, $password, $phone, $userRoleId, $userRegionId, $id);
-	        
+
 	        if(!$result)
 	        {
 	            $_SESSION['msg'] = '<span class="error">User could not be modified!</span>';
@@ -96,14 +109,14 @@ class adminController extends Controller{
 	        {
 	            $_SESSION['msg'] = '<span class="success">'.'You have successfully modified the user!'.'</span>';
 	            $this->redirect('admin', 'users');
-	            
+
 	        }
-	        
+
 	    }
 	    else if(isset($_POST['delete']))
 	    {
 	        $result = User::deleteUser($id);
-	        
+
 	        if(!$result){
 	            $_SESSION['msg'] = '<span class="error">Failed to delete user!</span>';
 	            $this->redirect('admin', 'users');
@@ -114,11 +127,11 @@ class adminController extends Controller{
 	            $this->redirect('admin', 'users');
 	            exit;
 	        }
-	        
+
 	    }
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-	
+
 	function register(){
 		//The page cannot be displayed if no user connected
 	    if(!$this->getActiveUser()){
@@ -131,7 +144,7 @@ class adminController extends Controller{
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
-	    
+
 
 		$user_roles = Role::getRoles();
 		$user_regions = Region::getAllRegions();
@@ -222,7 +235,7 @@ class adminController extends Controller{
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
-	    
+
 
 	    $regions = Region::getAllRegions();
 	    $_SESSION['regions'] = $regions;
@@ -242,8 +255,8 @@ class adminController extends Controller{
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
-	    
-	    
+
+
 	    $regionId = $_POST['regionId'];
 	    $regionName = $_POST['regionName'];
 
@@ -330,29 +343,29 @@ class adminController extends Controller{
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
-	    
+
 	    $regions = Region::getAllRegions();
 	    $_SESSION["regions"] = $regions;
 	    //Use something like this once you have the region for user
-	    
+
 	    $user = $_SESSION['user'];
-	    
+
 	    $regionstations = RegionStations::getAllRegionStations($user->getuserRegionId());
 	    $_SESSION['regionstations'] = $regionstations;
-	    
+
 	    //Get message from connection process
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-	
+
 	function editStations()
 	{
 	    if(isset($_POST['modify']))
 	    {
-	        
+
 	    }
 	    else if(isset($_POST['delete']))
 	    {
-	        
+
 	    }
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
@@ -389,7 +402,7 @@ class adminController extends Controller{
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
-	    
+
 	    $id = $_POST['id'];
 	    $firstname = $_POST['firstname'];
 	    $lastname = $_POST['lastname'];
