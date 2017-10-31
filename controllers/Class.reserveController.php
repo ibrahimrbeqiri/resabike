@@ -22,6 +22,7 @@ class reserveController extends Controller{
 			$this->redirect('reserve', 'reserve');
 
 		}
+		
 		$reservationdate = $date;
 		$sum = Reservation::getAllBikes($reservationdate);
 		$_SESSION['sum'] = $sum;

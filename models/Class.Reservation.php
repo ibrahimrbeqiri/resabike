@@ -209,6 +209,23 @@ class Reservation
         return $reservations;
     }
     
+    public static function getAllBusDriverReservations($reservationdate)
+    {
+        $query = "SELECT * FROM reservation WHERE reservationdate=?
+                    ORDER BY departure DESC, fromstation ASC";
+        
+        $attributes = array($reservationdate);
+        
+        $result = MySQLConnection::getInstance()->execute($query, $attributes);
+        
+        if($result['status']=='error' || empty($result['result'])){
+            return $result;
+        }
+        
+        $reservations = $result['result'];
+        return $reservations;
+    }
+    
     public static function getAllBikes($reservationdate)
     {
         $query = "SELECT fromstation, tostation, departure, arrival, SUM(bikenumber) AS totalbikes FROM reservation WHERE reservationdate=?
@@ -216,7 +233,14 @@ class Reservation
         
         $attributes = array($reservationdate);
         
-        return  MySQLConnection::getInstance()->execute($query, $attributes);
+        $result =  MySQLConnection::getInstance()->execute($query, $attributes);
+        
+        if($result['status']=='error' || empty($result['result'])){
+            return $result;
+        }
+        
+        $reservations = $result['result'];
+        return $reservations;
     }
 
 }

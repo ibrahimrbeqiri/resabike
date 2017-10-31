@@ -46,6 +46,15 @@ nav .brand-logo img{
 .connection-info .connection-stop div {
 	display: table-cell;
 }
+.reservation-info{
+	display: table;
+}
+.reservation-info .reservation-show{
+	display: table-cell;
+}
+.reservation-info .reservation-show div {
+	display table;
+}
 .error-messages{
 	text-align: center;
 	background-color: rgba(255, 0, 0, 0.2);

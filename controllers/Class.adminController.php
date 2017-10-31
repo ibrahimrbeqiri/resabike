@@ -457,15 +457,18 @@ class adminController extends Controller{
 	        $this->redirect('welcome', 'welcome');
 	        exit;
 	    }
-
-	    $reservations = Reservation::getAllReservations();
-
-	    $_SESSION['reservations'] = $reservations;
-
-
+        
+	    $reservationdate = $_POST['reservationdate'];
+	    
+	    $reservations = Reservation::getAllBusDriverReservations($reservationdate);
+	    $_SESSION['busdriverReservations'] = $reservations;
+        
+	    $sums = Reservation::getAllBikes($reservationdate);
+	    $_SESSION['sums'] = $sums;
+	    
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 
 
 }
- ?>
+?>
