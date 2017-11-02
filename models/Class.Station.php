@@ -42,6 +42,19 @@ class Station{
 	    $stations = $result['result'];
 	    return $stations;
 	}
+	public static function getAllStationsWhere($stationId)
+	{
+	    $query = "SELECT * FROM station WHERE stationId=?";
+	    $attributes = array($stationId);
+	    $result = MySQLConnection::getInstance()->execute($query, $attributes);
+	    
+	    if($result['status']=='error' || empty($result['result'])){
+	        return $result;
+	    }
+	    
+	    $stations = $result['result'];
+	    return $stations;
+	}
 }
 
 ?>

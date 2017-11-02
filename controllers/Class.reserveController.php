@@ -23,9 +23,6 @@ class reserveController extends Controller{
 
 		}
 		
-		$reservationdate = $date;
-		$sum = Reservation::getAllBikes($reservationdate);
-		$_SESSION['sum'] = $sum;
 		//saveing the search query into an object
 		$search_query = array('from' => $from, 'to'=> $to, 'date' => $date, 'time' => $time);
 

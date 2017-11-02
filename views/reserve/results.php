@@ -125,8 +125,8 @@ if ($search) {
 									<div class="col l6">
 										<form class="reservation-form" action="<?php echo URL_DIR.'reserve/confirm';?>" method="POST">
 										<input name="reservationdate" type="hidden" hidden value="<?php echo date("d.m.Y", strtotime($connection->departure));?>">
-										<input name="fromstation" type="hidden" hidden value="<?php echo $connection->from; ?>">
-										<input name="tostation" type="hidden" hidden value="<?php echo $connection->to; ?>">
+										<input name="fromstation" type="hidden" hidden value="<?php echo current($connection->legs)->stopid?>">
+										<input name="tostation" type="hidden" hidden value="<?php echo end($connection->legs)->stopid?>">
 										<input name="departure" type="hidden" hidden value="<?php echo date('H:i', strtotime($connection->departure));?>">
 										<input name="arrival" type="hidden" hidden value="<?php echo date('H:i', strtotime($connection->arrival));?>">
 
@@ -195,6 +195,7 @@ if ($search) {
 								</div>
 
 						</li>
+						
 						<?php endforeach;?>
 					</ul>
 				</div>

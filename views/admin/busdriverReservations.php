@@ -14,14 +14,16 @@ var_dump($sums);
 <div class="container">
 	<div class="col l12 center card admin-menu">
 		<h4>Reservations:</h4>
-
+		<?php if ($msg): ?>
+			<?php echo $msg ?>
+		<?php endif; ?>
   <form action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post">  
   		<select name="reservationdate">
  
 			<option selected value="<?php echo date('d.m.Y');?>">Today: <?php echo date('d.m.Y');?></option>
 
 		</select>
-		<button class="btn-floating" type="submit">
+		<button class="btn-floating" type="submit" name="save">
 			<i class="material-icons">save</i>
 		</button>
 		
@@ -33,17 +35,15 @@ var_dump($sums);
       			<div class="collapsible-header">
               		<div>Date: <?php echo $reservation['reservationdate'].'&emsp;';?></div>
                   	<div>From: <?php echo $reservation['fromstation'].'&emsp;';?></div>
-                  	<div>To: <?php echo $reservation['tostation'].'&emsp;';?></div>
                   	<div>Departure: <?php echo $reservation['departure'].'&emsp;';?></div>
-                  	<div>Arrival: <?php echo $reservation['arrival'].'&emsp;';?></div>
-                  	
-                  	<?php $bikes = 0;?>
-                  	<?php foreach($sums as $sum):?>
-                  		<?php $bikes = $bikes + $sum['totalbikes'];?>
-                  	<?php endforeach;?>
-                  	<div>Total Bikes: <?php echo $bikes;?></div>
       			</div>
-								
+							<?php foreach($stations as $station):?>
+									<?php if($station['stationId'] == $reservation['fromstation']):?>
+									<?php endif;?>
+									<?php if($station['stationId'] == $reservation['tostation']):?>
+
+									<?php endif;?>
+								<?php endforeach;?>	
       			<div class="collapsible-body">
       				<div>Firstname: <?php echo $reservation['firstname'].'&emsp;';?>
       					 Lastname: <?php echo $reservation['lastname'].'&emsp;';?>
