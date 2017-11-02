@@ -385,8 +385,8 @@ class adminController extends Controller{
 
 	    $reservations = Reservation::getAllReservations();
 	    $_SESSION['reservations'] = $reservations;
-
-
+	    
+        
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 
@@ -416,10 +416,9 @@ class adminController extends Controller{
 	    $arrival = $_POST['arrival'];
 	    $remarks = $_POST['remarks'];
 
-
+       
 	    if(isset($_POST['modify']))
 	    {
-
 	        if(empty($firstname) || empty($lastname) || empty($phone) || empty($email) || empty($bikenumber) || empty($reservationdate) ||
 	            empty($fromstation) || empty($tostation) || empty($departure) || empty($arrival) || empty($id))
 	        {
@@ -471,14 +470,29 @@ class adminController extends Controller{
 	        exit;
 	    }
         
-	    $reservationdate = $_POST['reservationdate'];
 	    
-	    $reservations = Reservation::getAllBusDriverReservations($reservationdate);
-	    $_SESSION['busdriverReservations'] = $reservations;
-        
-	    $sums = Reservation::getAllBikes($reservationdate);
-	    $_SESSION['sums'] = $sums;
+	        $reservationdate = $_POST['reservationdate'];
 	    
+	        $reservations = Reservation::getAllBusDriverReservations($reservationdate);
+	        $_SESSION['busdriverReservations'] = $reservations;
+	        
+	        $stations = Station::getAllStations();
+	        $_SESSION['stations'] = $stations;
+	        
+    	    if(empty($reservations))
+    	    {
+    	        $_SESSION['msg'] = '<span class="error">There are no reservations made for this day!</span>';
+    	        $this->redirect('admin', 'busdriverReservations');
+    	        exit;
+    	    }
+    	    
+    	    if($result['status']=='error')
+    	    {
+    	        $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+    	        echo $_SESSION['msg'];
+    	    }
+    	    $sums = Reservation::getAllBikes($reservationdate);
+    	    $_SESSION['sums'] = $sums;
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 

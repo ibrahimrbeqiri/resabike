@@ -197,7 +197,12 @@ class Reservation
     
     public static function getAllReservations()
     {
-        $query = "SELECT * FROM reservation ORDER BY reservationdate DESC, departure DESC, fromstation ASC";
+        $query = "SELECT * FROM reservation 
+                   JOIN station AS fromplace
+                    ON reservation.fromstation = fromplace.stationId
+                   JOIN station AS toplace
+                    ON reservation.tostation = toplace.stationId";
+                 
         
         $result = MySQLConnection::getInstance()->fetch($query);
         
@@ -208,6 +213,7 @@ class Reservation
         $reservations = $result['result'];
         return $reservations;
     }
+
     
     public static function getAllBusDriverReservations($reservationdate)
     {
@@ -229,7 +235,7 @@ class Reservation
     public static function getAllBikes($reservationdate)
     {
         $query = "SELECT fromstation, tostation, departure, arrival, SUM(bikenumber) AS totalbikes FROM reservation WHERE reservationdate=?
-                  GROUP BY fromstation, tostation, departure";
+                  GROUP BY fromstation, tostation, departure, arrival";
         
         $attributes = array($reservationdate);
         
