@@ -3,8 +3,41 @@ include_once ROOT_DIR.'views/header.inc';
 
 //Collect data from controller
 $msg = $this->vars['msg'];
-
+$stations = $_SESSION['StationsByRegion'];
+var_dump($stations[1]);
 ?>
+<?php $i = 0; ?>
+<?php $len = count($stations); ?>
+<?php $previousValue = null; ?>
+<?php foreach ($stations as $region): ?>
+
+	<?php
+	if($region['regionId'] == $previousValue) {
+	echo '"'.$region['stationName'].'": null,';
+
+	if ($i == $len - 1) {
+		echo "};";
+		echo "</script>";
+	}
+
+	}else {
+		//if not first row
+		if ($i != 0) {
+        	echo "}";
+			echo "</script>";
+    	}
+		echo "<script type='javascript'>";
+		echo " /* Stations of region $region[regionName] */ ";
+		echo "data: {";
+		echo '"'.$region['stationName'].'": null,';
+
+
+	}
+	$previousValue = $region['regionId'];
+	$i++;
+	 ?>
+<?php endforeach; ?>
+
 
 <div class="container full-screen">
 	<div class="col m12">

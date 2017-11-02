@@ -2,9 +2,12 @@
 class reserveController extends Controller{
 
 	function reserve(){
-	    
-		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 
+
+
+		$stations = RegionStations::getStationsByRegion();
+		$_SESSION['StationsByRegion'] = $stations;
+		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 
 	function results(){
@@ -16,13 +19,13 @@ class reserveController extends Controller{
 		$time = $_GET['time'];
 
 		//validation
-		if (!$from || !$to || !$date || !$time) {
+		if (empty($from) || empty($to) || empty($date) || empty($time)) {
 
 			//pass the error message here somehow
 			$this->redirect('reserve', 'reserve');
 
 		}
-		
+
 		$reservationdate = $date;
 		$sum = Reservation::getAllBikes($reservationdate);
 		$_SESSION['sum'] = $sum;
@@ -49,7 +52,7 @@ class reserveController extends Controller{
 	    $reservationdate = $_POST['reservationdate'];
 	    $departure = $_POST['departure'];
 	    $arrival = $_POST['arrival'];
-        
+
 
 	    $reservationArray = array('firstname' => $firstname, 'lastname'=> $lastname, 'phone' => $phone, 'email' => $email,
 	        'bikenumber' => $bikenumber, 'remarks' => $remarks, 'fromstation' => $fromstation, 'tostation' => $tostation,
@@ -104,6 +107,6 @@ class reserveController extends Controller{
 	{
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
-	
+
 }
  ?>

@@ -1,7 +1,7 @@
 <?php
 require_once 'dal/MySQLConnection.php';
 class Station{
-    
+
 	private $stationId;
 	private $stationName;
 
@@ -13,7 +13,7 @@ class Station{
 	public function getstationId(){
 		return $this->stationId;
 	}
-	
+
 	public function getZone()
 	{
 	    $this->zone = $zone;
@@ -29,19 +29,20 @@ class Station{
 	public function setstationName($stationName){
 		$this->stationName = $stationName;
 	}
-	
+
 	public static function getAllStations()
 	{
 	    $query = "SELECT * FROM station";
 	    $result = MySQLConnection::getInstance()->fetch($query);
-	    
+
 	    if($result['status']=='error' || empty($result['result'])){
 	        return $result;
 	    }
-	    
+
 	    $stations = $result['result'];
 	    return $stations;
 	}
+
 }
 
 ?>
