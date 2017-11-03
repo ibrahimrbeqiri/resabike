@@ -19,7 +19,7 @@ $user = $_SESSION['user'];
 		<?php endif; ?>
 		<a href="<?php echo URL_DIR.'admin/busdriverReservations';?>">
 		<button class="btn waves-effect waves-light">
-			<i class="material-icons prefix">book</i>
+			<i class="material-icons prefix">directions_bus</i>
 			<span>See reservations</span>
 		</button>
 		</a>
