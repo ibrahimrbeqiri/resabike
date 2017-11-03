@@ -1,4 +1,11 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+
 class reserveController extends Controller{
 
 	function reserve(){
@@ -64,6 +71,8 @@ class reserveController extends Controller{
 	        'reservationdate' => $reservationdate, 'departure' => $departure, 'arrival' => $arrival);
 
 	    $_SESSION['reservationArray'] = $reservationArray;
+	    
+	    
 
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 
@@ -87,8 +96,23 @@ class reserveController extends Controller{
 	        $fromstation, $tostation, $departure, $arrival, $remarks, $creationDate);
 
 	    $result = $reservation->addReservation();
-
-
+        
+	    $stations = Station::getAllStations();
+	    $_SESSION['stations'] = $stations;
+	    
+	    foreach($stations as $station)
+	    {
+	        if($station['stationId'] == $fromstation)
+	        {
+	            $from = $station['stationName'];
+	        }
+	        if($station['stationId'] == $tostation)
+	        {
+	            $to = $station['stationName'];
+	        }
+	    }
+	   
+	    
 	    if($result['status']=='error')
 	    {
 	        $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
@@ -96,6 +120,47 @@ class reserveController extends Controller{
 	    }
 	    else
 	    {
+	        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+	        try {
+	            
+	            //Server settings
+	            $mail->isSMTP();                                      // Set mailer to use SMTP
+	            $mail->Host ='smtp.gmail.com';                     // Specify main and backup SMTP servers   
+	            $mail->Username = 'resabikech@gmail.com';                 // SMTP username
+	            $mail->Password = 'Resabike123';                           // SMTP password
+	            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+	            $mail->Port = 587;                                    // TCP port to connect to
+	            $mail->SMTPAuth = true;
+	            $mail->smtpConnect(
+	                array(
+	                    "ssl" => array(
+	                        "verify_peer" => false,
+	                        "verify_peer_name" => false,
+	                        "allow_self_signed" => true
+	                    )
+	                )
+	                );
+	            
+	            //Recipients
+	            $mail->setFrom('resabikech@gmail.com');
+	            $mail->addAddress($email);                             // Name is optional
+	            
+	            //Content
+	            $mail->isHTML(true);                                  // Set email format to HTML
+	            $mail->Subject = 'Your bike reservation with Resabike!';
+	            $mail->Body    = '<b>Confirmation!!!</b> <br>
+                                  Dear '.$firstname.' '.$lastname.'</br>'.
+                                  'You have reserved '.$bikenumber.' bike(s) on date: '.$reservationdate.'</br> From: '.$from.' leaving '.$departure. '</br> To: '.$to.' arriving '.$arrival.
+	                              '</br> </br> If you wish to cancel your reservation please click on the link below </br>';
+	            $mail->AltBody = 'Dear '.$firstname.' '.$lastname.'</br>'.
+                                  'You have reserved '.$bikenumber.' bike(s) on date: '.$reservationdate.' From: '.$from.' leaving '.$departure. ' To: '.$to.' arriving '.$arrival;
+	            
+	            $mail->send();
+	            
+	        } catch (Exception $e) {
+	            
+	        }
+	        
 	        echo "Success!";
 	        $this->redirect('reserve', 'success');
 
