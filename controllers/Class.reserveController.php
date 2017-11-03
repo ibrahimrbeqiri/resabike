@@ -39,6 +39,19 @@ class reserveController extends Controller{
 
 		}
 
+		$stationsExist = Reservation::checkStations($from, $to);
+
+		if ($stationsExist === false) {
+			$_SESSION['msg'] = '<span class="error">Stations not found!</span>';
+			$this->redirect('reserve', 'reserve');
+			exit;
+		}
+		if ($stationsExist === "one not found") {
+			$_SESSION['msg'] = '<span class="error">One of the stations was incorrect!</span>';
+			$this->redirect('reserve', 'reserve');
+			exit;
+		}
+
 		$sameRegion = Reservation::checkRegions($from, $to);
 
 		if ($sameRegion === false) {

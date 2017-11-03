@@ -166,14 +166,18 @@ class Reservation
 
 	public static function checkStations($from, $to)
 	{
-		$query = "SELECT * from station WHERE stationName";
+		$query = "SELECT DISTINCT * FROM station WHERE stationName IN (?,?);";
 		$attributes = array($from, $to);
 		$result = MySQLConnection::getInstance()->execute($query, $attributes);
 		if($result['status']=='error' ){
 			return $result;
 		}
-		elseif (empty($result['result'])) {
+		//if stations not found or if only one of the stations is found -> fail
+		elseif (empty($result['result']) ) {
 			return false;
+		}
+		elseif (count($result['result']) <= 1) {
+			return "one not found";
 		}
 
 		$stations = $result['result'];
