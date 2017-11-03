@@ -6,6 +6,13 @@ class reserveController extends Controller{
 		$stations = RegionStations::getStationsByRegion();
 		$_SESSION['StationsByRegion'] = $stations;
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+
+		if (!empty($_GET)) {
+			$from = $_GET['from'];
+			$to = $_GET['to'];
+
+			$sum = Reservation::checkRegions($from, $to);
+		}
 	}
 
 	function results(){

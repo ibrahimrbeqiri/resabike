@@ -15,8 +15,8 @@ class Reservation
     private $fromstation;
     private $tostation;
     private $creationDate;
-    
-    
+
+
     public function __construct($id=null, $firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, $fromstation, $tostation,
         $departure, $arrival, $remarks, $creationDate=null)
     {
@@ -35,7 +35,7 @@ class Reservation
         $this->setCreationDate($creationDate);
 
     }
-    
+
     public function getId()
     {
         return $this->id;
@@ -95,7 +95,7 @@ class Reservation
     {
         return $this->tostation;
     }
-    
+
     public function getCreationDate()
     {
         return $this->creationDate;
@@ -163,68 +163,74 @@ class Reservation
     {
         $this->creationDate = $creationDate;
     }
+
+	public function checkRegions()
+	{
+		
+	}
+
     public function addReservation()
     {
-        $query = "INSERT INTO reservation(firstname, lastname, phone, email, bikenumber, reservationdate, 
+        $query = "INSERT INTO reservation(firstname, lastname, phone, email, bikenumber, reservationdate,
         fromstation, tostation, departure, arrival, remarks) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-        $attributes = array($this->firstname, $this->lastname, $this->phone, $this->email, $this->bikenumber, 
+        $attributes = array($this->firstname, $this->lastname, $this->phone, $this->email, $this->bikenumber,
             $this->reservationdate, $this->fromstation, $this->tostation, $this->departure, $this->arrival, $this->remarks);
-        
+
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
-    
+
     public static function deleteReservation($id)
     {
         $query = "DELETE FROM reservation WHERE id=?";
-        
+
         $attributes = array($id);
-        
+
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
-    
+
     public static function modifyReservation($firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, $fromstation, $tostation,
         $departure, $arrival, $remarks, $id)
     {
         $query = "UPDATE reservation SET firstname=?, lastname=?, phone=?, email=?, bikenumber=?, reservationdate=?, fromstation=?, tostation=?,
                                         departure=?, arrival=?, remarks=?
                                      WHERE id=?";
-        
+
         $attributes = array($firstname, $lastname, $phone, $email, $bikenumber, $reservationdate, $fromstation, $tostation,
             $departure, $arrival, $remarks, $id);
-        
+
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
-    
+
     public static function getAllReservations()
     {
-        $query = "SELECT * FROM reservation 
+        $query = "SELECT * FROM reservation
                    JOIN station AS fromplace
                     ON reservation.fromstation = fromplace.stationId
                    JOIN station AS toplace
                     ON reservation.tostation = toplace.stationId
                    ORDER BY reservationdate DESC, departure DESC";
-                 
-        
+
+
         $result = MySQLConnection::getInstance()->fetch($query);
-        
+
         if($result['status']=='error' || empty($result['result'])){
             return $result;
         }
-        
+
         $reservations = $result['result'];
         return $reservations;
     }
 
-    
+
     public static function getAllBusDriverReservations($reservationdate)
     {
         $query = "SELECT * FROM reservation WHERE reservationdate=?
                     ORDER BY departure DESC, fromstation ASC";
-        
+
         $attributes = array($reservationdate);
-        
+
         $result = MySQLConnection::getInstance()->execute($query, $attributes);
-        
+
         if($result['status']=='error' || empty($result['result'])){
             return null;
         }
@@ -232,23 +238,22 @@ class Reservation
         $reservations = $result['result'];
         return $reservations;
     }
-    
+
     public static function getAllBikes($reservationdate)
     {
         $query = "SELECT fromstation, tostation, departure, arrival, SUM(bikenumber) AS totalbikes FROM reservation WHERE reservationdate=?
                   GROUP BY fromstation, tostation, departure, arrival";
-        
+
         $attributes = array($reservationdate);
-        
+
         $result =  MySQLConnection::getInstance()->execute($query, $attributes);
-        
+
         if($result['status']=='error' || empty($result['result'])){
             return $result;
         }
-        
+
         $reservations = $result['result'];
         return $reservations;
     }
 
 }
-
