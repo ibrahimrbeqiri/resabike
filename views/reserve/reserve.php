@@ -5,6 +5,8 @@ include_once ROOT_DIR.'views/header.inc';
 $msg = $this->vars['msg'];
 $stations = $_SESSION['StationsByRegion'];
 ?>
+
+
 <script id="stations" type="text/javascript">
 $( document ).ready(function() {
 	$('input.form-autocomplete').autocomplete({
