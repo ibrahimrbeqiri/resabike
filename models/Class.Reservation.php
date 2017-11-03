@@ -175,13 +175,10 @@ class Reservation
         fromstation, tostation, departure, arrival, remarks) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $attributes = array($this->firstname, $this->lastname, $this->phone, $this->email, $this->bikenumber,
             $this->reservationdate, $this->fromstation, $this->tostation, $this->departure, $this->arrival, $this->remarks);
-<<<<<<< HEAD
+
         
         return MySQLConnection::getInstance()->insertReservation($query, $attributes);
-=======
 
-        return  MySQLConnection::getInstance()->execute($query, $attributes);
->>>>>>> 1e09a0f65a78331a3ecb0ad47a41c52847247371
     }
 
     public static function deleteReservation($id)
@@ -230,14 +227,10 @@ class Reservation
     public static function getAllBusDriverReservations($reservationdate)
     {
         $query = "SELECT * FROM reservation WHERE reservationdate=?
-<<<<<<< HEAD
                   ORDER BY reservationdate DESC, departure ASC
-                  GROUP BY fromstation, departure";
-        
-=======
-                    ORDER BY departure DESC, fromstation ASC";
+                  GROUP BY fromstation, departure;
+                  ORDER BY departure DESC, fromstation ASC";
 
->>>>>>> 1e09a0f65a78331a3ecb0ad47a41c52847247371
         $attributes = array($reservationdate);
 
         $result = MySQLConnection::getInstance()->execute($query, $attributes);
