@@ -1,4 +1,4 @@
-<?php
+<?php 
 class adminController extends Controller{
 
 
@@ -471,28 +471,31 @@ class adminController extends Controller{
 	    }
         
 	    
-	        $reservationdate = $_POST['reservationdate'];
+	    $reservationdate = $_POST['reservationdate'];
 	    
-	        $reservations = Reservation::getAllBusDriverReservations($reservationdate);
-	        $_SESSION['busdriverReservations'] = $reservations;
+	    $reservations = Reservation::getAllBusDriverReservations($reservationdate);
+	    $_SESSION['busdriverReservations'] = $reservations;
 	        
-	        $stations = Station::getAllStations();
-	        $_SESSION['stations'] = $stations;
+	    $stations = Station::getAllStations();
+	    $_SESSION['stations'] = $stations;
 	        
-    	    if(empty($reservations))
-    	    {
-    	        $_SESSION['msg'] = '<span class="error">There are no reservations made for this day!</span>';
-    	        $this->redirect('admin', 'busdriverReservations');
-    	        exit;
-    	    }
+    	if(!$reservations)
+    	{
+            $_SESSION['msg'] = '<span class="error">There are no reservations made for this day!</span>';
+    	    $this->redirect('admin', 'busdriverReservations');
+    	    exit;
+    	}
     	    
-    	    if($result['status']=='error')
-    	    {
-    	        $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
-    	        echo $_SESSION['msg'];
-    	    }
-    	    $sums = Reservation::getAllBikes($reservationdate);
-    	    $_SESSION['sums'] = $sums;
+    	else if($result['status']=='error')
+    	{
+    	     $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+    	     echo $_SESSION['msg'];
+    	}
+    	    
+    	$sums = Reservation::getAllBikes($reservationdate);
+    	$_SESSION['sums'] = $sums;
+    	    
+    	    
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 

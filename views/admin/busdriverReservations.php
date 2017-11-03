@@ -17,8 +17,8 @@ var_dump($sums);
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
 		<?php endif; ?>
-  <form action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post">  
-  		<select name="reservationdate">
+  <form id="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post">  
+  		<select class="dateSelection" name="reservationdate">
  
 			<option selected value="<?php echo date('d.m.Y');?>">Today: <?php echo date('d.m.Y');?></option>
 

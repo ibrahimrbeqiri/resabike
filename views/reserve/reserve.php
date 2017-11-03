@@ -9,7 +9,7 @@ var_dump($stations[1]);
 <?php $i = 0; ?>
 <?php $len = count($stations); ?>
 <?php $previousValue = null; ?>
-<?php foreach ($stations as $region): ?>
+<!--<?php foreach ($stations as $region): ?>
 
 	<?php
 	if($region['regionId'] == $previousValue) {
@@ -31,12 +31,11 @@ var_dump($stations[1]);
 		echo "data: {";
 		echo '"'.$region['stationName'].'": null,';
 
-
 	}
 	$previousValue = $region['regionId'];
 	$i++;
 	 ?>
-<?php endforeach; ?>
+<?php endforeach; ?>-->
 
 
 <div class="container full-screen">
