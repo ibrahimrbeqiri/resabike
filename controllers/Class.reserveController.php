@@ -14,7 +14,12 @@ class reserveController extends Controller{
 		$_SESSION['StationsByRegion'] = $stations;
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 
+		if (!empty($_GET)) {
+			$from = $_GET['from'];
+			$to = $_GET['to'];
 
+			$sum = Reservation::checkRegions($from, $to);
+		}
 	}
 
 	function results(){
@@ -28,21 +33,10 @@ class reserveController extends Controller{
 		//validation
 		if (empty($from) || empty($to) || empty($date) || empty($time)) {
 
-			$_SESSION['msg'] = '<span class="error">Required values are empty!</span>';
+			//pass the error message here somehow
 			$this->redirect('reserve', 'reserve');
-			exit;
 
 		}
-
-		$sameRegion = Reservation::checkRegions($from, $to);
-
-		if ($sameRegion === false) {
-			$_SESSION['msg'] = '<span class="error">Cross-region travel is not allowed</span>';
-			$this->redirect('reserve', 'reserve');
-			exit;
-		}
-
-		if ($sameRegion[0]['Region1'] == $sameRegion[0]['Region2']) {
 
 		$reservationdate = $date;
 		$sum = Reservation::getAllBikes($reservationdate);
@@ -54,8 +48,6 @@ class reserveController extends Controller{
 		$_SESSION["search_query"] = $search_query;
 
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-
-		}
 	}
 
 	function confirm()
@@ -79,8 +71,10 @@ class reserveController extends Controller{
 	        'reservationdate' => $reservationdate, 'departure' => $departure, 'arrival' => $arrival);
 
 	    $_SESSION['reservationArray'] = $reservationArray;
-
-
+	    
+	    $stations = Station::getAllStations();
+	     $_SESSION['stations'] = $stations;
+	    
 
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 
@@ -104,10 +98,18 @@ class reserveController extends Controller{
 	        $fromstation, $tostation, $departure, $arrival, $remarks, $creationDate);
 
 	    $result = $reservation->addReservation();
-
+	   
+	    //$id = openssl_encrypt($result['id'], 'aes-128-gcm', 'resabikech');
+	    
+	    $id = $result['id'];
+	    $cipher = "aes-128-gcm";
+	    $password = "resabike";
+	    $encryption = openssl_encrypt($id, $cipher, $password);
+	    $decryption = openssl_decrypt($id, $cipher, $password);
+	    
 	    $stations = Station::getAllStations();
 	    $_SESSION['stations'] = $stations;
-
+	    
 	    foreach($stations as $station)
 	    {
 	        if($station['stationId'] == $fromstation)
@@ -119,8 +121,8 @@ class reserveController extends Controller{
 	            $to = $station['stationName'];
 	        }
 	    }
-
-
+	  
+	    
 	    if($result['status']=='error')
 	    {
 	        $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
@@ -130,10 +132,10 @@ class reserveController extends Controller{
 	    {
 	        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 	        try {
-
+	            
 	            //Server settings
 	            $mail->isSMTP();                                      // Set mailer to use SMTP
-	            $mail->Host ='smtp.gmail.com';                     // Specify main and backup SMTP servers
+	            $mail->Host ='smtp.gmail.com';                     // Specify main and backup SMTP servers   
 	            $mail->Username = 'resabikech@gmail.com';                 // SMTP username
 	            $mail->Password = 'Resabike123';                           // SMTP password
 	            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
@@ -148,33 +150,46 @@ class reserveController extends Controller{
 	                    )
 	                )
 	                );
-
+	            
 	            //Recipients
 	            $mail->setFrom('resabikech@gmail.com');
 	            $mail->addAddress($email);                             // Name is optional
-
+	            
 	            //Content
 	            $mail->isHTML(true);                                  // Set email format to HTML
 	            $mail->Subject = 'Your bike reservation with Resabike!';
 	            $mail->Body    = '<b>Confirmation!!!</b> <br>
                                   Dear '.$firstname.' '.$lastname.'</br>'.
                                   'You have reserved '.$bikenumber.' bike(s) on date: '.$reservationdate.'</br> From: '.$from.' leaving '.$departure. '</br> To: '.$to.' arriving '.$arrival.
-	                              '</br> </br> If you wish to cancel your reservation please click on the link below </br>';
+	                              '</br> </br> If you wish to cancel your reservation please click on the link below </br>
+                                   localhost/grp7/reserve/cancelReservation?id='.$encryption.''.$decryption;
 	            $mail->AltBody = 'Dear '.$firstname.' '.$lastname.'</br>'.
                                   'You have reserved '.$bikenumber.' bike(s) on date: '.$reservationdate.' From: '.$from.' leaving '.$departure. ' To: '.$to.' arriving '.$arrival;
-
+	            
 	            $mail->send();
-
+	            
 	        } catch (Exception $e) {
-
+	            
 	        }
-
+	        
 	        echo "Success!";
 	        $this->redirect('reserve', 'success');
+	        
 
 	    }
 	}
-
+	function cancelReservation()
+	{ 
+	    $id = $_GET['id'];
+	    $resid = openssl_decrypt($id, 'aes-128-gcm', 'resabike');
+	    
+	    var_dump($id, $resid);
+	    
+	    if($resId == $id)
+	    {
+	       $result = Reservation::deleteReservation($id);
+	    }
+	}
 	function cancel()
 	{
 	    unset($_SESSION['reservationArray']);
