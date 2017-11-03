@@ -57,11 +57,7 @@ class RegionStations
 
         $result = MySQLConnection::getInstance()->execute($query, $attributes);
 
-        if($result['status']=='error' || empty($result['result'])){
-            return $result;
-        }
-
-        $regionstations = $result['result'];
+        $regionstations = $result;
         return $regionstations;
     }
 
