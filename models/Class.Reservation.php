@@ -201,7 +201,8 @@ class Reservation
                    JOIN station AS fromplace
                     ON reservation.fromstation = fromplace.stationId
                    JOIN station AS toplace
-                    ON reservation.tostation = toplace.stationId";
+                    ON reservation.tostation = toplace.stationId
+                   ORDER BY reservationdate DESC, departure DESC";
                  
         
         $result = MySQLConnection::getInstance()->fetch($query);
