@@ -54,6 +54,15 @@ $( document ).ready(function() {
 			return false;
 		}
 		});
-
-
+		
+		$(function() {
+			  $('.dateSelection').on('change', function(e) {
+			    $(this).closest('form')
+			           .trigger('submit')
+			  })
+			})
+		window.onload = function(){
+			  document.forms['#busDriverForm'].submit();
+		}
 });
+

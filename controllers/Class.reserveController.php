@@ -3,8 +3,6 @@ class reserveController extends Controller{
 
 	function reserve(){
 
-
-
 		$stations = RegionStations::getStationsByRegion();
 		$_SESSION['StationsByRegion'] = $stations;
 		$this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';

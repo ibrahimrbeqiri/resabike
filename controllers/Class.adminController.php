@@ -479,7 +479,7 @@ class adminController extends Controller{
 	    $stations = Station::getAllStations();
 	    $_SESSION['stations'] = $stations;
 	        
-    	if(!$reservations)
+    	if(empty($reservations))
     	{
             $_SESSION['msg'] = '<span class="error">There are no reservations made for this day!</span>';
     	    $this->redirect('admin', 'busdriverReservations');
