@@ -164,6 +164,23 @@ class Reservation
         $this->creationDate = $creationDate;
     }
 
+	public static function checkStations($from, $to)
+	{
+		$query = "SELECT * from station WHERE stationName";
+		$attributes = array($from, $to);
+		$result = MySQLConnection::getInstance()->execute($query, $attributes);
+		if($result['status']=='error' ){
+			return $result;
+		}
+		elseif (empty($result['result'])) {
+			return false;
+		}
+
+		$stations = $result['result'];
+		return $stations;
+
+	}
+
 	public static function checkRegions($from, $to)
 	{
 		$query = "SELECT s1.stationId, s1.stationName, rs1.regionIdRS as Region1, s2.stationId, s2.stationName, rs2.regionIdRS as Region2
@@ -192,7 +209,7 @@ class Reservation
         $attributes = array($this->firstname, $this->lastname, $this->phone, $this->email, $this->bikenumber,
             $this->reservationdate, $this->fromstation, $this->tostation, $this->departure, $this->arrival, $this->remarks);
 
-        
+
         return MySQLConnection::getInstance()->insertReservation($query, $attributes);
 
     }
