@@ -110,3 +110,5 @@ include_once ROOT_DIR.'languages/'.$lang_file;
 	</ul>
   </div>
 </nav>
+<main>
+	
