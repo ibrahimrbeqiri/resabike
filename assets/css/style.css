@@ -66,6 +66,9 @@ nav .brand-logo img{
 .admin-menu{
 	padding: 5%;
 }
+.admin-menu button{
+	margin: 1%;
+}
 
 table.center td,td,th,tr{
 	text-align: center;
