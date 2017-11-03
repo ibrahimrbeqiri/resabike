@@ -143,7 +143,8 @@ class reserveController extends Controller{
 	            $mail->Subject = 'Your bike reservation with Resabike!';
 	            $mail->Body    = '<b>Confirmation!!!</b> <br>
                                   Dear '.$firstname.' '.$lastname.'</br>'.
-                                  'You have reserved '.$bikenumber.' bike(s) on date: '.$reservationdate.'</br> From: '.$from.' leaving '.$departure. '</br> To: '.$to.' arriving '.$arrival;
+                                  'You have reserved '.$bikenumber.' bike(s) on date: '.$reservationdate.'</br> From: '.$from.' leaving '.$departure. '</br> To: '.$to.' arriving '.$arrival.
+	                              '</br> </br> If you wish to cancel your reservation please click on the link below </br>';
 	            $mail->AltBody = 'Dear '.$firstname.' '.$lastname.'</br>'.
                                   'You have reserved '.$bikenumber.' bike(s) on date: '.$reservationdate.' From: '.$from.' leaving '.$departure. ' To: '.$to.' arriving '.$arrival;
 	            
