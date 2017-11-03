@@ -20,7 +20,7 @@ var_dump($sums);
   <form id="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post">  
   		<select class="dateSelection" name="reservationdate">
  
-			<option selected value="<?php echo date('d.m.Y');?>">Today: <?php echo date('d.m.Y');?></option>
+			<option selected="selected" value="<?php echo date('d.m.Y');?>">Today: <?php echo date('d.m.Y');?></option>
 
 		</select>
 		<button class="btn-floating" type="submit" name="save">
