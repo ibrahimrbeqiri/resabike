@@ -61,8 +61,5 @@ $( document ).ready(function() {
 			           .trigger('submit')
 			  })
 			})
-		window.onload = function(){
-			  document.forms['#busDriverForm'].submit();
-		}
+			
 });
-
