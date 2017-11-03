@@ -35,41 +35,7 @@ $( document ).ready(function() {
 			$('#bike-modal').modal('open');
 		}
 	});
-		$('input.form-autocomplete').autocomplete({
-    		data: {
-    			"Niouc, Les Saints Innocents": null,
-    			"Niouc, village": null,
-    			"Sierre, Sentier de Chippis": null,
-    			"Sierre, Bois-de-Finges": null,
-    			"Sierre, Parc de Finges": null,
-    			"Sierre, Glarey": null,
-    			"Sierre, Borsuat": null,
-    			"Sierre, poste gare": null,
-    			"Les Pontis": null,
-    			"Vissoie, poste": null,
-    			"Grimentz, poste": null,
-    			"Grimentz, Carovilla": null,
-    			"Grimentz, Roua": null,
-    			"Grimentz, les Aires": null,
-    			"Grimentz, Les Fioz": null,
-    			"St-Jean VS, village": null,
-    			"Vissoie, Mayoux-village": null,
-    			"Zinal, poste": null,
-    			"Zinal, Le Bouillet": null,
-    			"Zinal, Pralong": null,
-    			"Mottec": null,
-    			"Ayer, Les Morasses": null,
-    			"Ayer, Les Grands Praz": null,
-    			"Ayer, anc. poste": null,
-    			"Ayer, Prarrayer": null,
-    			"Ayer, Blanche Pierre": null
-    		},
-    		limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
-    		onAutocomplete: function(val) {
-    			// Callback function when value is autcompleted.
-    		},
-    		minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-    	});
+
 
 
 

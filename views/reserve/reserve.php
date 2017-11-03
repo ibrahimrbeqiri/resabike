@@ -4,39 +4,25 @@ include_once ROOT_DIR.'views/header.inc';
 //Collect data from controller
 $msg = $this->vars['msg'];
 $stations = $_SESSION['StationsByRegion'];
-var_dump($stations[1]);
 ?>
-<?php $i = 0; ?>
-<?php $len = count($stations); ?>
-<?php $previousValue = null; ?>
-<?php foreach ($stations as $region): ?>
+<script id="stations" type="text/javascript">
+$( document ).ready(function() {
+	$('input.form-autocomplete').autocomplete({
+		data: {
+		<?php foreach ($stations as $region): ?>
+				<?php echo '"'.$region['stationName'].'": null,'; ?>
+		<?php endforeach; ?>
+		},
+		limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+		onAutocomplete: function(val) {
+			// Callback function when value is autcompleted.
+		},
+		minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+	});
 
-	<?php
-	if($region['regionId'] == $previousValue) {
-	echo '"'.$region['stationName'].'": null,';
+});
+</script>
 
-	if ($i == $len - 1) {
-		echo "};";
-		echo "</script>";
-	}
-
-	}else {
-		//if not first row
-		if ($i != 0) {
-        	echo "}";
-			echo "</script>";
-    	}
-		echo "<script type='javascript'>";
-		echo " /* Stations of region $region[regionName] */ ";
-		echo "data: {";
-		echo '"'.$region['stationName'].'": null,';
-
-
-	}
-	$previousValue = $region['regionId'];
-	$i++;
-	 ?>
-<?php endforeach; ?>
 
 
 <div class="container full-screen">
