@@ -65,6 +65,8 @@ class reserveController extends Controller{
 
 	    $_SESSION['reservationArray'] = $reservationArray;
 	    
+	    $stations = Station::getAllStations();
+	     $_SESSION['stations'] = $stations;
 	    
 
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
@@ -89,7 +91,15 @@ class reserveController extends Controller{
 	        $fromstation, $tostation, $departure, $arrival, $remarks, $creationDate);
 
 	    $result = $reservation->addReservation();
-        
+	   
+	    //$id = openssl_encrypt($result['id'], 'aes-128-gcm', 'resabikech');
+	    
+	    $id = $result['id'];
+	    $cipher = "aes-128-gcm";
+	    $password = "resabike";
+	    $encryption = openssl_encrypt($id, $cipher, $password);
+	    $decryption = openssl_decrypt($id, $cipher, $password);
+	    
 	    $stations = Station::getAllStations();
 	    $_SESSION['stations'] = $stations;
 	    
@@ -104,7 +114,7 @@ class reserveController extends Controller{
 	            $to = $station['stationName'];
 	        }
 	    }
-	   
+	  
 	    
 	    if($result['status']=='error')
 	    {
@@ -144,7 +154,8 @@ class reserveController extends Controller{
 	            $mail->Body    = '<b>Confirmation!!!</b> <br>
                                   Dear '.$firstname.' '.$lastname.'</br>'.
                                   'You have reserved '.$bikenumber.' bike(s) on date: '.$reservationdate.'</br> From: '.$from.' leaving '.$departure. '</br> To: '.$to.' arriving '.$arrival.
-	                              '</br> </br> If you wish to cancel your reservation please click on the link below </br>';
+	                              '</br> </br> If you wish to cancel your reservation please click on the link below </br>
+                                   localhost/grp7/reserve/cancelReservation?id='.$encryption.''.$decryption;
 	            $mail->AltBody = 'Dear '.$firstname.' '.$lastname.'</br>'.
                                   'You have reserved '.$bikenumber.' bike(s) on date: '.$reservationdate.' From: '.$from.' leaving '.$departure. ' To: '.$to.' arriving '.$arrival;
 	            
@@ -156,10 +167,22 @@ class reserveController extends Controller{
 	        
 	        echo "Success!";
 	        $this->redirect('reserve', 'success');
+	        
 
 	    }
 	}
-
+	function cancelReservation()
+	{ 
+	    $id = $_GET['id'];
+	    $resid = openssl_decrypt($id, 'aes-128-gcm', 'resabike');
+	    
+	    var_dump($id, $resid);
+	    
+	    if($resId == $id)
+	    {
+	       $result = Reservation::deleteReservation($id);
+	    }
+	}
 	function cancel()
 	{
 	    unset($_SESSION['reservationArray']);

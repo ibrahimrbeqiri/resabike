@@ -16,6 +16,7 @@ $reservationdate = $_SESSION['reservationArray']['reservationdate'];
 $departure = $_SESSION['reservationArray']['departure'];
 $arrival = $_SESSION['reservationArray']['arrival'];
 
+$stations = $_SESSION['stations'];
 
 ?>
 
@@ -24,8 +25,16 @@ $arrival = $_SESSION['reservationArray']['arrival'];
 		<div class="col l12">
 			<h3>Confirm your reservation</h3>
 			<p>Date: <?php echo $reservationdate ?></p>
-			<p>From: <?php echo $fromstation." ".$departure ?></p>
-			<p>To: <?php echo $tostation." ".$arrival ?></p>
+			<?php foreach($stations as $station):?>
+				<?php if($station['stationId'] == $fromstation):?>
+				<p>From: <?php echo $station['stationName']." ".$departure ?></p>
+				<?php endif;?>
+			<?php endforeach;?>
+			<?php foreach($stations as $station):?>
+				<?php if($station['stationId'] == $tostation):?>
+				<p>To: <?php echo $station['stationName']." ".$arrival ?></p>
+				<?php endif;?>
+			<?php endforeach;?>
 			<p>Number of bikes: <?php echo $bikenumber ?></p>
 			<p>Firstname: <?php echo $firstname ?></p>
 			<p>Lastname: <?php echo $lastname ?></p>
