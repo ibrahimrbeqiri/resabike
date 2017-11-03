@@ -64,6 +64,20 @@ include_once ROOT_DIR.'languages/'.$lang_file;
 
 		<?php //javascripts for materialize framework ?>
 	<script src="/<?php echo SITE_NAME; ?>/assets/materialize/js/materialize.js"></script>
+
+
+
+
+
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/<?php echo SITE_NAME; ?>/assets/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/<?php echo SITE_NAME; ?>/assets/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/<?php echo SITE_NAME; ?>/assets/favicons/favicon-16x16.png">
+	<link rel="manifest" href="/<?php echo SITE_NAME; ?>/assets/favicons/manifest.json">
+	<link rel="mask-icon" href="/<?php echo SITE_NAME; ?>/assets/favicons/safari-pinned-tab.svg" color="#ffcc00">
+	<meta name="theme-color" content="#ffcc00">
+
+
 </head>
 
 
@@ -111,4 +125,3 @@ include_once ROOT_DIR.'languages/'.$lang_file;
   </div>
 </nav>
 <main>
-	
