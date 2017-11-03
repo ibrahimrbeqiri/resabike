@@ -36,7 +36,7 @@ $( document ).ready(function() {
 			<form action="<?php echo URL_DIR.'reserve/results';?>" method="get">
 			<div class="col l12">
 				<?php if ($msg): ?>
-					<?php echo "<p class='red'>$msg</p>" ?>
+					<?php echo $msg ?>
 				<?php endif; ?>
 				<div class="row">
 					<div class="input-field col m6">

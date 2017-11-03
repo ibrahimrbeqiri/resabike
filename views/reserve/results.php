@@ -6,7 +6,8 @@ $msg = $this->vars['msg'];
 
 
 $sum = $_SESSION['sum'];
-var_dump($sum);
+//var_dump($sum);
+
 
 $stationsFrom = [];
 $stationsTo = [];

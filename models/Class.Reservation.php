@@ -164,9 +164,25 @@ class Reservation
         $this->creationDate = $creationDate;
     }
 
-	public function checkRegions()
+	public static function checkRegions($from, $to)
 	{
-		
+		$query = "SELECT s1.stationId, s1.stationName, rs1.regionIdRS as Region1, s2.stationId, s2.stationName, rs2.regionIdRS as Region2
+				FROM (resabike.station AS s1, resabike.station AS s2)
+				JOIN regionstations rs1 ON (s1.stationId = rs1.stationIdRS and s1.stationName = ?)
+				JOIN regionstations rs2 ON (s2.stationId = rs2.stationIdRS and s2.stationName = ?)
+				WHERE rs1.regionIdRS = rs2.regionIdRS";
+		$attributes = array($from, $to);
+		$result = MySQLConnection::getInstance()->execute($query, $attributes);
+		if($result['status']=='error' ){
+			return $result;
+		}
+		elseif (empty($result['result'])) {
+			return false;
+		}
+
+		$stations = $result['result'];
+		return $stations;
+
 	}
 
     public function addReservation()
