@@ -87,8 +87,10 @@ class RegionStations
 
     public static function deleteStationFromRegion($regionIdRS, $stationIdRS)
     {
-        $query = "DELETE FROM regionstations WHERE regionIdRS=? AND stationIdRS=?;
-                  DELETE FROM station WHERE stationId=?";
+        $query = "START TRANSACTION;
+                  DELETE FROM regionstations WHERE regionIdRS=? AND stationIdRS=?;
+                  DELETE FROM station WHERE stationId=?;
+                  COMMIT;";
         
         $attributes = array($regionIdRS, $stationIdRS, $stationIdRS);
         
@@ -104,12 +106,14 @@ class RegionStations
         
         $attributes = array($regionIdRS, $stationId, $stationIdRS, $stationId, $stationName, $stationIdRS);
         
-        return  MySQLConnection::getInstance()->execute($query, $attributes);
+        return  MySQLConnection::getInstance()->transactions($query, $attributes);
     }
     public static function addStationsForRegion($regionId, $stationId, $stationName)
     {
-        $query = "INSERT INTO regionstations(regionIdRS, stationIdRS) VALUES(?, ?);
-                  INSERT INTO station(stationId, stationName) VALUES(?, ?)";
+        $query = "START TRANSACTION;
+                  INSERT INTO regionstations(regionIdRS, stationIdRS) VALUES(?, ?);
+                  INSERT INTO station(stationId, stationName) VALUES(?, ?);
+                  COMMIT;";
         $attributes = array($regionId, $stationId, $stationId, $stationName);
         
         
