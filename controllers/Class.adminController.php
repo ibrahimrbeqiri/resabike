@@ -357,9 +357,43 @@ class adminController extends Controller{
 
 	function editStations()
 	{
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    $user = $this->getActiveUser();
+	    if ($user->getuserRoleId() != 1 && $user->getuserRoleId() != 2) {
+	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+	        $this->redirect('admin', 'menu');
+	        exit;
+	    }
+	    
+	    $regionId = $_POST['regionId'];
+	    $stationId = $_POST['stationId'];
+	    $stationName = $_POST['stationName'];
+	    
 	    if(isset($_POST['modify']))
 	    {
-
+	        if(empty($stationId) || empty($stationName))
+	        {
+	            $_SESSION['msg'] = '<span class="error">'.'Required field(s) were empty!'.'</span>';
+	            $this->redirect('admin', 'stations');
+	            exit;
+	        }
+	        
+	        $result = RegionStations::modifyStationsForRegion($stationId, $stationName, $regionId);
+	        
+	        if($result['status']=='error')
+	        {
+	            $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+	            echo $_SESSION['msg'];
+	        }
+	        else
+	        {
+	            $_SESSION['msg'] = '<span class="success">'.'You have successfully modified the station!'.'</span>';
+	            $this->redirect('admin', 'stations');
+	            
+	        }
 	    }
 	    else if(isset($_POST['delete']))
 	    {

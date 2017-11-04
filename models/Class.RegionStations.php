@@ -57,7 +57,11 @@ class RegionStations
 
         $result = MySQLConnection::getInstance()->execute($query, $attributes);
 
-        $regionstations = $result;
+        if($result['status']=='error' || empty($result['result'])){
+            return $result;
+        }
+        
+        $regionstations = $result['result'];
         return $regionstations;
     }
 
@@ -90,5 +94,19 @@ class RegionStations
 
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
+    
+    public static function modifyStationsForRegion($stationId, $stationName, $regionIdRS)
+    {
+        $query = "START TRANSACTION;
+                  UPDATE station SET stationId=?, stationName=?
+                  WHERE stationId=?;
 
+                  UPDATE regionstation SET stationIdRS=?
+                  WHERE  AND stationIdRS=?'
+                  COMMIT;";
+        
+        $attributes = array($stationId, $stationName, $stationId, $regionIdRS, $stationId, $stationId, $regionIdRS);
+        
+        return  MySQLConnection::getInstance()->execute($query, $attributes);
+    }
 }
