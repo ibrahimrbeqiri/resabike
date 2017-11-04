@@ -477,9 +477,6 @@ class adminController extends Controller{
 	        $result = Reservation::getAllBusDriverReservations($reservationdate);
 	        $_SESSION['busdriverReservations'] = $result;
 	        
-    	    $stations = Station::getAllStations();
-    	    $_SESSION['stations'] = $stations;
-    
     	    
     	    if($result['status']=='error' || empty($result['result']))
     	    {

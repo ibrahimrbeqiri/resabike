@@ -6,9 +6,7 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 $reservations = $_SESSION['busdriverReservations'];
-$stations = $_SESSION['stations'];
 
-var_dump($reservations);
 ?>
 
 <div class="container">
@@ -34,25 +32,16 @@ var_dump($reservations);
     		
       			<div class="collapsible-header">
               		<div>Date: <?php echo $reservation['reservationdate'].'&emsp;';?></div>
-              		<?php foreach($stations as $station):?>
-              			<?php if($station['stationId'] == $reservation['fromstation']):?>
-                  			<div>From: <?php echo $station['stationName'].'&emsp;';?></div>
-                  		<?php endif;?>
-                  	<?php endforeach;?>
+                  	<div>From: <?php echo $reservation['stationFrom'].'&emsp;';?></div>
                   	<div>Departure: <?php echo $reservation['departure'].'&emsp;';?></div>
                   	<div>Total bikes: <?php echo $reservation['totalbikes']?></div>
       			</div>
       			<div class="collapsible-body">
       				<div>
-					<?php foreach($stations as $station):?>
-              			<?php if($station['stationId'] == $reservation['tostation']):?>
-                  			To: <?php echo $station['stationName'].'&emsp;';?>
-                  		<?php endif;?>
-                  	<?php endforeach;?>
+                  	To: <?php echo $reservation['stationTo'].'&emsp;';?>
                   	Arrival: <?php echo $reservation['arrival'].'&emsp;';?>
-      			    
+                  	People: <?php echo $reservation['firstname'].' '.$reservation['lastname'].': Bikes('.$reservation['bikenumber'].')'.',&emsp;'?>
       				</div>		
-      			
       			</div>
       		</li>
       	<?php endforeach;?>

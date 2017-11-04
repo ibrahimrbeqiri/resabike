@@ -242,12 +242,12 @@ class Reservation
 
     public static function getAllReservations()
     {
-        $query = "SELECT * FROM reservation
-                   JOIN station AS fromplace
-                    ON reservation.fromstation = fromplace.stationId
-                   JOIN station AS toplace
-                    ON reservation.tostation = toplace.stationId
-                   ORDER BY reservationdate DESC, departure DESC";
+        $query = "SELECT * , fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
+                            JOIN station AS fromplace
+                            ON reservation.fromstation = fromplace.stationId
+                            JOIN station AS toplace
+                            ON reservation.tostation = toplace.stationId
+                            ORDER BY departure DESC, reservationdate DESC";
 
 
         $result = MySQLConnection::getInstance()->fetch($query);
@@ -263,9 +263,14 @@ class Reservation
 
     public static function getAllBusDriverReservations($reservationdate)
     {
-        $query = "SELECT *, SUM(bikenumber) AS totalbikes FROM reservation WHERE reservationdate=?
-                  GROUP BY fromstation, tostation, departure
-                  ORDER BY reservationdate DESC, departure ASC";
+        $query = "SELECT * , SUM(bikenumber) AS totalbikes, fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
+                            JOIN station AS fromplace
+                            ON reservation.fromstation = fromplace.stationId
+                            JOIN station AS toplace
+                            ON reservation.tostation = toplace.stationId
+                            WHERE reservationdate=?
+                            GROUP BY fromstation, departure
+                            ORDER BY departure ASC, reservationdate DESC";
 
         $attributes = array($reservationdate);
 
@@ -273,23 +278,6 @@ class Reservation
 
         if($result['status']=='error' || empty($result['result'])){
             return null;
-        }
-
-        $reservations = $result['result'];
-        return $reservations;
-    }
-
-    public static function getAllBikes($reservationdate)
-    {
-        $query = "SELECT fromstation, tostation, departure, arrival, SUM(bikenumber) AS totalbikes FROM reservation WHERE reservationdate=?
-                  GROUP BY fromstation, tostation, departure, arrival";
-
-        $attributes = array($reservationdate);
-
-        $result =  MySQLConnection::getInstance()->execute($query, $attributes);
-
-        if($result['status']=='error' || empty($result['result'])){
-            return $result;
         }
 
         $reservations = $result['result'];

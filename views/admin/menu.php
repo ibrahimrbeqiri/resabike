@@ -27,7 +27,7 @@ $user = $_SESSION['user'];
     		<a href="<?php echo URL_DIR.'admin/reservations';?>">
     		<button class="btn waves-effect waves-light">
     			<i class="material-icons prefix">book</i>
-    			<span>See reservations</span>
+    			<span>Modify reservations</span>
     		</button>
     		</a>
     		<a href="<?php echo URL_DIR.'admin/stations';?>">
