@@ -4396,8 +4396,5 @@ class PHPMailer
      *
      * @param OAuth $oauth
      */
-    public function setOAuth(OAuth $oauth)
-    {
-        $this->oauth = $oauth;
-    }
+   
 }
