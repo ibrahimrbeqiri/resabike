@@ -348,8 +348,6 @@ class adminController extends Controller{
 	    $_SESSION["regions"] = $regions;
 	    //Use something like this once you have the region for user
 
-	    $user = $_SESSION['user'];
-
 	    $regionstations = RegionStations::getAllRegionStations($user->getuserRegionId());
 	    $_SESSION['regionstations'] = $regionstations;
 
