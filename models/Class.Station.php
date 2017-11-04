@@ -42,7 +42,7 @@ class Station{
 	    $stations = $result['result'];
 	    return $stations;
 	}
-
+	
 }
 
 ?>

@@ -368,8 +368,9 @@ class adminController extends Controller{
 	        exit;
 	    }
 	    
-	    $regionId = $_POST['regionId'];
+	    $regionIdRS = $_POST['regionId'];
 	    $stationId = $_POST['stationId'];
+	    $stationIdRS = $_POST['stationIdRS'];
 	    $stationName = $_POST['stationName'];
 	    
 	    if(isset($_POST['modify']))
@@ -381,10 +382,11 @@ class adminController extends Controller{
 	            exit;
 	        }
 	        
-	        $result = RegionStations::modifyStationsForRegion($stationId, $stationName, $regionId);
+	        $result = RegionStations::modifyStationsForRegion($regionIdRS, $stationIdRS, $stationId, $stationName);
 	        
 	        if($result['status']=='error')
 	        {
+	            var_dump($regionIdRS, $stationId, $stationIdRS, $stationName);
 	            $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
 	            echo $_SESSION['msg'];
 	        }
@@ -397,7 +399,19 @@ class adminController extends Controller{
 	    }
 	    else if(isset($_POST['delete']))
 	    {
-
+	        $result = RegionStations::deleteStationFromRegion($regionIdRS, $stationIdRS);
+	        
+	        if($result['status']=='error')
+	        {
+	            $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+	            echo $_SESSION['msg'];
+	        }
+	        else
+	        {
+	            $_SESSION['msg'] = '<span class="error">You have successfully deleted the station!</span>';
+	            $this->redirect('admin', 'stations');
+	            
+	        }
 	    }
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
@@ -487,8 +501,8 @@ class adminController extends Controller{
 	        }
 	        else
 	        {
-	            echo "Success!";
-	            $this->redirect('admin', 'menu');
+	            $_SESSION['msg'] = '<span class="error">You have succesfully deleted the reservation!</span>';
+	            $this->redirect('admin', 'reservations');
 
 	        }
 	    }

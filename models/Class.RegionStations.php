@@ -85,27 +85,24 @@ class RegionStations
 
 	}
 
-    public static function deleteRegionStation($regionId, $stationId)
+    public static function deleteStationFromRegion($regionIdRS, $stationIdRS)
     {
-
-        $query = "DELETE FROM regionstations WHERE regionIdRS=? AND stationIdRS=?";
-
-        $attributes = array($regionId, $stationId);
-
+        $query = "DELETE FROM regionstations WHERE regionIdRS=? AND stationIdRS=?;
+                  DELETE FROM station WHERE stationId=?";
+        
+        $attributes = array($regionIdRS, $stationIdRS, $stationIdRS);
+        
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
     
-    public static function modifyStationsForRegion($stationId, $stationName, $regionIdRS)
+    public static function modifyStationsForRegion($regionIdRS, $stationIdRS, $stationId, $stationName)
     {
-        $query = "START TRANSACTION;
+        $query = "UPDATE regionstations SET regionIdRS=?, stationIdRS=?
+                  WHERE stationIdRS=?;
                   UPDATE station SET stationId=?, stationName=?
-                  WHERE stationId=?;
-
-                  UPDATE regionstation SET stationIdRS=?
-                  WHERE  AND stationIdRS=?'
-                  COMMIT;";
+                  WHERE stationId=?;";
         
-        $attributes = array($stationId, $stationName, $stationId, $regionIdRS, $stationId, $stationId, $regionIdRS);
+        $attributes = array($regionIdRS, $stationId, $stationIdRS, $stationId, $stationName, $stationIdRS);
         
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }

@@ -8,7 +8,6 @@ $user = $_SESSION['user'];
 $regions = $_SESSION['regions'];
 
 $regionstations = $_SESSION['regionstations'];
-
 ?>
 
 <div class="container">
@@ -39,7 +38,7 @@ $regionstations = $_SESSION['regionstations'];
     					</div>
 						<div class="table-cell">
 							<select name="regionId">
-									<option disabled selected><?php echo $regionstation['regionName']; ?></option>
+									<option selected value="<?php echo $regionstation['regionId'];?>"><?php echo $regionstation['regionName']; ?></option>
 									<?php if($user->getuserRoleId() == 1 ):?>
 										<?php foreach ($regions as $region): ?>
 											<option value="<?php echo $region['regionId']; ?>"><?php echo $region['regionName']; ?></option>
@@ -47,6 +46,7 @@ $regionstations = $_SESSION['regionstations'];
 									<?php endif;?>
 							</select>
 						</div>
+						<div class="table-cell"><input type="text" hidden name="stationIdRS" value="<?php echo $regionstation['stationIdRS']?>"></div>	
 						<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId']?>"></div>	
 						<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName']?>"></div>
 						<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>
