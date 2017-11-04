@@ -70,4 +70,11 @@ $lang['CONFIRMATION_EMAIL_REMARKS'] = 'Remarques: ';
 $lang['CONFIRMATION_EMAIL_OUTRO'] = "Si l'une des informations est incorrecte, veuillez contacter resabike!";
 $lang['CONFIRMATION_EMAIL_DELETEMESSAGE'] = 'Si vous souhaitez annuler votre réservation, veuillez suivre ce lien';
 
+
+// Login page
+
+$lang['LOGIN_USERNAME'] = "Nom d'utilisateur";
+$lang['LOGIN_PASSWORD'] = 'Mot de passe';
+$lang['LOGIN_LOGIN'] = "S'identifier";
+
 ?>
