@@ -38,7 +38,7 @@ var_dump($regionstations);
 						<div class="table-cell">
 							<select name="regionId">
 									<option disabled selected><?php echo $regionstation['regionName']; ?></option>
-									<option value="<?php echo $regionstation['regionId']; ?>"><?php echo $regionstation['regionName']; ?></option>
+									<option value="<?php echo $region[regionId]; ?>"><?php echo $region[regionName]; ?></option>
 							</select>
 						</div>
 						<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId'];?>"></div>	
