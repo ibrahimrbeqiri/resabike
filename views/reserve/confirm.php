@@ -23,38 +23,37 @@ $stations = $_SESSION['stations'];
 <div class="container">
 	<div class="row">
 		<div class="col l12">
-			<h3>Confirm your reservation</h3>
-			<p>Date: <?php echo $reservationdate ?></p>
+			<h3><?php echo $lang['CONFIRM_HEADING']; ?></h3>
+			<p><?php echo $lang['CONFIRM_DATE']; ?> <?php echo $reservationdate ?></p>
 			<?php foreach($stations as $station):?>
 				<?php if($station['stationId'] == $fromstation):?>
-				<p>From: <?php echo $station['stationName']." ".$departure ?></p>
+				<p><?php echo $lang['CONFIRM_FROM']; ?> <?php echo $station['stationName']." ".$departure ?></p>
 				<?php endif;?>
 			<?php endforeach;?>
 			<?php foreach($stations as $station):?>
 				<?php if($station['stationId'] == $tostation):?>
-				<p>To: <?php echo $station['stationName']." ".$arrival ?></p>
+				<p><?php echo $lang['CONFIRM_TO']; ?> <?php echo $station['stationName']." ".$arrival ?></p>
 				<?php endif;?>
 			<?php endforeach;?>
-			<p>Number of bikes: <?php echo $bikenumber ?></p>
-			<p>Firstname: <?php echo $firstname ?></p>
-			<p>Lastname: <?php echo $lastname ?></p>
-			<p>Email: <?php echo $email ?></p>
-			<p>Phone: <?php echo $phone ?></p>
-			<p>Remarks: <?php echo $remarks ?></p>
-			<p></p>
+			<p><?php echo $lang['CONFIRM_BIKES']; ?><?php echo $bikenumber ?></p>
+			<p><?php echo $lang['CONFIRM_FIRSTNAME']; ?><?php echo $firstname ?></p>
+			<p><?php echo $lang['CONFIRM_FIRSTNAME']?><?php echo $lastname ?></p>
+			<p><?php echo $lang['CONFIRM_EMAIL']?><?php echo $email ?></p>
+			<p><?php echo $lang['CONFIRM_PHONE']?><?php echo $phone ?></p>
+			<p><?php echo $lang['CONFIRM_REMARKS']?><?php echo $remarks ?></p>
 
 
 
 			<a href="<?php echo URL_DIR.'reserve/confirmed';?>">
 				<button class="btn waves-effect waves-light" type="button">
 					<i class="material-icons prefix">check</i>
-					<span>Confirm</span>
+					<span><?php echo $lang['CONFIRM_CONFIRM']; ?></span>
 				</button>
 			</a>
 			<a href="<?php echo URL_DIR.'reserve/cancel';?>">
 				<button class="btn waves-effect waves-light" type="button">
 					<i class="material-icons prefix">cancel</i>
-					<span>Cancel</span>
+					<span><?php echo $lang['CONFIRM_CANCEL']; ?></span>
 				</button>
 			</a>
 		</div>

@@ -53,6 +53,21 @@ $lang['RESULTS_FORM_BIKES'] = 'Number of bikes';
 $lang['RESULTS_FORM_REMARKS'] = 'Remarks';
 $lang['RESULTS_FORM_RESERVE'] = 'Reserve';
 
+//Confim page
+$lang['CONFIRM_HEADING'] = 'Confirm your reservation:';
+$lang['CONFIRM_FROM'] = 'From: ';
+$lang['CONFIRM_TO'] = 'To: ';
+$lang['CONFIRM_DATE'] = 'Date: ';
+$lang['CONFIRM_TIME'] = 'Time: ';
+$lang['CONFIRM_FIRSTNAME'] = 'First name: ';
+$lang['CONFIRM_LASTNAME'] = 'Last name: ';
+$lang['CONFIRM_EMAIL'] = 'E-mail: ';
+$lang['CONFIRM_PHONE'] = 'Phone number: ';
+$lang['CONFIRM_BIKES'] = 'Number of bikes: ';
+$lang['CONFIRM_REMARKS'] = 'Remarks: ';
+$lang['CONFIRM_CONFIRM'] = 'Confirm';
+$lang['CONFIRM_CANCEL'] = 'Cancel';
+
 // Confirmation Message
 $lang['CONFIRMATION_EMAIL_SUBJECT'] ='Your Resabike reservation';
 $lang['CONFIRMATION_EMAIL_INTRO'] = 'Your reservation has been received! Here is your reservation information:';
@@ -70,8 +85,10 @@ $lang['CONFIRMATION_EMAIL_REMARKS'] = 'Remarks: ';
 $lang['CONFIRMATION_EMAIL_OUTRO'] = 'If any of the information is incorrect, please contact resabike!';
 $lang['CONFIRMATION_EMAIL_DELETEMESSAGE'] = 'If you wish to cancel your reservation, please follow this link';
 
-
-
+//Success page
+$lang['SUCCESS_HEADING'] = "Reservation added successfully!";
+$lang['SUCCESS_REDIRECT'] = "This page will redirect in ";
+$lang['SUCCESS_SECONDS'] = " seconds";
 
 
 // Login page
