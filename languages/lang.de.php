@@ -69,4 +69,11 @@ $lang['CONFIRMATION_EMAIL_BIKES'] = 'Anzahl der fahrräde: ';
 $lang['CONFIRMATION_EMAIL_REMARKS'] = 'Bemerkungen: ';
 $lang['CONFIRMATION_EMAIL_OUTRO'] = 'Wenn eine der informationen nicht korrekt ist, wenden sie sich bitte an Resabike!';
 $lang['CONFIRMATION_EMAIL_DELETEMESSAGE'] = 'Wenn sie ihre reservierung stornieren möchten, folgen Sie bitte diesem link';
+
+
+// Login page
+
+$lang['LOGIN_USERNAME'] = 'Benutzername';
+$lang['LOGIN_PASSWORD'] = 'Passwort';
+$lang['LOGIN_LOGIN'] = "Einloggen";
 ?>

@@ -69,3 +69,13 @@ $lang['CONFIRMATION_EMAIL_BIKES'] = 'Number of bikes: ';
 $lang['CONFIRMATION_EMAIL_REMARKS'] = 'Remarks: ';
 $lang['CONFIRMATION_EMAIL_OUTRO'] = 'If any of the information is incorrect, please contact resabike!';
 $lang['CONFIRMATION_EMAIL_DELETEMESSAGE'] = 'If you wish to cancel your reservation, please follow this link';
+
+
+
+
+
+// Login page
+
+$lang['LOGIN_USERNAME'] = 'Username';
+$lang['LOGIN_PASSWORD'] = 'Password';
+$lang['LOGIN_LOGIN'] = 'Log in';

@@ -21,15 +21,16 @@ $msg = $this->vars['msg'];
 					<div class="input-field col s12 m12">
 					  <i class="material-icons prefix">account_circle</i>
 					  <input id="icon_prefix" type="text" class="validate" name="username">
-					  <label for="icon_prefix">Username</label>
+					  <label for="icon_prefix"><?php echo $lang['LOGIN_USERNAME'] ?></label>
 					</div>
 					<div class="input-field col s12 m12">
 					  <i class="material-icons prefix">vpn_key</i>
 					  <input id="icon_prefix" type="password" class="validate" name="password">
-					  <label for="icon_prefix">Password</label>
+					  <label for="icon_prefix"><?php echo $lang['LOGIN_PASSWORD'] ?></label>
 					</div>
 					<div class="col m12">
-						<button class="btn waves-effect waves-light" type="submit" name="action">log in
+						<button class="btn waves-effect waves-light" type="submit" name="action">
+							<?php echo $lang['LOGIN_LOGIN']; ?>
 						</button>
 					</div>
 				</div>
