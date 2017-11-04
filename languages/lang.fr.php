@@ -31,4 +31,19 @@ $lang['RESERVE_TIME'] = "Heure";
 $lang['RESERVE_DATE'] = "Date";
 $lang['RESERVE_SEARCH'] = 'Recherche';
 
+// Confirmation Message
+$lang['CONFIRMATION_EMAIL_INTRO'] = 'Votre réservation a été reçue! Voici vos informations de réservation';
+$lang['CONFIRMATION_EMAIL_INTRO_CONFIRM'] = 'Votre réservation a été reçue! Notre administrateur régional doit confirmer votre réservation. Vous recevrez un email dès que la réservation sera confirmée! Voici vos informations de réservation';
+$lang['CONFIRMATION_EMAIL_FROM'] = 'De';
+$lang['CONFIRMATION_EMAIL_TO'] = 'À';
+$lang['CONFIRMATION_EMAIL_DATE'] = 'Date';
+$lang['CONFIRMATION_EMAIL_TIME'] = 'Heure';
+$lang['CONFIRMATION_EMAIL_FIRSTNAME'] = 'Prénom';
+$lang['CONFIRMATION_EMAIL_LASTNAME'] = 'Nom de famille';
+$lang['CONFIRMATION_EMAIL_EMAIL'] = 'E-mail';
+$lang['CONFIRMATION_EMAIL_PHONE'] = 'Numéro de téléphone';
+$lang['CONFIRMATION_EMAIL_BIKES'] = 'Quantité de vélos';
+$lang['CONFIRMATION_EMAIL_REMARKS'] = 'Remarques';
+$lang['CONFIRMATION_EMAIL_OUTRO'] = "Si l'une des informations est incorrecte, veuillez contacter resabike!";
+
 ?>
