@@ -169,38 +169,46 @@ if ($search) {
 												   </div>
 											   </div>
 
-											 <div class="input-field col l12">
-											   <i class="material-icons prefix">directions_bike</i>
-											   <select class="form-bikes" name="bikenumber">
-												 <option value="" disabled selected><?php echo $lang['RESULTS_FORM_BIKES']; ?></option>
-												 <option value="1">1</option>
-												 <option value="2">2</option>
-												 <option value="3">3</option>
-												 <option value="4">4</option>
-												 <option value="5">5</option>
-												 <option value="6+">6</option>
-												 <option value="7">7</option>
-												 <option value="8">8</option>
-												 <option value="9">9</option>
-												 <option value="10+">10+</option>
-											   </select>
-											 </div>
+											   <div class="col l12">
+												   <div class="input-field col l12">
+													 <i class="material-icons prefix">directions_bike</i>
+													 <select class="form-bikes" name="bikenumber">
+													   <option value="" disabled selected><?php echo $lang['RESULTS_FORM_BIKES']; ?></option>
+													   <option value="1">1</option>
+													   <option value="2">2</option>
+													   <option value="3">3</option>
+													   <option value="4">4</option>
+													   <option value="5">5</option>
+													   <option value="6+">6</option>
+													   <option value="7">7</option>
+													   <option value="8">8</option>
+													   <option value="9">9</option>
+													   <option value="10+">10+</option>
+													 </select>
+												   </div>
+											   </div>
+											   <div class="col l12">
+												   <div class="input-field col l12 additional-info">
+													 <i class="material-icons prefix">edit</i>
+													 <textarea id="textarea1" name="remarks" class="materialize-textarea"></textarea>
+													 <label for="textarea1"><?php echo $lang['RESULTS_FORM_REMARKS']; ?></label>
+												   </div>
+											   </div>
+											   <div class="col l12">
+												   <div class="col l12">
+													   <button class="btn waves-effect waves-light" type="submit" name="action">
+														   <?php echo $lang['RESULTS_FORM_RESERVE']; ?>
+														 <i class="material-icons right">check</i>
+
+													   </button>
+												   </div>
+											   </div>
 
 
 
-											 <div class="input-field col l12 additional-info">
-											   <i class="material-icons prefix">edit</i>
-											   <textarea id="textarea1" name="remarks" class="materialize-textarea"></textarea>
-											   <label for="textarea1"><?php echo $lang['RESULTS_FORM_REMARKS']; ?></label>
-											 </div>
 
-											 <div class="col l12">
-												 <button class="btn waves-effect waves-light" type="submit" name="action">
-													 <?php echo $lang['RESULTS_FORM_RESERVE']; ?>
-												   <i class="material-icons right">check</i>
 
-												 </button>
-											 </div>
+
 
 										  </div>
 

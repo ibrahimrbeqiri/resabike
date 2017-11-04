@@ -10,21 +10,22 @@ $account = $_SESSION['accountInfo'];
 <div class="container">
 	<div class="col s12">
 		<a href="<?php echo URL_DIR.'admin/menu';?>">
-			<button class="btn waves-effect waves-light right" type="button">Cancel
+			<button class="btn waves-effect waves-light right" type="button">
+				<?php echo $lang['ADMIN_REGISTER_CANCEL']; ?>
 				<i class="material-icons left">cancel</i>
 			</button>
 		</a>
 	</div>
 	<div class="col l12">
-		<h4>Account information:</h4>
-		<p>To change any of this information, please contact a global admin.</p>
-		<h5>Username: <?php echo $account['0']['username']; ?></h5>
-		<h5>Firstname: <?php echo $account['0']['name']; ?></h5>
-		<h5>Lastname: <?php echo $account['0']['lastname']; ?></h5>
-		<h5>Email: <?php echo $account['0']['email']; ?></h5>
-		<h5>Phone: <?php echo $account['0']['phone']; ?></h5>
-		<h5>Role: <?php echo $account['0']['role']; ?></h5>
-		<h5>Region: <?php echo $account['0']['regionName']; ?></h5>
+		<h4><?php echo $lang['ADMIN_ACCOUNT_HEADING']; ?></h4>
+		<p><?php echo $lang['ADMIN_ACCOUNT_TIP']; ?></p>
+		<h5><?php echo $lang['ADMIN_USER_USERNAME']; ?>: <?php echo $account['0']['username']; ?></h5>
+		<h5><?php echo $lang['ADMIN_USER_FIRSTNAME']; ?>: <?php echo $account['0']['name']; ?></h5>
+		<h5><?php echo $lang['ADMIN_USER_LASTNAME']; ?>: <?php echo $account['0']['lastname']; ?></h5>
+		<h5><?php echo $lang['ADMIN_USER_EMAIL']; ?>: <?php echo $account['0']['email']; ?></h5>
+		<h5><?php echo $lang['ADMIN_USER_PHONE']; ?>: <?php echo $account['0']['phone']; ?></h5>
+		<h5><?php echo $lang['ADMIN_USER_ROLE']; ?>: <?php echo $account['0']['role']; ?></h5>
+		<h5><?php echo $lang['ADMIN_USER_REGION']; ?>: <?php echo $account['0']['regionName']; ?></h5>
 	</div>
 </div>
 

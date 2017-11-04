@@ -21,7 +21,6 @@ class loginController extends Controller{
                 $this->redirect('login', 'admin');
             }
             else{
-                $_SESSION['msg'] = '<span class="success">Welcome '. $result->getName(). ' '.$result->getLastname().'!</span>';
                 $_SESSION['user'] = $result;
                 $this->redirect('admin', 'menu');
             }

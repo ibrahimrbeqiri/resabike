@@ -96,4 +96,31 @@ $lang['LOGIN_USERNAME'] = "Nom d'utilisateur";
 $lang['LOGIN_PASSWORD'] = 'Mot de passe';
 $lang['LOGIN_LOGIN'] = "S'identifier";
 
+// Admin page
+
+$lang['ADMIN_MENU_WELCOME'] = 'Bienvenue ';
+$lang['ADMIN_MENU_SEE_RESERVATIONS'] = 'Voir les réservations';
+$lang['ADMIN_MENU_MODIFY_RESERVATIONS'] = 'Modifier les réservations';
+$lang['ADMIN_MENU_MODIFY_STATIONS'] = 'Modifier les stations';
+$lang['ADMIN_MENU_MODIFY_REGIONS'] = 'Modifier les régions';
+$lang['ADMIN_MENU_SEE_ALL_USERS'] = 'Voir tous les utilisateurs';
+$lang['ADMIN_MENU_CREATE_USER'] = 'Ajouter un nouvel utilisateur';
+
+$lang['ADMIN_REGISTER_HEADING'] = 'Enregistrer un nouvel utilisateur';
+$lang['ADMIN_REGISTER_REGISTER'] = 'Enregistrer';
+$lang['ADMIN_REGISTER_CANCEL'] = 'Annuler';
+
+$lang['ADMIN_ACCOUNT_HEADING'] = 'Information sur le compte:';
+$lang['ADMIN_ACCOUNT_TIP'] = 'Pour modifier ces informations, veuillez contacter un administrateur global.';
+
+$lang['ADMIN_USER_USERNAME'] = "Nom d'utilisateur";
+$lang['ADMIN_USER_FIRSTNAME'] = 'Prénom';
+$lang['ADMIN_USER_LASTNAME'] = 'Nom de famille';
+$lang['ADMIN_USER_PASSWORD'] = 'Mot de pass';
+$lang['ADMIN_USER_CONFIRM_PASSWORD'] = 'Confirmez le mot de passe';
+$lang['ADMIN_USER_EMAIL'] = 'E-mail';
+$lang['ADMIN_USER_ROLE'] = "Rôle d'utilisateur";
+$lang['ADMIN_USER_PHONE'] = 'Numéro de téléphone';
+$lang['ADMIN_USER_REGION'] = "Région d'utilisateur";
+
 ?>

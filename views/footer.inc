@@ -4,8 +4,8 @@
 <div class="container">
 <div class="row">
   <div class="col l12">
-	<h5 class="white-text">Resabike by bla bla</h5>
-	<p class="grey-text text-lighten-4">more bla bla bla</p>
+	<h5 class="white-text">Resabike</h5>
+	<p class="grey-text text-lighten-4">Postbus</p>
   </div>
 </div>
 </div>

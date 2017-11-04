@@ -89,9 +89,38 @@ $lang['CONFIRMATION_EMAIL_DELETEMESSAGE'] = 'Wenn sie ihre reservierung stornier
 $lang['SUCCESS_HEADING'] = "Reservierung wurde erfolgreich hinzugefügt!";
 $lang['SUCCESS_REDIRECT'] = "Diese Seite wird in ";
 $lang['SUCCESS_SECONDS'] = " sekunden umgeleitet";
+
 // Login page
 
 $lang['LOGIN_USERNAME'] = 'Benutzername';
 $lang['LOGIN_PASSWORD'] = 'Passwort';
 $lang['LOGIN_LOGIN'] = "Einloggen";
+
+// Admin page
+
+$lang['ADMIN_MENU_WELCOME'] = 'Willkommen ';
+$lang['ADMIN_MENU_SEE_RESERVATIONS'] = 'Reservierungen ansehen';
+$lang['ADMIN_MENU_MODIFY_RESERVATIONS'] = 'Reservierungen ändern';
+$lang['ADMIN_MENU_MODIFY_STATIONS'] = 'Stationen ändern';
+$lang['ADMIN_MENU_MODIFY_REGIONS'] = 'Regionen änderns';
+$lang['ADMIN_MENU_SEE_ALL_USERS'] = 'Alle Benutzer anzeigen';
+$lang['ADMIN_MENU_CREATE_USER'] = 'Neuen Benutzer hinzufügen';
+
+$lang['ADMIN_REGISTER_HEADING'] = 'Registrieren Sie einen neuen Benutzer';
+$lang['ADMIN_REGISTER_REGISTER'] = 'Registrieren';
+$lang['ADMIN_REGISTER_CANCEL'] = 'Stornieren';
+
+$lang['ADMIN_ACCOUNT_HEADING'] = 'Kontoinformationen:';
+$lang['ADMIN_ACCOUNT_TIP'] = 'Um diese Informationen zu ändern, kontaktieren Sie bitte einen globalen Administrator.';
+
+$lang['ADMIN_USER_USERNAME'] = 'Benutzername';
+$lang['ADMIN_USER_FIRSTNAME'] = 'Vorname';
+$lang['ADMIN_USER_LASTNAME'] = 'Familienname';
+$lang['ADMIN_USER_PASSWORD'] = 'Passwort';
+$lang['ADMIN_USER_CONFIRM_PASSWORD'] = 'Bestätige das passwort';
+$lang['ADMIN_USER_EMAIL'] = 'E-mail';
+$lang['ADMIN_USER_ROLE'] = 'Benutzer-rolle';
+$lang['ADMIN_USER_PHONE'] = 'Telefonnummer';
+$lang['ADMIN_USER_REGION'] = 'Benutzerregion';
+
 ?>
