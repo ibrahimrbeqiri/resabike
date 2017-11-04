@@ -209,7 +209,6 @@ class reserveController extends Controller{
 	function cancelreservation()
 	{
 	        $delete = $_GET['delete'];
-	        $encrypt_method = "AES-256-CBC";
 	        $output = false;
 	        $encrypt_method = "AES-256-CBC";
 	        $secret_key = 'catchmeifyoucan';
