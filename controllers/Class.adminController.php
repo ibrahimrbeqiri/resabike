@@ -469,27 +469,32 @@ class adminController extends Controller{
 	        $this->redirect('welcome', 'welcome');
 	        exit;
 	    }
-	    $reservationdate = $_POST['reservationdate'];
-	     if(isset($_POST['reservationdate']))
+	    
+	    if(isset($_POST['reservationdate']))
 	    {
-	       
+	        $reservationdate = $_POST['reservationdate'];
+	        
 	        $result = Reservation::getAllBusDriverReservations($reservationdate);
 	        $_SESSION['busdriverReservations'] = $result;
+	        
     	    $stations = Station::getAllStations();
     	    $_SESSION['stations'] = $stations;
     
     	    
-    	    if($result['status']=='error')
+    	    if($result['status']=='error' || empty($result['result']))
     	    {
-    	        $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
-    	        echo $_SESSION['msg'];
+    	        $_SESSION['msg'] = '<span class="error">There are no reservations made for this day!</span>';
+    	        $this->redirect('admin', 'busDriverReservations');
+    	        exit;
+    	        /*$_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+    	        echo $_SESSION['msg'];*/
     	    }
-        	if(empty($result['result']))
+        	/*if(empty($result['result']))
         	{
                 $_SESSION['msg'] = '<span class="error">There are no reservations made for this day!</span>';
         	    $this->redirect('admin', 'busDriverReservations');
         	    exit;
-        	}
+        	}*/
     
     
         	$sums = Reservation::getAllBikes($reservationdate);

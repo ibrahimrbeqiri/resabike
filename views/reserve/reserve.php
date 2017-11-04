@@ -5,7 +5,6 @@ include_once ROOT_DIR.'views/header.inc';
 $msg = $this->vars['msg'];
 $stations = $_SESSION['StationsByRegion'];
 
-//var_dump($stations);
 ?>
 
 
