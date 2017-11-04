@@ -57,9 +57,9 @@ $( document ).ready(function() {
 		
 		$(function() {
 			  $('.dateSelection').on('change', function(e) {
-			    $(this).closest('form')
-			           .trigger('submit')
+			    $(this).closest('form').submit();
+			           
 			  })
 			})
-			
+	   
 });

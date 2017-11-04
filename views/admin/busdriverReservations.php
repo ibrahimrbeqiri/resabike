@@ -6,9 +6,7 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 $reservations = $_SESSION['busdriverReservations'];
-$stations = $_SESSION['stations'];
 
-$sums = $_SESSION['sums'];
 ?>
 
 <div class="container">
@@ -17,17 +15,15 @@ $sums = $_SESSION['sums'];
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
 		<?php endif; ?>
-  <form id="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post">  
-  
+  <form id="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post" onload="">  
+  <div class="col l12">Please select on the date you want to see the reservations for!</div>
   		<select class="dateSelection" name="reservationdate">
-			<option selected value="<?php echo date('d.m.Y', strtotime('today'));?>">Today: <?php echo date('d.m.Y', strtotime('today'));?></option>
-			<option value="<?php echo date("d.m.Y", strtotime("last week monday")); ?>">Last week: <?php echo date("d.m.Y", strtotime("last week monday"));?></option>
+  			<option value="<?php echo date("d.m.Y", strtotime("tomorrow")); ?>">Tomorrow: <?php echo date("d.m.Y", strtotime("tomorrow"));?></option>
+			<option selected value="<?php echo date('d.m.Y', strtotime("today"));?>">Today: <?php echo date('d.m.Y', strtotime("today"));?></option>
+			<option value="<?php echo date("d.m.Y", strtotime("yesterday")); ?>">Yesterday: <?php echo date("d.m.Y", strtotime("yesterday"));?></option>
 		</select>
 		
-		
-		<button class="btn-floating" type="submit" name="save">
-			<i class="material-icons">save</i>
-		</button>
+		<?php if(!empty($reservations)):?>
 		
 		<ul class="collapsible" data-collapsible="accordion">
 		
@@ -36,26 +32,16 @@ $sums = $_SESSION['sums'];
     		
       			<div class="collapsible-header">
               		<div>Date: <?php echo $reservation['reservationdate'].'&emsp;';?></div>
-              		<?php foreach($stations as $station):?>
-              			<?php if($station['stationId'] == $reservation['fromstation']):?>
-                  			<div>From: <?php echo $station['stationName'].'&emsp;';?></div>
-                  		<?php endif;?>
-                  	<?php endforeach;?>
+                  	<div>From: <?php echo $reservation['stationFrom'].'&emsp;';?></div>
                   	<div>Departure: <?php echo $reservation['departure'].'&emsp;';?></div>
+                  	<div>Total bikes: <?php echo $reservation['totalbikes']?></div>
       			</div>
       			<div class="collapsible-body">
       				<div>
-					<?php foreach($stations as $station):?>
-              			<?php if($station['stationId'] == $reservation['tostation']):?>
-                  			To: <?php echo $station['stationName'].'&emsp;';?>
-                  		<?php endif;?>
-                  	<?php endforeach;?>
+                  	To: <?php echo $reservation['stationTo'].'&emsp;';?>
                   	Arrival: <?php echo $reservation['arrival'].'&emsp;';?>
-      			    NR. of Bikes: <?php echo $reservation['bikenumber'].'&emsp;';?>
-      			    Person: <?php echo $reservation['firstname'].' '.$reservation['lastname'];?>
-      			    
+                  	People: <?php echo $reservation['firstname'].' '.$reservation['lastname'].': Bikes('.$reservation['bikenumber'].')'.',&emsp;'?>
       				</div>		
-      			
       			</div>
       		</li>
       	<?php endforeach;?>
@@ -90,6 +76,7 @@ $sums = $_SESSION['sums'];
 			</div>
 			<?php endforeach; ?>
 		</div>
+		<?php endif;?>
   </form>
 		
 

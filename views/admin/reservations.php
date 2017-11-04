@@ -6,9 +6,7 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 $reservations = $_SESSION['reservations'];
-$stations = $_SESSION['stations'];
 
-var_dump($reservations);
 ?>
 
 <div class="container">
