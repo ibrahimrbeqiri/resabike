@@ -40,12 +40,12 @@ $msg = $this->vars['msg'];
 
 		<div class="col l 12" style="padding: 5%;">
 			<div class="col l12 center">
-				<h3>How it works:</h3>
+				<h3><?php echo $lang['WELCOME_HOW_IT_WORKS']; ?></h3>
 			</div>
 			<div class="col s12 m4">
 			  <div class="center promo">
 				<i class="material-icons">search</i>
-				<p class="promo-caption"> 1. Search for bus routes</p>
+				<p class="promo-caption"><?php echo $lang['WELCOME_HOW_IT_WORKS_TITLE1']; ?></p>
 				<p class="light center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			  </div>
 			</div>
@@ -53,7 +53,7 @@ $msg = $this->vars['msg'];
 			<div class="col s12 m4">
 			  <div class="center promo">
 				<i class="material-icons">directions_bike</i>
-				<p class="promo-caption">2. Reserve bikes for bus route</p>
+				<p class="promo-caption"><?php echo $lang['WELCOME_HOW_IT_WORKS_TITLE2']; ?></p>
 				<p class="light center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			  </div>
 			</div>
@@ -61,7 +61,7 @@ $msg = $this->vars['msg'];
 			<div class="col s12 m4">
 			  <div class="center promo">
 				<i class="material-icons">mood</i>
-				<p class="promo-caption">3. Enjoy</p>
+				<p class="promo-caption"><?php echo $lang['WELCOME_HOW_IT_WORKS_TITLE3']; ?></p>
 				<p class="light center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			  </div>
 			</div>

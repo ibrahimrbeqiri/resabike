@@ -39,7 +39,7 @@ if ($search) {
 ?>
 
         <div class="container">
-		<h5><?php echo "Bus rides from $from to $to at $time on $date:" ?></h5>
+		<h5><?php echo $lang['RESULTS_INTRO'].$lang['RESULTS_FROM']."$from".$lang['RESULTS_TO']."$to".$lang['RESULTS_AT']."$time".$lang['RESULTS_ON']."$date:" ?></h5>
 		<ul class="collapsible" data-collapsible="accordion">
 		<?php $allowedTypes = array ("post", "bus", "walk"); ?>
 		<?php foreach($response->connections as $connection): ?>
@@ -145,31 +145,34 @@ if ($search) {
 
 
 										   <div class="row">
-											   <div class="input-field col l6">
-												 <i class="material-icons prefix">person</i>
-												 <input id="first_name" name="firstname" type="text" class="validate">
-												 <label for="first_name">First Name</label>
+											   <div class="col l12 row">
+												   <div class="input-field col l6">
+													 <i class="material-icons prefix">person</i>
+													 <input id="first_name" name="firstname" type="text" class="validate">
+													 <label for="first_name"><?php echo $lang['RESULTS_FORM_FIRSTNAME']; ?></label>
+												   </div>
+												   <div class="input-field col l6">
+													 <input id="last_name" name="lastname" type="text" class="validate">
+													 <label for="last_name"><?php echo $lang['RESULTS_FORM_LASTNAME']; ?></label>
+												   </div>
 											   </div>
-											   <div class="input-field col l6">
-												 <input id="last_name" name="lastname" type="text" class="validate">
-												 <label for="last_name">Last Name</label>
+											   <div class="col l12 row">
+												   <div class="input-field col l6">
+													 <i class="material-icons prefix">email</i>
+													 <input id="icon_prefix" name="email" type="text" class="validate">
+													 <label for="icon_prefix"><?php echo $lang['RESULTS_FORM_EMAIL']; ?></label>
+												   </div>
+												   <div class="input-field col l6">
+													 <i class="material-icons prefix">phone</i>
+													 <input id="icon_prefix" name="phone" type="text" class="validate">
+													 <label for="icon_prefix"><?php echo $lang['RESULTS_FORM_PHONE']; ?></label>
+												   </div>
 											   </div>
-
-											 <div class="input-field col l6">
-											   <i class="material-icons prefix">email</i>
-											   <input id="icon_prefix" name="email" type="text" class="validate">
-											   <label for="icon_prefix">E-mail</label>
-											 </div>
-											 <div class="input-field col l6">
-											   <i class="material-icons prefix">phone</i>
-											   <input id="icon_prefix" name="phone" type="text" class="validate">
-											   <label for="icon_prefix">Phone number</label>
-											 </div>
 
 											 <div class="input-field col l12">
 											   <i class="material-icons prefix">directions_bike</i>
 											   <select class="form-bikes" name="bikenumber">
-												 <option value="" disabled selected>Bikes</option>
+												 <option value="" disabled selected><?php echo $lang['RESULTS_FORM_BIKES']; ?></option>
 												 <option value="1">1</option>
 												 <option value="2">2</option>
 												 <option value="3">3</option>
@@ -188,12 +191,12 @@ if ($search) {
 											 <div class="input-field col l12 additional-info">
 											   <i class="material-icons prefix">edit</i>
 											   <textarea id="textarea1" name="remarks" class="materialize-textarea"></textarea>
-											   <label for="textarea1">Remarks</label>
+											   <label for="textarea1"><?php echo $lang['RESULTS_FORM_REMARKS']; ?></label>
 											 </div>
 
-											 <div class="col l6">
+											 <div class="col l12">
 												 <button class="btn waves-effect waves-light" type="submit" name="action">
-													 Reserve
+													 <?php echo $lang['RESULTS_FORM_RESERVE']; ?>
 												   <i class="material-icons right">check</i>
 
 												 </button>

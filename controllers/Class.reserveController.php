@@ -63,7 +63,7 @@ class reserveController extends Controller{
 		if ($sameRegion[0]['Region1'] == $sameRegion[0]['Region2']) {
 
 		$reservationdate = $date;
-		$sum = Reservation::getAllBikes($reservationdate);
+		//$sum = Reservation::getAllBikes($reservationdate);
 		$_SESSION['sum'] = $sum;
 		//saveing the search query into an object
 		$search_query = array('from' => $from, 'to'=> $to, 'date' => $date, 'time' => $time);
@@ -105,7 +105,7 @@ class reserveController extends Controller{
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 
 	}
- 
+
 	function confirmed()
 	{
 	    $firstname = $_SESSION['reservationArray']['firstname'];
@@ -125,13 +125,13 @@ class reserveController extends Controller{
 
 	    $result = $reservation->addReservation();
 	    $id = $result['id'];
-	    
+
 	    $output = false;
 	    $encrypt_method = "AES-256-CBC";
 	    $secret_key = 'catchmeifyoucan';
 	    $secret_iv = 'resabikeiscrazy';
 	    $key = hash('sha256', $secret_key);
-	    
+
 	    $iv = substr(hash('sha256', $secret_iv), 0, 16);
 	    $output = openssl_encrypt($id, $encrypt_method, $key, 0, $iv);
 	    $output = base64_encode($output);
@@ -158,6 +158,27 @@ class reserveController extends Controller{
 	    }
 	    else
 	    {
+			$lang = $_SESSION['lang'];
+			switch ($lang) {
+			  case 'en':
+			  $lang_file = 'lang.en.php';
+			  break;
+
+			  case 'de':
+			  $lang_file = 'lang.de.php';
+			  break;
+
+			  case 'fr':
+			  $lang_file = 'lang.fr.php';
+			  break;
+
+			  default:
+			  $lang_file = 'lang.en.php';
+
+			}
+
+			include_once ROOT_DIR.'languages/'.$lang_file;
+
 	        $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 	        try {
 
@@ -169,6 +190,7 @@ class reserveController extends Controller{
 	            $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 	            $mail->Port = 587;                                    // TCP port to connect to
 	            $mail->SMTPAuth = true;
+				$mail->CharSet = 'UTF-8';
 	            $mail->smtpConnect(
 	                array(
 	                    "ssl" => array(
@@ -185,14 +207,22 @@ class reserveController extends Controller{
 
 	            //Content
 	            $mail->isHTML(true);                                  // Set email format to HTML
-	            $mail->Subject = 'Your bike reservation with Resabike!';
-	            $mail->Body    = '<b>Confirmation!!!</b> <br>
-                                  Dear '.$firstname.' '.$lastname.'</br>'.
-                                  'You have reserved '.$bikenumber.' bike(s) on date: '.$reservationdate.'</br> From: '.$from.' leaving '.$departure. '</br> To: '.$to.' arriving '.$arrival.
-	                              '</br> </br> If you wish to cancel your reservation please click on the link below </br>
-                                   http://localhost/grp7/reserve/cancelreservation?delete='.$output;
-	            $mail->AltBody = 'Dear '.$firstname.' '.$lastname.'</br>'.
-                                  'You have reserved '.$bikenumber.' bike(s) on date: '.$reservationdate.' From: '.$from.' leaving '.$departure. ' To: '.$to.' arriving '.$arrival;
+	            $mail->Subject = $lang['CONFIRMATION_EMAIL_SUBJECT'];
+	            $mail->Body    =  '<p>'.$lang['CONFIRMATION_EMAIL_INTRO'].'</p>'.
+								  '<ul>'.
+								  '<li>'.$lang['CONFIRMATION_EMAIL_FROM'].$from.$lang['CONFIRMATION_EMAIL_TIME'].$departure.'</li>'.
+								  '<li>'.$lang['CONFIRMATION_EMAIL_TO'].$to.$lang['CONFIRMATION_EMAIL_TIME'].$arrival.'</li>'.
+								  '<li>'.$lang['CONFIRMATION_EMAIL_DATE'].$reservationdate.'</li>'.
+								  '<li>'.$lang['CONFIRMATION_EMAIL_FIRSTNAME'].$firstname.'</li>'.
+								  '<li>'.$lang['CONFIRMATION_EMAIL_LASTNAME'].$lastname.'</li>'.
+								  '<li>'.$lang['CONFIRMATION_EMAIL_EMAIL'].$email.'</li>'.
+								  '<li>'.$lang['CONFIRMATION_EMAIL_PHONE'].$phone.'</li>'.
+								  '<li>'.$lang['CONFIRMATION_EMAIL_BIKES'].$bikenumber.'</li>'.
+								  '<li>'.$lang['CONFIRMATION_EMAIL_REMARKS'].$remarks.'</li>'.
+								  '</ul>'.
+								  '<p>'.$lang['CONFIRMATION_EMAIL_OUTRO'].'</p>'.
+								  '<p>'.$lang['CONFIRMATION_EMAIL_DELETEMESSAGE'].'</p>'.
+								  'http://localhost/grp7/reserve/cancelreservation?delete='.$output;
 
 	            $mail->send();
 
@@ -200,10 +230,9 @@ class reserveController extends Controller{
 
 	        }
 
-	        echo "Success!";
 	        $this->redirect('reserve', 'success');
 
-            
+
 	    }
 	}
 	function cancelreservation()
@@ -217,7 +246,7 @@ class reserveController extends Controller{
 	        $iv = substr(hash('sha256', $secret_iv), 0, 16);
 	        $output = openssl_decrypt(base64_decode($delete), $encrypt_method, $key, 0, $iv);
 	        $deletion = Reservation::deleteReservation($output);
-	        
+
 	        if($deletion['status'] == 'error')
 	        {
 	            echo "Something went wrong! Try again!";
@@ -225,7 +254,7 @@ class reserveController extends Controller{
 	        else
 	        {
 	            echo "<h3>Your reservation has sucessfully been deleted</h3>";
-	        }	        
+	        }
 	}
 	function cancel()
 	{
