@@ -106,4 +106,13 @@ class RegionStations
         
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
+    public static function addStationsForRegion($regionId, $stationId, $stationName)
+    {
+        $query = "INSERT INTO regionstations(regionIdRS, stationIdRS) VALUES(?, ?);
+                  INSERT INTO station(stationId, stationName) VALUES(?, ?)";
+        $attributes = array($regionId, $stationId, $stationId, $stationName);
+        
+        
+        return MySQLConnection::getInstance()->execute($query, $attributes);
+    }
 }
