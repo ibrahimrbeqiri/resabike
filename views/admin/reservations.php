@@ -58,8 +58,8 @@ $reservations = $_SESSION['reservations'];
 								<div class="table-cell"><input type="text" name="email" value="<?php echo $reservation['email'] ?>"></div>
 								<div class="table-cell"><input type="text" name="bikenumber" value="<?php echo $reservation['bikenumber'] ?>"></div>
 								<div class="table-cell"><input type="text" name="reservationdate" value="<?php echo $reservation['reservationdate'] ?>"></div>
-								<div class="table-cell"><input type="text" name="fromstation" value="<?php echo $reservation['stationFrom'] ?>"></div>
-								<div class="table-cell"><input type="text" name="tostation" value="<?php echo $reservation['stationTo'] ?>"></div>
+								<div class="table-cell"><input type="text" name="fromstation" value="<?php echo $reservation['fromstation'] ?>"></div>
+								<div class="table-cell"><input type="text" name="tostation" value="<?php echo $reservation['tostation'] ?>"></div>
 								<div class="table-cell"><input type="text" name="departure" value="<?php echo $reservation['departure'] ?>"></div>
 								<div class="table-cell"><input type="text" name="arrival" value="<?php echo $reservation['arrival'] ?>"></div>
 								<div class="table-cell"><input type="text" name="remarks" value="<?php echo $reservation['remarks'] ?>"></div>
