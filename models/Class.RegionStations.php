@@ -99,14 +99,16 @@ class RegionStations
     
     public static function modifyStationsForRegion($regionIdRS, $stationIdRS, $stationId, $stationName)
     {
-        $query = "UPDATE regionstations SET regionIdRS=?, stationIdRS=?
-                  WHERE stationIdRS=?;
+        $query = "START TRANSACTION;
+                  UPDATE regionstations SET regionIdRS=?, stationIdRS=?
+                    WHERE stationIdRS=?;
                   UPDATE station SET stationId=?, stationName=?
-                  WHERE stationId=?;";
+                    WHERE stationId=?;
+                  COMMIT;";
         
         $attributes = array($regionIdRS, $stationId, $stationIdRS, $stationId, $stationName, $stationIdRS);
         
-        return  MySQLConnection::getInstance()->transactions($query, $attributes);
+        return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
     public static function addStationsForRegion($regionId, $stationId, $stationName)
     {

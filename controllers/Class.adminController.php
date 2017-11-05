@@ -417,9 +417,21 @@ class adminController extends Controller{
 	}
 	function addStations()
 	{
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    $user = $this->getActiveUser();
+	    if ($user->getuserRoleId() != 1) {
+	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+	        $this->redirect('admin', 'menu');
+	        exit;
+	    }
+	    
 	    $text = trim($_POST['addStations']);
 	    $newstations = preg_split('/(\n)/', $text);
         $message = array();
+        
 	    foreach($newstations as $newstation)
 	    {
 	       $newstation = explode(';', $newstation);
