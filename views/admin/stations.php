@@ -12,57 +12,84 @@ $regionstations = $_SESSION['regionstations'];
 
 <div class="container">
 	<div class="col l12 center card admin-menu">
-		<h4>Stations:</h4>
-		<p>Disclamer: Make sure the station IDs are correct!</p>
-		<?php if ($msg): ?>
-			<?php if(is_array($msg)):?>
-    			<?php foreach($msg as $m):?>
-    				<?php echo $m ?> </br>
-    			<?php endforeach;?>
-			<?php else:?>
-			<?php echo $msg;?>
-			<?php endif;?>
-		<?php endif; ?>
-		<a href="<?php echo URL_DIR.'admin/menu';?>">
-				<button class="btn waves-effect waves-light right" type="button">Cancel
-					<i class="material-icons left">cancel</i>
-				</button>
-		</a>
+		<div class="col l12">
+			<h4>Stations:</h4>
+			<p>Disclamer: Make sure the station IDs are correct!</p>
+			<?php if ($msg): ?>
+				<?php if(is_array($msg)):?>
+					<?php foreach($msg as $m):?>
+						<?php echo $m ?> </br>
+					<?php endforeach;?>
+				<?php else:?>
+				<?php echo $msg;?>
+				<?php endif;?>
+			<?php endif; ?>
 
-  		<table>
-    		<thead>
-    			<th>Region Name</th>
-    			<th>Station ID</th>
-    			<th>Station Name</th>
-    		</thead>
-    	</table>
-		<?php foreach ($regionstations as $regionstation): ?>
-		<form action="<?php echo URL_DIR.'admin/editStations';?>" method="post">
+		</div>
+		<div class="col l12 right-align">
+			<a href="<?php echo URL_DIR.'admin/menu';?>">
+					<button class="btn waves-effect waves-light" type="button">Cancel
+						<i class="material-icons left">cancel</i>
+					</button>
+			</a>
+		</div>
+
+
+
 			<div id="div-table">
-					<div class="table-row">
-    					<div class="table-cell">
-    						<button class="btn-floating" type="submit" name="modify">
-    								<i class="material-icons">save</i>
-    						</button>
-    					</div>
+				<div class="table-row">
+					<form>
 						<div class="table-cell">
-							<select name="regionId">
-									<option selected value="<?php echo $regionstation['regionId'];?>"><?php echo $regionstation['regionName']; ?></option>
-									<?php if($user->getuserRoleId() == 1 ):?>
-										<?php foreach ($regions as $region): ?>
-											<option value="<?php echo $region['regionId']; ?>"><?php echo $region['regionName']; ?></option>
-										<?php endforeach;?>
-									<?php endif;?>
-							</select>
+							<button disabled class="btn-floating"></button>
 						</div>
-						<div class="table-cell"><input type="text" hidden name="stationIdRS" value="<?php echo $regionstation['stationIdRS']?>"></div>	
-						<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId']?>"></div>	
-						<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName']?>"></div>
-						<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>
-					</div>
+						<div class="table-cell">
+							<input type="text" disabled value="Region">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="Station ID">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="Station Name">
+						</div>
+
+						<div class="table-cell">
+							<button  disabled class="btn-floating"></button>
+						</div>
+					</form>
+				</div>
+					<?php foreach ($regionstations as $regionstation): ?>
+						<div class="table-row">
+							<form action="<?php echo URL_DIR.'admin/editStations';?>" method="post">
+							<div class="table-cell">
+								<button class="btn-floating" type="submit" name="modify">
+										<i class="material-icons">save</i>
+								</button>
+							</div>
+							<div class="table-cell">
+								<select name="regionId">
+										<option selected value="<?php echo $regionstation['regionId'];?>"><?php echo $regionstation['regionName']; ?></option>
+										<?php if($user->getuserRoleId() == 1 ):?>
+											<?php foreach ($regions as $region): ?>
+												<option value="<?php echo $region['regionId']; ?>"><?php echo $region['regionName']; ?></option>
+											<?php endforeach;?>
+										<?php endif;?>
+								</select>
+							</div>
+							<input type="text" hidden name="stationIdRS" value="<?php echo $regionstation['stationIdRS']?>">
+							<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId']?>"></div>
+							<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName']?>"></div>
+							<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>
+							</form>
+						</div>
+					<?php endforeach; ?>
 			</div>
-		</form>        
-		<?php endforeach; ?>
+
+
+		<button id="add-table-row" class="btn waves-effect waves-light left" type="button" name="action">Add station
+			<i class="material-icons right">add</i>
+		</button>
+
+
 		<?php if($user->getuserRoleId() == 1):?>
 		  <div class="row">
             <form action="<?php echo URL_DIR.'admin/addStations';?>" method="post">
@@ -79,28 +106,37 @@ $regionstations = $_SESSION['regionstations'];
   		 </div>
         <?php endif;?>
 
+
+
 		<?php if ($user->getuserRoleId() == 1): ?>
 			<script type="text/javascript">
     			$('#add-table-row').click(function() {
     				$('#div-table').append('<div class="table-row">\
-    				<div class="table-cell">\
-    					<button class="btn-floating" type="submit" name="modify">\
-    						<i class="material-icons">save</i>\
-    					</button>\
-    				</div>\
-    				<div class="table-cell">\
-    					<select name="regionId">\
-    						<option disabled selected><?php echo $regionstation['regionName'] ?></option>\
-    					   <?php foreach ($regions as $region): ?>\
-    							<option value="<?php echo $region['regionId']; ?>"><?php echo $region['regionName']; ?></option>\
-    					   <?php endforeach; ?>\
-    					</select>\
-    				</div>\
-    				<div class="table-cell"><input type="text" name="stationId" value=""></div>\
-    				<div class="table-cell"><input type="text" name="stationName" value=""></div>\
-    				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
-    				</div>');
-    			});
+												<form action="<?php echo URL_DIR.'admin/editStations';?>" method="post">\
+												<div class="table-cell">\
+													<button class="btn-floating" type="submit" name="modify">\
+															<i class="material-icons">save</i>\
+													</button>\
+												</div>\
+												<div class="table-cell">\
+													<select name="regionId">\
+															<option selected value=""></option>\
+																<?php foreach ($regions as $region): ?>\
+																	<option value="<?php echo $region['regionId']; ?>"><?php echo $region['regionName']; ?></option>\
+																<?php endforeach;?>\
+													</select>\
+												</div>\
+												<div class="table-cell"><input type="text" hidden name="stationIdRS" value=""></div>\
+												<div class="table-cell"><input type="text" name="stationId" value=""></div>\
+												<div class="table-cell"><input type="text" name="stationName" value=""></div>\
+												<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
+												</form>\
+											</div>');
+					//this is needed to activate the materialize select
+					$('select').each(function() {
+						$(this).material_select();
+						});
+				});
 			</script>
 
 
@@ -108,20 +144,27 @@ $regionstations = $_SESSION['regionstations'];
 			<script type="text/javascript">
 			$('#add-table-row').click(function() {
 				$('#div-table').append('<div class="table-row">\
-				<div class="table-cell">\
-    				<button class="btn-floating" type="submit" name="modify">\
-    					<i class="material-icons">save</i>\
-    				</button>\
-    			</div>\
-				<div class="table-cell">\
-					<select name="regionId">\
-    					<option disabled selected><?php echo $regionstation['regionName'] ?></option>\
-    				</select>\
-    			</div>\
-				<div class="table-cell"><input type="text" name="stationId" value=""></div>\
-				<div class="table-cell"><input type="text" name="stationName" value=""></div>\
-				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
-				</div>')
+											<form action="<?php echo URL_DIR.'admin/editStations';?>" method="post">\
+											<div class="table-cell">\
+												<button class="btn-floating" type="submit" name="modify">\
+														<i class="material-icons">save</i>\
+												</button>\
+											</div>\
+											<div class="table-cell">\
+												<select name="regionId">\
+												<option disabled selected><?php echo $regionstation['regionName'] ?></option>\
+												</select>\
+											</div>\
+											<div class="table-cell"><input type="text" hidden name="stationIdRS" value=""></div>\
+											<div class="table-cell"><input type="text" name="stationId" value=""></div>\
+											<div class="table-cell"><input type="text" name="stationName" value=""></div>\
+											<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
+											</form>\
+										</div>');
+				//this is needed to activate the materialize select
+				$('select').each(function() {
+					$(this).material_select();
+					});
 			});
 			</script>
 		<?php endif; ?>

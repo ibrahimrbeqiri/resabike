@@ -17,42 +17,66 @@ var_dump($msg);
 <div class="container">
 	<div class="col l12 center card admin-menu">
 		<h4>Users:</h4>
-		<p>Disclamer: Make sure the user IDs are correct!</p>
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
 		<?php endif; ?>
+		<div class="col l12 right-align">
 			<a href="<?php echo URL_DIR.'admin/menu';?>">
-				<button class="btn waves-effect waves-light right" type="button">Cancel
-					<i class="material-icons left">cancel</i>
-				</button>
+					<button class="btn waves-effect waves-light" type="button">Cancel
+						<i class="material-icons left">cancel</i>
+					</button>
 			</a>
-			<table>
-				<thead>
-    				<th> </th>
-    				<th>ID</th>
-    				<th>Firstname</th>
-    				<th>Lastname</th>
-    				<th>Username</th>
-    				<th>Email</th>
-    				<th>Password</th>
-    				<th>Phone</th>
-    				<th>Role</th>
-    				<th>Region</th>
-				</thead>
-			</table>
+		</div>
+
+
 			<div id="div-table" class="col l12">
-			</div>
-			<div id="div-table" class="col l12">
+				<div class="table-row">
+					<form>
+						<div class="table-cell">
+							<button disabled class="btn-floating"></button>
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="ID">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="First name">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="Last name">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="E-mail">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="Password">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="Phone">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="Role">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="Region">
+						</div>
+
+
+						<div class="table-cell">
+							<button  disabled class="btn-floating"></button>
+						</div>
+					</form>
+				</div>
+
 					<?php foreach ($allusers as $user): ?>
-						<form action="<?php echo URL_DIR.'admin/editUsers';?>" method="post">
 							<div class="table-row">
+								<form action="<?php echo URL_DIR.'admin/editUsers';?>" method="post">
 								<div class="table-cell">
 									<button class="btn-floating" type="submit" name="modify">
 										<i class="material-icons">save</i>
 									</button>
 								</div>
 
-								<div class="table-cell"><p><?php echo $user['id'] ?></p><input type="text" name="id" hidden value="<?php echo $user['id'] ?>"></div>
+								<div class="table-cell"><input type="text" disabled value="<?php echo $user['id'] ?>"><input type="text" name="id" hidden value="<?php echo $user['id'] ?>"></div>
 								<div class="table-cell"><input type="text" name="name" value="<?php echo $user['name'] ?>"></div>
 								<div class="table-cell"><input type="text" name="lastname" value="<?php echo $user['lastname'] ?>"></div>
 								<div class="table-cell"><input type="text" name="username" value="<?php echo $user['username'] ?>"></div>
@@ -68,7 +92,7 @@ var_dump($msg);
                         					  <?php endforeach; ?>
                 				  	</select>
 								</div>
-							
+
 								<div class="table-cell">
     								<select name="userRegionId">
                     					  <option selected value="<?php echo $user['regionId']?>"><?php echo $user['regionName'] ?></option>
@@ -83,9 +107,8 @@ var_dump($msg);
 										<i class="material-icons">delete</i>
 									</button>
 								</div>
-								
+								</form>
 							</div>
-						</form>
 					<?php endforeach; ?>
 			</div>
 	</div>
