@@ -22,15 +22,23 @@ $regionstations = $_SESSION['regionstations'];
 					<i class="material-icons left">cancel</i>
 				</button>
 		</a>
-		<thead>
-			<th>Region Name</th>
-			<th>Station ID</th>
-			<th>Station Name</th>
-		</thead>
-		<?php foreach ($regionstations as $regionstation): ?>
-		<form action="<?php echo URL_DIR.'admin/editStations';?>" method="post">
-			<div id="div-table">
+
+
+
+			<div id="div-table" style="width: 100%;">
 					<div class="table-row">
+						<form class="" action="index.html" method="post">
+							<div class="table-cell"></div>
+							<div class="table-cell">Region Name</div>
+							<div class="table-cell">Station ID</div>
+							<div class="table-cell">Station Name</div>
+							<div class="table-cell"></div>
+						</form>
+
+					</div>
+					<?php foreach ($regionstations as $regionstation): ?>
+					<div class="table-row">
+						<form action="<?php echo URL_DIR.'admin/editStations';?>" method="post">
     					<div class="table-cell">
     						<button class="btn-floating" type="submit" name="modify">
     								<i class="material-icons">save</i>
@@ -46,14 +54,16 @@ $regionstations = $_SESSION['regionstations'];
 									<?php endif;?>
 							</select>
 						</div>
-						<div class="table-cell"><input type="text" hidden name="stationIdRS" value="<?php echo $regionstation['stationIdRS']?>"></div>	
-						<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId']?>"></div>	
+						<div class="table-cell"><input type="text" hidden name="stationIdRS" value="<?php echo $regionstation['stationIdRS']?>"></div>
+						<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId']?>"></div>
 						<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName']?>"></div>
 						<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>
+						</form>
 					</div>
+					<?php endforeach; ?>
 			</div>
-		</form>
-		<?php endforeach; ?>
+
+
 
 		<button id="add-table-row" class="btn waves-effect waves-light left" type="button" name="action">Add station
 	  		<i class="material-icons right">add</i>

@@ -22,29 +22,30 @@ $reservations = $_SESSION['reservations'];
 				</button>
 			</a>
 			<table>
-				<thead>
-    				<th> </th>
-    				<th>ID</th>
-    				<th>Firstname</th>
-    				<th>Lastname</th>
-    				<th>Phone</th>
-    				<th>Email</th>
-    				<th>Bike NR</th>
-    				<th>Date</th>
-    				<th>From</th>
-    				<th>To</th>
-    				<th>Departure</th>
-    				<th>Arrival</th>
-    				<th>Remarks</th>
-    				<th> </th>
-				</thead>
+
 			</table>
+
 			<div id="div-table" class="col l12">
-			</div>
-			<div id="div-table" class="col l12">
+					<div class="table-row">
+						<div class="table-cell"> </div>
+						<div class="table-cell">ID</div>
+						<div class="table-cell">Firstname</div>
+						<div class="table-cell">Lastname</div>
+						<div class="table-cell">Phone</div>
+						<div class="table-cell">Email</div>
+						<div class="table-cell">Bike NR</div>
+						<div class="table-cell">Date</div>
+						<div class="table-cell">From</div>
+						<div class="table-cell">To</div>
+						<div class="table-cell">Departure</div>
+						<div class="table-cell">Arrival</div>
+						<div class="table-cell">Remarks</div>
+						<div class="table-cell"> </div>
+					</div>
 					<?php foreach ($reservations as $reservation): ?>
-						<form action="<?php echo URL_DIR.'admin/editReservation';?>" method="post">
+
 							<div class="table-row">
+								<form action="<?php echo URL_DIR.'admin/editReservation';?>" method="post">
 								<div class="table-cell">
 									<button class="btn-floating" type="submit" name="modify">
 										<i class="material-icons">save</i>
@@ -69,9 +70,9 @@ $reservations = $_SESSION['reservations'];
 										<i class="material-icons">delete</i>
 									</button>
 								</div>
-								
+								</form>
 							</div>
-						</form>
+
 					<?php endforeach; ?>
 			</div>
 	</div>
