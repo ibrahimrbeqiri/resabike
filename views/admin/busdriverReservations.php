@@ -17,21 +17,23 @@ $reservations = $_SESSION['busdriverReservations'];
   <form name="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post">
 
   <div class="col l12">Please select on the date you want to see the reservations for!</div>
-  	<div class="row col6">
-  	<select class="dateSelection" name="reservationdate">
-  			<option selected disabled>Pick a date</option>
-  			<option value="<?php echo date("d.m.Y", strtotime("tomorrow")); ?>">Tomorrow: <?php echo date("d.m.Y", strtotime("tomorrow"));?></option>
-			<option value="<?php echo date('d.m.Y');?>">Today: <?php echo date('d.m.Y');?></option>
-			<option value="<?php echo date("d.m.Y", strtotime("yesterday")); ?>">Yesterday: <?php echo date("d.m.Y", strtotime("yesterday"));?></option>
-	</select>
-	</div>
 		<div class="row">
-    		<div class="col l6">
-       			<input id="icon_prefix" type="text" class="datepicker" name="customDate" placeholder="Pick another date">
-       			<button class="btn waves-effect waves-light" type="submit" name="formsubmit" id="busdriver-submit">
+			<div class="col l5">
+			<select class="dateSelection" name="reservationdate">
+					<option selected disabled>Pick a date</option>
+					<option value="<?php echo date("d.m.Y", strtotime("tomorrow")); ?>">Tomorrow: <?php echo date("d.m.Y", strtotime("tomorrow"));?></option>
+					<option value="<?php echo date('d.m.Y');?>">Today: <?php echo date('d.m.Y');?></option>
+					<option value="<?php echo date("d.m.Y", strtotime("yesterday")); ?>">Yesterday: <?php echo date("d.m.Y", strtotime("yesterday"));?></option>
+			</select>
+			</div>
+			<div class="col l5">
+				<input id="icon_prefix" type="text" class="datepicker" name="customDate" placeholder="Pick another date">
+			</div>
+			<div class="col l2">
+				<button class="btn waves-effect waves-light" type="submit" name="formsubmit" id="busdriver-submit">
 					  Pick date
 				</button>
-       		</div>
+			</div>
    		</div>
 
 		<?php if(!empty($reservations)):?>
