@@ -415,6 +415,43 @@ class adminController extends Controller{
 	    }
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
+	function addStations()
+	{
+	    if(!$this->getActiveUser()){
+	        $this->redirect('welcome', 'welcome');
+	        exit;
+	    }
+	    $user = $this->getActiveUser();
+	    if ($user->getuserRoleId() != 1) {
+	        $_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
+	        $this->redirect('admin', 'menu');
+	        exit;
+	    }
+	    
+	    $text = trim($_POST['addStations']);
+	    $newstations = preg_split('/(\n)/', $text);
+        $message = array();
+        
+	    foreach($newstations as $newstation)
+	    {
+	       $newstation = explode(';', $newstation);
+	       $result = RegionStations::addStationsForRegion($newstation[0], $newstation[1], $newstation[2]);
+	       
+	       if($result['status']=='error')
+	       {
+	           array_push($message, '<span class="error">'.$result['result'].'</span>');
+	       }
+	       else
+	       {
+	           array_push($message, '<span class="success">'.'You have successfully added a new station!'.'</span>');
+	           
+	       }
+	    }
+	    $_SESSION['msg'] = $message;
+	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+	    $this->redirect('admin', 'stations');
+	}
+	
 	function reservations()
 	{
 	    if(!$this->getActiveUser()){

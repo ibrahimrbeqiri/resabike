@@ -93,7 +93,7 @@ class MySQLConnection {
 	    return $result;
 	     
 	}
-
+	
     public static function getConnection()
     {
         return self::getInstance()->_conn;
