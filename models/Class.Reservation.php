@@ -263,13 +263,12 @@ class Reservation
 
     public static function getAllBusDriverReservations($reservationdate)
     {
-        $query = "SELECT * , SUM(bikenumber) AS totalbikes, fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
+        $query = "SELECT *, fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
                             JOIN station AS fromplace
                             ON reservation.fromstation = fromplace.stationId
                             JOIN station AS toplace
                             ON reservation.tostation = toplace.stationId
                             WHERE reservationdate=?
-                            GROUP BY fromstation, departure
                             ORDER BY departure ASC, reservationdate DESC";
 
         $attributes = array($reservationdate);

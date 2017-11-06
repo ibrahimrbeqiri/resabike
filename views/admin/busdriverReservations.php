@@ -6,7 +6,6 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 $reservations = $_SESSION['busdriverReservations'];
-
 ?>
 
 <div class="container">
@@ -15,18 +14,29 @@ $reservations = $_SESSION['busdriverReservations'];
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
 		<?php endif; ?>
-  <form id="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post" onload="">  
+  <form name="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post"> 
+   
   <div class="col l12">Please select on the date you want to see the reservations for!</div>
-  		<select class="dateSelection" name="reservationdate">
+  	<div class="row col6">
+  	<select class="dateSelection" name="reservationdate">
+  			<option selected disabled>Pick a date</option>
   			<option value="<?php echo date("d.m.Y", strtotime("tomorrow")); ?>">Tomorrow: <?php echo date("d.m.Y", strtotime("tomorrow"));?></option>
-			<option selected value="<?php echo date('d.m.Y', strtotime("today"));?>">Today: <?php echo date('d.m.Y', strtotime("today"));?></option>
+			<option value="<?php echo date('d.m.Y');?>">Today: <?php echo date('d.m.Y');?></option>
 			<option value="<?php echo date("d.m.Y", strtotime("yesterday")); ?>">Yesterday: <?php echo date("d.m.Y", strtotime("yesterday"));?></option>
 		</select>
-		
+	</div>
+		<div class="row">
+    		<div class="col l6">
+       			<input id="icon_prefix" type="text" class="datepicker" name="customDate" placeholder="Pick another date">
+       			<button class="btn waves-effect waves-light" type="submit">
+					  Pick date
+				</button>
+       		</div>
+   		</div>
+   	
 		<?php if(!empty($reservations)):?>
 		
 		<ul class="collapsible" data-collapsible="accordion">
-		
 		<?php foreach ($reservations as $reservation): ?>
     		<li>
     		
@@ -46,51 +56,10 @@ $reservations = $_SESSION['busdriverReservations'];
       		</li>
       	<?php endforeach;?>
  		</ul>
-		<div id="div-table" class="col l12">
-			<?php foreach ($reservations as $reservation): ?>
-			<div class="table-row">
-				<div class="table-cell">
-					<p><?php echo $reservation['firstname'] ?></p>
-				</div>
-				<div class="table-cell">
-					<p><?php echo $reservation['lastname'] ?></p>
-				</div>
-				<div class="table-cell">
-					<p><?php echo $reservation['bikenumber'] ?></p>
-				</div>
-				<div class="table-cell">
-					<p><?php echo $reservation['reservationdate'] ?></p>
-				</div>
-				<div class="table-cell">
-					<p><?php echo $reservation['fromstation'] ?></p>
-				</div>
-				<div class="table-cell">
-					<p><?php echo $reservation['tostation'] ?></p>
-				</div>
-				<div class="table-cell">
-					<p><?php echo $reservation['departure'] ?></p>
-				</div>
-				<div class="table-cell">
-					<p><?php echo $reservation['arrival'] ?></p>
-				</div>
-			</div>
-			<?php endforeach; ?>
+ 		<?php endif;?>
+ 	</form>
 		</div>
-		<?php endif;?>
-  </form>
-		
-
-
-
 	</div>
-
-
-</div>
-
-
-
-
-
 
 
 <?php

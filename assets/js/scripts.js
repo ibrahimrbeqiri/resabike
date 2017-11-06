@@ -55,11 +55,9 @@ $( document ).ready(function() {
 		}
 		});
 		
-		$(function() {
-			  $('.dateSelection').on('change', function(e) {
-			    $(this).closest('form').submit();
-			           
-			  })
-			})
 	   
+});
+$(document).on('change', '.dateSelection', function() {
+    $(this).closest('form').submit();
+
 });
