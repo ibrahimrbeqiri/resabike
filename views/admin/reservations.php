@@ -95,6 +95,7 @@ $reservations = $_SESSION['reservations'];
 						</div>
 					</form>
 				</div>
+				
 
 					<?php foreach ($reservations as $reservation): ?>
 
