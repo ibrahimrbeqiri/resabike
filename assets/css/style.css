@@ -205,3 +205,7 @@ nav{
   main {
   flex: 1 0 auto;
 }
+
+#admin-dropdown li a{
+	font-size: 80%;
+}
