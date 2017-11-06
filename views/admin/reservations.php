@@ -26,22 +26,64 @@ $reservations = $_SESSION['reservations'];
 			</table>
 
 			<div id="div-table" class="col l12">
-					<div class="table-row">
-						<div class="table-cell"> </div>
-						<div class="table-cell">ID</div>
-						<div class="table-cell">Firstname</div>
-						<div class="table-cell">Lastname</div>
-						<div class="table-cell">Phone</div>
-						<div class="table-cell">Email</div>
-						<div class="table-cell">Bike NR</div>
-						<div class="table-cell">Date</div>
-						<div class="table-cell">From</div>
-						<div class="table-cell">To</div>
-						<div class="table-cell">Departure</div>
-						<div class="table-cell">Arrival</div>
-						<div class="table-cell">Remarks</div>
-						<div class="table-cell"> </div>
-					</div>
+
+				<div class="table-row">
+					<form>
+						<div class="table-cell">
+							<button disabled class="btn-floating"></button>
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="ID">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="First name">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="Last name">
+						</div>
+
+						<div class="table-cell">
+							<input type="text" disabled value="Phone">
+						</div>
+
+						<div class="table-cell">
+							<input type="text" disabled value="E-mail">
+						</div>
+
+						<div class="table-cell">
+							<input type="text" disabled value="Bikes">
+						</div>
+
+						<div class="table-cell">
+							<input type="text" disabled value="Date">
+						</div>
+
+						<div class="table-cell">
+							<input type="text" disabled value="From">
+						</div>
+
+						<div class="table-cell">
+							<input type="text" disabled value="To">
+						</div>
+
+						<div class="table-cell">
+							<input type="text" disabled value="Departure">
+						</div>
+
+						<div class="table-cell">
+							<input type="text" disabled value="Arrival">
+						</div>
+
+						<div class="table-cell">
+							<input type="text" disabled value="Remarks">
+						</div>
+
+						<div class="table-cell">
+							<button  disabled class="btn-floating"></button>
+						</div>
+					</form>
+				</div>
+
 					<?php foreach ($reservations as $reservation): ?>
 
 							<div class="table-row">
@@ -52,7 +94,7 @@ $reservations = $_SESSION['reservations'];
 									</button>
 								</div>
 
-								<div class="table-cell"><p><?php echo $reservation['id'] ?></p><input type="text" name="id" hidden value="<?php echo $reservation['id'] ?>"></div>
+								<div class="table-cell"><input type="text" disabled value="<?php echo $reservation['id'] ?>"><input type="text" name="id" hidden value="<?php echo $reservation['id'] ?>"></div>
 								<div class="table-cell"><input type="text" name="firstname" value="<?php echo $reservation['firstname'] ?>"></div>
 								<div class="table-cell"><input type="text" name="lastname" value="<?php echo $reservation['lastname'] ?>"></div>
 								<div class="table-cell"><input type="text" name="phone" value="<?php echo $reservation['phone'] ?>"></div>
