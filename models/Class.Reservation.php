@@ -240,22 +240,38 @@ class Reservation
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
 
-    public static function getAllReservations()
+    public static function getAllReservations($reservationdate)
     {
-        $query = "SELECT * , fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
-                            JOIN station AS fromplace
-                            ON reservation.fromstation = fromplace.stationId
-                            JOIN station AS toplace
-                            ON reservation.tostation = toplace.stationId
-                            ORDER BY departure DESC, reservationdate DESC";
-
-
-        $result = MySQLConnection::getInstance()->fetch($query);
-
-        if($result['status']=='error' || empty($result['result'])){
-            return $result;
+        if($reservationdate == null)
+        {
+            $query = "SELECT * , fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
+                                JOIN station AS fromplace
+                                ON reservation.fromstation = fromplace.stationId
+                                JOIN station AS toplace
+                                ON reservation.tostation = toplace.stationId
+                                ORDER BY departure DESC, reservationdate DESC";
+            
+            $result = MySQLConnection::getInstance()->fetch($query);
+        }
+        else 
+        {
+            $query = "SELECT * , fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
+                                JOIN station AS fromplace
+                                ON reservation.fromstation = fromplace.stationId
+                                JOIN station AS toplace
+                                ON reservation.tostation = toplace.stationId
+                                WHERE reservationdate=?
+                                ORDER BY departure DESC, reservationdate DESC";
+            $attributes = array($reservationdate);
+            
+            $result = MySQLConnection::getInstance()->execute($query, $attributes);
         }
 
+
+        if($result['status']=='error' || empty($result['result'])){
+            return null;
+        }
+        
         $reservations = $result['result'];
         return $reservations;
     }

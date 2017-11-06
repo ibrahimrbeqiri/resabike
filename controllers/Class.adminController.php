@@ -464,11 +464,34 @@ class adminController extends Controller{
 			$this->redirect('admin', 'menu');
 			exit;
 		}
+        $reservationdate = null;
+        
+		if(isset($_POST['reservationDateSubmit']))
+		{
+    		if(isset($_POST['customReservationDate']))
+            {
+                $reservationdate = $_POST['customReservationDate'];
+            }
+            else {
+                $reservationdate = null;
+            }
+            
+    	    $result = Reservation::getAllReservations($reservationdate);
+    	    $_SESSION['reservations'] = $result;
+    	    
+    	    if($result['status']=='error')
+    	    {
+    	        $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
+    	        echo $_SESSION['msg'];
+    	    }
+    	    if(empty($result))
+    	    {
+    	        $_SESSION['msg'] = '<span class="error">There are no reservations made for this day!</span>';
+    	        $this->redirect('admin', 'reservations');
+    	        exit;
+    	    }
 
-
-	    $reservations = Reservation::getAllReservations();
-	    $_SESSION['reservations'] = $reservations;
-
+		}
 
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
@@ -485,7 +508,7 @@ class adminController extends Controller{
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
-
+        
 	    $id = $_POST['id'];
 	    $firstname = $_POST['firstname'];
 	    $lastname = $_POST['lastname'];
@@ -499,7 +522,7 @@ class adminController extends Controller{
 	    $arrival = $_POST['arrival'];
 	    $remarks = $_POST['remarks'];
 
-
+            
 	    if(isset($_POST['modify']))
 	    {
 	        if(empty($firstname) || empty($lastname) || empty($phone) || empty($email) || empty($bikenumber) || empty($reservationdate) ||
