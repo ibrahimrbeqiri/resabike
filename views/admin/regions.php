@@ -66,6 +66,7 @@ $regions = $_SESSION['regions'];
 			$('#div-table').append('<form action="<?php echo URL_DIR.'admin/editRegions';?>" method="post">\
 				<div class="table-row">\
 				<div class="table-cell"><button class="btn-floating" type="submit" name="modify"><i class="material-icons">save</i></button></div>\
+				<div class="table-cell"><input type="text" disabled value="xx"></div>\
 				<div class="table-cell"><input type="text" name="regionName" value=""></div>\
 				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
 				</div>\
