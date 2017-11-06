@@ -36,25 +36,45 @@ $reservations = $_SESSION['busdriverReservations'];
 			</div>
    		</div>
 
+		<?php $groupedReservations = array();
+		      $output = array();
+		      $sfrom = null;
+		      $departure = null;
+		      foreach($reservations AS $reservation)
+		      {
+		          $sfrom = $reservation['stationFrom'];
+		          $dep = $reservation['departure'];
+		          $groupedReservations[$sfrom][$dep][] = array(
+		              'reservation' => $reservation);
+		          //$groupedReservations[$reservation['stationFrom']] = $reservation;
+                
+		      }
+		      var_dump($groupedReservations);
+		      
+		?>
 		<?php if(!empty($reservations)):?>
-
+		<?php $groupedStations = array();?>
 		<ul class="collapsible" data-collapsible="accordion">
-		<?php foreach ($reservations as $reservation): ?>
+		<?php foreach ($groupedReservations AS $groupedReservation): ?>
     		<li>
-
       			<div class="collapsible-header">
-              		<div>Date: <?php echo $reservation['reservationdate'].'&emsp;';?></div>
-                  	<div>From: <?php echo $reservation['stationFrom'].'&emsp;';?></div>
-                  	<div>Departure: <?php echo $reservation['departure'].'&emsp;';?></div>
-                  	<div>Total bikes: <?php echo $reservation['totalbikes']?></div>
+      			
+              		<div>Date: <?php echo $groupedReservation['343'].'&emsp;';?></div>
+                  	<div>From: <?php echo $groupedReservation[$reservation['stationFrom']].'&emsp;';?></div>
+                  	<div>Departure: <?php echo $groupedReservation['departure'].'&emsp;';?></div>
+
       			</div>
+      			
       			<div class="collapsible-body">
       				<div>
-                  	To: <?php echo $reservation['stationTo'].'&emsp;';?>
-                  	Arrival: <?php echo $reservation['arrival'].'&emsp;';?>
-                  	People: <?php echo $reservation['firstname'].' '.$reservation['lastname'].': Bikes('.$reservation['bikenumber'].')'.',&emsp;'?>
+      				<?php foreach($groupedReservation AS $singleReservation):?>
+                  	To: <?php echo $singleReservation['stationTo'].'&emsp;';?>
+                  	Arrival: <?php echo $singleReservation['arrival'].'&emsp;';?>
+                  	People: <?php echo $singleReservation['firstname'].' '.$singleReservation['lastname'].'&emsp;'.'Bikes('.$singleReservation['bikenumber'].')';?>
+      				<?php endforeach;?>
       				</div>
       			</div>
+      			
       		</li>
       	<?php endforeach;?>
  		</ul>
