@@ -54,10 +54,10 @@ $( document ).ready(function() {
 			return false;
 		}
 		});
-		
-	   
+
+
 });
 $(document).on('change', '.dateSelection', function() {
-    $(this).closest('form').submit();
+    $('#busdriver-submit').trigger('click');
 
 });

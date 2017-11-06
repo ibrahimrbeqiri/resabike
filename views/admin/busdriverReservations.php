@@ -14,8 +14,8 @@ $reservations = $_SESSION['busdriverReservations'];
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
 		<?php endif; ?>
-  <form name="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post"> 
-   
+  <form name="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post">
+
   <div class="col l12">Please select on the date you want to see the reservations for!</div>
   	<div class="row col6">
   	<select class="dateSelection" name="reservationdate">
@@ -23,23 +23,23 @@ $reservations = $_SESSION['busdriverReservations'];
   			<option value="<?php echo date("d.m.Y", strtotime("tomorrow")); ?>">Tomorrow: <?php echo date("d.m.Y", strtotime("tomorrow"));?></option>
 			<option value="<?php echo date('d.m.Y');?>">Today: <?php echo date('d.m.Y');?></option>
 			<option value="<?php echo date("d.m.Y", strtotime("yesterday")); ?>">Yesterday: <?php echo date("d.m.Y", strtotime("yesterday"));?></option>
-		</select>
+	</select>
 	</div>
 		<div class="row">
     		<div class="col l6">
        			<input id="icon_prefix" type="text" class="datepicker" name="customDate" placeholder="Pick another date">
-       			<button class="btn waves-effect waves-light" type="submit">
+       			<button class="btn waves-effect waves-light" type="submit" name="formsubmit" id="busdriver-submit">
 					  Pick date
 				</button>
        		</div>
    		</div>
-   	
+
 		<?php if(!empty($reservations)):?>
-		
+
 		<ul class="collapsible" data-collapsible="accordion">
 		<?php foreach ($reservations as $reservation): ?>
     		<li>
-    		
+
       			<div class="collapsible-header">
               		<div>Date: <?php echo $reservation['reservationdate'].'&emsp;';?></div>
                   	<div>From: <?php echo $reservation['stationFrom'].'&emsp;';?></div>
@@ -51,7 +51,7 @@ $reservations = $_SESSION['busdriverReservations'];
                   	To: <?php echo $reservation['stationTo'].'&emsp;';?>
                   	Arrival: <?php echo $reservation['arrival'].'&emsp;';?>
                   	People: <?php echo $reservation['firstname'].' '.$reservation['lastname'].': Bikes('.$reservation['bikenumber'].')'.',&emsp;'?>
-      				</div>		
+      				</div>
       			</div>
       		</li>
       	<?php endforeach;?>

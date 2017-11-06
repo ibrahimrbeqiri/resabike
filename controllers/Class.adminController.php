@@ -367,12 +367,12 @@ class adminController extends Controller{
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
-	    
+
 	    $regionIdRS = $_POST['regionId'];
 	    $stationId = $_POST['stationId'];
 	    $stationIdRS = $_POST['stationIdRS'];
 	    $stationName = $_POST['stationName'];
-	    
+
 	    if(isset($_POST['modify']))
 	    {
 	        if(empty($stationId) || empty($stationName))
@@ -381,9 +381,9 @@ class adminController extends Controller{
 	            $this->redirect('admin', 'stations');
 	            exit;
 	        }
-	        
+
 	        $result = RegionStations::modifyStationsForRegion($regionIdRS, $stationIdRS, $stationId, $stationName);
-	        
+
 	        if($result['status']=='error')
 	        {
 	            var_dump($regionIdRS, $stationId, $stationIdRS, $stationName);
@@ -394,13 +394,13 @@ class adminController extends Controller{
 	        {
 	            $_SESSION['msg'] = '<span class="success">'.'You have successfully modified the station!'.'</span>';
 	            $this->redirect('admin', 'stations');
-	            
+
 	        }
 	    }
 	    else if(isset($_POST['delete']))
 	    {
 	        $result = RegionStations::deleteStationFromRegion($regionIdRS, $stationIdRS);
-	        
+
 	        if($result['status']=='error')
 	        {
 	            $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
@@ -410,7 +410,7 @@ class adminController extends Controller{
 	        {
 	            $_SESSION['msg'] = '<span class="error">You have successfully deleted the station!</span>';
 	            $this->redirect('admin', 'stations');
-	            
+
 	        }
 	    }
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
@@ -427,16 +427,16 @@ class adminController extends Controller{
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
-	    
+
 	    $text = trim($_POST['addStations']);
 	    $newstations = preg_split('/(\n)/', $text);
         $message = array();
-        
+
 	    foreach($newstations as $newstation)
 	    {
 	       $newstation = explode(';', $newstation);
 	       $result = RegionStations::addStationsForRegion($newstation[0], $newstation[1], $newstation[2]);
-	       
+
 	       if($result['status']=='error')
 	       {
 	           array_push($message, '<span class="error">'.$result['result'].'</span>');
@@ -444,14 +444,14 @@ class adminController extends Controller{
 	       else
 	       {
 	           array_push($message, '<span class="success">'.'You have successfully added a new station!'.'</span>');
-	           
+
 	       }
 	    }
 	    $_SESSION['msg'] = $message;
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	    $this->redirect('admin', 'stations');
 	}
-	
+
 	function reservations()
 	{
 	    if(!$this->getActiveUser()){
@@ -553,8 +553,8 @@ class adminController extends Controller{
 	        exit;
 	    }
         $reservationdate = null;
-        
-	    if(isset($_POST['busDriverForm']))
+
+	    if(isset($_POST['formsubmit']))
 	    {
 	        if(isset($_POST['reservationdate']))
 	        {
@@ -564,12 +564,12 @@ class adminController extends Controller{
 	        {
 	            $reservationdate = $_POST['customDate'];
 	        }
-	        var_dump($reservationdate);
-	        
+	        //var_dump($reservationdate);
+
 	        $result = Reservation::getAllBusDriverReservations($reservationdate);
 	        $_SESSION['busdriverReservations'] = $result;
-	        
-    	    
+
+
     	    if($result['status']=='error')
     	    {
     	        $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
@@ -581,11 +581,11 @@ class adminController extends Controller{
         	    $this->redirect('admin', 'busDriverReservations');
         	    exit;
         	}
-    
+
 	    }
 
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
-	    
+
 	}
 
 
