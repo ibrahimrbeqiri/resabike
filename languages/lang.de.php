@@ -123,4 +123,6 @@ $lang['ADMIN_USER_ROLE'] = 'Benutzer-rolle';
 $lang['ADMIN_USER_PHONE'] = 'Telefonnummer';
 $lang['ADMIN_USER_REGION'] = 'Benutzerregion';
 
+$lang['ADMIN_COMMON_CONFIRMATION'] = 'Möchten Sie diese Zeile wirklich löschen?';
+
 ?>

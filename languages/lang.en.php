@@ -123,3 +123,5 @@ $lang['ADMIN_USER_EMAIL'] = 'E-mail';
 $lang['ADMIN_USER_ROLE'] = 'User role';
 $lang['ADMIN_USER_PHONE'] = 'Phone number';
 $lang['ADMIN_USER_REGION'] = 'User region';
+
+$lang['ADMIN_COMMON_CONFIRMATION'] = 'Are you sure you want to delete this row?';

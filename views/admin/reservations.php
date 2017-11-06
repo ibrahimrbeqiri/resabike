@@ -9,6 +9,18 @@ $reservations = $_SESSION['reservations'];
 
 ?>
 
+<script type="text/javascript">
+	<?php //this needs to be printed before you show the table ?>
+	$(document).on('click', '.delete-row', function() {
+		if(confirm("<?php echo $lang['ADMIN_COMMON_CONFIRMATION']; ?>")){
+		$(this).child().click();
+	}
+	else{
+		return false;
+	}
+});
+</script>
+
 <div class="container">
 	<div class="col l12 center card admin-menu">
 		<h4>Reservations:</h4>
@@ -108,10 +120,13 @@ $reservations = $_SESSION['reservations'];
 								<div class="table-cell"><input type="text" name="remarks" value="<?php echo $reservation['remarks'] ?>"></div>
 
 								<div class="table-cell">
-									<button class="btn-floating" type="submit" name="delete">
-										<i class="material-icons">delete</i>
-									</button>
+									<div class="delete-row">
+										<button class="btn-floating" type="submit" name="delete">
+											<i class="material-icons">delete</i>
+										</button>
+									</div>
 								</div>
+
 								</form>
 							</div>
 
@@ -121,6 +136,7 @@ $reservations = $_SESSION['reservations'];
 
 
 </div>
+
 
 
 

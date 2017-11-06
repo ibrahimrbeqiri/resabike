@@ -8,6 +8,17 @@ $user = $_SESSION['user'];
 $regions = $_SESSION['regions'];
 
 ?>
+<script type="text/javascript">
+	<?php //this needs to be printed before you show the table ?>
+	$(document).on('click', '.delete-row', function() {
+		if(confirm("<?php echo $lang['ADMIN_COMMON_CONFIRMATION']; ?>")){
+		$(this).child().click();
+	}
+	else{
+		return false;
+	}
+});
+</script>
 
 <div class="container">
 	<div class="col l12 center card admin-menu">
@@ -50,7 +61,15 @@ $regions = $_SESSION['regions'];
 							<div class="table-cell"><button class="btn-floating" type="submit" name="modify"><i class="material-icons">save</i></button></div>
 							<div class="table-cell"><input type="text" disabled value="<?php echo $region['regionId'] ?>"> <input type="text" name="regionId" hidden value="<?php echo $region['regionId'] ?>"></div>
 							<div class="table-cell"><input type="text" name="regionName" value="<?php echo $region['regionName'] ?>"></div>
-							<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>
+
+							<div class="table-cell">
+								<div class="delete-row">
+									<button class="btn-floating" type="submit" name="delete">
+										<i class="material-icons">delete</i>
+									</button>
+								</div>
+							</div>
+
 							</form>
 						</div>
 					<?php endforeach; ?>
@@ -68,7 +87,13 @@ $regions = $_SESSION['regions'];
 				<div class="table-cell"><button class="btn-floating" type="submit" name="modify"><i class="material-icons">save</i></button></div>\
 				<div class="table-cell"><input type="text" disabled value="xx"></div>\
 				<div class="table-cell"><input type="text" name="regionName" value=""></div>\
-				<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
+				<div class="table-cell">\
+					<div class="delete-row">\
+						<button class="btn-floating" type="submit" name="delete">\
+							<i class="material-icons">delete</i>\
+						</button>\
+					</div>\
+				</div>\
 				</div>\
 				</form>\
 				');

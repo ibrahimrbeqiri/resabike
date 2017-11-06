@@ -13,6 +13,17 @@ var_dump($msg);
 
 ?>
 
+<script type="text/javascript">
+	<?php //this needs to be printed before you show the table ?>
+	$(document).on('click', '.delete-row', function() {
+		if(confirm("<?php echo $lang['ADMIN_COMMON_CONFIRMATION']; ?>")){
+		$(this).child().click();
+	}
+	else{
+		return false;
+	}
+});
+</script>
 
 <div class="container">
 	<div class="col l12 center card admin-menu">
@@ -103,9 +114,11 @@ var_dump($msg);
 								</div>
 
 								<div class="table-cell">
-									<button class="btn-floating" type="submit" name="delete">
-										<i class="material-icons">delete</i>
-									</button>
+									<div class="delete-row">
+										<button class="btn-floating" type="submit" name="delete">
+											<i class="material-icons">delete</i>
+										</button>
+									</div>
 								</div>
 								</form>
 							</div>

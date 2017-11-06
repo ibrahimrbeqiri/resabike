@@ -34,7 +34,17 @@ $regionstations = $_SESSION['regionstations'];
 			</a>
 		</div>
 
-
+		<script type="text/javascript">
+			<?php //this needs to be printed before you show the table ?>
+			$(document).on('click', '.delete-row', function() {
+				if(confirm("<?php echo $lang['ADMIN_COMMON_CONFIRMATION']; ?>")){
+				$(this).child().click();
+			}
+			else{
+				return false;
+			}
+		});
+		</script>
 
 			<div id="div-table">
 				<div class="table-row">
@@ -78,7 +88,15 @@ $regionstations = $_SESSION['regionstations'];
 							<input type="text" hidden name="stationIdRS" value="<?php echo $regionstation['stationIdRS']?>">
 							<div class="table-cell"><input type="text" name="stationId" value="<?php echo $regionstation['stationId']?>"></div>
 							<div class="table-cell"><input type="text" name="stationName" value="<?php echo $regionstation['stationName']?>"></div>
-							<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>
+
+							<div class="table-cell">
+								<div class="delete-row">
+									<button class="btn-floating" type="submit" name="delete">
+										<i class="material-icons">delete</i>
+									</button>
+								</div>
+							</div>
+
 							</form>
 						</div>
 					<?php endforeach; ?>
@@ -129,7 +147,13 @@ $regionstations = $_SESSION['regionstations'];
 												<div class="table-cell"><input type="text" hidden name="stationIdRS" value=""></div>\
 												<div class="table-cell"><input type="text" name="stationId" value=""></div>\
 												<div class="table-cell"><input type="text" name="stationName" value=""></div>\
-												<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
+												<div class="table-cell">\
+													<div class="delete-row">\
+														<button class="btn-floating" type="submit" name="delete">\
+															<i class="material-icons">delete</i>\
+														</button>\
+													</div>\
+												</div>\
 												</form>\
 											</div>');
 					//this is needed to activate the materialize select
@@ -158,7 +182,13 @@ $regionstations = $_SESSION['regionstations'];
 											<div class="table-cell"><input type="text" hidden name="stationIdRS" value=""></div>\
 											<div class="table-cell"><input type="text" name="stationId" value=""></div>\
 											<div class="table-cell"><input type="text" name="stationName" value=""></div>\
-											<div class="table-cell"><button class="btn-floating" type="submit" name="delete"><i class="material-icons">delete</i></button></div>\
+											<div class="table-cell">\
+												<div class="delete-row">\
+													<button class="btn-floating" type="submit" name="delete">\
+														<i class="material-icons">delete</i>\
+													</button>\
+												</div>\
+											</div>\
 											</form>\
 										</div>');
 				//this is needed to activate the materialize select

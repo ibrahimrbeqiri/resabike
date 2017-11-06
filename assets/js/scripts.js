@@ -46,14 +46,7 @@ $( document ).ready(function() {
 		}
 		});
 
-		$(document).on('click', '#reservations-list .delete-row', function() {
-			if(confirm("Are you sure you want to delete this reservation?")){
-			$(this).closest("tr").remove();
-		}
-		else{
-			return false;
-		}
-		});
+
 
 
 });

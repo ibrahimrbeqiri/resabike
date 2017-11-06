@@ -123,4 +123,6 @@ $lang['ADMIN_USER_ROLE'] = "Rôle d'utilisateur";
 $lang['ADMIN_USER_PHONE'] = 'Numéro de téléphone';
 $lang['ADMIN_USER_REGION'] = "Région d'utilisateur";
 
+$lang['ADMIN_COMMON_CONFIRMATION'] = 'Êtes-vous sûr de vouloir supprimer cette ligne?';
+
 ?>
