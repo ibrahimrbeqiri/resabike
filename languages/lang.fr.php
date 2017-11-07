@@ -20,11 +20,11 @@ $lang['MENU_LOG_OUT'] = 'Déconnexion';
 
 // Welcome page
 
-$lang['WELCOME_RESERVE_BIKE'] = 'réservez votre vélo';
+$lang['WELCOME_RESERVE_BIKE'] = 'réservez votre place';
 $lang['WELCOME_MORE_INFO'] = "Plus d'informations";
-$lang['WELCOME_HOW_IT_WORKS'] = "Comment ça marches:";
+$lang['WELCOME_HOW_IT_WORKS'] = "Comment ça marche:";
 $lang['WELCOME_HOW_IT_WORKS_TITLE1'] = "1. Rechercher des itinéraires de bus";
-$lang['WELCOME_HOW_IT_WORKS_TITLE2'] = "2. Réserver des vélos pour la ligne de bus";
+$lang['WELCOME_HOW_IT_WORKS_TITLE2'] = "2. Réserver des places pour vélos pour la ligne de bus";
 $lang['WELCOME_HOW_IT_WORKS_TITLE3'] = "3. Prendre plaisir";
 
 // Reserve page
@@ -39,7 +39,7 @@ $lang['RESERVE_SEARCH'] = 'Recherche';
 
 $lang['RESULTS_INTRO'] = 'Trajets en bus ';
 $lang['RESULTS_FROM'] = 'de ';
-$lang['RESULTS_TO'] = ' à ';
+$lang['RESULTS_TO'] = ', à ';
 $lang['RESULTS_AT'] = ' à ';
 $lang['RESULTS_ON'] = ' le ';
 
