@@ -56,16 +56,18 @@ $reservations = $_SESSION['busdriverReservations'];
 		<?php if(!empty($reservations)):?>
 		<?php $groupedStations = array();?>
 		<ul class="collapsible" data-collapsible="accordion">
-		<?php foreach ($groupedReservations AS $groupedReservation): ?>
+	
+		<?php foreach($reservations as $reservation => $single):?>
     		<li>
+    		<?php $result = array_unique($single);
+    		var_dump($result);?>
+    		<?php if($single['stationFrom'] )?>
       			<div class="collapsible-header">
-      			
-              		<div>Date: <?php echo $groupedReservation['343'].'&emsp;';?></div>
-                  	<div>From: <?php echo $groupedReservation[$reservation['stationFrom']].'&emsp;';?></div>
+      		
+              		<div>Date: <?php echo $single['reservationdate'].'&emsp;';?></div>
+                  	<div>From: <?php echo $single['stationFrom'].'&emsp;';?></div>
                   	<div>Departure: <?php echo $groupedReservation['departure'].'&emsp;';?></div>
-
       			</div>
-      			
       			<div class="collapsible-body">
       				<div>
       				<?php foreach($groupedReservation AS $singleReservation):?>
@@ -77,6 +79,7 @@ $reservations = $_SESSION['busdriverReservations'];
       			</div>
       			
       		</li>
+  
       	<?php endforeach;?>
  		</ul>
  		<?php endif;?>
