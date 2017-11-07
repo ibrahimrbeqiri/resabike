@@ -13,7 +13,7 @@ $( document ).ready(function() {
 	$('input.form-autocomplete').autocomplete({
 		data: {
 		<?php foreach ($stations as $region): ?>
-				<?php echo '"'.$region['stationName'].'": null,'; ?>
+				<?php echo '"'.$region['stationName'].'": null,'."\n"; ?>
 		<?php endforeach; ?>
 		},
 		limit: 5, // The max amount of results that can be shown at once. Default: Infinity.

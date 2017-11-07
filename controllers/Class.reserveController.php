@@ -91,7 +91,14 @@ class reserveController extends Controller{
 	    $departure = $_POST['departure'];
 	    $arrival = $_POST['arrival'];
 
-
+	    if(empty($firstname) || empty($lastname) || empty($phone) || empty($email) || empty($bikenumber) || empty($reservationdate) || empty($fromstation)
+	        || empty($tostation) || empty($departure) || empty($arrival))
+	    {
+	        $_SESSION['msg'] = '<span class="error">The required field(s) were empty! Please search again!</span>';
+	        $this->redirect('reserve', 'reserve');
+	        exit;
+	    }
+	    
 	    $reservationArray = array('firstname' => $firstname, 'lastname'=> $lastname, 'phone' => $phone, 'email' => $email,
 	        'bikenumber' => $bikenumber, 'remarks' => $remarks, 'fromstation' => $fromstation, 'tostation' => $tostation,
 	        'reservationdate' => $reservationdate, 'departure' => $departure, 'arrival' => $arrival);

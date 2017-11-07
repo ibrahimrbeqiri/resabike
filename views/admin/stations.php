@@ -130,9 +130,9 @@ $regionstations = $_SESSION['regionstations'];
 			<script type="text/javascript">
     			$('#add-table-row').click(function() {
     				$('#div-table').append('<div class="table-row">\
-												<form action="<?php echo URL_DIR.'admin/editStations';?>" method="post">\
+												<form action="<?php echo URL_DIR.'admin/addStations';?>" method="post">\
 												<div class="table-cell">\
-													<button class="btn-floating" type="submit" name="modify">\
+													<button class="btn-floating" type="submit" name="add">\
 															<i class="material-icons">save</i>\
 													</button>\
 												</div>\
@@ -144,7 +144,6 @@ $regionstations = $_SESSION['regionstations'];
 																<?php endforeach;?>\
 													</select>\
 												</div>\
-												<div class="table-cell"><input type="text" hidden name="stationIdRS" value=""></div>\
 												<div class="table-cell"><input type="text" name="stationId" value=""></div>\
 												<div class="table-cell"><input type="text" name="stationName" value=""></div>\
 												<div class="table-cell">\
@@ -168,9 +167,9 @@ $regionstations = $_SESSION['regionstations'];
 			<script type="text/javascript">
 			$('#add-table-row').click(function() {
 				$('#div-table').append('<div class="table-row">\
-											<form action="<?php echo URL_DIR.'admin/editStations';?>" method="post">\
+											<form action="<?php echo URL_DIR.'admin/addStations';?>" method="post">\
 											<div class="table-cell">\
-												<button class="btn-floating" type="submit" name="modify">\
+												<button class="btn-floating" type="submit" name="add">\
 														<i class="material-icons">save</i>\
 												</button>\
 											</div>\
@@ -179,7 +178,6 @@ $regionstations = $_SESSION['regionstations'];
 												<option disabled selected><?php echo $regionstation['regionName'] ?></option>\
 												</select>\
 											</div>\
-											<div class="table-cell"><input type="text" hidden name="stationIdRS" value=""></div>\
 											<div class="table-cell"><input type="text" name="stationId" value=""></div>\
 											<div class="table-cell"><input type="text" name="stationName" value=""></div>\
 											<div class="table-cell">\

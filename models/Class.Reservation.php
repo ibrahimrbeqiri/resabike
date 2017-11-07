@@ -240,26 +240,88 @@ class Reservation
         return  MySQLConnection::getInstance()->execute($query, $attributes);
     }
 
-    public static function getAllReservations()
+    public static function getAllReservations($reservationdate)
     {
-        $query = "SELECT * , fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
-                            JOIN station AS fromplace
-                            ON reservation.fromstation = fromplace.stationId
-                            JOIN station AS toplace
-                            ON reservation.tostation = toplace.stationId
-                            ORDER BY departure DESC, reservationdate DESC";
-
-
-        $result = MySQLConnection::getInstance()->fetch($query);
-
-        if($result['status']=='error' || empty($result['result'])){
-            return $result;
+        if($reservationdate == null)
+        {
+            $query = "SELECT * , fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
+                                JOIN station AS fromplace
+                                ON reservation.fromstation = fromplace.stationId
+                                JOIN station AS toplace
+                                ON reservation.tostation = toplace.stationId
+                                ORDER BY departure DESC, reservationdate DESC";
+            
+            $result = MySQLConnection::getInstance()->fetch($query);
+        }
+        else 
+        {
+            $query = "SELECT * , fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
+                                JOIN station AS fromplace
+                                ON reservation.fromstation = fromplace.stationId
+                                JOIN station AS toplace
+                                ON reservation.tostation = toplace.stationId
+                                WHERE reservationdate=?
+                                ORDER BY departure DESC, reservationdate DESC";
+            
+            $attributes = array($reservationdate);
+            
+            $result = MySQLConnection::getInstance()->execute($query, $attributes);
         }
 
+
+        if($result['status']=='error' || empty($result['result'])){
+            return null;
+        }
+        
         $reservations = $result['result'];
         return $reservations;
     }
 
+    public static function getRegionAdminReservations($reservationdate, $regionIdRS)
+    {
+        if($reservationdate == null)
+        {
+            $query = "SELECT *, fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
+                            JOIN station AS fromplace
+                            ON reservation.fromstation = fromplace.stationId
+                            JOIN station AS toplace
+                            ON reservation.tostation = toplace.stationId
+                            JOIN regionstations AS rs
+							ON fromplace.stationId = rs.stationIdRS
+                            JOIN region
+                            ON rs.regionIdRS = region.regionId
+                            WHERE rs.regionIdRS=?";
+            
+            $attributes = array($regionIdRS);
+            
+            $result = MySQLConnection::getInstance()->execute($query, $attributes);
+        }
+        else
+        {
+            $query = "SELECT *, fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
+                            JOIN station AS fromplace
+                            ON reservation.fromstation = fromplace.stationId
+                            JOIN station AS toplace
+                            ON reservation.tostation = toplace.stationId
+                            JOIN regionstations AS rs
+							ON fromplace.stationId = rs.stationIdRS
+                            JOIN region
+                            ON rs.regionIdRS = region.regionId
+                            WHERE reservationdate=? AND rs.regionIdRS=?";
+            
+            $attributes = array($reservationdate, $regionIdRS);
+            
+            $result = MySQLConnection::getInstance()->execute($query, $attributes);
+        }
+        
+        
+        if($result['status']=='error' || empty($result['result'])){
+            return null;
+        }
+        
+        $reservations = $result['result'];
+        return $reservations;
+    }
 
     public static function getAllBusDriverReservations($reservationdate)
     {
@@ -282,6 +344,33 @@ class Reservation
         $reservations = $result['result'];
         return $reservations;
     }
+    
+    public static function getBusDriverReservations($reservationdate, $regionIdRS)
+    {
+        $query = "SELECT *, fromplace.stationName as stationFrom, toplace.stationName AS stationTo FROM reservation
+                            JOIN station AS fromplace
+                            ON reservation.fromstation = fromplace.stationId
+                            JOIN station AS toplace
+                            ON reservation.tostation = toplace.stationId
+                            JOIN regionstations AS rs
+							ON fromplace.stationId = rs.stationIdRS
+                            JOIN region
+                            ON rs.regionIdRS = region.regionId
+                            WHERE reservationdate=? AND rs.regionIdRS=?
+                            ORDER BY departure ASC, reservationdate DESC";
+        
+        $attributes = array($reservationdate, $regionIdRS);
+        
+        $result = MySQLConnection::getInstance()->execute($query, $attributes);
+        
+        if($result['status']=='error' || empty($result['result'])){
+            return null;
+        }
+        
+        $reservations = $result['result'];
+        return $reservations;
+    }
+
 
 
 }

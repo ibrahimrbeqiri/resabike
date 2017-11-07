@@ -53,11 +53,11 @@ if ($search) {
 			endif;
 
 			endforeach;
-
+            $busRows = 0;
 			// check that all the lines in the bus route are bus routes or walking, else dont show them.
 			if ($onlyBus == true): ?>
 			<li>
-
+			<?php $busRows++;?>
 							 <div class="collapsible-header">
 								 <div class="connection-info">
 										 <div class="connection-stop">
@@ -148,7 +148,7 @@ if ($search) {
 											   <div class="col l12 row">
 												   <div class="input-field col l6">
 													 <i class="material-icons prefix">person</i>
-													 <input id="first_name" name="firstname" type="text" class="validate">
+													 <input id="first_name" name="firstname" type="text" class="validate" >
 													 <label for="first_name"><?php echo $lang['RESULTS_FORM_FIRSTNAME']; ?></label>
 												   </div>
 												   <div class="input-field col l6">
@@ -159,7 +159,7 @@ if ($search) {
 											   <div class="col l12 row">
 												   <div class="input-field col l6">
 													 <i class="material-icons prefix">email</i>
-													 <input id="icon_prefix" name="email" type="text" class="validate">
+													 <input id="icon_prefix" name="email" type="email" class="validate">
 													 <label for="icon_prefix"><?php echo $lang['RESULTS_FORM_EMAIL']; ?></label>
 												   </div>
 												   <div class="input-field col l6">
@@ -221,6 +221,9 @@ if ($search) {
 						 </li>
 					 	<?php endif; ?>
 						<?php endforeach;?>
+						<?php if($busRows == 0):?>
+							<h5>No bus routes were found for these stations!</h5>
+						<?php endif;?>
 					</ul>
 				</div>
 

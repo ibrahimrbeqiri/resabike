@@ -33,10 +33,22 @@ $reservations = $_SESSION['reservations'];
 					<i class="material-icons left">cancel</i>
 				</button>
 			</a>
+			<form action="<?php echo URL_DIR.'admin/reservations';?>" method="post">
+    			<div class="row">
+        			<div class="col l4">
+        				<input id="icon_prefix" type="text" class="datepicker" name="customReservationDate" placeholder="Pick another date">
+        			</div>
+        			<div class="col l2">
+        				<button class="btn waves-effect waves-light" type="submit" name="reservationDateSubmit">
+        					  Pick date
+        				</button>
+        			</div>
+    			</div>
+			</form>
 			<table>
 
 			</table>
-
+		<?php if(!empty($reservations)):?>
 			<div id="div-table" class="col l12">
 
 				<div class="table-row">
@@ -133,6 +145,7 @@ $reservations = $_SESSION['reservations'];
 
 					<?php endforeach; ?>
 			</div>
+			<?php endif;?>
 	</div>
 
 
