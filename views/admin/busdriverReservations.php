@@ -6,9 +6,9 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 $reservations = $_SESSION['busdriverReservations'];
-foreach ($reservations as $asd) {
-	echo $asd['stationFrom']." ".$asd['departure']."<br />";
-}
+// foreach ($reservations as $asd) {
+// 	echo $asd['stationFrom']." ".$asd['departure']."<br />";
+// }
 ?>
 
 <div class="container">
@@ -39,36 +39,14 @@ foreach ($reservations as $asd) {
 			</div>
    		</div>
 
-		<?php
-			// $groupedReservations = array();
-		    //   $output = array();
-		    //   $sfrom = null;
-		    //   $departure = null;
-		    //   foreach($reservations AS $reservation)
-		    //   {
-		    //       $sfrom = $reservation['stationFrom'];
-		    //       $dep = $reservation['departure'];
-		    //       $groupedReservations[$sfrom][$dep][] = array(
-		    //           'reservation' => $reservation);
-		    //       //$groupedReservations[$reservation['stationFrom']] = $reservation;
-            //
-		    //   }
-		    //   var_dump($groupedReservations);
-
-
-			//	if(!empty($reservations)):
-			//	$groupedStations = array();?>
 
 		<ul class="collapsible" data-collapsible="accordion">
 
 		<?php foreach($reservations as $reservation => $single):?>
-			<?php $prev = $reservations[$reservation-1];
-			//echo $prev;
-			?>
+			<?php $prev = $reservations[$reservation-1];?>
 
-    		<?php //$result = array_unique($single);
-    		//var_dump($result);?>
-			<?php if ($prev['stationFrom'] == $single['stationFrom'] && $prev['departure'] == $single['departure'] && $prev['reservationdate'] == $single['reservationdate']): ?>
+
+			<?php if ($prev['fromstation'] == $single['fromstation'] && $prev['departure'] == $single['departure'] && $prev['reservationdate'] == $single['reservationdate']): ?>
 				<hr>
 				<p><?php echo $single['firstname'].'&emsp;'.$single['lastname'] ?></p>
 				<p><?php echo $single['phone'] ?></p>
@@ -99,7 +77,6 @@ foreach ($reservations as $asd) {
 
       	<?php endforeach;?>
  		</ul>
- 		<?php //endif;?>
  	</form>
 		</div>
 	</div>
