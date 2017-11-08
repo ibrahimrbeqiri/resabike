@@ -6,7 +6,9 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 $reservations = $_SESSION['busdriverReservations'];
-
+foreach ($reservations as $asd) {
+	echo $asd['stationFrom']." ".$asd['departure']."<br />";
+}
 ?>
 
 <div class="container">
@@ -37,52 +39,67 @@ $reservations = $_SESSION['busdriverReservations'];
 			</div>
    		</div>
 
-		<?php $groupedReservations = array();
-		      $output = array();
-		      $sfrom = null;
-		      $departure = null;
-		      foreach($reservations AS $reservation)
-		      {
-		          $sfrom = $reservation['stationFrom'];
-		          $dep = $reservation['departure'];
-		          $groupedReservations[$sfrom][$dep][] = array(
-		              'reservation' => $reservation);
-		          //$groupedReservations[$reservation['stationFrom']] = $reservation;
-                
-		      }
-		      var_dump($groupedReservations);
-		      
-		?>
-		<?php if(!empty($reservations)):?>
-		<?php $groupedStations = array();?>
+		<?php
+			// $groupedReservations = array();
+		    //   $output = array();
+		    //   $sfrom = null;
+		    //   $departure = null;
+		    //   foreach($reservations AS $reservation)
+		    //   {
+		    //       $sfrom = $reservation['stationFrom'];
+		    //       $dep = $reservation['departure'];
+		    //       $groupedReservations[$sfrom][$dep][] = array(
+		    //           'reservation' => $reservation);
+		    //       //$groupedReservations[$reservation['stationFrom']] = $reservation;
+            //
+		    //   }
+		    //   var_dump($groupedReservations);
+
+
+			//	if(!empty($reservations)):
+			//	$groupedStations = array();?>
+
 		<ul class="collapsible" data-collapsible="accordion">
-	
+
 		<?php foreach($reservations as $reservation => $single):?>
-    		<li>
-    		<?php $result = array_unique($single);
-    		var_dump($result);?>
-    		<?php if($single['stationFrom'] )?>
-      			<div class="collapsible-header">
-      		
-              		<div>Date: <?php echo $single['reservationdate'].'&emsp;';?></div>
-                  	<div>From: <?php echo $single['stationFrom'].'&emsp;';?></div>
-                  	<div>Departure: <?php echo $groupedReservation['departure'].'&emsp;';?></div>
-      			</div>
-      			<div class="collapsible-body">
-      				<div>
-      				<?php foreach($groupedReservation AS $singleReservation):?>
-                  	To: <?php echo $singleReservation['stationTo'].'&emsp;';?>
-                  	Arrival: <?php echo $singleReservation['arrival'].'&emsp;';?>
-                  	People: <?php echo $singleReservation['firstname'].' '.$singleReservation['lastname'].'&emsp;'.'Bikes('.$singleReservation['bikenumber'].')';?>
-      				<?php endforeach;?>
-      				</div>
-      			</div>
-      			
-      		</li>
-  
+			<?php $prev = $reservations[$reservation-1];
+			//echo $prev;
+			?>
+
+    		<?php //$result = array_unique($single);
+    		//var_dump($result);?>
+			<?php if ($prev['stationFrom'] == $single['stationFrom'] && $prev['departure'] == $single['departure'] && $prev['reservationdate'] == $single['reservationdate']): ?>
+				<hr>
+				<p><?php echo $single['firstname'].'&emsp;'.$single['lastname'] ?></p>
+				<p><?php echo $single['phone'] ?></p>
+				<p><?php echo $single['email'] ?></p>
+			<?php else: ?>
+				<?php if ($reservation != 0): ?>
+						</div>
+					</div>
+				</li>
+				<?php endif; ?>
+				<li>
+					<div class="collapsible-header">
+
+						<b>Date: <?php echo $single['reservationdate'].'&emsp;';?></b>
+						<b>From: <?php echo $single['stationFrom'].'&emsp;';?></b>
+						<b>Departure: <?php echo $single['departure'].'&emsp;';?></b>
+					</div>
+					<div class="collapsible-body">
+						<div>
+							<p><?php echo $single['firstname'].'&emsp;'.$single['lastname'] ?></p>
+							<p><?php echo $single['phone'] ?></p>
+							<p><?php echo $single['email'] ?></p>
+			<?php endif; ?>
+
+
+
+
+
       	<?php endforeach;?>
  		</ul>
- 		<?php endif;?>
+ 		<?php //endif;?>
  	</form>
 		</div>
 	</div>
