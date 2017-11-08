@@ -136,12 +136,26 @@ if ($search) {
 										 </ul>
 									 </div>
 									 <div class="col l6">
+										 <?php //filter the legs so that the starting station and end station are actual bus routes and not walking ?>
+										 <?php $busStations = array() ?>
+										 <?php foreach ($connection->legs as $busStop): ?>
+											 <?php if ($busStop->stopid && $busStop->type == "bus" || $busStop->type == "post"): ?>
+											 	<?php array_push($busStations, $busStop); ?>
+											 <?php endif; ?>
+										 <?php endforeach; ?>
+										 <?php $fromBusStop = current($busStations )?>
+										 <?php $toBusStop = end($busStations )?>
+										 <p>Your reservation will be</p>
+										 <p>from: <?php echo $fromBusStop->name ?></p>
+										 <hr>
+										 <p>to: <?php echo $toBusStop->name?></p>
+
 										 <form class="reservation-form" action="<?php echo URL_DIR.'reserve/confirm';?>" method="POST">
-										 <input name="reservationdate" type="hidden" hidden value="<?php echo date("d.m.Y", strtotime($connection->departure));?>">
-										 <input name="fromstation" type="hidden" hidden value="<?php echo current($connection->legs)->stopid?>">
-										 <input name="tostation" type="hidden" hidden value="<?php echo end($connection->legs)->stopid?>">
-										 <input name="departure" type="hidden" hidden value="<?php echo date('H:i', strtotime($connection->departure));?>">
-										 <input name="arrival" type="hidden" hidden value="<?php echo date('H:i', strtotime($connection->arrival));?>">
+										 <input name="reservationdate" type="hidden" hidden value="<?php echo date("d.m.Y", strtotime($fromBusStop->departure));?>">
+										 <input name="fromstation" type="hidden" hidden value="<?php echo $fromBusStop->stopid?>">
+										 <input name="tostation" type="hidden" hidden value="<?php echo $toBusStop->stopid?>">
+										 <input name="departure" type="hidden" hidden value="<?php echo date('H:i', strtotime($fromBusStop->departure));?>">
+										 <input name="arrival" type="hidden" hidden value="<?php echo date('H:i', strtotime($toBusStop->arrival));?>">
 
 
 										   <div class="row">
