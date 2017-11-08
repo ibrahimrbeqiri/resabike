@@ -209,3 +209,10 @@ nav{
 #admin-dropdown li a{
 	font-size: 80%;
 }
+
+.totalbikes i {
+	vertical-align: bottom !important;
+}
+#Bus-driver-reservations .material-icons.prefix {
+	vertical-align: bottom !important;
+}

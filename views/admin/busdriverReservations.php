@@ -6,9 +6,9 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 $reservations = $_SESSION['busdriverReservations'];
-// foreach ($reservations as $asd) {
-// 	echo $asd['stationFrom']." ".$asd['departure']."<br />";
-// }
+ // foreach ($reservations as $asd) {
+ // 	echo $asd['stationFrom']." ".$asd['departure']." ".$asd['stationTo']."<br />";
+ // }
 ?>
 
 <div class="container">
@@ -40,41 +40,60 @@ $reservations = $_SESSION['busdriverReservations'];
    		</div>
 
 
-		<ul class="collapsible" data-collapsible="accordion">
+		<ul id="Bus-driver-reservations" class="collapsible" data-collapsible="accordion">
 
 		<?php foreach($reservations as $reservation => $single):?>
 			<?php $prev = $reservations[$reservation-1];?>
 
 
 			<?php if ($prev['fromstation'] == $single['fromstation'] && $prev['departure'] == $single['departure'] && $prev['reservationdate'] == $single['reservationdate']): ?>
-				<hr>
-				<p><?php echo $single['firstname'].'&emsp;'.$single['lastname'] ?></p>
-				<p><?php echo $single['phone'] ?></p>
-				<p><?php echo $single['email'] ?></p>
-			<?php else: ?>
-				<?php if ($reservation != 0): ?>
+				<div class="table-row">
+					<div class="table-cell"><p><?php echo $single['firstname'] ?></p></div>
+					<div class="table-cell"><p><?php echo $single['lastname'] ?></p></div>
+					<div class="table-cell"><p><?php echo $single['phone'] ?></p></div>
+					<div class="table-cell"><p><?php echo $single['email'] ?></p></div>
+					<div class="table-cell"><p><?php echo $single['stationTo'] ?></p></div>
+					<div class="table-cell right"><p class="singlebike"><?php echo $single['bikenumber'] ?></p></div>
+
+				</div>
+			<?php else:
+
+				//special case for the first all rows except the first one
+				if ($reservation != 0): ?>
 						</div>
 					</div>
 				</li>
 				<?php endif; ?>
+
+
 				<li>
 					<div class="collapsible-header">
+						<div style="width:100%; text-align:left;">
+							<b>Date: <?php echo $single['reservationdate'].'&emsp;';?></b>
+							<b>From: <?php echo $single['stationFrom'].'&emsp;';?></b>
+							<b>Departure: <?php echo $single['departure'].'&emsp;';?></b>
+							<b class="right"><span class="totalbikes"></span><i class="material-icons prefix">directions_bike</i></b>
+						</div>
 
-						<b>Date: <?php echo $single['reservationdate'].'&emsp;';?></b>
-						<b>From: <?php echo $single['stationFrom'].'&emsp;';?></b>
-						<b>Departure: <?php echo $single['departure'].'&emsp;';?></b>
 					</div>
 					<div class="collapsible-body">
-						<div>
-							<p><?php echo $single['firstname'].'&emsp;'.$single['lastname'] ?></p>
-							<p><?php echo $single['phone'] ?></p>
-							<p><?php echo $single['email'] ?></p>
+						<div id="div-table" style="width:100%;">
+							<div class="table-row">
+								<div class="table-cell"><p><?php echo $single['firstname'] ?></p></div>
+								<div class="table-cell"><p><?php echo $single['lastname'] ?></p></div>
+								<div class="table-cell"><p><?php echo $single['phone'] ?></p></div>
+								<div class="table-cell"><p><?php echo $single['email'] ?></p></div>
+								<div class="table-cell"><p><?php echo $single['stationTo'] ?></p></div>
+								<div class="table-cell right"><p class="singlebike"><?php echo $single['bikenumber'] ?></p></div>
+							</div>
+					<?php //special case for the last row ?>
+					<?php if ($reservation == count($reservations)-1): ?>
+							</div>
+						</div>
+					</li>
+					<?php endif; ?>
+
 			<?php endif; ?>
-
-
-
-
-
       	<?php endforeach;?>
  		</ul>
  	</form>

@@ -36,15 +36,30 @@ $( document ).ready(function() {
 		}
 	});
 
+	//total bikes for bus driver reservations
+	if ( $( "#Bus-driver-reservations" ).length ) {
 
-		$(document).on('click', '#regional-stations-list .delete-row', function() {
-			if(confirm("Are you sure you want to delete this station?")){
-			$(this).closest("tr").remove();
-		}
-		else{
-			return false;
-		}
+		$( "#Bus-driver-reservations li .collapsible-body #div-table" ).each(function() {
+			var totalbikes = 0;
+			console.log(".......")
+			$(this).children(".table-row").each(function(){
+					var bike = $(this).find(".singlebike").text()
+					console.log("bike:" + bike);
+					console.log($(this).text());
+					totalbikes = totalbikes + parseInt( bike, 10);
+			});
+			// $(this).( ".collapsible-body .singlebike" ).each(function() {
+			//   console.log($(this).text());
+			//   totalbikes = totalbikes + parseInt($(this).text(), 10);
+			// });
+			console.log(totalbikes);
+			console.log($(this).parent().parent());
+			$(this).parent().parent().find( ".totalbikes" ).html( totalbikes );
 		});
+
+	}
+
+
 
 
 
