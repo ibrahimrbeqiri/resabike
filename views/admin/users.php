@@ -27,13 +27,14 @@ $allusers = $_SESSION['allusers'];
 
 <div class="container">
 	<div class="col l12 center card admin-menu">
-		<h4>Users:</h4>
+		<h4><?php echo $lang['ADMIN_USERS_TITLE']; ?></h4>
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
 		<?php endif; ?>
 		<div class="col l12 right-align">
 			<a href="<?php echo URL_DIR.'admin/menu';?>">
-					<button class="btn waves-effect waves-light" type="button">Cancel
+					<button class="btn waves-effect waves-light" type="button">
+						<?php echo $lang['ADMIN_REGISTER_CANCEL']; ?>
 						<i class="material-icons left">cancel</i>
 					</button>
 			</a>
@@ -48,6 +49,9 @@ $allusers = $_SESSION['allusers'];
 						</div>
 						<div class="table-cell">
 							<input type="text" disabled value="ID">
+						</div>
+						<div class="table-cell">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_USER_USERNAME'] ?>">
 						</div>
 						<div class="table-cell">
 							<input type="text" disabled value="First name">
@@ -88,6 +92,7 @@ $allusers = $_SESSION['allusers'];
 								</div>
 
 								<div class="table-cell"><input type="text" disabled value="<?php echo $user['id'] ?>"><input type="text" name="id" hidden value="<?php echo $user['id'] ?>"></div>
+								<div class="table-cell"><input type="text" name="username" value="<?php echo $user['username'] ?>"></div>
 								<div class="table-cell"><input type="text" name="name" value="<?php echo $user['name'] ?>"></div>
 								<div class="table-cell"><input type="text" name="lastname" value="<?php echo $user['lastname'] ?>"></div>
 								<div class="table-cell"><input type="text" name="username" value="<?php echo $user['username'] ?>"></div>

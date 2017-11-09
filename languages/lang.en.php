@@ -125,3 +125,13 @@ $lang['ADMIN_USER_PHONE'] = 'Phone number';
 $lang['ADMIN_USER_REGION'] = 'User region';
 
 $lang['ADMIN_COMMON_CONFIRMATION'] = 'Are you sure you want to delete this row?';
+
+//region page
+$lang['ADMIN_REGIONS_TITLE'] = 'Regions:';
+$lang['ADMIN_REGIONS_INFO'] = 'Disclaimer: Region named "Global" cannot be modified or deleted!';
+$lang['ADMIN_REGIONS_ID'] = 'ID';
+$lang['ADMIN_REGIONS_NAME'] = 'Region name';
+$lang['ADMIN_REGIONS_ADD'] = 'Add region';
+
+//users page
+$lang['ADMIN_USERS_TITLE'] = 'Users:';

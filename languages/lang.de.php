@@ -125,4 +125,13 @@ $lang['ADMIN_USER_REGION'] = 'Benutzerregion';
 
 $lang['ADMIN_COMMON_CONFIRMATION'] = 'Möchten Sie diese Zeile wirklich löschen?';
 
+//region page
+$lang['ADMIN_REGIONS_TITLE'] = 'Regionen:';
+$lang['ADMIN_REGIONS_INFO'] = 'Haftungsausschluss: Region namens "Global" kann nicht geändert oder gelöscht werden!';
+$lang['ADMIN_REGIONS_ID'] = 'ID';
+$lang['ADMIN_REGIONS_NAME'] = 'Name der region';
+$lang['ADMIN_REGIONS_ADD'] = 'Region hinzufügen';
+
+//users page
+$lang['ADMIN_USERS_TITLE'] = 'Benutzer:';
 ?>

@@ -22,15 +22,16 @@ $regions = $_SESSION['regions'];
 
 <div class="container">
 	<div class="col l12 center card admin-menu">
-		<h4>Regions:</h4>
-		<p>Disclamer: Region "All" cannot be modified or deleted!</p>
+		<h4><?php echo $lang['ADMIN_REGIONS_TITLE']; ?></h4>
+		<p><?php echo $lang['ADMIN_REGIONS_INFO']; ?></p>
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
 		<?php endif; ?>
 
 		<div class="col l12 right-align">
 			<a href="<?php echo URL_DIR.'admin/menu';?>">
-					<button class="btn waves-effect waves-light" type="button">Cancel
+					<button class="btn waves-effect waves-light" type="button">
+						<?php echo $lang['ADMIN_REGISTER_CANCEL']; ?>
 						<i class="material-icons left">cancel</i>
 					</button>
 			</a>
@@ -43,10 +44,10 @@ $regions = $_SESSION['regions'];
 							<button disabled class="btn-floating"></button>
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="ID">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_REGIONS_ID'] ?>">
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="Region name">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_REGIONS_NAME'] ?>">
 						</div>
 
 						<div class="table-cell">
@@ -77,7 +78,8 @@ $regions = $_SESSION['regions'];
 			</div>
 
 
-		<button id="add-table-row-region" class="btn waves-effect waves-light left" type="button" name="action">Add region
+		<button id="add-table-row-region" class="btn waves-effect waves-light left" type="button" name="action">
+			<?php echo $lang['ADMIN_REGIONS_ADD'] ?>
 	  		<i class="material-icons right">add</i>
 		</button>
 		<script type="text/javascript">
