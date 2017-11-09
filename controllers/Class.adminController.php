@@ -455,7 +455,6 @@ class adminController extends Controller{
 	    $text = $_POST['addStations'];
 	    var_dump($text);
 	    $newstations = explode("\n", str_replace("\r", "", trim($text)));
-	    var_dump($newstations);
         $message = array();
 
 	    foreach($newstations as $newstation)
