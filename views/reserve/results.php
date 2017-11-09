@@ -139,7 +139,7 @@ if ($search) {
 										 <?php //filter the legs so that the starting station and end station are actual bus routes and not walking ?>
 										 <?php $busStations = array() ?>
 										 <?php foreach ($connection->legs as $busStop): ?>
-											 <?php if ($busStop->stopid && $busStop->type == "bus" || $busStop->type == "post"): ?>
+											 <?php if ($busStop->stopid): ?>
 											 	<?php array_push($busStations, $busStop); ?>
 											 <?php endif; ?>
 										 <?php endforeach; ?>
