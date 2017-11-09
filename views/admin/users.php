@@ -54,19 +54,16 @@ $allusers = $_SESSION['allusers'];
 							<input type="text" disabled value="<?php echo $lang['ADMIN_USER_USERNAME'] ?>">
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="First name">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_USER_FIRSTNAME'] ?>">
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="Last name">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_USER_LASTNAME'] ?>">
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="E-mail">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_USER_EMAIL'] ?>">
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="Password">
-						</div>
-						<div class="table-cell">
-							<input type="text" disabled value="Phone">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_USER_PHONE'] ?>">
 						</div>
 						<div class="table-cell">
 							<input type="text" disabled value="Role">
@@ -95,7 +92,6 @@ $allusers = $_SESSION['allusers'];
 								<div class="table-cell"><input type="text" name="username" value="<?php echo $user['username'] ?>"></div>
 								<div class="table-cell"><input type="text" name="name" value="<?php echo $user['name'] ?>"></div>
 								<div class="table-cell"><input type="text" name="lastname" value="<?php echo $user['lastname'] ?>"></div>
-								<div class="table-cell"><input type="text" name="username" value="<?php echo $user['username'] ?>"></div>
 								<div class="table-cell"><input type="text" name="originalusername" hidden value="<?php echo $user['username'] ?>"></div>
 								<div class="table-cell"><input type="text" name="email" value="<?php echo $user['email'] ?>"></div>
 								<div class="table-cell"><input type="text" name="password" hidden value="<?php echo $user['password'] ?>"></div>
