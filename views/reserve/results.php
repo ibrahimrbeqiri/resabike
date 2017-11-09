@@ -4,14 +4,6 @@ include_once ROOT_DIR.'views/header.inc';
 //Collect data from controller
 $msg = $this->vars['msg'];
 
-
-$sum = $_SESSION['sum'];
-//var_dump($sum);
-
-
-$stationsFrom = [];
-$stationsTo = [];
-
 $from = $_SESSION["search_query"]["from"];
 $to =	$_SESSION["search_query"]["to"];
 $date = $_SESSION["search_query"]["date"];
