@@ -43,8 +43,8 @@ $lang['RESULTS_TO'] = ' nach ';
 $lang['RESULTS_AT'] = ' um ';
 $lang['RESULTS_ON'] = ' am ';
 $lang['RESERVATION_EXTRA_INFO'] = 'Ihre Reservierung ist: ';
-$lang['MODAL_INFO'] = 'Wenn Sie mehr als 6 Fahrräder reservieren möchten, kontaktieren Sie uns bitte unter ';
-$lang['EXTRA_MODAL_INFO'] = ' um sicherzustellen, dass wir Platz für all Ihre Fahrräder haben';
+$lang['MODAL_INFO'] = 'Wenn Sie mehr als 6 FahrrÃ¤der reservieren mÃ¶chten, kontaktieren Sie uns bitte unter ';
+$lang['EXTRA_MODAL_INFO'] = ' um sicherzustellen, dass wir Platz fÃ¼r all Ihre FahrrÃ¤der haben';
 
 // Results form
 

@@ -43,7 +43,7 @@ $lang['RESULTS_TO'] = ', à ';
 $lang['RESULTS_AT'] = ' à ';
 $lang['RESULTS_ON'] = ' le ';
 $lang['RESERVATION_EXTRA_INFO'] = 'Votre réservation est: ';
-$lang['MODAL_INFO'] = 'Si vous pr�voyez de réserver plus de 6 vélos, veuillez nous contacter � ';
+$lang['MODAL_INFO'] = 'Si vous prévoyez de réserver plus de 6 vélos, veuillez nous contacter À ';
 $lang['EXTRA_MODAL_INFO'] = ' pour nous assurer que nous avons de la place pour tous vos vélos';
 
 // Results form
