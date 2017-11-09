@@ -42,7 +42,8 @@ $lang['RESULTS_FROM'] = 'from ';
 $lang['RESULTS_TO'] = ' to ';
 $lang['RESULTS_AT'] = ' at ';
 $lang['RESULTS_ON'] = ' on ';
-$lang['RESERVATION_EXTRA_INFO'] = 'Your reservation is ';
+$lang['RESERVATION_EXTRA_INFO'] = 'Your reservation is: ';
+$lang['MODAL_INFO'] = 'If you are planning on reserving more than 10 bikes, please contact us at ';
 
 // Results form
 

@@ -171,7 +171,7 @@ if ($search) {
 												   </div>
 												   <div class="input-field col l6">
 													 <i class="material-icons prefix">phone</i>
-													 <input id="icon_prefix" name="phone" type="number" class="validate" minlength="10" required>
+													 <input id="icon_prefix" name="phone" type="tel" class="validate" minlength="10" required>
 													 <label for="phone" data-error="Your number must contain 10 digits"></label>
 													 <label for="icon_prefix"><?php echo $lang['RESULTS_FORM_PHONE']; ?></label>
 												   </div>
@@ -187,11 +187,8 @@ if ($search) {
 													   <option value="3">3</option>
 													   <option value="4">4</option>
 													   <option value="5">5</option>
-													   <option value="6+">6</option>
-													   <option value="7">7</option>
-													   <option value="8">8</option>
-													   <option value="9">9</option>
-													   <option value="10+">10+</option>
+													   <option value="6">6</option>
+													   <option value="6+">6+</option>
 													 </select>
 												   </div>
 											   </div>
@@ -242,7 +239,7 @@ if ($search) {
 <div id="bike-modal" class="modal modal-fixed-footer">
   <div class="modal-content">
 	<h4>Attention!</h4>
-	<p>If you are planning on reserving more than 10 bikes, please contact us at <a href="tel:1-562-867-5309">1-562-867-5309</a> to make sure we have room for all your bikes.</p>
+	<p><?php echo $lang['MODAL_INFO'] ?> <a href="tel:1-562-867-5309">1-562-867-5309</a> <?php echo $lang['EXTRA_MODAL_INFO']?></p>
   </div>
   <div class="modal-footer">
 	<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
