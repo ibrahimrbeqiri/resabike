@@ -66,10 +66,10 @@ $allusers = $_SESSION['allusers'];
 							<input type="text" disabled value="<?php echo $lang['ADMIN_USER_PHONE'] ?>">
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="Role">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_USER_ROLE'] ?>">
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="Region">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_USER_REGION'] ?>">
 						</div>
 
 
