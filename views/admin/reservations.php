@@ -6,6 +6,7 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 $reservations = $_SESSION['reservations'];
+var_dump($reservations);
 ?>
 
 <script type="text/javascript">

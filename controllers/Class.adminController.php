@@ -528,11 +528,12 @@ class adminController extends Controller{
     	        $_SESSION['msg'] = '<span class="error">There are no reservations made for this day!</span>';
     	        $this->redirect('admin', 'reservations');
     	        exit;
+    	        unset($_SESSION['reservations']);
     	    }
 
 		}
 		// if no date is picked show all the reservations
-		else 
+		else
 		{
 		    $result = Reservation::getAllReservations($reservationdate);
 		    $_SESSION['reservations'] = $result;
