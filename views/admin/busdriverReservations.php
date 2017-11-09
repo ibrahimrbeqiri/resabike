@@ -79,6 +79,14 @@ $reservations = $_SESSION['busdriverReservations'];
 					<div class="collapsible-body">
 						<div id="div-table" style="width:100%;">
 							<div class="table-row">
+								<div class="table-cell"><b>First name</b></div>
+								<div class="table-cell"><b>Last name</b></div>
+								<div class="table-cell"><b>Phone</b></div>
+								<div class="table-cell"><b>E-mail</b></div>
+								<div class="table-cell"><b>To</b></div>
+								<div class="table-cell right"><i class="material-icons prefix">directions_bike</i></div>
+							</div>
+							<div class="table-row">
 								<div class="table-cell"><p><?php echo $single['firstname'] ?></p></div>
 								<div class="table-cell"><p><?php echo $single['lastname'] ?></p></div>
 								<div class="table-cell"><p><?php echo $single['phone'] ?></p></div>

@@ -98,7 +98,7 @@ class reserveController extends Controller{
 	        $this->redirect('reserve', 'reserve');
 	        exit;
 	    }
-	    
+
 	    $reservationArray = array('firstname' => $firstname, 'lastname'=> $lastname, 'phone' => $phone, 'email' => $email,
 	        'bikenumber' => $bikenumber, 'remarks' => $remarks, 'fromstation' => $fromstation, 'tostation' => $tostation,
 	        'reservationdate' => $reservationdate, 'departure' => $departure, 'arrival' => $arrival);
@@ -211,7 +211,7 @@ class reserveController extends Controller{
 	            //Recipients
 	            $mail->setFrom('resabikech@gmail.com');
 	            $mail->addAddress($email);                             // Name is optional
-
+				$baseurl = URL_DIR;
 	            //Content
 	            $mail->isHTML(true);                                  // Set email format to HTML
 	            $mail->Subject = $lang['CONFIRMATION_EMAIL_SUBJECT'];
@@ -229,7 +229,7 @@ class reserveController extends Controller{
 								  '</ul>'.
 								  '<p>'.$lang['CONFIRMATION_EMAIL_OUTRO'].'</p>'.
 								  '<p>'.$lang['CONFIRMATION_EMAIL_DELETEMESSAGE'].'</p>'.
-								  'http://localhost/grp7/reserve/cancelreservation?delete='.$output;
+								  $baseurl.'reserve/cancelreservation?delete='.$output;
 
 	            $mail->send();
 

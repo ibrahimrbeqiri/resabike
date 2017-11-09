@@ -112,6 +112,15 @@ table.center td,td,th,tr{
   .btn:active{
     background-color: #ffcc00;
   }
+  .btn-floating, .btn-floating:visited{
+	  background-color: #584125;
+  }
+  .btn-floating:hover {
+	background-color: #ffcc00;
+  }
+  .btn-floating:active{
+	background-color: #ffcc00;
+  }
   #div-table{
 	  display: table !important;
 	  margin: 0 auto;
@@ -215,4 +224,8 @@ nav{
 }
 #Bus-driver-reservations .material-icons.prefix {
 	vertical-align: bottom !important;
+}
+
+#Bus-driver-reservations #div-table .table-cell{
+	text-align: left;
 }

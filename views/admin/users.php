@@ -9,7 +9,7 @@ $regions = $_SESSION['user_regions'];
 
 $allusers = $_SESSION['allusers'];
 
-var_dump($msg);
+//var_dump($msg);
 
 ?>
 

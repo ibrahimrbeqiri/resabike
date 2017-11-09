@@ -6,7 +6,7 @@ $msg = $this->vars['msg'];
 $user = $_SESSION['user'];
 
 $reservations = $_SESSION['reservations'];
-var_dump($reservations);
+
 ?>
 
 <script type="text/javascript">
@@ -107,7 +107,7 @@ var_dump($reservations);
 						</div>
 					</form>
 				</div>
-				
+
 
 					<?php foreach ($reservations as $reservation): ?>
 

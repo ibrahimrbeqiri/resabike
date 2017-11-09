@@ -439,9 +439,9 @@ class adminController extends Controller{
 	            $this->redirect('admin', 'stations');
 	            exit;
 	        }
-	        
+
 	        $result = RegionStations::addStationsForRegion($regionId, $stationId, $stationName);
-	        
+
 	        if($result['status']=='error')
 	        {
 	            $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
@@ -452,13 +452,13 @@ class adminController extends Controller{
 	            $_SESSION['msg'] = '<span class="error">You have successfully deleted the station!</span>';
 	        }
 	    }
-	    
-	    $text = $_POST['addStations']; 
+
+	    $text = $_POST['addStations'];
 	    var_dump($text);
 	    $newstations = explode("\n", str_replace("\r", "", trim($text)));
 	    var_dump($newstations);
         $message = array();
-        
+
 	    foreach($newstations as $newstation)
 	    {
 	       $newstation = explode(';', $newstation);
@@ -487,37 +487,37 @@ class adminController extends Controller{
 	    }
 		$user = $this->getActiveUser();
 		$regionIdRs = $user->getuserRegionId();
-		
+
 		if ($user->getuserRoleId() != 1 && $user->getuserRoleId() != 2) {
 			$_SESSION['msg'] = '<span class="error">You are not authorized for this page!</span>';
 			$this->redirect('admin', 'menu');
 			exit;
 		}
         $reservationdate = null;
-        
-        
+
+
 		if(isset($_POST['reservationDateSubmit']))
 		{
     		if(isset($_POST['customReservationDate']))
             {
                 $reservationdate = $_POST['customReservationDate'];
             }
-            else 
+            else
             {
                 $reservationdate = null;
             }
-            
+
             if($regionIdRs == 1)
             {
                 $result = Reservation::getAllReservations($reservationdate);
                 $_SESSION['reservations'] = $result;
             }
-    	    else 
+    	    else
     	    {
     	        $result = Reservation::getRegionAdminReservations($reservationdate, $regionIdRs);
     	        $_SESSION['reservations'] = $result;
     	    }
-    	    
+
     	    if($result['status']=='error')
     	    {
     	        $_SESSION['msg'] = '<span class="error">'.$result['result'].'</span>';
@@ -528,7 +528,6 @@ class adminController extends Controller{
     	        $_SESSION['msg'] = '<span class="error">There are no reservations made for this day!</span>';
     	        $this->redirect('admin', 'reservations');
     	        exit;
-    	        unset($_SESSION['reservations']);
     	    }
 
 		}
@@ -554,7 +553,7 @@ class adminController extends Controller{
 	        $this->redirect('admin', 'menu');
 	        exit;
 	    }
-        
+
 	    $id = $_POST['id'];
 	    $firstname = $_POST['firstname'];
 	    $lastname = $_POST['lastname'];
@@ -568,7 +567,7 @@ class adminController extends Controller{
 	    $arrival = $_POST['arrival'];
 	    $remarks = $_POST['remarks'];
 
-        
+
 	    if(isset($_POST['modify']))
 	    {
 	        if(empty($firstname) || empty($lastname) || empty($phone) || empty($email) || empty($bikenumber) || empty($reservationdate) ||
@@ -624,7 +623,7 @@ class adminController extends Controller{
         $reservationdate = null;
         $user = $this->getActiveUser();
         $regionIdRS = $user->getuserRegionId();
-        
+
 	    if(isset($_POST['formsubmit']))
 	    {
 	        if(isset($_POST['reservationdate']))
@@ -642,7 +641,7 @@ class adminController extends Controller{
 	           $result = Reservation::getAllBusDriverReservations($reservationdate);
 	           $_SESSION['busdriverReservations'] = $result;
 	        }
-	        else 
+	        else
 	        {
 	            $result = Reservation::getAllBusDriverReservations($reservationdate, $regionIdRS);
 	            $_SESSION['busdriverReservations'] = $result;
