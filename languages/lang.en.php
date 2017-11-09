@@ -136,7 +136,7 @@ $lang['ADMIN_REGIONS_ADD'] = 'Add region';
 //users page
 $lang['ADMIN_USERS_TITLE'] = 'Users:';
 
-//stations
+//stations page
 $lang['ADMIN_STATIONS_TITLE'] = 'Stations:';
 $lang['ADMIN_STATIONS_INFO'] = 'Disclaimer: Make sure the station IDs are correct!';
 $lang['ADMIN_STATIONS_REGION'] = 'Region';
@@ -146,10 +146,17 @@ $lang['ADMIN_STATIONS_ADD'] = 'Add station';
 $lang['ADMIN_STATIONS_ADD_MULTIPLE'] = 'Add stations';
 $lang['ADMIN_STATIONS_ADD_MULTIPLE_INFO'] = 'Add new stations as follows: Region ID;Station ID;Station Name';
 
-//reservations
-$lang['ADMIN_RESERVATIONS_TITLE'] = 'Stations:';
+//reservations page
+$lang['ADMIN_RESERVATIONS_TITLE'] = 'Reservations:';
 $lang['ADMIN_RESERVATIONS_PICK_DATE'] = 'Pick date';
 $lang['ADMIN_RESERVATIONS_PICK_DATE_INFO'] = 'Choose a date';
 $lang['ADMIN_RESERVATIONS_BIKES'] = 'Bikes';
 $lang['ADMIN_RESERVATIONS_DEPARTURE'] = 'Departure';
 $lang['ADMIN_RESERVATIONS_ARRIVAL'] = 'Arrival';
+
+//busdriverReservations page
+$lang['ADMIN_BUSDRIVER_RESERVATIONS_TITLE'] = 'Reservations:';
+$lang['ADMIN_BUSDRIVER_RESERVATIONS_INFO'] = 'Please select on the date you want to see the reservations for!';
+$lang['ADMIN_BUSDRIVER_RESERVATIONS_TODAY'] = 'Today:';
+$lang['ADMIN_BUSDRIVER_RESERVATIONS_TOMORROW'] = 'Tomorrow:';
+$lang['ADMIN_BUSDRIVER_RESERVATIONS_YESTERDAY'] = 'Yesterday:';

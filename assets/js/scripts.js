@@ -41,19 +41,16 @@ $( document ).ready(function() {
 
 		$( "#Bus-driver-reservations li .collapsible-body #div-table" ).each(function() {
 			var totalbikes = 0;
-			console.log(".......")
+			//console.log(".......")
 			$(this).children(".table-row").each(function(){
 					var bike = $(this).find(".singlebike").text()
-					console.log("bike:" + bike);
-					console.log($(this).text());
+					//console.log("bike:" + bike);
+					//console.log($(this).text());
 					totalbikes = totalbikes + parseInt( bike, 10);
 			});
-			// $(this).( ".collapsible-body .singlebike" ).each(function() {
-			//   console.log($(this).text());
-			//   totalbikes = totalbikes + parseInt($(this).text(), 10);
-			// });
-			console.log(totalbikes);
-			console.log($(this).parent().parent());
+
+			//console.log(totalbikes);
+			//console.log($(this).parent().parent());
 			$(this).parent().parent().find( ".totalbikes" ).html( totalbikes );
 		});
 

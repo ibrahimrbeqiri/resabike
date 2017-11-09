@@ -152,3 +152,10 @@ $lang['ADMIN_RESERVATIONS_PICK_DATE_INFO'] = 'Wählen Sie ein Datum';
 $lang['ADMIN_RESERVATIONS_BIKES'] = 'Fahrräder';
 $lang['ADMIN_RESERVATIONS_DEPARTURE'] = 'Abreise';
 $lang['ADMIN_RESERVATIONS_ARRIVAL'] = 'Ankunft';
+
+//busdriverReservations page
+$lang['ADMIN_BUSDRIVER_RESERVATIONS_TITLE'] = 'Reservierungen:';
+$lang['ADMIN_BUSDRIVER_RESERVATIONS_INFO'] = 'Bitte wählen Sie an dem Datum aus, an dem Sie die Reservierungen sehen möchten!';
+$lang['ADMIN_BUSDRIVER_RESERVATIONS_TODAY'] = 'Heute:';
+$lang['ADMIN_BUSDRIVER_RESERVATIONS_TOMORROW'] = 'Morgen:';
+$lang['ADMIN_BUSDRIVER_RESERVATIONS_YESTERDAY'] = 'Gestern:';

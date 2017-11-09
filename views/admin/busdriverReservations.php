@@ -13,28 +13,28 @@ $reservations = $_SESSION['busdriverReservations'];
 
 <div class="container">
 	<div class="col l12 center card admin-menu">
-		<h4>Reservations:</h4>
+		<h4><?php echo $lang['ADMIN_BUSDRIVER_RESERVATIONS_TITLE']; ?></h4>
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
 		<?php endif; ?>
   <form name="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post">
 
-  <div class="col l12">Please select on the date you want to see the reservations for!</div>
+  <div class="col l12"><?php echo $lang['ADMIN_BUSDRIVER_RESERVATIONS_INFO']; ?></div>
 		<div class="row">
 			<div class="col l5">
 			<select class="dateSelection" name="reservationdate">
-					<option selected disabled>Pick a date</option>
-					<option value="<?php echo date("d.m.Y", strtotime("tomorrow")); ?>">Tomorrow: <?php echo date("d.m.Y", strtotime("tomorrow"));?></option>
-					<option value="<?php echo date('d.m.Y');?>">Today: <?php echo date('d.m.Y');?></option>
-					<option value="<?php echo date("d.m.Y", strtotime("yesterday")); ?>">Yesterday: <?php echo date("d.m.Y", strtotime("yesterday"));?></option>
+					<option selected disabled><?php echo $lang['ADMIN_RESERVATIONS_PICK_DATE']; ?></option>
+					<option value="<?php echo date("d.m.Y", strtotime("tomorrow")); ?>"><?php echo $lang['ADMIN_BUSDRIVER_RESERVATIONS_TOMORROW']; ?> <?php echo date("d.m.Y", strtotime("tomorrow"));?></option>
+					<option value="<?php echo date('d.m.Y');?>"><?php echo $lang['ADMIN_BUSDRIVER_RESERVATIONS_TODAY']; ?> <?php echo date('d.m.Y');?></option>
+					<option value="<?php echo date("d.m.Y", strtotime("yesterday")); ?>"><?php echo $lang['ADMIN_BUSDRIVER_RESERVATIONS_YESTERDAY']; ?> <?php echo date("d.m.Y", strtotime("yesterday"));?></option>
 			</select>
 			</div>
-			<div class="col l5">
-				<input id="icon_prefix" type="text" class="datepicker" name="customDate" placeholder="Pick another date">
+			<div class="col l4">
+				<input id="icon_prefix" type="text" class="datepicker" name="customDate" placeholder="<?php echo $lang['ADMIN_RESERVATIONS_PICK_DATE_INFO']; ?>">
 			</div>
-			<div class="col l2">
+			<div class="col l3">
 				<button class="btn waves-effect waves-light" type="submit" name="formsubmit" id="busdriver-submit">
-					  Pick date
+					  <?php echo $lang['ADMIN_RESERVATIONS_PICK_DATE']; ?>
 				</button>
 			</div>
    		</div>
@@ -70,9 +70,9 @@ $reservations = $_SESSION['busdriverReservations'];
 				<li>
 					<div class="collapsible-header">
 						<div style="width:100%; text-align:left;">
-							<b>Date: <?php echo $single['reservationdate'].'&emsp;';?></b>
-							<b>From: <?php echo $single['stationFrom'].'&emsp;';?></b>
-							<b>Departure: <?php echo $single['departure'].'&emsp;';?></b>
+							<b><?php echo $lang['RESERVE_DATE']; ?>: <?php echo $single['reservationdate'].'&emsp;';?></b>
+							<b><?php echo $lang['RESERVE_START']; ?>: <?php echo $single['stationFrom'].'&emsp;';?></b>
+							<b><?php echo $lang['ADMIN_RESERVATIONS_DEPARTURE']; ?>: <?php echo $single['departure'].'&emsp;';?></b>
 							<b class="right"><span class="totalbikes"></span><i class="material-icons prefix">directions_bike</i></b>
 						</div>
 
@@ -80,12 +80,12 @@ $reservations = $_SESSION['busdriverReservations'];
 					<div class="collapsible-body">
 						<div id="div-table" style="width:100%;">
 							<div class="table-row">
-								<div class="table-cell"><b>First name</b></div>
-								<div class="table-cell"><b>Last name</b></div>
-								<div class="table-cell"><b>Phone</b></div>
-								<div class="table-cell"><b>E-mail</b></div>
-								<div class="table-cell"><b>To</b></div>
-								<div class="table-cell"><b>Arrival</b></div>
+								<div class="table-cell"><b><?php echo $lang['RESULTS_FORM_FIRSTNAME']; ?></b></div>
+								<div class="table-cell"><b><?php echo $lang['RESULTS_FORM_LASTNAME']; ?></b></div>
+								<div class="table-cell"><b><?php echo $lang['RESULTS_FORM_PHONE']; ?></b></div>
+								<div class="table-cell"><b><?php echo $lang['RESULTS_FORM_EMAIL']; ?></b></div>
+								<div class="table-cell"><b><?php echo $lang['RESERVE_DESTINATION']; ?></b></div>
+								<div class="table-cell"><b><?php echo $lang['ADMIN_RESERVATIONS_ARRIVAL']; ?></b></div>
 								<div class="table-cell right"><i class="material-icons prefix">directions_bike</i></div>
 								<!-- needed for js calculation -->
 								<div class="table-cell" hidden><p hidden class="singlebike">0</p></div>
