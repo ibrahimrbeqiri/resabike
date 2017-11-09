@@ -97,7 +97,6 @@ class adminController extends Controller{
 	                exit;
 	            }
 	        }
-
 	        $result = User::modifyUser($name, $lastname, $username, $email, $password, $phone, $userRoleId, $userRegionId, $id);
 
 	        if(!$result)
