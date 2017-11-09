@@ -137,10 +137,10 @@ if ($search) {
 										 <?php endforeach; ?>
 										 <?php $fromBusStop = current($busStations )?>
 										 <?php $toBusStop = end($busStations )?>
-										 <p>Your reservation will be</p>
-										 <p>from: <?php echo $fromBusStop->name ?></p>
+										 <p><?php echo $lang['RESERVATION_EXTRA_INFO'];?></p>
+										 <p><?php echo $lang['RESULTS_FROM'].': '.$fromBusStop->name ?></p>
 										 <hr>
-										 <p>to: <?php echo $toBusStop->name?></p>
+										 <p><?php echo $lang['RESULTS_TO'].': '.$toBusStop->name?></p>
 
 										 <form class="reservation-form" action="<?php echo URL_DIR.'reserve/confirm';?>" method="POST">
 										 <input name="reservationdate" type="hidden" hidden value="<?php echo date("d.m.Y", strtotime($fromBusStop->departure));?>">

@@ -17,7 +17,7 @@ $reservations = $_SESSION['busdriverReservations'];
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
 		<?php endif; ?>
-  <form name="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverReservations';?>" method="post">
+  <form name="busDriverForm" action="<?php echo URL_DIR.'admin/busdriverreservations';?>" method="post">
 
   <div class="col l12"><?php echo $lang['ADMIN_BUSDRIVER_RESERVATIONS_INFO']; ?></div>
 		<div class="row">

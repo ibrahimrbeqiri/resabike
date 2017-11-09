@@ -17,7 +17,7 @@ $user = $_SESSION['user'];
 				<?php echo $msg ?>
 			</div>
 		<?php endif; ?>
-		<a href="<?php echo URL_DIR.'admin/busdriverReservations';?>">
+		<a href="<?php echo URL_DIR.'admin/busdriverreservations';?>">
 		<button class="btn waves-effect waves-light">
 			<i class="material-icons prefix">directions_bus</i>
 			<span><?php echo $lang['ADMIN_MENU_SEE_RESERVATIONS']; ?></span>

@@ -612,7 +612,7 @@ class adminController extends Controller{
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
 	}
 
-	function busdriverReservations()
+	function busdriverreservations()
 	{
 	    if(!$this->getActiveUser()){
 	        $this->redirect('welcome', 'welcome');
@@ -654,7 +654,7 @@ class adminController extends Controller{
         	if(empty($result))
         	{
                 $_SESSION['msg'] = '<span class="error">There are no reservations made for this day!</span>';
-        	    $this->redirect('admin', 'busDriverReservations');
+        	    $this->redirect('admin', 'busdriverreservations');
         	    exit;
         	}
 

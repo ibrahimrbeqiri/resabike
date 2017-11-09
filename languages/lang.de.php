@@ -42,6 +42,7 @@ $lang['RESULTS_FROM'] = 'von ';
 $lang['RESULTS_TO'] = ' nach ';
 $lang['RESULTS_AT'] = ' um ';
 $lang['RESULTS_ON'] = ' am ';
+$lang['RESERVATION_EXTRA_INFO'] = 'Ihre Reservierung ist ';
 
 // Results form
 
