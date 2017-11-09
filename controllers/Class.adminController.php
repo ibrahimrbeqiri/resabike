@@ -534,7 +534,8 @@ class adminController extends Controller{
 		// if no date is picked show all the reservations
 		else 
 		{
-		    $reservations = Reservation::getAllReservations($reservationdate);
+		    $result = Reservation::getAllReservations($reservationdate);
+		    $_SESSION['reservations'] = $result;
 		}
 
 	    $this->vars['msg'] = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
@@ -566,7 +567,7 @@ class adminController extends Controller{
 	    $arrival = $_POST['arrival'];
 	    $remarks = $_POST['remarks'];
 
-            
+        
 	    if(isset($_POST['modify']))
 	    {
 	        if(empty($firstname) || empty($lastname) || empty($phone) || empty($email) || empty($bikenumber) || empty($reservationdate) ||
