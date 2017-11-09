@@ -38,7 +38,7 @@ $reservations = $_SESSION['busdriverReservations'];
 				</button>
 			</div>
    		</div>
-
+</form>
 
 		<ul id="Bus-driver-reservations" class="collapsible" data-collapsible="accordion">
 
@@ -110,7 +110,6 @@ $reservations = $_SESSION['busdriverReservations'];
 			<?php endif; ?>
       	<?php endforeach;?>
  		</ul>
- 	</form>
 		</div>
 	</div>
 
