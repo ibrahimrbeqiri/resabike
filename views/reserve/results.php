@@ -162,24 +162,24 @@ if ($search) {
 											   <div class="col l12 row">
 												   <div class="input-field col l6">
 													 <i class="material-icons prefix">person</i>
-													 <input id="first_name" name="firstname" type="text" class="validate">
+													 <input id="first_name" name="firstname" type="text" class="validate" required>
 													 <label for="first_name"><?php echo $lang['RESULTS_FORM_FIRSTNAME']; ?></label>
 												   </div>
 												   <div class="input-field col l6">
-													 <input id="last_name" name="lastname" type="text" class="validate">
+													 <input id="last_name" name="lastname" type="text" class="validate" required>
 													 <label for="last_name"><?php echo $lang['RESULTS_FORM_LASTNAME']; ?></label>
 												   </div>
 											   </div>
 											   <div class="col l12 row">
 												   <div class="input-field col l6">
 													 <i class="material-icons prefix">email</i>
-													 <input id="icon_prefix" name="email" type="email" class="validate">
+													 <input id="icon_prefix" name="email" type="email" class="validate" required>
 													 <label for="email" data-error="Your email must be a valid email: example@example.com/de/ch"></label>
 													 <label for="icon_prefix"><?php echo $lang['RESULTS_FORM_EMAIL']; ?></label>
 												   </div>
 												   <div class="input-field col l6">
 													 <i class="material-icons prefix">phone</i>
-													 <input id="icon_prefix" name="phone" type="number" class="validate" minlength="10">
+													 <input id="icon_prefix" name="phone" type="number" class="validate" minlength="10" required>
 													 <label for="phone" data-error="Your number must contain 10 digits"></label>
 													 <label for="icon_prefix"><?php echo $lang['RESULTS_FORM_PHONE']; ?></label>
 												   </div>
@@ -188,7 +188,7 @@ if ($search) {
 											   <div class="col l12">
 												   <div class="input-field col l12">
 													 <i class="material-icons prefix">directions_bike</i>
-													 <select class="form-bikes" name="bikenumber">
+													 <select class="form-bikes" name="bikenumber" required>
 													   <option value="" disabled selected><?php echo $lang['RESULTS_FORM_BIKES']; ?></option>
 													   <option value="1">1</option>
 													   <option value="2">2</option>

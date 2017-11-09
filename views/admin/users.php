@@ -99,7 +99,7 @@ var_dump($msg);
     								<select name="userRoleId">
                 					  <option selected value="<?php echo $user['roleId']?>"><?php echo $user['role'] ?></option>
                         					  <?php foreach ($roles as $role): ?>
-                        						  <option value="<?php echo $role[roleId]; ?>"><?php echo $role[role]; ?></option>
+                        						  <option value="<?php echo $role['roleId']; ?>"><?php echo $role['role']; ?></option>
                         					  <?php endforeach; ?>
                 				  	</select>
 								</div>
@@ -108,7 +108,7 @@ var_dump($msg);
     								<select name="userRegionId">
                     					  <option selected value="<?php echo $user['regionId']?>"><?php echo $user['regionName'] ?></option>
                             					  <?php foreach ($regions as $region): ?>
-                            						  <option value="<?php echo $reigon[regionId]; ?>"><?php echo $region[regionName]; ?></option>
+                            						  <option value="<?php echo $region['regionId']; ?>"><?php echo $region['regionName']; ?></option>
                             					  <?php endforeach; ?>
                     				</select>
 								</div>
