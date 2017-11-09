@@ -53,6 +53,7 @@ $reservations = $_SESSION['busdriverReservations'];
 					<div class="table-cell"><p><?php echo $single['phone'] ?></p></div>
 					<div class="table-cell"><p><?php echo $single['email'] ?></p></div>
 					<div class="table-cell"><p><?php echo $single['stationTo'] ?></p></div>
+					<div class="table-cell"><p><?php echo $single['arrival'] ?></p></div>
 					<div class="table-cell right"><p class="singlebike"><?php echo $single['bikenumber'] ?></p></div>
 
 				</div>
@@ -84,7 +85,11 @@ $reservations = $_SESSION['busdriverReservations'];
 								<div class="table-cell"><b>Phone</b></div>
 								<div class="table-cell"><b>E-mail</b></div>
 								<div class="table-cell"><b>To</b></div>
+								<div class="table-cell"><b>Arrival</b></div>
 								<div class="table-cell right"><i class="material-icons prefix">directions_bike</i></div>
+								<!-- needed for js calculation -->
+								<div class="table-cell" hidden><p hidden class="singlebike">0</p></div>
+
 							</div>
 							<div class="table-row">
 								<div class="table-cell"><p><?php echo $single['firstname'] ?></p></div>
@@ -92,6 +97,7 @@ $reservations = $_SESSION['busdriverReservations'];
 								<div class="table-cell"><p><?php echo $single['phone'] ?></p></div>
 								<div class="table-cell"><p><?php echo $single['email'] ?></p></div>
 								<div class="table-cell"><p><?php echo $single['stationTo'] ?></p></div>
+								<div class="table-cell"><p><?php echo $single['arrival'] ?></p></div>
 								<div class="table-cell right"><p class="singlebike"><?php echo $single['bikenumber'] ?></p></div>
 							</div>
 					<?php //special case for the last row ?>

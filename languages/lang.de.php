@@ -134,4 +134,21 @@ $lang['ADMIN_REGIONS_ADD'] = 'Region hinzufügen';
 
 //users page
 $lang['ADMIN_USERS_TITLE'] = 'Benutzer:';
-?>
+
+//stations
+$lang['ADMIN_STATIONS_TITLE'] = 'Stationen:';
+$lang['ADMIN_STATIONS_INFO'] = 'Haftungsausschluss: Vergewissern Sie sich, dass die Stations-IDs korrekt sind!';
+$lang['ADMIN_STATIONS_REGION'] = 'Region';
+$lang['ADMIN_STATIONS_ID'] = 'Stations-ID';
+$lang['ADMIN_STATIONS_NAME'] = 'Stationsname';
+$lang['ADMIN_STATIONS_ADD'] = 'Station hinzufügen';
+$lang['ADMIN_STATIONS_ADD_MULTIPLE'] = 'Stationen hinzufügen';
+$lang['ADMIN_STATIONS_ADD_MULTIPLE_INFO'] = 'Fügen Sie neue Stationen wie folgt hinzu: Regions-ID;Stations-ID;Stationsname';
+
+//reservations
+$lang['ADMIN_RESERVATIONS_TITLE'] = 'Reservierungen:';
+$lang['ADMIN_RESERVATIONS_PICK_DATE'] = 'Datum auswählen';
+$lang['ADMIN_RESERVATIONS_PICK_DATE_INFO'] = 'Wählen Sie ein Datum';
+$lang['ADMIN_RESERVATIONS_BIKES'] = 'Fahrräder';
+$lang['ADMIN_RESERVATIONS_DEPARTURE'] = 'Abreise';
+$lang['ADMIN_RESERVATIONS_ARRIVAL'] = 'Ankunft';

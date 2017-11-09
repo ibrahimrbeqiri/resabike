@@ -13,8 +13,8 @@ $regionstations = $_SESSION['regionstations'];
 <div class="container">
 	<div class="col l12 center card admin-menu">
 		<div class="col l12">
-			<h4>Stations:</h4>
-			<p>Disclamer: Make sure the station IDs are correct!</p>
+			<h4><?php echo $lang['ADMIN_STATIONS_TITLE']; ?></h4>
+			<p><?php echo $lang['ADMIN_STATIONS_INFO']; ?></p>
 			<?php if ($msg): ?>
 				<?php if(is_array($msg)):?>
 					<?php foreach($msg as $m):?>
@@ -28,7 +28,8 @@ $regionstations = $_SESSION['regionstations'];
 		</div>
 		<div class="col l12 right-align">
 			<a href="<?php echo URL_DIR.'admin/menu';?>">
-					<button class="btn waves-effect waves-light" type="button">Cancel
+					<button class="btn waves-effect waves-light" type="button">
+						<?php echo $lang['ADMIN_REGISTER_CANCEL']; ?>
 						<i class="material-icons left">cancel</i>
 					</button>
 			</a>
@@ -53,13 +54,13 @@ $regionstations = $_SESSION['regionstations'];
 							<button disabled class="btn-floating"></button>
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="Region">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_STATIONS_REGION'] ?>">
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="Station ID">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_STATIONS_ID'] ?>">
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="Station Name">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_STATIONS_NAME'] ?>">
 						</div>
 
 						<div class="table-cell">
@@ -103,7 +104,8 @@ $regionstations = $_SESSION['regionstations'];
 			</div>
 
 
-		<button id="add-table-row" class="btn waves-effect waves-light left" type="button" name="action">Add station
+		<button id="add-table-row" class="btn waves-effect waves-light left" type="button" name="action">
+			<?php echo $lang['ADMIN_STATIONS_ADD']; ?>
 			<i class="material-icons right">add</i>
 		</button>
 
@@ -114,10 +116,11 @@ $regionstations = $_SESSION['regionstations'];
               <div class="row">
                 <div class="input-field col s12">
                   <textarea id="addStations" name="addStations" class="materialize-textarea"></textarea>
-                  <label for="addStations">Add new stations as follows: Region ID;Station ID;Station Name</label>
+                  <label for="addStations"><?php echo $lang['ADMIN_STATIONS_ADD_MULTIPLE_INFO']; ?></label>
                 </div>
               </div>
-              <button class="btn waves-effect waves-light left" type="submit">Add Stations
+              <button class="btn waves-effect waves-light left" type="submit">
+				 	<?php echo $lang['ADMIN_STATIONS_ADD_MULTIPLE']; ?>
 					<i class="material-icons left">add</i>
 			 </button>
             </form>

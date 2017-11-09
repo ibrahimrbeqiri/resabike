@@ -23,24 +23,25 @@ $reservations = $_SESSION['reservations'];
 
 <div class="container">
 	<div class="col l12 center card admin-menu">
-		<h4>Reservations:</h4>
-		<p>Disclamer: Make sure the reservation IDs are correct!</p>
+		<h4><?php echo $lang['ADMIN_RESERVATIONS_TITLE']; ?></h4>
+
 		<?php if ($msg): ?>
 			<?php echo $msg ?>
 		<?php endif; ?>
 			<a href="<?php echo URL_DIR.'admin/menu';?>">
-				<button class="btn waves-effect waves-light right" type="button">Cancel
+				<button class="btn waves-effect waves-light right" type="button">
+					<?php echo $lang['ADMIN_REGISTER_CANCEL']; ?>
 					<i class="material-icons left">cancel</i>
 				</button>
 			</a>
 			<form action="<?php echo URL_DIR.'admin/reservations';?>" method="post">
     			<div class="row">
         			<div class="col l4">
-        				<input id="icon_prefix" type="text" class="datepicker" name="customReservationDate" placeholder="Pick another date">
+        				<input id="icon_prefix" type="text" class="datepicker" name="customReservationDate" placeholder="<?php echo $lang['ADMIN_RESERVATIONS_PICK_DATE_INFO']; ?>">
         			</div>
-        			<div class="col l2">
+        			<div class="col l3">
         				<button class="btn waves-effect waves-light" type="submit" name="reservationDateSubmit">
-        					  Pick date
+        					  <?php echo $lang['ADMIN_RESERVATIONS_PICK_DATE']; ?>
         				</button>
         			</div>
     			</div>
@@ -60,46 +61,46 @@ $reservations = $_SESSION['reservations'];
 							<input type="text" disabled value="ID">
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="First name">
+							<input type="text" disabled value="<?php echo $lang['RESULTS_FORM_FIRSTNAME']; ?>">
 						</div>
 						<div class="table-cell">
-							<input type="text" disabled value="Last name">
-						</div>
-
-						<div class="table-cell">
-							<input type="text" disabled value="Phone">
+							<input type="text" disabled value="<?php echo $lang['RESULTS_FORM_LASTNAME']; ?>">
 						</div>
 
 						<div class="table-cell">
-							<input type="text" disabled value="E-mail">
+							<input type="text" disabled value="<?php echo $lang['RESULTS_FORM_PHONE']; ?>">
 						</div>
 
 						<div class="table-cell">
-							<input type="text" disabled value="Bikes">
+							<input type="text" disabled value="<?php echo $lang['RESULTS_FORM_EMAIL']; ?>">
 						</div>
 
 						<div class="table-cell">
-							<input type="text" disabled value="Date">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_RESERVATIONS_BIKES']; ?>">
 						</div>
 
 						<div class="table-cell">
-							<input type="text" disabled value="From">
+							<input type="text" disabled value="<?php echo $lang['RESERVE_DATE']; ?>">
 						</div>
 
 						<div class="table-cell">
-							<input type="text" disabled value="To">
+							<input type="text" disabled value="<?php echo $lang['RESERVE_START']; ?>">
 						</div>
 
 						<div class="table-cell">
-							<input type="text" disabled value="Departure">
+							<input type="text" disabled value="<?php echo $lang['RESERVE_DESTINATION']; ?>">
 						</div>
 
 						<div class="table-cell">
-							<input type="text" disabled value="Arrival">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_RESERVATIONS_ARRIVAL']; ?>">
 						</div>
 
 						<div class="table-cell">
-							<input type="text" disabled value="Remarks">
+							<input type="text" disabled value="<?php echo $lang['ADMIN_RESERVATIONS_DEPARTURE']; ?>">
+						</div>
+
+						<div class="table-cell">
+							<input type="text" disabled value="<?php echo $lang['RESULTS_FORM_REMARKS']; ?>">
 						</div>
 
 						<div class="table-cell">
