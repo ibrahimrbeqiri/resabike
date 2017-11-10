@@ -56,7 +56,7 @@ $( document ).ready(function() {
 				<div class="row">
 					<div class="input-field col m2">
 					  <i class="material-icons prefix">date_range</i>
-					  <input id="icon_prefix" type="text" class="datepicker" name="date" value="<?php echo date("d.m.Y") ?>">
+					  <input id="icon_prefix" type="text" class="clientdatepicker" name="date" value="<?php echo date("d.m.Y") ?>">
 					  <label for="icon_prefix"><?php echo $lang['RESERVE_DATE']; ?></label>
 					</div>
 					<div class="input-field col m2">
